@@ -85,9 +85,9 @@ module Pixel
   def Pixel.createPStop(layer, x, y, width, rOut, rIn, oX, oY, oW, horizontal=true ,x0=0, y0=0)
     
     outerRingPoly = Polygon.new(Box.new(0,0,x,y))
-    outerRing = outerRingPoly.round_corners(0,rOut,50)
+    outerRing = outerRingPoly.round_corners(0,rOut,32)
     innerRingPoly = Polygon.new(Box.new(width,width,x-width,y-width))
-    innerRing = innerRingPoly.round_corners(0,rIn,50)
+    innerRing = innerRingPoly.round_corners(0,rIn,32)
     
     ring = Cut.polyVector([outerRing,innerRing])
     
@@ -97,10 +97,10 @@ module Pixel
       ringOpen = Cut.polyVector([ring,openBox])
     
       endPoly1 = Polygon.new(Box.new(oX-(width/2.0),oY,oX+(width/2.0),oY+width))
-      endCirc1 = endPoly1.round_corners(0,(width/2.0),50)
+      endCirc1 = endPoly1.round_corners(0,(width/2.0),32)
     
       endPoly2 = Polygon.new(Box.new(oX+oW-(width/2.0),oY,oX+oW+(width/2.0),oY+width))
-      endCirc2 = endPoly2.round_corners(0,(width/2.0),50)
+      endCirc2 = endPoly2.round_corners(0,(width/2.0),32)
       
     else
       
@@ -108,10 +108,10 @@ module Pixel
       ringOpen = Cut.polyVector([ring,openBox])
     
       endPoly1 = Polygon.new(Box.new(oX,oY-(width/2.0),oX+width,oY+(width/2.0)))
-      endCirc1 = endPoly1.round_corners(0,(width/2.0),50)
+      endCirc1 = endPoly1.round_corners(0,(width/2.0),32)
     
       endPoly2 = Polygon.new(Box.new(oX,oY+oW-(width/2.0),oX+width,oY+oW+(width/2.0)))
-      endCirc2 = endPoly2.round_corners(0,(width/2.0),50)      
+      endCirc2 = endPoly2.round_corners(0,(width/2.0),32)      
          
     end
     

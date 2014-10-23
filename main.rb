@@ -3,11 +3,11 @@ module CISWafer
 
   # include files
 
-  load "ProjectX3/structures/basic.rb"
-  load "ProjectX3/structures/pixel.rb"
-  load "ProjectX3/utils/merge.rb"
-  load "ProjectX3/utils/cut.rb"
-  load "ProjectX3/sensors/fpixf.rb"
+  load "Wafer_Phase2/structures/basic.rb"
+  load "Wafer_Phase2/structures/pixel.rb"
+  load "Wafer_Phase2/utils/merge.rb"
+  load "Wafer_Phase2/utils/cut.rb"
+  load "Wafer_Phase2/sensors/fpixf.rb"
    
   # create mainWindow and layout
   

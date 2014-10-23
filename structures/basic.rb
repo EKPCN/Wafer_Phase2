@@ -16,7 +16,7 @@ module Basic
 
   def Basic.createRoundBox(x,y,x0=0,y0=0,r=5000)
     box = Polygon.new(Box.new(0,0,x,y))
-    roundBox = box.round_corners(0,r,50) 
+    roundBox = box.round_corners(0,r,32) 
     roundBox.move(x0,y0)
     
     box.destroy

@@ -4,7 +4,7 @@ module FPixF
   
   def FPixF.create()
   
-    load "ProjectX3/sensors/fpixf_para.rb"
+    load "Wafer_Phase2/sensors/fpixf_para.rb"
     
     $fPixFCell = $layout.create_cell("FPIXF")
     para = Defaults
