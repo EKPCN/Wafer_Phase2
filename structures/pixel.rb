@@ -43,14 +43,9 @@ module Pixel
   
     for i in 0..nx-1
       for j in 0..ny-1
-        cell = $layout.create_cell("Pixel_#{i}_#{j}")
-        cell.copy_shapes(pixel)
-        Merge.cells($Cell,cell,x0+(i*distX),y0+(j*distY))
+        Merge.cells($Cell,pixel,x0+(i*distX),y0+(j*distY))
       end
-    end  
-    
-    pixel.delete
-  
+    end    
   end
 
 

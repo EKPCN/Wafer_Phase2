@@ -24,7 +24,7 @@ module Merge
 
 
   def Merge.cells(cell1,cell2,x0=0,y0=0)
-    cell1.insert(CellInstArray.new(cell2.cell_index,CplxTrans.new(1,0,false,DPoint.new(x0,y0))))
+    cell1.insert(CellInstArray::new(cell2.cell_index,CplxTrans::new(1,0,false,DPoint::new(x0,y0))))
   end
 
 end

@@ -29,21 +29,16 @@ module FPixF
   #  innerPixelCell2 = $layout.create_cell("innerPixelCell2")  
   #  Pixel.init(innerPixelCell2)
   #  Pixel.createImplant($layerNp,implantSizeX,implantSizeY)
-  #   Pixel.createImplant($layerAlu,implantAluSizeX,implantAluSizeY,1500,1500)
-  #   Pixel.createVia($layerAluVia,pixelViaSizeX,pixelViaSizeY,implantSizeX-12000-pixelViaSizeX,12000)
-  #   Pixel.createBumpPad($layerAlu,bumpPadDiameter,9000,(48000-30000)/2)
-  #   Pixel.createPStop($layerPp, pStopSizeX, pStopSizeY, pStopWidth, pStopCornerRout , pStopCornerRin, pStopOpenX0, pStopOpenY0, pStopOpenWidth,true, -20000, -20000)
+  #  Pixel.createImplant($layerAlu,implantAluSizeX,implantAluSizeY,1500,1500)
+  #  Pixel.createVia($layerAluVia,pixelViaSizeX,pixelViaSizeY,implantSizeX-12000-pixelViaSizeX,12000)
+  #  Pixel.createBumpPad($layerAlu,bumpPadDiameter,9000,(48000-30000)/2)
+  #  Pixel.createPStop($layerPp, pStopSizeX, pStopSizeY, pStopWidth, pStopCornerRout , pStopCornerRin, pStopOpenX0, pStopOpenY0, pStopOpenWidth,true, -20000, -20000)
     
-  #   innerPixelGridCell2 = $layout.create_cell("InnerPixelGrid2")
-  #   Pixel.init(innerPixelGridCell2)
-  #   Pixel.createGrid(innerPixelCell2,pixelGridnX,pixelGridnY,pixelGriddX,pixelGriddY) 
-  #   Merge.cells($fPixFCell,innerPixelGridCell2,1336000+150000,1336000)    
-    
-    
-    #delete singleCells
-    
-  #   innerPixelCell1.delete
-  #  innerPixelCell2.delete
+  #  innerPixelGridCell2 = $layout.create_cell("InnerPixelGrid2")
+  #  Pixel.init(innerPixelGridCell2)
+  #  Pixel.createGrid(innerPixelCell2,pixelGridnX,pixelGridnY,pixelGriddX,pixelGriddY) 
+  #  Merge.cells($fPixFCell,innerPixelGridCell2,1336000+150000,1336000)    
+
     
     return $fPixFCell
   end
