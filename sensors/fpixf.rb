@@ -35,9 +35,9 @@ module FPixF
     Pixel.init(innerPixelCell2)
     Pixel.createImplant($layerNp,implants['implantSizeX'],implants['implantSizeY'])
     Pixel.createImplant($layerAlu,implants['implantAluSizeX'],implants['implantAluSizeY'],1500,1500)
-    Pixel.createVia($layerAluVia,Via['pixelViaSizeX'],Via['pixelViaSizeY'],implants['implantSizeX']-12000-Via['pixelViaSizeX'],12000)
-    Pixel.createBumpPad($layerAlu,BumpPad['bumpPadDiameter'],9000,(48000-30000)/2)
-    Pixel.createPStop($layerPp, PStop['pStopSizeX'], PStop['pStopSizeY'], PStop['pStopWidth'], PStop['pStopCornerRout'] , PStop['pStopCornerRin'], PStop['pStopOpenX0'], PStop['pStopOpenY0'], PStop['pStopOpenWidth'],true, -20000, -20000)
+    Pixel.createVia($layerAluVia,via['pixelViaSizeX'],via['pixelViaSizeY'],implants['implantSizeX']-12000-via['pixelViaSizeX'],12000)
+    Pixel.createBumpPad($layerAlu,bumpPad['bumpPadDiameter'],9000,(48000-30000)/2)
+    Pixel.createPStop($layerPp, pStop['pStopSizeX'], pStop['pStopSizeY'], pStop['pStopWidth'], pStop['pStopCornerRout'] , pStop['pStopCornerRin'], pStop['pStopOpenX0'], pStop['pStopOpenY0'], pStop['pStopOpenWidth'],true, -20000, -20000)
     
     innerPixelGridCell2 = $layout.create_cell("InnerPixelGrid2")
     Pixel.init(innerPixelGridCell2)
