@@ -14,7 +14,7 @@ module Pixel
   end
 
 
-  def Pixel.createGrid(pixel,nx,ny,distX,distY,x0=0,y0=0)   
+  def Pixel.createShapeGrid(pixel,nx,ny,distX,distY,x0=0,y0=0)   
     
     $layout.layer_indices.each do |layer|     
       pixel.shapes(layer).each do |shape|     
@@ -31,15 +31,7 @@ module Pixel
     
   end
 
-  def Pixel.createGridInstance(pixel,nx,ny,distX,distY)
-    for i in 0..nx
-      instArray = CellInstArray.new(pixel.cell_index,CplxTrans.new(distX,distY))
-      $Cell.insert(instArray)
-    end
-  end
-
-
-  def Pixel.createCellGrid(pixel,nx,ny,distX,distY,x0=0,y0=0) 
+  def Pixel.createGrid(pixel,nx,ny,distX,distY,x0=0,y0=0) 
   
     for i in 0..nx-1
       for j in 0..ny-1
