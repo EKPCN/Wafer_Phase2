@@ -29,7 +29,6 @@ OuterPixelGrid1 = {
 
     'pixelGridnX' => 1,
     'pixelGridnY' => 79,
-    'pixelGriddX' => 300000,
     'pixelGriddY' => 100000
 
 }
@@ -47,7 +46,7 @@ InnerPStop = {
 
 }
 
-OuterPStop = {
+OuterPStop1 = {
   
     'pStopSizeX' => 288000,
     'pStopSizeY' => 88000,
@@ -55,6 +54,19 @@ OuterPStop = {
     'pStopCornerRout' => 12500,
     'pStopCornerRin' => 4000,
     'pStopOpenX0' => 205000,
+    'pStopOpenY0' => 80000,
+    'pStopOpenWidth' => 28000,
+  
+}
+
+OuterPStop2 = {
+  
+    'pStopSizeX' => 288000,
+    'pStopSizeY' => 88000,
+    'pStopWidth' => 8000,
+    'pStopCornerRout' => 12500,
+    'pStopCornerRin' => 4000,
+    'pStopOpenX0' => 55000,
     'pStopOpenY0' => 80000,
     'pStopOpenWidth' => 28000,
   

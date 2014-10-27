@@ -31,7 +31,7 @@ module Pixel
     
   end
 
-  def Pixel.createGrid(pixel,nx,ny,distX,distY,x0=0,y0=0) 
+  def Pixel.createGrid(pixel,nx,ny,distX=0,distY=0,x0=0,y0=0) 
   
     for i in 0..nx-1
       for j in 0..ny-1

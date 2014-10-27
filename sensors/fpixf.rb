@@ -35,7 +35,7 @@ module FPixF
     Pixel.init(innerPixelCell2)
     Pixel.createImplant($layerNp,implants['implantSizeX'],implants['implantSizeY'])
     Pixel.createImplant($layerAlu,implants['implantAluSizeX'],implants['implantAluSizeY'],1500,1500)
-    Pixel.createVia($layerAluVia,via['pixelViaSizeX'],via['pixelViaSizeY'],implants['implantSizeX']-12000-via['pixelViaSizeX'],12000)
+    Pixel.createVia($layerAuVia,via['pixelViaSizeX'],via['pixelViaSizeY'],implants['implantSizeX']-12000-via['pixelViaSizeX'],12000)
     Pixel.createBumpPad($layerAlu,bumpPad['bumpPadDiameter'],9000,(48000-30000)/2)
     Pixel.createPStop($layerPp, pStop['pStopSizeX'], pStop['pStopSizeY'], pStop['pStopWidth'], pStop['pStopCornerRout'] , pStop['pStopCornerRin'], pStop['pStopOpenX0'], pStop['pStopOpenY0'], pStop['pStopOpenWidth'],true, -20000, -20000)
     
@@ -47,7 +47,7 @@ module FPixF
     # outerPixelGrid1
 
     implants = OuterImplants
-    pStop = OuterPStop
+    pStop = OuterPStop1
     pixelGrid = OuterPixelGrid1
     
     outerPixelCell1 = $layout.create_cell("outerPixelCell1")  
@@ -60,9 +60,25 @@ module FPixF
     
     outerPixelGridCell1 = $layout.create_cell("OuterPixelGrid1")   
     Pixel.init(outerPixelGridCell1)
-    Pixel.createGrid(outerPixelCell1,pixelGrid['pixelGridnX'],pixelGrid['pixelGridnY'],pixelGrid['pixelGriddX'],pixelGrid['pixelGriddY'])
+    Pixel.createGrid(outerPixelCell1,pixelGrid['pixelGridnX'],pixelGrid['pixelGridnY'],0,pixelGrid['pixelGriddY'])
     Merge.cells($fPixFCell,outerPixelGridCell1,584000+452000,884000+452000)
+  
+    # outerPixelGrid2  
+  
+    pStop = OuterPStop2
     
+    outerPixelCell2 = $layout.create_cell("outerPixelCell2")  
+    Pixel.init(outerPixelCell2)
+    Pixel.createImplant($layerNp,implants['implantSizeX'],implants['implantSizeY'])
+    Pixel.createImplant($layerAlu,implants['implantAluSizeX'],implants['implantAluSizeY'],1500,1500)
+    Pixel.createVia($layerAluVia,via['pixelViaSizeX'],via['pixelViaSizeY'],12000,12000)
+    Pixel.createBumpPad($layerAlu,bumpPad['bumpPadDiameter'],59000,(implants['implantSizeY']-30000)/2)
+    Pixel.createPStop($layerPp, pStop['pStopSizeX'], pStop['pStopSizeY'], pStop['pStopWidth'], pStop['pStopCornerRout'] , pStop['pStopCornerRin'], pStop['pStopOpenX0'], pStop['pStopOpenY0'], pStop['pStopOpenWidth'],true, -20000, -20000)
+    
+    outerPixelGridCell2 = $layout.create_cell("OuterPixelGrid2")   
+    Pixel.init(outerPixelGridCell2)
+    Pixel.createGrid(outerPixelCell2,pixelGrid['pixelGridnX'],pixelGrid['pixelGridnY'],0,pixelGrid['pixelGriddY'])
+    Merge.cells($fPixFCell,outerPixelGridCell2,1036000+7800000,1336000)    
     
     return $fPixFCell
   end
