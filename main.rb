@@ -7,7 +7,7 @@ module CISWafer
   load "Wafer_Phase2/structures/pixel.rb"
   load "Wafer_Phase2/utils/merge.rb"
   load "Wafer_Phase2/utils/cut.rb"
-  load "Wafer_Phase2/sensors/fpixf.rb"
+  load "Wafer_Phase2/sensors/FPIXF/fpixf.rb"
    
   # create mainWindow and layout
   
