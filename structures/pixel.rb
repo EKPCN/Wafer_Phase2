@@ -70,15 +70,10 @@ module Pixel
 
 
   def Pixel.createPStop(layer, x, y, width, rOut, rIn, oX, oY, oW, horizontal=true ,x0=0, y0=0)
+        
+    ring = Basic.createRing(x,y,width,rIn,rOut)
     
-    outerRingPoly = Polygon.new(Box.new(0,0,x,y))
-    outerRing = outerRingPoly.round_corners(0,rOut,32)
-    innerRingPoly = Polygon.new(Box.new(width,width,x-width,y-width))
-    innerRing = innerRingPoly.round_corners(0,rIn,32)
-    
-    ring = Cut.polyVector([outerRing,innerRing])
-    
-    if horizontal==true
+    if horizontal
     
       openBox = Polygon.new(Box.new(oX,oY,oX+oW,oY+width))
       ringOpen = Cut.polyVector([ring,openBox])

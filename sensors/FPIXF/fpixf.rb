@@ -8,6 +8,9 @@ module FPixF
         
     $fPixFCell = $layout.create_cell("FPIXF")
   
+  
+##### PIXEL #####
+  
     # innerPixelGrid1
 
     implants = InnerImplants
@@ -113,6 +116,41 @@ module FPixF
     Pixel.init(upperPixelGridCell2)
     Pixel.createGrid(upperPixelCell2,pixelGrid['pixelGridnX'],pixelGrid['pixelGridnY'],pixelGrid['pixelGriddX'],0)
     Merge.cells($fPixFCell,upperPixelGridCell2,1336000+150000,9236000) 
+    
+    # cornerPixel1
+    
+    implants = CornerImplants
+    pStop = CornerPStop1
+    
+    cornerPixelCell1 = $layout.create_cell("cornerPixelCell1")  
+    Pixel.init(cornerPixelCell1)
+    Pixel.createImplant($layerNp,implants['implantSizeX'],implants['implantSizeY'])
+    Pixel.createImplant($layerAlu,implants['implantAluSizeX'],implants['implantAluSizeY'],1500,1500)
+    Pixel.createVia($layerAluVia,via['pixelViaSizeX'],via['pixelViaSizeY'],implants['implantSizeX']-12000-via['pixelViaSizeX'],12000)
+    Pixel.createBumpPad($layerAlu,bumpPad['bumpPadDiameter'],implants['implantSizeX']-59000-30000,9000)
+    Pixel.createPStop($layerPp, pStop['pStopSizeX'], pStop['pStopSizeY'], pStop['pStopWidth'], pStop['pStopCornerRout'] , pStop['pStopCornerRin'], pStop['pStopOpenX0'], pStop['pStopOpenY0'], pStop['pStopOpenWidth'],true, -20000, -20000)
+    Merge.cells($fPixFCell,cornerPixelCell1,584000+452000,9236000)
+    
+    # cornerPixel2
+    
+    pStop = CornerPStop2
+    
+    cornerPixelCell2 = $layout.create_cell("cornerPixelCell2")  
+    Pixel.init(cornerPixelCell2)
+    Pixel.createImplant($layerNp,implants['implantSizeX'],implants['implantSizeY'])
+    Pixel.createImplant($layerAlu,implants['implantAluSizeX'],implants['implantAluSizeY'],1500,1500)
+    Pixel.createVia($layerAluVia,via['pixelViaSizeX'],via['pixelViaSizeY'],12000,12000)
+    Pixel.createBumpPad($layerAlu,bumpPad['bumpPadDiameter'],59000,9000)
+    Pixel.createPStop($layerPp, pStop['pStopSizeX'], pStop['pStopSizeY'], pStop['pStopWidth'], pStop['pStopCornerRout'] , pStop['pStopCornerRin'], pStop['pStopOpenX0'], pStop['pStopOpenY0'], pStop['pStopOpenWidth'],true, -20000, -20000)
+    Merge.cells($fPixFCell,cornerPixelCell2,584000+452000+7800000,9236000)
+    
+##### Periphery #####
+   
+    biasRingCell = $layout.create_cell("BiasRing")   
+    
+    biasRingCell.shapes($layerNp).insert(Basic.createRing(BiasRing['biasRingX'],BiasRing['biasRingY'],BiasRing['biasRingWidth'],0,BiasRing['biasRingROut']))
+    biasRingCell.shapes($layerAlu).insert(Basic.createRing(BiasRing['biasRingAluX'],BiasRing['biasRingAluY'],BiasRing['biasRingAluWidth'],0,BiasRing['biasRingAluROut'],-22500,-22500))
+    Merge.cells($fPixFCell,biasRingCell,904000,1204000)
     
     return $fPixFCell
   end

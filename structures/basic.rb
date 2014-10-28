@@ -2,6 +2,7 @@ module Basic
   
     include RBA
   
+  
   def Basic.createWafer(layer,cell, diaInner, diaOuter)
     waferOuterPoly = Polygon.new([Point.new(diaOuter/2,diaOuter/2),Point.new(-diaOuter/2,diaOuter/2), Point.new(-diaOuter/2,-diaOuter/2), Point.new(diaOuter/2,-diaOuter/2)])
     waferOuterLayer = waferOuterPoly.round_corners(0,diaOuter/2,50)
@@ -31,6 +32,18 @@ module Basic
     octagon.move(x0,y0)
     
     return octagon
+  end
+
+  def Basic.createRing(x,y,width,rIn=0,rOut=0,x0=0,y0=0)
+    
+    outerRing = Polygon.new(Box.new(0,0,x,y))
+    innerRing = Polygon.new(Box.new(width,width,x-width,y-width))
+    
+    ringPoly = Cut.polyVector([outerRing,innerRing])
+    ring = ringPoly.round_corners(rIn,rOut,32)
+    ring.move(x0,y0)
+    
+    return ring
   end
 
 end
