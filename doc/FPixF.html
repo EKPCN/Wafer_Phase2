@@ -1,0 +1,477 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: FPixF
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!FPixF.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (F)</a> &raquo;
+    
+    
+    <span class="title">FPixF</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: FPixF
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+      <dt class="r1">Includes:</dt>
+      <dd class="r1">RBA</dd>
+      
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">sensors/FPIXF/fpixf.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create-class_method" title="create (class method)">+ (Object) <strong>create</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="create-class_method">
+  
+    + (<tt>Object</tt>) <strong>create</strong> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'sensors/FPIXF/fpixf.rb', line 5</span>
+
+<span class='kw'>def</span> <span class='const'>FPixF</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_load'>load</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Wafer_Phase2/sensors/FPIXF/fpixf_para.rb</span><span class='tstring_end'>&quot;</span></span>
+      
+  <span class='gvar'>$fPixFCell</span> <span class='op'>=</span> <span class='gvar'>$layout</span><span class='period'>.</span><span class='id identifier rubyid_create_cell'>create_cell</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>FPIXF</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
+
+<span class='comment'>##### PIXEL #####
+</span>
+  <span class='comment'># innerPixelGrid1
+</span>
+  <span class='id identifier rubyid_implants'>implants</span> <span class='op'>=</span> <span class='const'>InnerImplants</span>
+  <span class='id identifier rubyid_pixelGrid'>pixelGrid</span> <span class='op'>=</span> <span class='const'>InnerPixelGrid</span>
+  <span class='id identifier rubyid_pStop'>pStop</span> <span class='op'>=</span> <span class='const'>InnerPStop</span>
+  <span class='id identifier rubyid_via'>via</span> <span class='op'>=</span> <span class='const'>Via</span>
+  <span class='id identifier rubyid_bumpPad'>bumpPad</span> <span class='op'>=</span> <span class='const'>BumpPad</span>
+  
+  <span class='id identifier rubyid_innerPixelCell1'>innerPixelCell1</span> <span class='op'>=</span> <span class='gvar'>$layout</span><span class='period'>.</span><span class='id identifier rubyid_create_cell'>create_cell</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>innerPixelCell1</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_init'>init</span><span class='lparen'>(</span><span class='id identifier rubyid_innerPixelCell1'>innerPixelCell1</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createImplant'>createImplant</span><span class='lparen'>(</span><span class='gvar'>$layerNp</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createImplant'>createImplant</span><span class='lparen'>(</span><span class='gvar'>$layerAlu</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantAluSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantAluSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>1500</span><span class='comma'>,</span><span class='int'>1500</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createVia'>createVia</span><span class='lparen'>(</span><span class='gvar'>$layerAluVia</span><span class='comma'>,</span><span class='id identifier rubyid_via'>via</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelViaSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_via'>via</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelViaSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>12000</span><span class='comma'>,</span><span class='int'>12000</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createBumpPad'>createBumpPad</span><span class='lparen'>(</span><span class='gvar'>$layerAlu</span><span class='comma'>,</span><span class='id identifier rubyid_bumpPad'>bumpPad</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>bumpPadDiameter</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>98000</span><span class='op'>-</span><span class='int'>9000</span><span class='op'>-</span><span class='int'>30000</span><span class='comma'>,</span><span class='lparen'>(</span><span class='int'>48000</span><span class='op'>-</span><span class='int'>30000</span><span class='rparen'>)</span><span class='op'>/</span><span class='int'>2</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createPStop'>createPStop</span><span class='lparen'>(</span><span class='gvar'>$layerPp</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopWidth</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopCornerRout</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopCornerRin</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopOpenX0</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopOpenY0</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopOpenWidth</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='kw'>true</span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>20000</span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>20000</span><span class='rparen'>)</span>
+  
+  <span class='id identifier rubyid_innerPixelGridCell1'>innerPixelGridCell1</span> <span class='op'>=</span> <span class='gvar'>$layout</span><span class='period'>.</span><span class='id identifier rubyid_create_cell'>create_cell</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>InnerPixelGrid1</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_init'>init</span><span class='lparen'>(</span><span class='id identifier rubyid_innerPixelGridCell1'>innerPixelGridCell1</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createGrid'>createGrid</span><span class='lparen'>(</span><span class='id identifier rubyid_innerPixelCell1'>innerPixelCell1</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelGridnX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelGridnY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelGriddX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelGriddY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span> 
+  <span class='const'>Merge</span><span class='period'>.</span><span class='id identifier rubyid_cells'>cells</span><span class='lparen'>(</span><span class='gvar'>$fPixFCell</span><span class='comma'>,</span><span class='id identifier rubyid_innerPixelGridCell1'>innerPixelGridCell1</span><span class='comma'>,</span><span class='int'>1336000</span><span class='comma'>,</span><span class='int'>1336000</span><span class='rparen'>)</span>
+   
+  <span class='comment'># innerPixelGrid2  
+</span>  
+  <span class='id identifier rubyid_innerPixelCell2'>innerPixelCell2</span> <span class='op'>=</span> <span class='gvar'>$layout</span><span class='period'>.</span><span class='id identifier rubyid_create_cell'>create_cell</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>innerPixelCell2</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_init'>init</span><span class='lparen'>(</span><span class='id identifier rubyid_innerPixelCell2'>innerPixelCell2</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createImplant'>createImplant</span><span class='lparen'>(</span><span class='gvar'>$layerNp</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createImplant'>createImplant</span><span class='lparen'>(</span><span class='gvar'>$layerAlu</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantAluSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantAluSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>1500</span><span class='comma'>,</span><span class='int'>1500</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createVia'>createVia</span><span class='lparen'>(</span><span class='gvar'>$layerAluVia</span><span class='comma'>,</span><span class='id identifier rubyid_via'>via</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelViaSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_via'>via</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelViaSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='op'>-</span><span class='int'>12000</span><span class='op'>-</span><span class='id identifier rubyid_via'>via</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelViaSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>12000</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createBumpPad'>createBumpPad</span><span class='lparen'>(</span><span class='gvar'>$layerAlu</span><span class='comma'>,</span><span class='id identifier rubyid_bumpPad'>bumpPad</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>bumpPadDiameter</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>9000</span><span class='comma'>,</span><span class='lparen'>(</span><span class='int'>48000</span><span class='op'>-</span><span class='int'>30000</span><span class='rparen'>)</span><span class='op'>/</span><span class='int'>2</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createPStop'>createPStop</span><span class='lparen'>(</span><span class='gvar'>$layerPp</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopWidth</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopCornerRout</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopCornerRin</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopOpenX0</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopOpenY0</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopOpenWidth</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='kw'>true</span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>20000</span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>20000</span><span class='rparen'>)</span>
+  
+  <span class='id identifier rubyid_innerPixelGridCell2'>innerPixelGridCell2</span> <span class='op'>=</span> <span class='gvar'>$layout</span><span class='period'>.</span><span class='id identifier rubyid_create_cell'>create_cell</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>InnerPixelGrid2</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_init'>init</span><span class='lparen'>(</span><span class='id identifier rubyid_innerPixelGridCell2'>innerPixelGridCell2</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createGrid'>createGrid</span><span class='lparen'>(</span><span class='id identifier rubyid_innerPixelCell2'>innerPixelCell2</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelGridnX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelGridnY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelGriddX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelGriddY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span> 
+  <span class='const'>Merge</span><span class='period'>.</span><span class='id identifier rubyid_cells'>cells</span><span class='lparen'>(</span><span class='gvar'>$fPixFCell</span><span class='comma'>,</span><span class='id identifier rubyid_innerPixelGridCell2'>innerPixelGridCell2</span><span class='comma'>,</span><span class='int'>1336000</span><span class='op'>+</span><span class='int'>150000</span><span class='comma'>,</span><span class='int'>1336000</span><span class='rparen'>)</span>    
+
+  <span class='comment'># outerPixelGrid1
+</span>
+  <span class='id identifier rubyid_implants'>implants</span> <span class='op'>=</span> <span class='const'>OuterImplants</span>
+  <span class='id identifier rubyid_pStop'>pStop</span> <span class='op'>=</span> <span class='const'>OuterPStop1</span>
+  <span class='id identifier rubyid_pixelGrid'>pixelGrid</span> <span class='op'>=</span> <span class='const'>OuterPixelGrid</span>
+  
+  <span class='id identifier rubyid_outerPixelCell1'>outerPixelCell1</span> <span class='op'>=</span> <span class='gvar'>$layout</span><span class='period'>.</span><span class='id identifier rubyid_create_cell'>create_cell</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>outerPixelCell1</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_init'>init</span><span class='lparen'>(</span><span class='id identifier rubyid_outerPixelCell1'>outerPixelCell1</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createImplant'>createImplant</span><span class='lparen'>(</span><span class='gvar'>$layerNp</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createImplant'>createImplant</span><span class='lparen'>(</span><span class='gvar'>$layerAlu</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantAluSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantAluSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>1500</span><span class='comma'>,</span><span class='int'>1500</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createVia'>createVia</span><span class='lparen'>(</span><span class='gvar'>$layerAluVia</span><span class='comma'>,</span><span class='id identifier rubyid_via'>via</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelViaSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_via'>via</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelViaSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='op'>-</span><span class='int'>12000</span><span class='op'>-</span><span class='id identifier rubyid_via'>via</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelViaSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>12000</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createBumpPad'>createBumpPad</span><span class='lparen'>(</span><span class='gvar'>$layerAlu</span><span class='comma'>,</span><span class='id identifier rubyid_bumpPad'>bumpPad</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>bumpPadDiameter</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='op'>-</span><span class='int'>59000</span><span class='op'>-</span><span class='int'>30000</span><span class='comma'>,</span><span class='lparen'>(</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='op'>-</span><span class='int'>30000</span><span class='rparen'>)</span><span class='op'>/</span><span class='int'>2</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createPStop'>createPStop</span><span class='lparen'>(</span><span class='gvar'>$layerPp</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopWidth</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopCornerRout</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopCornerRin</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopOpenX0</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopOpenY0</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopOpenWidth</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='kw'>true</span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>20000</span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>20000</span><span class='rparen'>)</span>
+  
+  <span class='id identifier rubyid_outerPixelGridCell1'>outerPixelGridCell1</span> <span class='op'>=</span> <span class='gvar'>$layout</span><span class='period'>.</span><span class='id identifier rubyid_create_cell'>create_cell</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>OuterPixelGrid1</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>   
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_init'>init</span><span class='lparen'>(</span><span class='id identifier rubyid_outerPixelGridCell1'>outerPixelGridCell1</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createGrid'>createGrid</span><span class='lparen'>(</span><span class='id identifier rubyid_outerPixelCell1'>outerPixelCell1</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelGridnX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelGridnY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>0</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelGriddY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='const'>Merge</span><span class='period'>.</span><span class='id identifier rubyid_cells'>cells</span><span class='lparen'>(</span><span class='gvar'>$fPixFCell</span><span class='comma'>,</span><span class='id identifier rubyid_outerPixelGridCell1'>outerPixelGridCell1</span><span class='comma'>,</span><span class='int'>584000</span><span class='op'>+</span><span class='int'>452000</span><span class='comma'>,</span><span class='int'>884000</span><span class='op'>+</span><span class='int'>452000</span><span class='rparen'>)</span>
+
+  <span class='comment'># outerPixelGrid2  
+</span>
+  <span class='id identifier rubyid_pStop'>pStop</span> <span class='op'>=</span> <span class='const'>OuterPStop2</span>
+  
+  <span class='id identifier rubyid_outerPixelCell2'>outerPixelCell2</span> <span class='op'>=</span> <span class='gvar'>$layout</span><span class='period'>.</span><span class='id identifier rubyid_create_cell'>create_cell</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>outerPixelCell2</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_init'>init</span><span class='lparen'>(</span><span class='id identifier rubyid_outerPixelCell2'>outerPixelCell2</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createImplant'>createImplant</span><span class='lparen'>(</span><span class='gvar'>$layerNp</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createImplant'>createImplant</span><span class='lparen'>(</span><span class='gvar'>$layerAlu</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantAluSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantAluSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>1500</span><span class='comma'>,</span><span class='int'>1500</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createVia'>createVia</span><span class='lparen'>(</span><span class='gvar'>$layerAluVia</span><span class='comma'>,</span><span class='id identifier rubyid_via'>via</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelViaSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_via'>via</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelViaSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>12000</span><span class='comma'>,</span><span class='int'>12000</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createBumpPad'>createBumpPad</span><span class='lparen'>(</span><span class='gvar'>$layerAlu</span><span class='comma'>,</span><span class='id identifier rubyid_bumpPad'>bumpPad</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>bumpPadDiameter</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>59000</span><span class='comma'>,</span><span class='lparen'>(</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='op'>-</span><span class='int'>30000</span><span class='rparen'>)</span><span class='op'>/</span><span class='int'>2</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createPStop'>createPStop</span><span class='lparen'>(</span><span class='gvar'>$layerPp</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopWidth</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopCornerRout</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopCornerRin</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopOpenX0</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopOpenY0</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopOpenWidth</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='kw'>true</span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>20000</span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>20000</span><span class='rparen'>)</span>
+  
+  <span class='id identifier rubyid_outerPixelGridCell2'>outerPixelGridCell2</span> <span class='op'>=</span> <span class='gvar'>$layout</span><span class='period'>.</span><span class='id identifier rubyid_create_cell'>create_cell</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>OuterPixelGrid2</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>   
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_init'>init</span><span class='lparen'>(</span><span class='id identifier rubyid_outerPixelGridCell2'>outerPixelGridCell2</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createGrid'>createGrid</span><span class='lparen'>(</span><span class='id identifier rubyid_outerPixelCell2'>outerPixelCell2</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelGridnX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelGridnY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>0</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelGriddY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='const'>Merge</span><span class='period'>.</span><span class='id identifier rubyid_cells'>cells</span><span class='lparen'>(</span><span class='gvar'>$fPixFCell</span><span class='comma'>,</span><span class='id identifier rubyid_outerPixelGridCell2'>outerPixelGridCell2</span><span class='comma'>,</span><span class='int'>1036000</span><span class='op'>+</span><span class='int'>7800000</span><span class='comma'>,</span><span class='int'>1336000</span><span class='rparen'>)</span>    
+  
+  <span class='comment'># upperPixelGrid1
+</span>  
+  <span class='id identifier rubyid_implants'>implants</span> <span class='op'>=</span> <span class='const'>UpperImplants</span>
+  <span class='id identifier rubyid_pixelGrid'>pixelGrid</span> <span class='op'>=</span> <span class='const'>UpperPixelGrid</span>
+  <span class='id identifier rubyid_pStop'>pStop</span> <span class='op'>=</span> <span class='const'>UpperPStop</span>
+  
+  <span class='id identifier rubyid_upperPixelCell1'>upperPixelCell1</span> <span class='op'>=</span> <span class='gvar'>$layout</span><span class='period'>.</span><span class='id identifier rubyid_create_cell'>create_cell</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>upperPixelCell1</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_init'>init</span><span class='lparen'>(</span><span class='id identifier rubyid_upperPixelCell1'>upperPixelCell1</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createImplant'>createImplant</span><span class='lparen'>(</span><span class='gvar'>$layerNp</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createImplant'>createImplant</span><span class='lparen'>(</span><span class='gvar'>$layerAlu</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantAluSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantAluSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>1500</span><span class='comma'>,</span><span class='int'>1500</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createVia'>createVia</span><span class='lparen'>(</span><span class='gvar'>$layerAluVia</span><span class='comma'>,</span><span class='id identifier rubyid_via'>via</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelViaSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_via'>via</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelViaSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>12000</span><span class='comma'>,</span><span class='int'>12000</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createBumpPad'>createBumpPad</span><span class='lparen'>(</span><span class='gvar'>$layerAlu</span><span class='comma'>,</span><span class='id identifier rubyid_bumpPad'>bumpPad</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>bumpPadDiameter</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>98000</span><span class='op'>-</span><span class='int'>9000</span><span class='op'>-</span><span class='int'>30000</span><span class='comma'>,</span><span class='lparen'>(</span><span class='int'>48000</span><span class='op'>-</span><span class='int'>30000</span><span class='rparen'>)</span><span class='op'>/</span><span class='int'>2</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createPStop'>createPStop</span><span class='lparen'>(</span><span class='gvar'>$layerPp</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopWidth</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopCornerRout</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopCornerRin</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopOpenX0</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopOpenY0</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopOpenWidth</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='kw'>false</span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>20000</span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>20000</span><span class='rparen'>)</span>
+  
+  <span class='id identifier rubyid_upperPixelGridCell1'>upperPixelGridCell1</span> <span class='op'>=</span> <span class='gvar'>$layout</span><span class='period'>.</span><span class='id identifier rubyid_create_cell'>create_cell</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>UpperPixelGrid1</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>   
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_init'>init</span><span class='lparen'>(</span><span class='id identifier rubyid_upperPixelGridCell1'>upperPixelGridCell1</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createGrid'>createGrid</span><span class='lparen'>(</span><span class='id identifier rubyid_upperPixelCell1'>upperPixelCell1</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelGridnX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelGridnY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelGriddX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>0</span><span class='rparen'>)</span>
+  <span class='const'>Merge</span><span class='period'>.</span><span class='id identifier rubyid_cells'>cells</span><span class='lparen'>(</span><span class='gvar'>$fPixFCell</span><span class='comma'>,</span><span class='id identifier rubyid_upperPixelGridCell1'>upperPixelGridCell1</span><span class='comma'>,</span><span class='int'>1336000</span><span class='comma'>,</span><span class='int'>9236000</span><span class='rparen'>)</span> 
+
+  <span class='comment'># upperPixelGrid2
+</span>  
+  <span class='id identifier rubyid_upperPixelCell2'>upperPixelCell2</span> <span class='op'>=</span> <span class='gvar'>$layout</span><span class='period'>.</span><span class='id identifier rubyid_create_cell'>create_cell</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>upperPixelCell2</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_init'>init</span><span class='lparen'>(</span><span class='id identifier rubyid_upperPixelCell2'>upperPixelCell2</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createImplant'>createImplant</span><span class='lparen'>(</span><span class='gvar'>$layerNp</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createImplant'>createImplant</span><span class='lparen'>(</span><span class='gvar'>$layerAlu</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantAluSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantAluSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>1500</span><span class='comma'>,</span><span class='int'>1500</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createVia'>createVia</span><span class='lparen'>(</span><span class='gvar'>$layerAluVia</span><span class='comma'>,</span><span class='id identifier rubyid_via'>via</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelViaSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_via'>via</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelViaSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='op'>-</span><span class='int'>12000</span><span class='op'>-</span><span class='id identifier rubyid_via'>via</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelViaSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>12000</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createBumpPad'>createBumpPad</span><span class='lparen'>(</span><span class='gvar'>$layerAlu</span><span class='comma'>,</span><span class='id identifier rubyid_bumpPad'>bumpPad</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>bumpPadDiameter</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>9000</span><span class='comma'>,</span><span class='lparen'>(</span><span class='int'>48000</span><span class='op'>-</span><span class='int'>30000</span><span class='rparen'>)</span><span class='op'>/</span><span class='int'>2</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createPStop'>createPStop</span><span class='lparen'>(</span><span class='gvar'>$layerPp</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopWidth</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopCornerRout</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopCornerRin</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopOpenX0</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopOpenY0</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopOpenWidth</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='kw'>false</span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>20000</span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>20000</span><span class='rparen'>)</span>
+  
+  <span class='id identifier rubyid_upperPixelGridCell2'>upperPixelGridCell2</span> <span class='op'>=</span> <span class='gvar'>$layout</span><span class='period'>.</span><span class='id identifier rubyid_create_cell'>create_cell</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>UpperPixelGrid2</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>   
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_init'>init</span><span class='lparen'>(</span><span class='id identifier rubyid_upperPixelGridCell2'>upperPixelGridCell2</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createGrid'>createGrid</span><span class='lparen'>(</span><span class='id identifier rubyid_upperPixelCell2'>upperPixelCell2</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelGridnX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelGridnY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelGriddX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>0</span><span class='rparen'>)</span>
+  <span class='const'>Merge</span><span class='period'>.</span><span class='id identifier rubyid_cells'>cells</span><span class='lparen'>(</span><span class='gvar'>$fPixFCell</span><span class='comma'>,</span><span class='id identifier rubyid_upperPixelGridCell2'>upperPixelGridCell2</span><span class='comma'>,</span><span class='int'>1336000</span><span class='op'>+</span><span class='int'>150000</span><span class='comma'>,</span><span class='int'>9236000</span><span class='rparen'>)</span> 
+  
+  <span class='comment'># cornerPixel1
+</span>  
+  <span class='id identifier rubyid_implants'>implants</span> <span class='op'>=</span> <span class='const'>CornerImplants</span>
+  <span class='id identifier rubyid_pStop'>pStop</span> <span class='op'>=</span> <span class='const'>CornerPStop1</span>
+  
+  <span class='id identifier rubyid_cornerPixelCell1'>cornerPixelCell1</span> <span class='op'>=</span> <span class='gvar'>$layout</span><span class='period'>.</span><span class='id identifier rubyid_create_cell'>create_cell</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>cornerPixelCell1</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_init'>init</span><span class='lparen'>(</span><span class='id identifier rubyid_cornerPixelCell1'>cornerPixelCell1</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createImplant'>createImplant</span><span class='lparen'>(</span><span class='gvar'>$layerNp</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createImplant'>createImplant</span><span class='lparen'>(</span><span class='gvar'>$layerAlu</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantAluSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantAluSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>1500</span><span class='comma'>,</span><span class='int'>1500</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createVia'>createVia</span><span class='lparen'>(</span><span class='gvar'>$layerAluVia</span><span class='comma'>,</span><span class='id identifier rubyid_via'>via</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelViaSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_via'>via</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelViaSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='op'>-</span><span class='int'>12000</span><span class='op'>-</span><span class='id identifier rubyid_via'>via</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelViaSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>12000</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createBumpPad'>createBumpPad</span><span class='lparen'>(</span><span class='gvar'>$layerAlu</span><span class='comma'>,</span><span class='id identifier rubyid_bumpPad'>bumpPad</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>bumpPadDiameter</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='op'>-</span><span class='int'>59000</span><span class='op'>-</span><span class='int'>30000</span><span class='comma'>,</span><span class='int'>9000</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createPStop'>createPStop</span><span class='lparen'>(</span><span class='gvar'>$layerPp</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopWidth</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopCornerRout</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopCornerRin</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopOpenX0</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopOpenY0</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopOpenWidth</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='kw'>true</span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>20000</span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>20000</span><span class='rparen'>)</span>
+  <span class='const'>Merge</span><span class='period'>.</span><span class='id identifier rubyid_cells'>cells</span><span class='lparen'>(</span><span class='gvar'>$fPixFCell</span><span class='comma'>,</span><span class='id identifier rubyid_cornerPixelCell1'>cornerPixelCell1</span><span class='comma'>,</span><span class='int'>584000</span><span class='op'>+</span><span class='int'>452000</span><span class='comma'>,</span><span class='int'>9236000</span><span class='rparen'>)</span>
+  
+  <span class='comment'># cornerPixel2
+</span>  
+  <span class='id identifier rubyid_pStop'>pStop</span> <span class='op'>=</span> <span class='const'>CornerPStop2</span>
+  
+  <span class='id identifier rubyid_cornerPixelCell2'>cornerPixelCell2</span> <span class='op'>=</span> <span class='gvar'>$layout</span><span class='period'>.</span><span class='id identifier rubyid_create_cell'>create_cell</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>cornerPixelCell2</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_init'>init</span><span class='lparen'>(</span><span class='id identifier rubyid_cornerPixelCell2'>cornerPixelCell2</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createImplant'>createImplant</span><span class='lparen'>(</span><span class='gvar'>$layerNp</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createImplant'>createImplant</span><span class='lparen'>(</span><span class='gvar'>$layerAlu</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantAluSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_implants'>implants</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>implantAluSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>1500</span><span class='comma'>,</span><span class='int'>1500</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createVia'>createVia</span><span class='lparen'>(</span><span class='gvar'>$layerAluVia</span><span class='comma'>,</span><span class='id identifier rubyid_via'>via</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelViaSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_via'>via</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pixelViaSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>12000</span><span class='comma'>,</span><span class='int'>12000</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createBumpPad'>createBumpPad</span><span class='lparen'>(</span><span class='gvar'>$layerAlu</span><span class='comma'>,</span><span class='id identifier rubyid_bumpPad'>bumpPad</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>bumpPadDiameter</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>59000</span><span class='comma'>,</span><span class='int'>9000</span><span class='rparen'>)</span>
+  <span class='const'>Pixel</span><span class='period'>.</span><span class='id identifier rubyid_createPStop'>createPStop</span><span class='lparen'>(</span><span class='gvar'>$layerPp</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopWidth</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopCornerRout</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopCornerRin</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopOpenX0</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopOpenY0</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='id identifier rubyid_pStop'>pStop</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>pStopOpenWidth</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='kw'>true</span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>20000</span><span class='comma'>,</span> <span class='op'>-</span><span class='int'>20000</span><span class='rparen'>)</span>
+  <span class='const'>Merge</span><span class='period'>.</span><span class='id identifier rubyid_cells'>cells</span><span class='lparen'>(</span><span class='gvar'>$fPixFCell</span><span class='comma'>,</span><span class='id identifier rubyid_cornerPixelCell2'>cornerPixelCell2</span><span class='comma'>,</span><span class='int'>584000</span><span class='op'>+</span><span class='int'>452000</span><span class='op'>+</span><span class='int'>7800000</span><span class='comma'>,</span><span class='int'>9236000</span><span class='rparen'>)</span>
+  
+<span class='comment'>##### Periphery #####
+</span> 
+  <span class='id identifier rubyid_biasRingCell'>biasRingCell</span> <span class='op'>=</span> <span class='gvar'>$layout</span><span class='period'>.</span><span class='id identifier rubyid_create_cell'>create_cell</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>BiasRing</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>   
+  
+  <span class='id identifier rubyid_biasRingCell'>biasRingCell</span><span class='period'>.</span><span class='id identifier rubyid_shapes'>shapes</span><span class='lparen'>(</span><span class='gvar'>$layerNp</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_insert'>insert</span><span class='lparen'>(</span><span class='const'>Basic</span><span class='period'>.</span><span class='id identifier rubyid_createRing'>createRing</span><span class='lparen'>(</span><span class='const'>BiasRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>biasRingX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='const'>BiasRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>biasRingY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='const'>BiasRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>biasRingWidth</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>0</span><span class='comma'>,</span><span class='const'>BiasRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>biasRingROut</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_biasRingCell'>biasRingCell</span><span class='period'>.</span><span class='id identifier rubyid_shapes'>shapes</span><span class='lparen'>(</span><span class='gvar'>$layerAlu</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_insert'>insert</span><span class='lparen'>(</span><span class='const'>Basic</span><span class='period'>.</span><span class='id identifier rubyid_createRing'>createRing</span><span class='lparen'>(</span><span class='const'>BiasRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>biasRingAluX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='const'>BiasRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>biasRingAluY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='const'>BiasRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>biasRingAluWidth</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='int'>0</span><span class='comma'>,</span><span class='const'>BiasRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>biasRingAluROut</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='op'>-</span><span class='int'>22500</span><span class='comma'>,</span><span class='op'>-</span><span class='int'>22500</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='const'>Merge</span><span class='period'>.</span><span class='id identifier rubyid_cells'>cells</span><span class='lparen'>(</span><span class='gvar'>$fPixFCell</span><span class='comma'>,</span><span class='id identifier rubyid_biasRingCell'>biasRingCell</span><span class='comma'>,</span><span class='int'>904000</span><span class='comma'>,</span><span class='int'>1204000</span><span class='rparen'>)</span>
+  
+  <span class='kw'>return</span> <span class='gvar'>$fPixFCell</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Wed Oct 29 11:59:19 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>

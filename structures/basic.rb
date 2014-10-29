@@ -2,6 +2,9 @@ module Basic
   
     include RBA
   
+  # Creates a wafer with an area where no structures can be placed on
+  # @param layer [material] for layer material
+  # @return Nill
   
   def Basic.createWafer(layer,cell, diaInner, diaOuter)
     waferOuterPoly = Polygon.new([Point.new(diaOuter/2,diaOuter/2),Point.new(-diaOuter/2,diaOuter/2), Point.new(-diaOuter/2,-diaOuter/2), Point.new(diaOuter/2,-diaOuter/2)])
