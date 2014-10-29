@@ -1,3 +1,3 @@
 #!/bin/bash
 
-cp -r doc/* .
+cp -rf ../doc/* .
