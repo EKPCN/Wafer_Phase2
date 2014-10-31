@@ -1,7 +1,10 @@
 module FPixF
   
   include RBA
-  
+
+  # Creates the FPIXF sensor
+  # @return [cell] Returns the cell with all structures
+
   def FPixF.create()
   
     load "Wafer_Phase2/sensors/FPIXF/fpixf_para.rb"
