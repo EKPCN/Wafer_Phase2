@@ -106,7 +106,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#polyVector-class_method" title="polyVector (class method)">+ (Object) <strong>polyVector</strong>(polyVec) </a>
+      <a href="#polyVector-class_method" title="polyVector (class method)">+ (Polygon) <strong>polyVector</strong>(polyVec) </a>
     
 
     
@@ -120,7 +120,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Cut overlapping parts out and create new polygon.</p>
+</div></span>
   
 </li>
 
@@ -138,31 +140,80 @@
       <div class="method_details first">
   <h3 class="signature first" id="polyVector-class_method">
   
-    + (<tt>Object</tt>) <strong>polyVector</strong>(polyVec) 
+    + (<tt>Polygon</tt>) <strong>polyVector</strong>(polyVec) 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Cut overlapping parts out and create new polygon</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>polyVec</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;Polygons&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Array of polygons</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Polygon</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Returns the final polygon</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-4
-5
-6
-7
 8
 9
 10
 11
 12
-13</pre>
+13
+14
+15
+16
+17</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'utils/cut.rb', line 4</span>
+      <pre class="code"><span class="info file"># File 'utils/cut.rb', line 8</span>
 
 <span class='kw'>def</span> <span class='const'>Cut</span><span class='period'>.</span><span class='id identifier rubyid_polyVector'>polyVector</span><span class='lparen'>(</span><span class='id identifier rubyid_polyVec'>polyVec</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_edgeProc'>edgeProc</span> <span class='op'>=</span> <span class='const'>EdgeProcessor</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -184,7 +235,7 @@
 </div>
 
     <div id="footer">
-  Generated on Fri Oct 31 11:45:22 2014 by
+  Generated on Fri Oct 31 11:55:54 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-1.9.3).
 </div>
