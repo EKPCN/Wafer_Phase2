@@ -1,6 +1,10 @@
 module Cut
 include RBA
-  
+
+  # Cut overlapping parts out and create new polygon
+  # @param polyVec [Array<Polygons>] Array of polygons
+  # @return [Polygon] Returns the final polygon
+
   def Cut.polyVector(polyVec)
     edgeProc = EdgeProcessor.new
     poly = Array.new(1,polyVec[0])
