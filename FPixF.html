@@ -106,7 +106,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#create-class_method" title="create (class method)">+ (Object) <strong>create</strong> </a>
+      <a href="#create-class_method" title="create (class method)">+ (cell) <strong>create</strong> </a>
     
 
     
@@ -120,7 +120,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Creates the FPIXF sensor.</p>
+</div></span>
   
 </li>
 
@@ -138,21 +140,47 @@
       <div class="method_details first">
   <h3 class="signature first" id="create-class_method">
   
-    + (<tt>Object</tt>) <strong>create</strong> 
+    + (<tt>cell</tt>) <strong>create</strong> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Creates the FPIXF sensor</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>cell</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Returns the cell with all structures</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-5
-6
-7
 8
 9
 10
@@ -301,10 +329,13 @@
 153
 154
 155
-156</pre>
+156
+157
+158
+159</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'sensors/FPIXF/fpixf.rb', line 5</span>
+      <pre class="code"><span class="info file"># File 'sensors/FPIXF/fpixf.rb', line 8</span>
 
 <span class='kw'>def</span> <span class='const'>FPixF</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='rparen'>)</span>
 
@@ -468,7 +499,7 @@
 </div>
 
     <div id="footer">
-  Generated on Wed Oct 29 16:52:05 2014 by
+  Generated on Fri Oct 31 10:34:31 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.6 (ruby-1.9.3).
 </div>
