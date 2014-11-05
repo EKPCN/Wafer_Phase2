@@ -149,6 +149,8 @@ module FPixF
     
 ##### Periphery #####
    
+    # BiasRing
+   
     biasRingCell = $layout.create_cell("BiasRing")   
     
     biasRingCell.shapes($layerNp).insert(Basic.createRing(BiasRing['biasRingX'],BiasRing['biasRingY'],BiasRing['biasRingWidth'],0,BiasRing['biasRingROut']))
