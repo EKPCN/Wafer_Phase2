@@ -1,6 +1,8 @@
 module CISWafer
   include RBA
 
+  # test
+  
   # include files
 
   load "Wafer_Phase2/structures/basic.rb"
