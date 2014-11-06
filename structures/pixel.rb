@@ -14,7 +14,7 @@ module Pixel
   end
 
 
-  def Pixel.createShapeGrid(pixel,nx,ny,distX,distY,x0=0,y0=0)   
+  def Pixel.createGrid(pixel,nx,ny,distX,distY,x0=0,y0=0)   
     
     $layout.layer_indices.each do |layer|     
       pixel.shapes(layer).each do |shape|     
@@ -31,13 +31,26 @@ module Pixel
     
   end
 
-  def Pixel.createGrid(pixel,nx,ny,distX=0,distY=0,x0=0,y0=0) 
+  def Pixel.createGridInstance(pixel,nx,ny,distX,distY)
+    for i in 0..nx
+      instArray = CellInstArray.new(pixel.cell_index,CplxTrans.new(distX,distY))
+      $Cell.insert(instArray)
+    end
+  end
+
+
+  def Pixel.createCellGrid(pixel,nx,ny,distX,distY,x0=0,y0=0) 
   
     for i in 0..nx-1
       for j in 0..ny-1
-        Merge.cells($Cell,pixel,x0+(i*distX),y0+(j*distY))
+        cell = $layout.create_cell("Pixel_#{i}_#{j}")
+        cell.copy_shapes(pixel)
+        Merge.cells($Cell,cell,x0+(i*distX),y0+(j*distY))
       end
-    end    
+    end  
+    
+    pixel.delete
+  
   end
 
 
@@ -70,10 +83,15 @@ module Pixel
 
 
   def Pixel.createPStop(layer, x, y, width, rOut, rIn, oX, oY, oW, horizontal=true ,x0=0, y0=0)
-        
-    ring = Basic.createRing(x,y,width,rIn,rOut)
     
-    if horizontal
+    outerRingPoly = Polygon.new(Box.new(0,0,x,y))
+    outerRing = outerRingPoly.round_corners(0,rOut,32)
+    innerRingPoly = Polygon.new(Box.new(width,width,x-width,y-width))
+    innerRing = innerRingPoly.round_corners(0,rIn,32)
+    
+    ring = Cut.polyVector([outerRing,innerRing])
+    
+    if horizontal==true
     
       openBox = Polygon.new(Box.new(oX,oY,oX+oW,oY+width))
       ringOpen = Cut.polyVector([ring,openBox])
