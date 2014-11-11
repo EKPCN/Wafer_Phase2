@@ -57,26 +57,48 @@ module PixelPT
 #     hole for punch through in implant
     if router>0
       hole = NFunc.create_polycirc(router,positionx,positiony)
-      
-      
-#       PROBLEM HERE: two points remaining in the hole...
       tmp = Merge.polyVector([hole,implanttmp])
       implant = Cut.polyVector([hole,tmp])
       
-      #hole = Polygon.new(Box.new(0,positiony-windowwidthinmetalforbiasline/2,positionx-rinner,positiony+windowwidthinmetalforbiasline/2))
-      #implant = Cut.polyVector([hole,tmp],false,true,-1)
       if windowwidthinmetalforbiasline!=0
-        cornerx = positionx - Math.sqrt(router*router-windowwidthinmetalforbiasline*windowwidthinmetalforbiasline/4)
-        cornery1 = positiony - windowwidthinmetalforbiasline/2
-        cornery2 = positiony + windowwidthinmetalforbiasline/2
-        tmp = implant
-        hole = NFunc.create_polycirc(1e3,cornerx,cornery1)
-        implant = Merge.polyVector([hole,tmp])
-        
-        tmp = implant
-        implant = Cut.polyVector([hole,tmp])
-        
-#        cornerx = positionx - Math.sqrt(router*router-windowwidthinmetalforbiasline*windowwidthinmetalforbiasline/4)
+# 	Round transition from hole to the bias line window
+	
+# 	vertical depth of transition
+	depthy = 1.5e3
+	
+# 	angle for inner circle to transition (router)
+	alpha = Math.asin(-1.0*(windowwidthinmetalforbiasline/2.0+depthy) / router)
+	
+# 	radius of transition
+	radtrans = depthy/(1.0-Math.sin(alpha+Math::PI))
+	
+# 	horizontal depth of trans.
+	depthx = Math.sqrt(2.0*depthy*radtrans-depthy*depthy)
+	
+# 	lower left corner of box to be cut
+	x = positionx - router*Math.cos(alpha) - depthx
+# 	lower corner
+	y1l = positiony - windowwidthinmetalforbiasline/2.0 - depthy
+# 	upper corner
+	y1u = positiony + windowwidthinmetalforbiasline/2.0
+	
+# 	center of the circle for rounding
+# 	lower corner
+	y2l = positiony - windowwidthinmetalforbiasline/2.0 - radtrans
+# 	upper corner
+	y2u = positiony + windowwidthinmetalforbiasline/2.0 + radtrans
+	
+# 	cut remaining stuff
+	holel = Polygon.new(Box.new(x,y1l, x+ depthx, y1l+ depthy))
+	holeu = Polygon.new(Box.new(x,y1u, x+ depthx, y1u+ depthy))
+	tmp = Merge.polyVector([implant, holel, holeu])
+	implant = Cut.polyVector([tmp, holel, holeu])
+	
+# 	round transition
+	holel = NFunc.create_polycirc(radtrans,x,y2l)
+	holeu = NFunc.create_polycirc(radtrans,x,y2u)
+	tmp = implant
+	implant = Merge.polyVector([tmp, holeu, holel])   	
       end
     else
 		# do nothing
@@ -103,7 +125,9 @@ module PixelPT
 		# vertical part
         biasline = Polygon.new(Box.new(0,-biaslineoverlap,biaslinewidth,2*y0+y+biaslineoverlap))
 		# merge both with punch through dot
-        biasmetal = Merge.polyVector([padtobiasline,biasline,pti])
+        biasmetal = Merge.polyVector([padtobiasline,biasline])
+        tmp = biasmetal.round_corners(1.5e3,0,25)
+        biasmetal = Merge.polyVector([tmp,pti])
         $Cell.shapes(layer).insert(biasmetal)
       end
     end
@@ -201,8 +225,10 @@ module PixelPT
 
 
   def PixelPT.createCRing(layer,rinner,router,x0=0,y0=0)
-    cring = NFunc.create_polycring(rinner,router,x0,y0)
-    $Cell.shapes(layer).insert(cring)
+    if rinner<router 
+		cring = NFunc.create_polycring(rinner,router,x0,y0)
+		$Cell.shapes(layer).insert(cring)
+	end
   end
 
   
@@ -226,45 +252,45 @@ module PixelPT
   end
 
 
-  def PixelPT.createPStop(layer, x, y, width, rOut, rIn, oX, oY, oW, horizontal=true ,x0=0, y0=0)
+  def PixelPT.createPStop(layer, dist, x, y, width, rOut, rIn, oX, oY, oW, horizontal=true ,x0=0, y0=0)
+    if width>0
+		outerRingPoly = Polygon.new(Box.new(dist,dist,x-dist,y-dist))
+		outerRing = outerRingPoly.round_corners(0,rOut,32)
+		innerRingPoly = Polygon.new(Box.new(width+dist,width+dist,x-width-dist,y-width-dist))
+		innerRing = innerRingPoly.round_corners(0,rIn,32)
     
-    outerRingPoly = Polygon.new(Box.new(0,0,x,y))
-    outerRing = outerRingPoly.round_corners(0,rOut,32)
-    innerRingPoly = Polygon.new(Box.new(width,width,x-width,y-width))
-    innerRing = innerRingPoly.round_corners(0,rIn,32)
+		ring = Cut.polyVector([outerRing,innerRing])
     
-    ring = Cut.polyVector([outerRing,innerRing])
+		if horizontal==true
     
-    if horizontal==true
+			openBox = Polygon.new(Box.new(oX-dist,oY-dist,oX+oW-dist,oY+width-dist))
+			ringOpen = Cut.polyVector([ring,openBox])
     
-      openBox = Polygon.new(Box.new(oX,oY,oX+oW,oY+width))
-      ringOpen = Cut.polyVector([ring,openBox])
+			endPoly1 = Polygon.new(Box.new(oX-(width/2.0)-dist,oY-dist,oX+(width/2.0)-dist,oY+width-dist))
+			endCirc1 = endPoly1.round_corners(0,(width/2.0),32)
     
-      endPoly1 = Polygon.new(Box.new(oX-(width/2.0),oY,oX+(width/2.0),oY+width))
-      endCirc1 = endPoly1.round_corners(0,(width/2.0),32)
-    
-      endPoly2 = Polygon.new(Box.new(oX+oW-(width/2.0),oY,oX+oW+(width/2.0),oY+width))
-      endCirc2 = endPoly2.round_corners(0,(width/2.0),32)
+			endPoly2 = Polygon.new(Box.new(oX+oW-(width/2.0)-dist,oY-dist,oX+oW+(width/2.0)-dist,oY+width-dist))
+			endCirc2 = endPoly2.round_corners(0,(width/2.0),32)
       
-    else
+		else
       
-      openBox = Polygon.new(Box.new(oX,oY,oX+width,oY+oW))
-      ringOpen = Cut.polyVector([ring,openBox])
+			openBox = Polygon.new(Box.new(oX-dist,oY-dist,oX+width-dist,oY+oW-dist))
+			ringOpen = Cut.polyVector([ring,openBox])
     
-      endPoly1 = Polygon.new(Box.new(oX,oY-(width/2.0),oX+width,oY+(width/2.0)))
-      endCirc1 = endPoly1.round_corners(0,(width/2.0),32)
+			endPoly1 = Polygon.new(Box.new(oX-dist,oY-(width/2.0)-dist,oX+width-dist,oY+(width/2.0)-dist))
+			endCirc1 = endPoly1.round_corners(0,(width/2.0),32)
     
-      endPoly2 = Polygon.new(Box.new(oX,oY+oW-(width/2.0),oX+width,oY+oW+(width/2.0)))
-      endCirc2 = endPoly2.round_corners(0,(width/2.0),32)      
+			endPoly2 = Polygon.new(Box.new(oX,oY+oW-(width/2.0),oX+width,oY+oW+(width/2.0)))
+			endCirc2 = endPoly2.round_corners(0,(width/2.0),32)      
          
+		end
+    
+    
+		pStop = Merge.polyVector([ringOpen,endCirc1,endCirc2])
+		pStop.move(x0,y0)
+    
+		$Cell.shapes(layer).insert(pStop)
     end
-    
-    
-    pStop = Merge.polyVector([ringOpen,endCirc1,endCirc2])
-    pStop.move(x0,y0)
-    
-    $Cell.shapes(layer).insert(pStop)
-    
   end
   
 end

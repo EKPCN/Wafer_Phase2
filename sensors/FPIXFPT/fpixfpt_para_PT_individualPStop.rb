@@ -4,16 +4,17 @@ Defaults = {
   
     'implantSizeX' => 114e3,
     'implantSizeY' => 64e3,
-    #'implantAluSizeX' =>100000, 
-    #'implantAluSizeY' => 50e3,
     
     'bumpPadDiameter' => 30000,
     
+    #actually the cell size. pstop size is pStopSizeX/Y - 2*distedgetopspray
     'pStopSizeX' => 150e3,
     'pStopSizeY' => 100e3,
     'pStopWidth' => 2e3,
-    'pStopCornerRout' => 0,
-    'pStopCornerRin' => 4000,
+    #cornerrout should be ==0 for common pstop and 2*Rin for individual pstop
+    #TODO: remove parameter and automatize
+    'pStopCornerRout' => 4e3,
+    'pStopCornerRin' => 2e3,
     'pStopOpenX0' => 55000,
     'pStopOpenY0' => 98e3,
     'pStopOpenWidth' => 0, 
@@ -30,6 +31,9 @@ Defaults = {
   ###############
   #####ADDED#####
   ###############
+  
+    # half of the distance between individual pstops (if ==0 common pstop)
+    'distedgetopspray' => 2e3,
   
     'distancebumppadtoedgeSTD' => 50e3,
     'distancebumppadtoedgeOUTER' => 100e3,

@@ -4,8 +4,14 @@ module FPixFPT
   
   def FPixFPT.create()
   
-    load "Wafer_Phase2CS/sensors/fpixfpt_para_PT.rb"
-    
+	# create different architectures
+	load "Wafer_Phase2/sensors/FPIXFPT/fpixfpt_para_PT_individualPStop.rb"
+    #load "Wafer_Phase2/sensors/FPIXFPT/fpixfpt_para_PT_commonPStop.rb"
+    #load "Wafer_Phase2/sensors/FPIXFPT/fpixfpt_para_PT_PSpray.rb"
+	#load "Wafer_Phase2/sensors/FPIXFPT/fpixfpt_para_PSpray.rb"
+	#load "Wafer_Phase2/sensors/FPIXFPT/fpixfpt_para_individualPStop.rb"
+	
+	
     $fPixFCell = $layout.create_cell("FPIXF")
     par = Defaults
     
@@ -87,7 +93,7 @@ module FPixFPT
 #     PixelPT.createVia($layerAluVia,par['pixelViaSizeX'],par['pixelViaSizeY'],posix + par['implantSizeX']/2-par['pixelViaSizeX']/2,posiy + par['implantSizeY']/2 - par['pixelViaSizeY']/2)
     PixelPT.createSeveralRoundVia($layerAluVia,par['viadia'],vx,vy1,vy2,posix,posiy,posix+par['implantSizeX'],posix+par['implantSizeY'])
     PixelPT.createBumpPad($layerAlu,par['bumpPadDiameter'], par['pStopSizeX'] - par['distancebumppadtoedgeSTD'] - par['bumpPadDiameter']/2,posiy + (par['implantSizeY']- par['bumpPadDiameter'])/2)
-    PixelPT.createPStop($layerPp, par['pStopSizeX'], par['pStopSizeY'], par['pStopWidth'], par['pStopCornerRout'] , par['pStopCornerRin'], par['pStopOpenX0'], par['pStopOpenY0'], par['pStopOpenWidth'],true)
+    PixelPT.createPStop($layerPp, par['distedgetopspray'], par['pStopSizeX'], par['pStopSizeY'], par['pStopWidth'], par['pStopCornerRout'] , par['pStopCornerRin'], par['pStopOpenX0'], par['pStopOpenY0'], par['pStopOpenWidth'],true)
     
     innerPixelPTGridCell1 = $layout.create_cell("InnerPixelPTGrid1")
     PixelPT.init(innerPixelPTGridCell1)
@@ -100,7 +106,7 @@ module FPixFPT
   #  innerPixelPTGrid2  
 #     ROTATE AND MOVE CELL
     innerPixelPTCell2rotated = $layout.create_cell("innerPixelPTCell2rotated")
-    inst = RBA::CellInstArray::new( innerPixelPTCell1.cell_index, RBA::Trans::new(2, false, 1*par['pStopSizeX'], par['pStopSizeY']) )  
+    inst = RBA::CellInstArray::new( innerPixelPTCell1.cell_index, RBA::Trans::new(2, true, par['pStopSizeX'], 0) )  
     innerPixelPTCell2rotated.insert(inst)
 	
     innerPixelPTGridCell2 = $layout.create_cell("InnerPixelPTGrid1")
@@ -125,7 +131,7 @@ module FPixFPT
 #     PixelPT.createVia($layerAluVia,par['pixelViaSizeX'],par['pixelViaSizeY'],posix + par['implantSizeX']/2-par['pixelViaSizeX']/2,posiy + par['implantSizeY']/2 - par['pixelViaSizeY']/2)
     PixelPT.createSeveralRoundVia($layerAluVia,par['viadia'],vx,vy1,vy2,posix,posiy,posix+par['pStopSizeOuterX'] - (par['pStopSizeX']-par['implantSizeX']),posix+par['implantSizeY'])
     PixelPT.createBumpPad($layerAlu,par['bumpPadDiameter'], par['pStopSizeX']- par['distancebumppadtoedgeSTD']- par['bumpPadDiameter']/2, posiy + (par['implantSizeY']- par['bumpPadDiameter'])/2)
-    PixelPT.createPStop($layerPp, par['pStopSizeOuterX'], par['pStopSizeY'], par['pStopWidth'], par['pStopCornerRout'] , par['pStopCornerRin'], par['pStopOpenX0'], par['pStopOpenY0'], par['pStopOpenWidth'],true)
+    PixelPT.createPStop($layerPp, par['distedgetopspray'], par['pStopSizeOuterX'], par['pStopSizeY'], par['pStopWidth'], par['pStopCornerRout'] , par['pStopCornerRin'], par['pStopOpenX0'], par['pStopOpenY0'], par['pStopOpenWidth'],true)
     
     #     ROTATE AND MOVE CELL
     outerPixelCell1rotated = $layout.create_cell("outerPixelCell1rotated")
@@ -152,6 +158,8 @@ module FPixFPT
     
     
     #create upperPixelGrid1
+    posopeny = par['pStopSizeUpperY'] - par['distedgetopspray']
+    
     upperPixelCell1 = $layout.create_cell("UpperPixel1")
     PixelPT.init(upperPixelCell1)
     PixelPT.createImplant($layerNp,par['implantSizeX'] , par['pStopSizeUpperY'] - (par['pStopSizeY'] - par['implantSizeY']), rinnern,routern,poscenterptx,poscenterpty,posix,posiy)
@@ -161,7 +169,7 @@ module FPixFPT
 #     PixelPT.createVia($layerAluVia,par['pixelViaSizeX'],par['pixelViaSizeY'],posix + par['implantSizeX']/2-par['pixelViaSizeX']/2,posiy + par['implantSizeY']/2 - par['pixelViaSizeY']/2)
     PixelPT.createSeveralRoundVia($layerAluVia,par['viadia'],vx,vy1,vy2,posix,posiy,posix+par['implantSizeX'],posix+par['pStopSizeUpperY'] - (par['pStopSizeY'] - par['implantSizeY']))
     PixelPT.createBumpPad($layerAlu,par['bumpPadDiameter'], par['pStopSizeX'] - par['distancebumppadtoedgeSTD']- par['bumpPadDiameter']/2, par['distancebumppadtoedgeSTD'] - par['bumpPadDiameter']/2)
-    PixelPT.createPStop($layerPp, par['pStopSizeX'], par['pStopSizeUpperY'], par['pStopWidth'], par['pStopCornerRout'] , par['pStopCornerRin'], par['pStopOpenX0'], par['pStopOpenY0'], par['pStopOpenWidth'],true)
+    PixelPT.createPStop($layerPp, par['distedgetopspray'], par['pStopSizeX'], par['pStopSizeUpperY'], par['pStopWidth'], par['pStopCornerRout'] , par['pStopCornerRin'], par['pStopOpenX0'], posopeny, par['pStopOpenWidth'],true)
     
 	
     upperPixelGridCell1 = $layout.create_cell("UpperPixelGrid1")
@@ -174,6 +182,8 @@ module FPixFPT
     
 #     create upperPixelGrid2
   #     ROTATE AND MOVE CELL
+  #TODO: implement mirroring (see inner pixel true/false statement)
+  
     upperPixelCell1rotated = $layout.create_cell("outerPixelCell1rotated")
     inst = RBA::CellInstArray::new( upperPixelCell1.cell_index, RBA::Trans::new(2, true, par['pStopSizeX'],0) )  
     upperPixelCell1rotated.insert(inst) 
@@ -199,7 +209,7 @@ module FPixFPT
     #PixelPT.createVia($layerAluVia,par['pixelViaSizeX'],par['pixelViaSizeY'],posix + par['implantSizeX']/2-par['pixelViaSizeX']/2,posiy + par['implantSizeY']/2 - par['pixelViaSizeY']/2)
     PixelPT.createSeveralRoundVia($layerAluVia,par['viadia'],vx,vy1,vy2,posix,posiy,posix+par['pStopSizeOuterX'] - (par['pStopSizeX']-par['implantSizeX']),posix+par['pStopSizeUpperY'] - (par['pStopSizeY'] - par['implantSizeY']))    
     PixelPT.createBumpPad($layerAlu,par['bumpPadDiameter'], par['pStopSizeX'] - par['distancebumppadtoedgeSTD']- par['bumpPadDiameter']/2, par['distancebumppadtoedgeSTD'] - par['bumpPadDiameter']/2)
-    PixelPT.createPStop($layerPp, par['pStopSizeOuterX'], par['pStopSizeUpperY'], par['pStopWidth'], par['pStopCornerRout'] , par['pStopCornerRin'], par['pStopOpenX0'], par['pStopOpenY0'], par['pStopOpenWidth'],true)
+    PixelPT.createPStop($layerPp, par['distedgetopspray'], par['pStopSizeOuterX'], par['pStopSizeUpperY'], par['pStopWidth'], par['pStopCornerRout'] , par['pStopCornerRin'], par['pStopOpenX0'], posopeny, par['pStopOpenWidth'],true)
    
    
     #     ROTATE AND MOVE CELL
@@ -225,10 +235,16 @@ module FPixFPT
 	  # center of pixel array
       pixelcenterx = pixX + (pixelactivesizex)/2
       pixelcentery = pixY + (pixelactivesizey)/2
+      # inner radius (only for individual pstop)
+      outerpsrin = 0
+      if par['distedgetopspray']!=0
+        outerpsrin = par['pStopCornerRin']+par['pStopWidth']
+      end
+      
       
       outerPstopCell = $layout.create_cell("outerPstop")
       
-      outerpstopring = NFunc.create_emptybox(pixelactivesizex ,pixelactivesizey ,pixelactivesizex+2*par['pStopWidth'],pixelactivesizey+2*par['pStopWidth'],0,par['pStopCornerRin']+2*par['pStopWidth'])
+      outerpstopring = NFunc.create_emptybox(pixelactivesizex ,pixelactivesizey ,pixelactivesizex+2*par['pStopWidth'],pixelactivesizey+2*par['pStopWidth'],outerpsrin,par['pStopCornerRin']+2*par['pStopWidth'])
       
       outerPstopCell.shapes($layerPp).insert(outerpstopring)
       Merge.cells($fPixFCell,outerPstopCell, pixelcenterx, pixelcentery)
