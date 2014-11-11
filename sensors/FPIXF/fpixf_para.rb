@@ -149,8 +149,6 @@ BumpPad = {
     
 }
 
-##### Periphery #####
-
 BiasRing = {
 
     'distX' => 18e3,
