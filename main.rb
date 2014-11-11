@@ -5,6 +5,7 @@ module CISWafer
 
   load "Wafer_Phase2/structures/basic.rb"
   load "Wafer_Phase2/structures/pixel.rb"
+  load "Wafer_Phase2/structures/periphery.rb"
   load "Wafer_Phase2/utils/merge.rb"
   load "Wafer_Phase2/utils/cut.rb"
   load "Wafer_Phase2/sensors/FPIXF/fpixf.rb"

@@ -28,21 +28,22 @@ module Pixel
         end          
       end
     end
-    
   end
 
-  def Pixel.createGrid(pixel,nx,ny,distX=0,distY=0,x0=0,y0=0) 
+
+  def Pixel.createGrid(pixel,nx=1,ny=1,distX=0,distY=0,x0=0,y0=0,rot=0,mir=false) 
   
     for i in 0..nx-1
       for j in 0..ny-1
-        Merge.cells($Cell,pixel,x0+(i*distX),y0+(j*distY))
+        Merge.cells($Cell,pixel,x0+(i*distX),y0+(j*distY),rot,mir)
       end
     end    
   end
 
 
+
   def Pixel.createVia(layer,x,y,x0=0,y0=0)
-    box = Polygon.new(Box.new(0,0,x,y))
+    box = Polygon.new(Box.new(-x/2,-y/2,x/2,y/2))
     box.move(x0,y0)
     $Cell.shapes(layer).insert(box)
   end
@@ -72,7 +73,7 @@ module Pixel
   def Pixel.createPStop(layer, x, y, width, rOut, rIn, oX, oY, oW, horizontal=true ,x0=0, y0=0)
         
     ring = Basic.createRing(x,y,width,rIn,rOut)
-    
+
     if horizontal
     
       openBox = Polygon.new(Box.new(oX,oY,oX+oW,oY+width))
@@ -102,7 +103,8 @@ module Pixel
     pStop.move(x0,y0)
     
     $Cell.shapes(layer).insert(pStop)
-    
+
+   # $Cell.shapes(layer).insert(ring)    
   end
 
 

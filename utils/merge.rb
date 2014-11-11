@@ -37,8 +37,8 @@ module Merge
   # @param y0 [Int] y coordinate where the lower left corner of cell2 will be placed in cell1
   # @return [Nill]
 
-  def Merge.cells(cell1,cell2,x0=0,y0=0)
-    cell1.insert(CellInstArray::new(cell2.cell_index,CplxTrans::new(1,0,false,DPoint::new(x0,y0))))
+  def Merge.cells(cell1,cell2,x0=0,y0=0,rot=0,mir=false)
+    cell1.insert(CellInstArray::new(cell2.cell_index,CplxTrans::new(1,rot,mir,DPoint::new(x0,y0))))
   end
 
 end

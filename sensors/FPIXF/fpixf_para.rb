@@ -1,155 +1,151 @@
-##### Pixels #####
+InnerImplant = {
 
-InnerImplants = {
-
-    'implantSizeX' => 98000,
-    'implantSizeY' => 48000,
-    'implantAluSizeX' => 95000, 
-    'implantAluSizeY' => 45000
+    'sizeX' => 98e3,
+    'sizeY' => 48e3,
+    'aluSizeX' => 95e3, 
+    'aluSizeY' => 45e3
        
 }
 
-OuterImplants = {
+OuterImplant = {
 
-    'implantSizeX' => 248000,
-    'implantSizeY' => 48000,
-    'implantAluSizeX' => 245000, 
-    'implantAluSizeY' => 45000
+    'sizeX' => 248e3,
+    'sizeY' => 48e3,
+    'aluSizeX' => 245e3, 
+    'aluSizeY' => 45e3
 
 }
 
-UpperImplants = {
+UpperImplant = {
 
-    'implantSizeX' => 98000,
-    'implantSizeY' => 148000,
-    'implantAluSizeX' => 95000, 
-    'implantAluSizeY' => 145000
+    'sizeX' => 98e3,
+    'sizeY' => 148e3,
+    'aluSizeX' => 95e3, 
+    'aluSizeY' => 145e3
 }
 
-CornerImplants = {
+CornerImplant = {
 
-    'implantSizeX' => 248000,
-    'implantSizeY' => 148000,
-    'implantAluSizeX' => 245000, 
-    'implantAluSizeY' => 145000  
+    'sizeX' => 248e3,
+    'sizeY' => 148e3,
+    'aluSizeX' => 245e3, 
+    'aluSizeY' => 145e3  
+
+}
+
+PixelGrid = {
+
+    'sizeX' => 8100e3,
+    'sizeY' => 8100e3
 
 }
 
 InnerPixelGrid = {
   
-    'pixelGridnX' => 25,
-    'pixelGridnY' => 79,
-    'pixelGriddX' => 300000,
-    'pixelGriddY' => 100000
+    'sizeX' => 150e3,
+    'sizeY' => 100e3,
+    'nX' => 25,
+    'nY' => 79,
+    'dX' => 300e3,
+    'dY' => 100e3
   
 }
 
-
 OuterPixelGrid = {
 
-    'pixelGridnX' => 1,
-    'pixelGridnY' => 79,
-    'pixelGriddY' => 100000
+    'sizeX' => 300e3,
+    'sizeY' => 100e3,
+    'nX' => 1,
+    'nY' => 79,
+    'dX' => 0,
+    'dY' => 100e3
 
 }
 
 UpperPixelGrid = {
 
-    'pixelGridnX' => 25,
-    'pixelGridnY' => 1,
-    'pixelGriddX' => 300000
+    'sizeX' => 150e3,
+    'sizeY' => 200e3,
+    'nX' => 25,
+    'nY' => 1,
+    'dX' => 300e3,
+    'dY' => 0
 
 }
 
+CornerPixelGrid = {
+
+    'sizeX' => 300e3,
+    'sizeY' => 200e3,
+    'nX' => 1,
+    'nY' => 1,
+    'dX' => 0,
+    'dY' => 0  
+
+}
 
 InnerPStop = {
 
-    'pStopSizeX' => 138000,
-    'pStopSizeY' => 88000,
-    'pStopWidth' => 8000,
-    'pStopCornerRout' => 12500,
-    'pStopCornerRin' => 4000,
-    'pStopOpenX0' => 55000,
-    'pStopOpenY0' => 80000,
-    'pStopOpenWidth' => 28000,
+    'distX' => 12e3,
+    'distY' => 12e3,
+    'width' => 8e3,
+    'rIn' => 4e3,
+    'rOut' => 12.5e3,
+    'openX0' => -14e3,
+    'openY0' => 36e3,
+    'openWidth' => 28e3,
 
 }
 
-OuterPStop1 = {
+OuterPStop = {
   
-    'pStopSizeX' => 288000,
-    'pStopSizeY' => 88000,
-    'pStopWidth' => 8000,
-    'pStopCornerRout' => 12500,
-    'pStopCornerRin' => 4000,
-    'pStopOpenX0' => 205000,
-    'pStopOpenY0' => 80000,
-    'pStopOpenWidth' => 28000,
-  
-}
-
-OuterPStop2 = {
-  
-    'pStopSizeX' => 288000,
-    'pStopSizeY' => 88000,
-    'pStopWidth' => 8000,
-    'pStopCornerRout' => 12500,
-    'pStopCornerRin' => 4000,
-    'pStopOpenX0' => 55000,
-    'pStopOpenY0' => 80000,
-    'pStopOpenWidth' => 28000,
+    'distX' => 12e3,
+    'distY' => 12e3,
+    'width' => 8e3,
+    'rIn' => 4e3,
+    'rOut' => 12.5e3,
+    'openX0' => 61e3,
+    'openY0' => 36e3,
+    'openWidth' => 28e3,
   
 }
 
 UpperPStop = {
 
-    'pStopSizeX' => 138000,
-    'pStopSizeY' => 188000,
-    'pStopWidth' => 8000,
-    'pStopCornerRout' => 12500,
-    'pStopCornerRin' => 4000,
-    'pStopOpenX0' => 130000,
-    'pStopOpenY0' => 55000,
-    'pStopOpenWidth' => 28000
+    'distX' => 12e3,
+    'distY' => 12e3,
+    'width' => 8e3,
+    'rIn' => 4e3,
+    'rOut' => 12.5e3,
+    'openX0' => 61e3,
+    'openY0' => -39e3,
+    'openWidth' => 28e3,
 
 }
 
-CornerPStop1 = {
+CornerPStop = {
 
-    'pStopSizeX' => 288000,
-    'pStopSizeY' => 188000,
-    'pStopWidth' => 8000,
-    'pStopCornerRout' => 12500,
-    'pStopCornerRin' => 4000,
-    'pStopOpenX0' => 55000,
-    'pStopOpenY0' => 0,
-    'pStopOpenWidth' => 28000
-
-}
-
-CornerPStop2 = {
-
-    'pStopSizeX' => 288000,
-    'pStopSizeY' => 188000,
-    'pStopWidth' => 8000,
-    'pStopCornerRout' => 12500,
-    'pStopCornerRin' => 4000,
-    'pStopOpenX0' => 205000,
-    'pStopOpenY0' => 0,
-    'pStopOpenWidth' => 28000    
+    'distX' => 12e3,
+    'distY' => 12e3,
+    'width' => 8e3,
+    'rIn' => 4e3,
+    'rOut' => 12.5e3,
+    'openX0' => -89e3,
+    'openY0' => -94e3,
+    'openWidth' => 28e3,
 
 }
 
 Via = {
 
-    'pixelViaSizeX' => 24000,
-    'pixelViaSizeY' => 24000
+    'sizeX' => 24e3,
+    'sizeY' => 24e3
 
 }
 
 BumpPad = {
 
-    'bumpPadDiameter' => 30000
+    'dia' => 30e3
     
 }
 
@@ -157,13 +153,48 @@ BumpPad = {
 
 BiasRing = {
 
-    'biasRingX' => 8312000,
-    'biasRingY' => 8312000,
-    'biasRingWidth' => 88000,
-    'biasRingROut' => 79000,
+    'distX' => 18e3,
+    'distY' => 18e3,
+    'width' => 88e3,
+    'rOut' => 79e3,
+    'rIn' => 0,
     
-    'biasRingAluX' => 8357000,
-    'biasRingAluY' => 8357000,
-    'biasRingAluWidth' => 123000,
-    'biasRingAluROut' => 101500
+    'aluDistX' => 5.5e3,
+    'aluDistY' => 5.5e3,
+    'aluWidth' => 123e3,
+    'aluROut' => 101.5e3,
+    'aluRIn' => 0
 } 
+
+GuardRing = {
+
+    'distX' => 158e3,
+    'distY' => 158e3,
+    'width' => 28e3,
+    'rIn' => 131e3,
+    'rOut' => 159e3,
+    
+    
+    'aluDistX' => 145.5e3,
+    'aluDistY' => 145.5e3,
+    'aluWidth' => 73e3,
+    'aluROut' => 191.5e3,
+    'aluRIn' => 118.5e3
+}
+
+PixelEdge = {
+    
+    'distX' => 426e3,
+    'distY' => 426e3,
+    'sizeX' => 9960e3,
+    'sizeY' => 10260e3,
+
+    'aluDistX' => 376e3,
+    'aluDistY' => 376e3,
+    'aluSizeX' => 9960e3,
+    'aluSizeY' => 10260e3,
+
+    'outerX0'    => 0,
+    'outerY0'    => -150e3
+    
+}
