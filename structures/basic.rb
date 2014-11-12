@@ -74,4 +74,23 @@ module Basic
     return ring
   end
 
+  def Basic.createCircle(d,x0=0,y0=0)
+    box = Polygon.new(Box.new(-d/2,-d/2,d/2,d/2))
+    circ = box.round_corners(0,d/2,32)
+    circ.move(x0,y0)
+    
+    return circ
+  end
+
+  def Basic.createCircRing(dIn,dOut,x0=0,y0=0)
+    outerRing = Polygon.new(Box.new(-dOut/2,-dOut/2,dOut/2,dOut/2))
+    innerRing = Polygon.new(Box.new(-dIn/2,-dIn/2,dIn/2,dIn/2))
+    
+    ringPoly = Cut.polyVector([outerRing,innerRing])
+    ring = ringPoly.round_corners(rIn,rOut,32)
+    ring.move(x0,y0)
+    
+    return ring
+  end
+
 end
