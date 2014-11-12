@@ -5,7 +5,7 @@ module Basic
   # Creates a wafer with an area where no structures can be placed on
   # @param layer [layer] Wafer material
   # @param cell [cell] Cell container in which the wafer is drawn
-  # @param diaInner [int] Inner diameter in um
+  # @param diaInner [int] Inner diameter in um 
   # @param diaOuter [int] Outer diamert in um
   # @return [Nill]
 
@@ -24,8 +24,8 @@ module Basic
   # Creates a Box with round corners. 8 points per corner
   # @param x [int] Size in x direction
   # @param y [int] Size in y direction
-  # @param x0 [int] X postion of the lower left corner of the object
-  # @param y0 [int] Y postion of the lower left corner of the object
+  # @param x0 [int] X postion of the center of the object
+  # @param y0 [int] Y postion of the center of the object
   # @param r [int] Radius of corner circle
   # @return [Polygon] The polygon object
 
@@ -40,8 +40,8 @@ module Basic
 
   # Creates a octagon (e.g. for bump pads)
   # @param dia [int] Diameter of the octagon
-  # @param x0 [int] X postion of the lower left corner of the object
-  # @param y0 [int] Y postion of the lower left corner of the object
+  # @param x0 [int] X postion of the center of the object
+  # @param y0 [int] Y postion of the center of the object
   # @return [Polygon] The polygon object
 
   def Basic.createOctagon(dia,x0=0,y0=0)
@@ -52,14 +52,14 @@ module Basic
     return octagon
   end
 
-  # Creates a Ring (e.g. for guard rings)
+  # Creates a rectangular ring (e.g. for guard rings)
   # @param x [int] Size of the ring in x direction
   # @param y [int] Size of the ring in y direction
   # @param width [int] Width of the ring
   # @param rIn [int] Inner radius of the corner
   # @param rOut [int] Outer radius of the corner
-  # @param x0 [int] X postion of the lower left corner of the object
-  # @param y0 [int] Y postion of the lower left corner of the object
+  # @param x0 [int] X postion of the center of the object
+  # @param y0 [int] Y postion of the center of the object
   # @return [Polygon] The polygon object
 
   def Basic.createRing(x,y,width,rIn=0,rOut=0,x0=0,y0=0)

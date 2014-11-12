@@ -2,34 +2,37 @@ module Pixel
 
   include RBA
   
+  # Initialize cell in which the structures are created 
+  
   def Pixel.init(cell)
     $Cell = cell
   end
 
+  # Creates an implant 
+  # @param layer [layer] Used material
+  # @param x [int] Size in x direction
+  # @param y [int] Size in y direction
+  # @param x0 [int] X postion of the center of the implant
+  # @param y0 [int] Y postion of the center of the implant
+  # return [Nill]
 
   def Pixel.createImplant(layer,x,y,x0=0,y0=0)
     implant = Basic.createRoundBox(x,y,x0,y0)
     
     $Cell.shapes(layer).insert(implant)
   end
-
-
-  def Pixel.createShapeGrid(pixel,nx,ny,distX,distY,x0=0,y0=0)   
-    
-    $layout.layer_indices.each do |layer|     
-      pixel.shapes(layer).each do |shape|     
-        shape.transform(CplxTrans.new(x0,y0))
-        for i in 0..ny-1
-          for j in 0..nx-1  
-            $Cell.shapes(layer).insert(shape)                 
-            shape.transform(CplxTrans.new(distX,0))                     
-          end   
-          shape.transform(CplxTrans.new(-nx*distX,distY))      
-        end          
-      end
-    end
-  end
-
+  
+  # Creates a grid
+  # @param pixel [cell] Base structure cell
+  # @param nx [int] Number of pixels in x direction
+  # @param ny [int] Number of pixels in y direction
+  # @param distX [int] Distance between two pixel cells in x direction
+  # @param distY [int] Distance between two pixel cells in y direction
+  # @param x0 [int] X position of the center of the first pixel
+  # @param y0 [int] Y position of the center of the first pixel
+  # @param rot [deg] Angle of rotation in degree
+  # @param mir [bool] Mirror the cell on the x axis
+  # @return [Nill]
 
   def Pixel.createGrid(pixel,nx=1,ny=1,distX=0,distY=0,x0=0,y0=0,rot=0,mir=false) 
   
@@ -40,7 +43,13 @@ module Pixel
     end    
   end
 
-
+  # Creates a via
+  # @param layer [layer] Used material 
+  # @param x [int] Size in x direction
+  # @param y [int] Size in y direction
+  # @param x0 [int] X postion of the center of the via
+  # @param y0 [int] Y postion of the center of the via  
+  # @return [Nill]
 
   def Pixel.createVia(layer,x,y,x0=0,y0=0)
     box = Polygon.new(Box.new(-x/2,-y/2,x/2,y/2))
@@ -48,7 +57,17 @@ module Pixel
     $Cell.shapes(layer).insert(box)
   end
 
-
+  # Creates a via grid (WILL BE EDITED!!!)
+  # @param layer [layer] Used material
+  # @param x [int] Size in x direction
+  # @param y [int] Size in y direction
+  # @param nx [int] Number of vias in x direction
+  # @param ny [int] Number of vias in y direction
+  # @param distX [int] Distance between two vias in x direction
+  # @param distY [int] Distance between two vias in y direction
+  # @param x0 [int] X postion of the center of the first via
+  # @param y0 [int] Y postion of the center of the first via  
+  # @return [Nill]
   
   def Pixel.createViaGrid(layer,x,y,nx,ny,distX,distY,x0=0,y0=0)
     
@@ -62,6 +81,12 @@ module Pixel
 
   end
 
+  # Creates a BumpPad
+  # @param layer [layer] Used material
+  # @param dia [int] Diameter of the BumpPad
+  # @param x0 [int] X postion of the center of the BumpPad
+  # @param y0 [int] Y postion of the center of the BumpPad
+  # @return [Nill]
 
   def Pixel.createBumpPad(layer,dia,x0=0,y0=0)
     bump = Basic.createOctagon(dia,x0,y0)
@@ -69,6 +94,20 @@ module Pixel
     $Cell.shapes(layer).insert(bump)
   end
 
+  # Creates a open/closed pStop
+  # @param layer [layer] Used material
+  # @param x [int] Size x of the inner edge of the ring
+  # @param y [int] Size y of the inner edge of the ring
+  # @param width [int] Width of the ring
+  # @param rOut [int] Outer radius of the corner
+  # @param rIn [int] Inner radius of the corner
+  # @param oX [int] X position of the lower left corner of the opening
+  # @param oY [int] Y position of the lower left corner of the opening
+  # @param oW [int] Size of the opening
+  # @param horizontal [bool] Is the opening horizontal or vertical?
+  # @param x0 [int] X position of the center of the ring
+  # @param y0 [int] Y position of the center of the ring
+  # @return [Nill]
 
   def Pixel.createPStop(layer, x, y, width, rOut, rIn, oX, oY, oW, horizontal=true ,x0=0, y0=0)
         
@@ -97,14 +136,12 @@ module Pixel
       endCirc2 = endPoly2.round_corners(0,(width/2.0),32)      
          
     end
-    
-    
+     
     pStop = Merge.polyVector([ringOpen,endCirc1,endCirc2])
     pStop.move(x0,y0)
     
     $Cell.shapes(layer).insert(pStop)
-
-   # $Cell.shapes(layer).insert(ring)    
+   
   end
 
 

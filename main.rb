@@ -19,7 +19,7 @@ module CISWafer
   # standard parameters
 
   $layout.dbu = 0.001 #µm -> dbu = 1nm
-  $minDist = 5000
+  $minDist = 5e3
 
   # Layer
   
@@ -33,8 +33,8 @@ module CISWafer
   # wafer
   
   waferCell = $layout.create_cell("Wafer")  
-  waferOuterDia = 150000000
-  waferInnerDia = 140000000  
+  waferOuterDia = 150e6
+  waferInnerDia = 140e6  
   Basic.createWafer($layerP, waferCell, waferInnerDia, waferOuterDia)
   
   # pixel designs

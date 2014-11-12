@@ -3,8 +3,7 @@ InnerImplant = {
     'sizeX' => 98e3,
     'sizeY' => 48e3,
     'aluSizeX' => 95e3, 
-    'aluSizeY' => 45e3
-       
+    'aluSizeY' => 45e3       
 }
 
 OuterImplant = {
@@ -13,7 +12,6 @@ OuterImplant = {
     'sizeY' => 48e3,
     'aluSizeX' => 245e3, 
     'aluSizeY' => 45e3
-
 }
 
 UpperImplant = {
@@ -30,14 +28,12 @@ CornerImplant = {
     'sizeY' => 148e3,
     'aluSizeX' => 245e3, 
     'aluSizeY' => 145e3  
-
 }
 
 PixelGrid = {
 
     'sizeX' => 8100e3,
     'sizeY' => 8100e3
-
 }
 
 InnerPixelGrid = {
@@ -47,8 +43,7 @@ InnerPixelGrid = {
     'nX' => 25,
     'nY' => 79,
     'dX' => 300e3,
-    'dY' => 100e3
-  
+    'dY' => 100e3 
 }
 
 OuterPixelGrid = {
@@ -59,7 +54,6 @@ OuterPixelGrid = {
     'nY' => 79,
     'dX' => 0,
     'dY' => 100e3
-
 }
 
 UpperPixelGrid = {
@@ -70,7 +64,6 @@ UpperPixelGrid = {
     'nY' => 1,
     'dX' => 300e3,
     'dY' => 0
-
 }
 
 CornerPixelGrid = {
@@ -81,7 +74,6 @@ CornerPixelGrid = {
     'nY' => 1,
     'dX' => 0,
     'dY' => 0  
-
 }
 
 InnerPStop = {
@@ -94,7 +86,6 @@ InnerPStop = {
     'openX0' => -14e3,
     'openY0' => 36e3,
     'openWidth' => 28e3,
-
 }
 
 OuterPStop = {
@@ -106,8 +97,7 @@ OuterPStop = {
     'rOut' => 12.5e3,
     'openX0' => 61e3,
     'openY0' => 36e3,
-    'openWidth' => 28e3,
-  
+    'openWidth' => 28e3, 
 }
 
 UpperPStop = {
@@ -120,7 +110,6 @@ UpperPStop = {
     'openX0' => 61e3,
     'openY0' => -39e3,
     'openWidth' => 28e3,
-
 }
 
 CornerPStop = {
@@ -133,20 +122,17 @@ CornerPStop = {
     'openX0' => -89e3,
     'openY0' => -94e3,
     'openWidth' => 28e3,
-
 }
 
 Via = {
 
     'sizeX' => 24e3,
     'sizeY' => 24e3
-
 }
 
 BumpPad = {
 
-    'dia' => 30e3
-    
+    'dia' => 30e3   
 }
 
 BiasRing = {
@@ -194,5 +180,4 @@ PixelEdge = {
 
     'outerX0'    => 0,
     'outerY0'    => -150e3
-    
 }
