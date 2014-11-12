@@ -1,0 +1,365 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: Periphery
+  
+    &mdash; Documentation by YARD 0.8.7.6
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!Periphery.html";
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (P)</a> &raquo;
+    
+    
+    <span class="title">Periphery</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Module: Periphery
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+      <dt class="r1">Includes:</dt>
+      <dd class="r1">RBA</dd>
+      
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">structures/periphery.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+
+
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#create-class_method" title="create (class method)">+ (Object) <strong>create</strong>(layerImp, layerMet, layerEdge, pixelGrid, biasRing, guardRing, pixelEdge) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#createEdge-class_method" title="createEdge (class method)">+ (Object) <strong>createEdge</strong>(layer, xi, yi, xo, yo, x0 = 0, y0 = 0) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#createRing-class_method" title="createRing (class method)">+ (Object) <strong>createRing</strong>(layer, x, y, width, rIn, rOut, x0 = 0, y0 = 0) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#init-class_method" title="init (class method)">+ (Object) <strong>init</strong>(cell) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="create-class_method">
+  
+    + (<tt>Object</tt>) <strong>create</strong>(layerImp, layerMet, layerEdge, pixelGrid, biasRing, guardRing, pixelEdge) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'structures/periphery.rb', line 9</span>
+
+<span class='kw'>def</span> <span class='const'>Periphery</span><span class='period'>.</span><span class='id identifier rubyid_create'>create</span><span class='lparen'>(</span><span class='id identifier rubyid_layerImp'>layerImp</span><span class='comma'>,</span> <span class='id identifier rubyid_layerMet'>layerMet</span><span class='comma'>,</span> <span class='id identifier rubyid_layerEdge'>layerEdge</span><span class='comma'>,</span> <span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='comma'>,</span> <span class='id identifier rubyid_biasRing'>biasRing</span><span class='comma'>,</span> <span class='id identifier rubyid_guardRing'>guardRing</span><span class='comma'>,</span> <span class='id identifier rubyid_pixelEdge'>pixelEdge</span><span class='rparen'>)</span>
+
+  <span class='const'>Periphery</span><span class='period'>.</span><span class='id identifier rubyid_createRing'>createRing</span><span class='lparen'>(</span><span class='id identifier rubyid_layerImp'>layerImp</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>sizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='op'>+</span><span class='int'>2</span><span class='op'>*</span><span class='id identifier rubyid_biasRing'>biasRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>distX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>sizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='op'>+</span><span class='int'>2</span><span class='op'>*</span><span class='id identifier rubyid_biasRing'>biasRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>distY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_biasRing'>biasRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>width</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_biasRing'>biasRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>rIn</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_biasRing'>biasRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>rOut</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='const'>Periphery</span><span class='period'>.</span><span class='id identifier rubyid_createRing'>createRing</span><span class='lparen'>(</span><span class='id identifier rubyid_layerMet'>layerMet</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>sizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='op'>+</span><span class='int'>2</span><span class='op'>*</span><span class='id identifier rubyid_biasRing'>biasRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>aluDistX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>sizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='op'>+</span><span class='int'>2</span><span class='op'>*</span><span class='id identifier rubyid_biasRing'>biasRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>aluDistY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_biasRing'>biasRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>aluWidth</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_biasRing'>biasRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>aluRIn</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_biasRing'>biasRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>aluROut</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+      
+  <span class='const'>Periphery</span><span class='period'>.</span><span class='id identifier rubyid_createRing'>createRing</span><span class='lparen'>(</span><span class='id identifier rubyid_layerImp'>layerImp</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>sizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='op'>+</span><span class='int'>2</span><span class='op'>*</span><span class='id identifier rubyid_guardRing'>guardRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>distX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>sizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='op'>+</span><span class='int'>2</span><span class='op'>*</span><span class='id identifier rubyid_guardRing'>guardRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>distY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_guardRing'>guardRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>width</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_guardRing'>guardRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>rIn</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_guardRing'>guardRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>rOut</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='const'>Periphery</span><span class='period'>.</span><span class='id identifier rubyid_createRing'>createRing</span><span class='lparen'>(</span><span class='id identifier rubyid_layerMet'>layerMet</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>sizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='op'>+</span><span class='int'>2</span><span class='op'>*</span><span class='id identifier rubyid_guardRing'>guardRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>aluDistX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>sizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='op'>+</span><span class='int'>2</span><span class='op'>*</span><span class='id identifier rubyid_guardRing'>guardRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>aluDistY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_guardRing'>guardRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>aluWidth</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_guardRing'>guardRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>aluRIn</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_guardRing'>guardRing</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>aluROut</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+
+  <span class='const'>Periphery</span><span class='period'>.</span><span class='id identifier rubyid_createEdge'>createEdge</span><span class='lparen'>(</span><span class='id identifier rubyid_layerEdge'>layerEdge</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>sizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='op'>+</span><span class='int'>2</span><span class='op'>*</span><span class='id identifier rubyid_pixelEdge'>pixelEdge</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>distX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>sizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='op'>+</span><span class='int'>2</span><span class='op'>*</span><span class='id identifier rubyid_pixelEdge'>pixelEdge</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>distY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_pixelEdge'>pixelEdge</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>sizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_pixelEdge'>pixelEdge</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>sizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_pixelEdge'>pixelEdge</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>outerX0</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_pixelEdge'>pixelEdge</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>outerY0</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='const'>Periphery</span><span class='period'>.</span><span class='id identifier rubyid_createEdge'>createEdge</span><span class='lparen'>(</span><span class='id identifier rubyid_layerMet'>layerMet</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>sizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='op'>+</span><span class='int'>2</span><span class='op'>*</span><span class='id identifier rubyid_pixelEdge'>pixelEdge</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>aluDistX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_pixelGrid'>pixelGrid</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>sizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='op'>+</span><span class='int'>2</span><span class='op'>*</span><span class='id identifier rubyid_pixelEdge'>pixelEdge</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>aluDistY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_pixelEdge'>pixelEdge</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>aluSizeX</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_pixelEdge'>pixelEdge</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>aluSizeY</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_pixelEdge'>pixelEdge</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>outerX0</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='comma'>,</span><span class='id identifier rubyid_pixelEdge'>pixelEdge</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>outerY0</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="createEdge-class_method">
+  
+    + (<tt>Object</tt>) <strong>createEdge</strong>(layer, xi, yi, xo, yo, x0 = 0, y0 = 0) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+27
+28
+29
+30
+31
+32
+33
+34</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'structures/periphery.rb', line 27</span>
+
+<span class='kw'>def</span> <span class='const'>Periphery</span><span class='period'>.</span><span class='id identifier rubyid_createEdge'>createEdge</span><span class='lparen'>(</span><span class='id identifier rubyid_layer'>layer</span><span class='comma'>,</span><span class='id identifier rubyid_xi'>xi</span><span class='comma'>,</span><span class='id identifier rubyid_yi'>yi</span><span class='comma'>,</span><span class='id identifier rubyid_xo'>xo</span><span class='comma'>,</span><span class='id identifier rubyid_yo'>yo</span><span class='comma'>,</span><span class='id identifier rubyid_x0'>x0</span><span class='op'>=</span><span class='int'>0</span><span class='comma'>,</span><span class='id identifier rubyid_y0'>y0</span><span class='op'>=</span><span class='int'>0</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_innerBox'>innerBox</span> <span class='op'>=</span> <span class='const'>Polygon</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='const'>Box</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>-</span><span class='id identifier rubyid_xi'>xi</span><span class='op'>/</span><span class='int'>2</span><span class='comma'>,</span><span class='op'>-</span><span class='id identifier rubyid_yi'>yi</span><span class='op'>/</span><span class='int'>2</span><span class='comma'>,</span><span class='id identifier rubyid_xi'>xi</span><span class='op'>/</span><span class='int'>2</span><span class='comma'>,</span><span class='id identifier rubyid_yi'>yi</span><span class='op'>/</span><span class='int'>2</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_outerBox'>outerBox</span> <span class='op'>=</span> <span class='const'>Polygon</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='const'>Box</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='op'>-</span><span class='id identifier rubyid_xo'>xo</span><span class='op'>/</span><span class='int'>2</span><span class='comma'>,</span><span class='op'>-</span><span class='id identifier rubyid_yo'>yo</span><span class='op'>/</span><span class='int'>2</span><span class='comma'>,</span><span class='id identifier rubyid_xo'>xo</span><span class='op'>/</span><span class='int'>2</span><span class='comma'>,</span><span class='id identifier rubyid_yo'>yo</span><span class='op'>/</span><span class='int'>2</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_outerBox'>outerBox</span><span class='period'>.</span><span class='id identifier rubyid_move'>move</span><span class='lparen'>(</span><span class='id identifier rubyid_x0'>x0</span><span class='comma'>,</span><span class='id identifier rubyid_y0'>y0</span><span class='rparen'>)</span>
+  
+  <span class='id identifier rubyid_edge'>edge</span> <span class='op'>=</span> <span class='const'>Cut</span><span class='period'>.</span><span class='id identifier rubyid_polyVector'>polyVector</span><span class='lparen'>(</span><span class='lbracket'>[</span><span class='id identifier rubyid_outerBox'>outerBox</span><span class='comma'>,</span><span class='id identifier rubyid_innerBox'>innerBox</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='gvar'>$Cell</span><span class='period'>.</span><span class='id identifier rubyid_shapes'>shapes</span><span class='lparen'>(</span><span class='id identifier rubyid_layer'>layer</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_insert'>insert</span><span class='lparen'>(</span><span class='id identifier rubyid_edge'>edge</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="createRing-class_method">
+  
+    + (<tt>Object</tt>) <strong>createRing</strong>(layer, x, y, width, rIn, rOut, x0 = 0, y0 = 0) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21
+22
+23
+24
+25</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'structures/periphery.rb', line 21</span>
+
+<span class='kw'>def</span> <span class='const'>Periphery</span><span class='period'>.</span><span class='id identifier rubyid_createRing'>createRing</span><span class='lparen'>(</span><span class='id identifier rubyid_layer'>layer</span><span class='comma'>,</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span><span class='id identifier rubyid_y'>y</span><span class='comma'>,</span><span class='id identifier rubyid_width'>width</span><span class='comma'>,</span><span class='id identifier rubyid_rIn'>rIn</span><span class='comma'>,</span><span class='id identifier rubyid_rOut'>rOut</span><span class='comma'>,</span><span class='id identifier rubyid_x0'>x0</span><span class='op'>=</span><span class='int'>0</span><span class='comma'>,</span><span class='id identifier rubyid_y0'>y0</span><span class='op'>=</span><span class='int'>0</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_ring'>ring</span> <span class='op'>=</span> <span class='const'>Basic</span><span class='period'>.</span><span class='id identifier rubyid_createRing'>createRing</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span><span class='id identifier rubyid_y'>y</span><span class='comma'>,</span><span class='id identifier rubyid_width'>width</span><span class='comma'>,</span><span class='id identifier rubyid_rIn'>rIn</span><span class='comma'>,</span><span class='id identifier rubyid_rOut'>rOut</span><span class='comma'>,</span><span class='id identifier rubyid_x0'>x0</span><span class='comma'>,</span><span class='id identifier rubyid_y0'>y0</span><span class='rparen'>)</span>
+  <span class='gvar'>$Cell</span><span class='period'>.</span><span class='id identifier rubyid_shapes'>shapes</span><span class='lparen'>(</span><span class='id identifier rubyid_layer'>layer</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_insert'>insert</span><span class='lparen'>(</span><span class='id identifier rubyid_ring'>ring</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="init-class_method">
+  
+    + (<tt>Object</tt>) <strong>init</strong>(cell) 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+5
+6
+7</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'structures/periphery.rb', line 5</span>
+
+<span class='kw'>def</span> <span class='const'>Periphery</span><span class='period'>.</span><span class='id identifier rubyid_init'>init</span><span class='lparen'>(</span><span class='id identifier rubyid_cell'>cell</span><span class='rparen'>)</span>
+  <span class='gvar'>$Cell</span> <span class='op'>=</span> <span class='id identifier rubyid_cell'>cell</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Wed Nov 12 09:54:59 2014 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.7.6 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>
