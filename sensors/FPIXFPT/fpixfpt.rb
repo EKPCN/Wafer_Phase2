@@ -5,8 +5,8 @@ module FPixFPT
   def FPixFPT.create()
   
 	# create different architectures
-	load "Wafer_Phase2/sensors/FPIXFPT/fpixfpt_para_PT_individualPStop.rb"
-    #load "Wafer_Phase2/sensors/FPIXFPT/fpixfpt_para_PT_commonPStop.rb"
+	#load "Wafer_Phase2/sensors/FPIXFPT/fpixfpt_para_PT_individualPStop.rb"
+    load "Wafer_Phase2/sensors/FPIXFPT/fpixfpt_para_PT_commonPStop.rb"
     #load "Wafer_Phase2/sensors/FPIXFPT/fpixfpt_para_PT_PSpray.rb"
 	#load "Wafer_Phase2/sensors/FPIXFPT/fpixfpt_para_PSpray.rb"
 	#load "Wafer_Phase2/sensors/FPIXFPT/fpixfpt_para_individualPStop.rb"

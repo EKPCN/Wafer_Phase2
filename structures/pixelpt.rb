@@ -27,7 +27,7 @@ module PixelPT
 #		positionx/y 
 # 		-> the coordinates of the center of the punch through relative to the lower left corner of the implant/metal
 #		x0/y0
-#		-> the coordinates of the lower left corner of the implant/metal relative to the lower left corner of the pstop implant
+#		-> the coordinates of the lower left corner of the implant/metal relative to the lower left corner of the cell
 #		windowwidthinmetalforbiasline
 # 		-> vertical size of the window in the metal for the biasline
 #		biaslinewidth
@@ -76,7 +76,7 @@ module PixelPT
 	depthx = Math.sqrt(2.0*depthy*radtrans-depthy*depthy)
 	
 # 	lower left corner of box to be cut
-	x = positionx - router*Math.cos(alpha) - depthx
+	x_ = positionx - router*Math.cos(alpha) - depthx
 # 	lower corner
 	y1l = positiony - windowwidthinmetalforbiasline/2.0 - depthy
 # 	upper corner
@@ -89,14 +89,14 @@ module PixelPT
 	y2u = positiony + windowwidthinmetalforbiasline/2.0 + radtrans
 	
 # 	cut remaining stuff
-	holel = Polygon.new(Box.new(x,y1l, x+ depthx, y1l+ depthy))
-	holeu = Polygon.new(Box.new(x,y1u, x+ depthx, y1u+ depthy))
+	holel = Polygon.new(Box.new(x_,y1l, x_+ depthx, y1l+ depthy))
+	holeu = Polygon.new(Box.new(x_,y1u, x_+ depthx, y1u+ depthy))
 	tmp = Merge.polyVector([implant, holel, holeu])
 	implant = Cut.polyVector([tmp, holel, holeu])
 	
 # 	round transition
-	holel = NFunc.create_polycirc(radtrans,x,y2l)
-	holeu = NFunc.create_polycirc(radtrans,x,y2u)
+	holel = NFunc.create_polycirc(radtrans,x_,y2l)
+	holeu = NFunc.create_polycirc(radtrans,x_,y2u)
 	tmp = implant
 	implant = Merge.polyVector([tmp, holeu, holel])   	
       end
@@ -121,14 +121,47 @@ module PixelPT
       else
         #create biasline (for metal)
 		# horizontal part
-        padtobiasline = Polygon.new(Box.new(0,y0+positiony-biaslinewidth/2,x0+positionx,y0+positiony+biaslinewidth/2))
-		# vertical part
+        padtobiasline = Polygon.new(Box.new(0,y0+positiony-biaslinewidth/2.0,x0+positionx,y0+positiony+biaslinewidth/2.0))
+        
+        	# vertical part
         biasline = Polygon.new(Box.new(0,-biaslineoverlap,biaslinewidth,2*y0+y+biaslineoverlap))
 		# merge both with punch through dot
-        biasmetal = Merge.polyVector([padtobiasline,biasline])
-        tmp = biasmetal.round_corners(1.5e3,0,25)
-        biasmetal = Merge.polyVector([tmp,pti])
-        $Cell.shapes(layer).insert(biasmetal)
+        tmp = Merge.polyVector([padtobiasline,biasline,pti])
+        biasmetal = tmp.round_corners(1.5e3,0,25)
+        
+        
+        # make transition round
+        #radius of transition
+        rtrans = rinner/3.0
+        # angle for calc
+        alpha = Math::asin((biaslinewidth/2.0 + rtrans)/(rinner + rtrans))
+        #center of circle for rounding
+        x_ = positionx - Math::cos(alpha)*(rtrans+rinner)
+        y1l = positiony - (biaslinewidth)/2.0 - rtrans
+        y1u = positiony + (biaslinewidth)/2.0 + rtrans
+        #y coordinate of transition y2, a and b are x/y dimensions the box inserted at (x,y2)
+        a = rtrans * Math::cos(alpha)
+        b = rtrans*(1.0-Math::sin(alpha))
+        y2l = y1l+rtrans*Math::sin(alpha)
+        y2u = positiony+biaslinewidth/2.0
+        
+        
+        # box to make transition
+        boxl = Polygon.new(Box.new(x_, y2l, x_ + a, y2l + b))
+        boxu = Polygon.new(Box.new(x_, y2u, x_ + a, y2u + b))
+        # circle for round transition
+        holel = NFunc.create_polycirc(rtrans, x_, y1l)
+        holeu = NFunc.create_polycirc(rtrans, x_, y1u)
+        #cut'n'merge and shift to position in cell
+        tmp = Merge.polyVector([holel, boxl])
+        tmp1 = Cut.polyVector([tmp, holel])
+        roundl = tmp1.transformed(Trans.new(0, false, x0, y0))
+        tmp = Merge.polyVector([holeu, boxu])
+        tmp1 = Cut.polyVector([tmp, holeu])
+        roundu = tmp1.transformed(Trans.new(0, false, x0, y0))
+        
+        finalbiasmetal = Merge.polyVector([biasmetal, roundl, roundu])
+        $Cell.shapes(layer).insert(finalbiasmetal)
       end
     end
   end
