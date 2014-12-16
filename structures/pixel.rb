@@ -12,14 +12,17 @@ module Pixel
   # @param layer [layer] Used material
   # @param x [int] Size in x direction
   # @param y [int] Size in y direction
+  # @param layerM [layer] Material for contact metal
+  # @param metalOH [int] Metal overhang
   # @param x0 [int] X postion of the center of the implant
   # @param y0 [int] Y postion of the center of the implant
   # return [Nill]
 
-  def Pixel.createImplant(layer,x,y,x0=0,y0=0)
+  def Pixel.createImplant(layer,x,y,layerM=nil,metalOH=0,x0=0,y0=0)
     implant = Basic.createRoundBox(x,y,x0,y0)
-    
+    metal = Basic.createRoundBox(x+2*metalOH, y+2*metalOH, x0, y0)
     $Cell.shapes(layer).insert(implant)
+    $Cell.shapes(layerM).insert(metal)
   end
   
   # Creates a grid
@@ -109,7 +112,7 @@ module Pixel
   # @param y0 [int] Y position of the center of the ring
   # @return [Nill]
 
-  def Pixel.createPStop(layer, x, y, width, rOut, rIn, oX, oY, oW, horizontal=true ,x0=0, y0=0)
+  def Pixel.createPStop(layer, x, y, width, rOut, rIn, oX=0, oY=0, oW=0, horizontal=true ,x0=0, y0=0)
         
     ring = Basic.createRing(x,y,width,rIn,rOut)
 

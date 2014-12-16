@@ -2,32 +2,28 @@ InnerImplant = {
 
     'sizeX' => 98e3,
     'sizeY' => 48e3,
-    'aluSizeX' => 95e3, 
-    'aluSizeY' => 45e3       
+    'metalOH' => -1.5e3  
 }
 
 OuterImplant = {
 
     'sizeX' => 248e3,
     'sizeY' => 48e3,
-    'aluSizeX' => 245e3, 
-    'aluSizeY' => 45e3
+    'metalOH' => -1.5e3,  
 }
 
 UpperImplant = {
 
     'sizeX' => 98e3,
     'sizeY' => 148e3,
-    'aluSizeX' => 95e3, 
-    'aluSizeY' => 145e3
+    'metalOH' => -1.5e3,  
 }
 
 CornerImplant = {
 
     'sizeX' => 248e3,
     'sizeY' => 148e3,
-    'aluSizeX' => 245e3, 
-    'aluSizeY' => 145e3  
+    'metalOH' => -1.5e3,  
 }
 
 PixelGrid = {
@@ -157,7 +153,6 @@ GuardRing = {
     'width' => 28e3,
     'rIn' => 131e3,
     'rOut' => 159e3,
-    
     
     'aluDistX' => 145.5e3,
     'aluDistY' => 145.5e3,
