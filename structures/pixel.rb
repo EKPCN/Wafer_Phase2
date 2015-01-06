@@ -25,6 +25,115 @@ module Pixel
     $Cell.shapes(layerM).insert(metal)
   end
   
+  # Create a punch through implant (implant with hole)
+  # @param layer [layer] Used material
+  # @param x [int] Size in x direction
+  # @param y [int] Size in y direction
+  # @param x0PT [int] x position of PT
+  # @param y0PT [int] y position of PT
+  # @param d [int] diameter of PT hole
+  # @param x0 [int] center of the implant
+  # @param y0 [int] center of the implant
+  
+  def Pixel.createPTImplant(layer,x,y,x0PT,y0PT,dHole,dImplant=0,x0=0,y0=0)
+  
+    implant = Basic.createRoundBox(x,y,x0,y0)
+    ptHole = Basic.createCircle(dHole,x0PT,y0PT)
+    implantHole = Cut.polyVector([implant,ptHole])
+    ptImplant = Basic.createCircle(dImplant,x0PT,y0PT)
+    
+    $Cell.shapes(layer).insert(ptImplant)
+    $Cell.shapes(layer).insert(implantHole)
+      
+  end
+  
+  
+  def Pixel.createPTMetal(layer,x,y,x0PT,y0PT,d,blHoleWidth,x0=0,y0=0)
+
+    implantPoly = Polygon.new(Box.new(-x/2,-y/2,x/2,y/2))
+    biasLineHole = Polygon.new(Box.new(-x/2,-blHoleWidth/2,x0PT-d/2,blHoleWidth/2))
+    ptHole = Basic.createCircle(d,x0PT,y0PT,40)
+    
+    implant = Cut.polyVector([biasLineHole,implantPoly,ptHole])
+    implantBLPT = implant.round_corners(0,5e3,32)
+    
+    dy = 3e3
+    
+    # some mathematics
+    
+    alpha = Math.asin((blHoleWidth/2.0+dy)/(d/2.0))
+    rTrans = dy/(1.0-Math.sin(alpha))
+    dx = Math.cos(alpha)*rTrans
+    
+    # cuts
+    
+    upperCutPoly = Polygon.new(Box.new(x0PT-Math.cos(alpha)*(d/2.0)-dx,y0,x0PT-Math.cos(alpha),y0+(blHoleWidth/2.0)+dy))  
+    lowerCutPoly = Polygon.new(Box.new(x0PT-Math.cos(alpha)*(d/2.0)-dx,y0,x0PT-Math.cos(alpha),y0-(blHoleWidth/2.0)-dy)) 
+    
+    tmp = Merge.polyVector([lowerCutPoly,implantBLPT,upperCutPoly])
+    tmpImplant = Cut.polyVector([lowerCutPoly,tmp,upperCutPoly])
+    
+    # create transistion
+    
+    upperCirc = Basic.createCircle(2*rTrans,x0PT-Math.cos(alpha)*(d/2.0)-dx,(blHoleWidth/2.0)+rTrans,40)
+    lowerCirc = Basic.createCircle(2*rTrans,x0PT-Math.cos(alpha)*(d/2.0)-dx,-(blHoleWidth/2.0)-rTrans,40)
+    
+    implant = Merge.polyVector([upperCirc,tmpImplant,lowerCirc])
+    
+    $Cell.shapes(layer).insert(implant)
+  end
+  
+  
+  def Pixel.createPTBiasLine(layer,x,y,x0PT,y0PT,dVia,blWidth,x0=0,y0=0)
+    via = Basic.createCircle(dVia,x0PT,y0PT)
+    biasLine = Polygon.new(Box.new(-x/2.0,-blWidth/2.0,x0PT,blWidth/2.0))
+  
+    biasBase = Merge.polyVector([via,biasLine])
+    
+    dy = 5e2
+    
+    # some mathematics
+    
+    alpha = Math.asin((blWidth/2.0+dy)/(dVia/2.0))
+    rTrans = dy/(1.0-Math.sin(alpha))
+    dx = Math.cos(alpha)*rTrans
+    
+    upperPoly = Polygon.new(Box.new(x0PT-Math.cos(alpha)*(dVia/2.0)-dx,y0,x0PT-Math.cos(alpha),y0+(blWidth/2.0)+dy))  
+    lowerPoly = Polygon.new(Box.new(x0PT-Math.cos(alpha)*(dVia/2.0)-dx,y0,x0PT-Math.cos(alpha),y0-(blWidth/2.0)-dy)) 
+  
+    upperCirc = Basic.createCircle(2*rTrans,x0PT-Math.cos(alpha)*(dVia/2.0)-dx,(blWidth/2.0)+rTrans,40)
+    lowerCirc = Basic.createCircle(2*rTrans,x0PT-Math.cos(alpha)*(dVia/2.0)-dx,-(blWidth/2.0)-rTrans,40)
+  
+    biasTmp = Merge.polyVector([lowerPoly,biasBase,upperPoly])
+    biasTmp2 = Merge.polyVector([upperCirc,biasTmp,lowerCirc])  
+    
+    biasTmp3 = Cut.polyVector([upperCirc,biasTmp2,lowerCirc])
+
+    distX = 3e3
+    distY = 3e3
+
+    globalBiasLine = Polygon.new(Box.new(-x/2.0-distX,-y/2.0-distY,-x/2.0,y/2.0+distY))
+    
+    bias = Merge.polyVector([biasTmp3,globalBiasLine])
+    
+    $Cell.shapes(layer).insert(bias)
+  end
+
+  
+  def Pixel.createPTPStop(layer, x0PT, y0PT, dIn, dOut)
+    
+    pStop = Basic.createCircRing(dIn,dOut,x0PT,y0PT)    
+    $Cell.shapes(layer).insert(pStop) 
+    
+  end
+
+  
+  def Pixel.createPTVia(layer, x0PT, y0PT, d)
+
+    via = Basic.createCircle(d,x0PT,y0PT)
+    $Cell.shapes(layer).insert(via)    
+  end
+  
   # Creates a grid
   # @param pixel [cell] Base structure cell
   # @param nx [int] Number of pixels in x direction

@@ -74,9 +74,9 @@ module Basic
     return ring
   end
 
-  def Basic.createCircle(d,x0=0,y0=0)
+  def Basic.createCircle(d,x0=0,y0=0,p=32)
     box = Polygon.new(Box.new(-d/2,-d/2,d/2,d/2))
-    circ = box.round_corners(0,d/2,32)
+    circ = box.round_corners(0,d/2,p)
     circ.move(x0,y0)
     
     return circ

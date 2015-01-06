@@ -8,7 +8,11 @@ module CISWafer
   load "Wafer_Phase2/structures/periphery.rb"
   load "Wafer_Phase2/utils/merge.rb"
   load "Wafer_Phase2/utils/cut.rb"
+
+  # sensors
+
   load "Wafer_Phase2/sensors/FPIXF/fpixf.rb"
+  load "Wafer_Phase2/sensors/FPIXFPT/fpixfpt.rb"
    
   # create mainWindow and layout
   
@@ -39,11 +43,13 @@ module CISWafer
   
   # pixel designs
   
-  fPixFCell=FPixF.create()
+  #fPixFCell=FPixF.create()
+  fPixFPTCell = FPixFPT.create()
   
   # draw designs on wafer
   
-  Merge.cells(waferCell,fPixFCell,0,0)
+  #Merge.cells(waferCell,fPixFCell,0,0)
+  Merge.cells(waferCell,fPixFPTCell)
   
   # end
   
