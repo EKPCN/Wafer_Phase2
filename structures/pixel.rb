@@ -84,38 +84,44 @@ module Pixel
   end
   
   
-  def Pixel.createPTBiasLine(layer,x,y,x0PT,y0PT,dVia,blWidth,x0=0,y0=0)
-    via = Basic.createCircle(dVia,x0PT,y0PT)
-    biasLine = Polygon.new(Box.new(-x/2.0,-blWidth/2.0,x0PT,blWidth/2.0))
-  
-    biasBase = Merge.polyVector([via,biasLine])
+  def Pixel.createPTBiasLine(layer,x,y,x0PT,y0PT,dDot,blLength,blWidth,x0=0,y0=0)
+    dot = Basic.createCircle(dDot,x0PT,y0PT)
+    biasLine = Polygon.new(Box.new(x0PT-blLength,-blWidth/2.0,x0PT,blWidth/2.0)) 
+    biasBase = Merge.polyVector([dot,biasLine])
     
     dy = 5e2
-    
-    # some mathematics
-    
-    alpha = Math.asin((blWidth/2.0+dy)/(dVia/2.0))
+        
+    alpha = Math.asin((blWidth/2.0+dy)/(dDot/2.0))
     rTrans = dy/(1.0-Math.sin(alpha))
     dx = Math.cos(alpha)*rTrans
     
-    upperPoly = Polygon.new(Box.new(x0PT-Math.cos(alpha)*(dVia/2.0)-dx,y0,x0PT-Math.cos(alpha),y0+(blWidth/2.0)+dy))  
-    lowerPoly = Polygon.new(Box.new(x0PT-Math.cos(alpha)*(dVia/2.0)-dx,y0,x0PT-Math.cos(alpha),y0-(blWidth/2.0)-dy)) 
+    upperPoly = Polygon.new(Box.new(x0PT-Math.cos(alpha)*(dDot/2.0)-dx,y0,x0PT-Math.cos(alpha),y0+(blWidth/2.0)+dy))  
+    lowerPoly = Polygon.new(Box.new(x0PT-Math.cos(alpha)*(dDot/2.0)-dx,y0,x0PT-Math.cos(alpha),y0-(blWidth/2.0)-dy)) 
   
-    upperCirc = Basic.createCircle(2*rTrans,x0PT-Math.cos(alpha)*(dVia/2.0)-dx,(blWidth/2.0)+rTrans,40)
-    lowerCirc = Basic.createCircle(2*rTrans,x0PT-Math.cos(alpha)*(dVia/2.0)-dx,-(blWidth/2.0)-rTrans,40)
+    upperCirc = Basic.createCircle(2*rTrans,x0PT-Math.cos(alpha)*(dDot/2.0)-dx,(blWidth/2.0)+rTrans,40)
+    lowerCirc = Basic.createCircle(2*rTrans,x0PT-Math.cos(alpha)*(dDot/2.0)-dx,-(blWidth/2.0)-rTrans,40)
   
     biasTmp = Merge.polyVector([lowerPoly,biasBase,upperPoly])
-    biasTmp2 = Merge.polyVector([upperCirc,biasTmp,lowerCirc])  
-    
+    biasTmp2 = Merge.polyVector([upperCirc,biasTmp,lowerCirc])    
     biasTmp3 = Cut.polyVector([upperCirc,biasTmp2,lowerCirc])
 
-    distX = 3e3
-    distY = 3e3
+    distY = 35e3
 
-    globalBiasLine = Polygon.new(Box.new(-x/2.0-distX,-y/2.0-distY,-x/2.0,y/2.0+distY))
+    globalBiasLine = Polygon.new(Box.new(x0PT-blLength-blWidth,-y/2.0-distY,x0PT-blLength,y/2.0+distY))
+    biasTmp4 = Merge.polyVector([biasTmp3,globalBiasLine])
+  
+    rTrans = 13e2
     
-    bias = Merge.polyVector([biasTmp3,globalBiasLine])
+    upperPoly = Polygon.new(Box.new(x0PT-blLength,blWidth/2.0,x0PT-blLength+rTrans,blWidth/2.0+rTrans))
+    lowerPoly = Polygon.new(Box.new(x0PT-blLength,-blWidth/2.0,x0PT-blLength+rTrans,-blWidth/2.0-rTrans))
     
+    upperCirc = Basic.createCircle(2*rTrans,x0PT-blLength+rTrans,blWidth/2.0+rTrans)
+    lowerCirc = Basic.createCircle(2*rTrans,x0PT-blLength+rTrans,-blWidth/2.0-rTrans)
+    
+    biasTmp = Merge.polyVector([lowerPoly,biasTmp4,upperPoly])
+    biasTmp2 = Merge.polyVector([upperCirc,biasTmp,lowerCirc])    
+    bias = Cut.polyVector([upperCirc,biasTmp2,lowerCirc])
+      
     $Cell.shapes(layer).insert(bias)
   end
 
@@ -124,7 +130,6 @@ module Pixel
     
     pStop = Basic.createCircRing(dIn,dOut,x0PT,y0PT)    
     $Cell.shapes(layer).insert(pStop) 
-    
   end
 
   
@@ -201,8 +206,8 @@ module Pixel
   # @return [Nill]
 
   def Pixel.createBumpPad(layer,dia,x0=0,y0=0)
-    bump = Basic.createOctagon(dia,x0,y0)
-    
+
+    bump = Basic.createOctagon(dia,x0,y0)    
     $Cell.shapes(layer).insert(bump)
   end
 
@@ -252,9 +257,7 @@ module Pixel
     pStop = Merge.polyVector([ringOpen,endCirc1,endCirc2])
     pStop.move(x0,y0)
     
-    $Cell.shapes(layer).insert(pStop)
-   
+    $Cell.shapes(layer).insert(pStop)  
   end
-
-
+  
 end

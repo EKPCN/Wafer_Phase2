@@ -83,11 +83,11 @@ module Basic
   end
 
   def Basic.createCircRing(dIn,dOut,x0=0,y0=0)
-    outerRing = Polygon.new(Box.new(-dOut/2,-dOut/2,dOut/2,dOut/2))
-    innerRing = Polygon.new(Box.new(-dIn/2,-dIn/2,dIn/2,dIn/2))
+    outerRing = Polygon.new(Box.new(-dOut/2.0,-dOut/2.0,dOut/2.0,dOut/2.0))
+    innerRing = Polygon.new(Box.new(-dIn/2.0,-dIn/2.0,dIn/2.0,dIn/2.0))
     
     ringPoly = Cut.polyVector([outerRing,innerRing])
-    ring = ringPoly.round_corners(rIn,rOut,32)
+    ring = ringPoly.round_corners(dIn/2.0,dOut/2.0,32)
     ring.move(x0,y0)
     
     return ring

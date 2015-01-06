@@ -2,41 +2,44 @@ InnerImplant = {
 
     'sizeX' => 98e3,
     'sizeY' => 48e3,
-    'metalOH' => -1.5e3  
+    'metalOH' => 2e3  
 }
 
 OuterImplant = {
 
     'sizeX' => 248e3,
     'sizeY' => 48e3,
-    'metalOH' => -1.5e3,  
+    'metalOH' => 2e3,  
 }
 
 UpperImplant = {
 
     'sizeX' => 98e3,
     'sizeY' => 148e3,
-    'metalOH' => -1.5e3,  
+    'metalOH' => 2e3,  
 }
 
 CornerImplant = {
 
     'sizeX' => 248e3,
     'sizeY' => 148e3,
-    'metalOH' => -1.5e3,  
+    'metalOH' => 2e3,  
 }
 
 InnerImplantPT = {
 
     'x0' => -25e3, 
     'y0' => 0,
-    'holeDia' => 3e4,
-    'implantDia' => 1e4,
-    'biasLineWidth' => 1e3,
-    'biasLineHoleWidth' => 2e3,
-    'biasDotDia' => 5e3,
+    'holeDia' => 31e3,
+    'implantDia' => 7e3,
+    'biasLineWidth' => 4e3,
+    'biasLineLength' => 46e3,
+    'biasLineHoleWidth' => 10e3,
+    'biasDotDia' => 11e3,
+    'viaDia' => 5e3,
     'pStopRIn' => 15e3,
-    'pStopROut' => 2e4,
+    'pStopROut' => 23e3,
+    
 }
 
 PixelGrid = {

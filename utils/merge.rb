@@ -14,7 +14,7 @@ module Merge
     return endPoly[0]
   end
 
-  # Merge a array of polygons where neigboring polygon entries touch eachother
+  # Merge an array of polygons where neigbouring polygon entries touch eachother
   # @param polyVec [Array<Polygon>] Array of polygons
   # @return [Polygon] Returns the merged polygon
 

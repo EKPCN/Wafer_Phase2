@@ -43,13 +43,13 @@ module CISWafer
   
   # pixel designs
   
-  #fPixFCell=FPixF.create()
+  fPixFCell=FPixF.create()
   fPixFPTCell = FPixFPT.create()
   
   # draw designs on wafer
   
-  #Merge.cells(waferCell,fPixFCell,0,0)
-  Merge.cells(waferCell,fPixFPTCell)
+  Merge.cells(waferCell,fPixFCell)
+  Merge.cells(waferCell,fPixFPTCell,10e6)
   
   # end
   

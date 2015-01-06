@@ -14,7 +14,10 @@ module FPixFPT
     innerPixelCell = $layout.create_cell("InnerPixel")      
     Pixel.init(innerPixelCell)
     Pixel.createPTImplant($layerNp,InnerImplant['sizeX'],InnerImplant['sizeY'],InnerImplantPT['x0'],InnerImplantPT['y0'],InnerImplantPT['holeDia'],InnerImplantPT['implantDia'])
-    Pixel.createPTMetal($layerAlu,InnerImplant['sizeX']+InnerImplant['metalOH'],InnerImplant['sizeY']+InnerImplant['metalOH'],InnerImplantPT['x0'],InnerImplantPT['y0'],InnerImplantPT['holeDia']+InnerImplant['metalOH'],InnerImplantPT['biasLineHoleWidth'])
+    Pixel.createPTMetal($layerAlu,InnerImplant['sizeX']+InnerImplant['metalOH'],InnerImplant['sizeY']+InnerImplant['metalOH'],InnerImplantPT['x0'],InnerImplantPT['y0'],InnerImplantPT['holeDia']-InnerImplant['metalOH'],InnerImplantPT['biasLineHoleWidth'])
+    Pixel.createPTVia($layerAluVia,InnerImplantPT['x0'],InnerImplantPT['y0'],InnerImplantPT['viaDia'])
+    Pixel.createPTBiasLine($layerAlu,InnerImplant['sizeX'],InnerImplant['sizeY'],InnerImplantPT['x0'],InnerImplantPT['y0'],InnerImplantPT['biasDotDia'],InnerImplantPT['biasLineLength'],InnerImplantPT['biasLineWidth'])
+    Pixel.createPTPStop($layerPp,InnerImplantPT['x0'],InnerImplantPT['y0'],InnerImplantPT['pStopRIn'],InnerImplantPT['pStopROut'])
     Pixel.createBumpPad($layerAlu,BumpPad['dia'],25e3)
     Pixel.createPStop($layerPp, InnerImplant['sizeX']+2*InnerPStop['distX'], InnerImplant['sizeY']+2*InnerPStop['distY'], InnerPStop['width'], InnerPStop['rOut'] , InnerPStop['rIn'], InnerPStop['openX0'], InnerPStop['openY0'], InnerPStop['openWidth'],true)
     
