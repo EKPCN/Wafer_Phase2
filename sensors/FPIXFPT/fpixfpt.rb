@@ -23,8 +23,11 @@ module FPixFPT
     
     outerPixelCell = $layout.create_cell("OuterPixel")
     Pixel.init(outerPixelCell)
-    Pixel.createImplant($layerNp,OuterImplant['sizeX'],OuterImplant['sizeY'],$layerAlu,OuterImplant['metalOH'])
-    Pixel.createVia($layerAluVia,Via['sizeX'],Via['sizeY'],100e3)
+    Pixel.createPTImplant($layerNp,OuterImplant['sizeX'],OuterImplant['sizeY'],OuterImplantPT['x0'],OuterImplantPT['y0'],OuterImplantPT['holeDia'],OuterImplantPT['implantDia'])
+    Pixel.createPTMetal($layerAlu,OuterImplant['sizeX']+OuterImplant['metalOH'],OuterImplant['sizeY']+OuterImplant['metalOH'],OuterImplantPT['x0'],OuterImplantPT['y0'],OuterImplantPT['holeDia']-OuterImplant['metalOH'],OuterImplantPT['biasLineHoleWidth'])
+    Pixel.createPTVia($layerAluVia,OuterImplantPT['x0'],OuterImplantPT['y0'],OuterImplantPT['viaDia'])
+    Pixel.createPTBiasLine($layerAlu,OuterImplant['sizeX'],OuterImplant['sizeY'],OuterImplantPT['x0'],OuterImplantPT['y0'],OuterImplantPT['biasDotDia'],OuterImplantPT['biasLineLength'],OuterImplantPT['biasLineWidth'])
+    Pixel.createPTPStop($layerPp,OuterImplantPT['x0'],OuterImplantPT['y0'],OuterImplantPT['pStopRIn'],OuterImplantPT['pStopROut'])
     Pixel.createBumpPad($layerAlu,BumpPad['dia'],50e3)
     Pixel.createPStop($layerPp, OuterImplant['sizeX']+2*OuterPStop['distX'], OuterImplant['sizeY']+2*OuterPStop['distY'], OuterPStop['width'], OuterPStop['rOut'] , OuterPStop['rIn'], OuterPStop['openX0'], OuterPStop['openY0'], OuterPStop['openWidth'],true)
 

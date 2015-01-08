@@ -42,6 +42,22 @@ InnerImplantPT = {
     
 }
 
+OuterImplantPT = {
+
+    'x0' => 100e3, 
+    'y0' => 0,
+    'holeDia' => 31e3,
+    'implantDia' => 7e3,
+    'biasLineWidth' => 4e3,
+    'biasLineLength' => 46e3,
+    'biasLineHoleWidth' => 10e3,
+    'biasDotDia' => 11e3,
+    'viaDia' => 5e3,
+    'pStopRIn' => 15e3,
+    'pStopROut' => 23e3,
+    
+}
+
 PixelGrid = {
 
     'sizeX' => 8100e3,
