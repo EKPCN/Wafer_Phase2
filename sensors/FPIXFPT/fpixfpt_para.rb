@@ -58,6 +58,38 @@ OuterImplantPT = {
     
 }
 
+UpperImplantPT = {
+
+    'x0' => -25e3, 
+    'y0' => -50e3,
+    'holeDia' => 31e3,
+    'implantDia' => 7e3,
+    'biasLineWidth' => 4e3,
+    'biasLineLength' => 46e3,
+    'biasLineHoleWidth' => 10e3,
+    'biasDotDia' => 11e3,
+    'viaDia' => 5e3,
+    'pStopRIn' => 15e3,
+    'pStopROut' => 23e3,
+    
+}
+
+CornerImplantPT = {
+
+    'x0' => 100e3, 
+    'y0' => -50e3,
+    'holeDia' => 31e3,
+    'implantDia' => 7e3,
+    'biasLineWidth' => 4e3,
+    'biasLineLength' => 46e3,
+    'biasLineHoleWidth' => 10e3,
+    'biasDotDia' => 11e3,
+    'viaDia' => 5e3,
+    'pStopRIn' => 15e3,
+    'pStopROut' => 23e3,
+    
+}
+
 PixelGrid = {
 
     'sizeX' => 8100e3,
@@ -123,9 +155,9 @@ OuterPStop = {
     'width' => 8e3,
     'rIn' => 4e3,
     'rOut' => 12.5e3,
-    'openX0' => 61e3,
-    'openY0' => 36e3,
-    'openWidth' => 28e3, 
+    'openX0' => 0,
+    'openY0' => 0,
+    'openWidth' => 0, 
 }
 
 UpperPStop = {
@@ -135,9 +167,9 @@ UpperPStop = {
     'width' => 8e3,
     'rIn' => 4e3,
     'rOut' => 12.5e3,
-    'openX0' => 61e3,
-    'openY0' => -39e3,
-    'openWidth' => 28e3,
+    'openX0' => 0,
+    'openY0' => 0,
+    'openWidth' => 0,
 }
 
 CornerPStop = {
@@ -147,9 +179,9 @@ CornerPStop = {
     'width' => 8e3,
     'rIn' => 4e3,
     'rOut' => 12.5e3,
-    'openX0' => -89e3,
-    'openY0' => -94e3,
-    'openWidth' => 28e3,
+    'openX0' => 0,
+    'openY0' => 0,
+    'openWidth' => 0,
 }
 
 Via = {

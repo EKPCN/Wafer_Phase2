@@ -53,9 +53,9 @@ module Pixel
     implantPoly = Polygon.new(Box.new(-x/2,-y/2,x/2,y/2))
     
     if x0PT < 0
-      biasLineHole = Polygon.new(Box.new(-x/2,-blHoleWidth/2,x0PT-d/2,blHoleWidth/2))
+      biasLineHole = Polygon.new(Box.new(-x/2,y0PT-blHoleWidth/2,x0PT-d/2,y0PT+blHoleWidth/2))
     else
-      biasLineHole = Polygon.new(Box.new(x0PT+d/2,-blHoleWidth/2,x/2,blHoleWidth/2))
+      biasLineHole = Polygon.new(Box.new(x0PT+d/2,y0PT-blHoleWidth/2,x/2,y0PT+blHoleWidth/2))
     end
     
     ptHole = Basic.createCircle(d,x0PT,y0PT,40)
@@ -74,15 +74,15 @@ module Pixel
     # cuts
     
     if x0PT < 0
-      upperCutPoly = Polygon.new(Box.new(x0PT-Math.cos(alpha)*(d/2.0)-dx,y0,x0PT-Math.cos(alpha)*(d/2),y0+(blHoleWidth/2.0)+dy))  
-      lowerCutPoly = Polygon.new(Box.new(x0PT-Math.cos(alpha)*(d/2.0)-dx,y0,x0PT-Math.cos(alpha)*(d/2),y0-(blHoleWidth/2.0)-dy))       
-      upperCirc = Basic.createCircle(2*rTrans,x0PT-Math.cos(alpha)*(d/2.0)-dx,(blHoleWidth/2.0)+rTrans,40)
-      lowerCirc = Basic.createCircle(2*rTrans,x0PT-Math.cos(alpha)*(d/2.0)-dx,-(blHoleWidth/2.0)-rTrans,40)
+      upperCutPoly = Polygon.new(Box.new(x0PT-Math.cos(alpha)*(d/2.0)-dx,y0PT,x0PT-Math.cos(alpha)*(d/2),y0PT+(blHoleWidth/2.0)+dy))  
+      lowerCutPoly = Polygon.new(Box.new(x0PT-Math.cos(alpha)*(d/2.0)-dx,y0PT,x0PT-Math.cos(alpha)*(d/2),y0PT-(blHoleWidth/2.0)-dy))       
+      upperCirc = Basic.createCircle(2*rTrans,x0PT-Math.cos(alpha)*(d/2.0)-dx,y0PT+(blHoleWidth/2.0)+rTrans,40)
+      lowerCirc = Basic.createCircle(2*rTrans,x0PT-Math.cos(alpha)*(d/2.0)-dx,y0PT-(blHoleWidth/2.0)-rTrans,40)
     else
-      upperCutPoly = Polygon.new(Box.new(x0PT+Math.cos(alpha)*(d/2.0),y0,x0PT+Math.cos(alpha)*(d/2)+dx,y0+(blHoleWidth/2.0)+dy))  
-      lowerCutPoly = Polygon.new(Box.new(x0PT-Math.cos(alpha)*(d/2.0),y0,x0PT+Math.cos(alpha)*(d/2)+dx,y0-(blHoleWidth/2.0)-dy))       
-      upperCirc = Basic.createCircle(2*rTrans,x0PT+Math.cos(alpha)*(d/2.0)+dx,(blHoleWidth/2.0)+rTrans,40)
-      lowerCirc = Basic.createCircle(2*rTrans,x0PT+Math.cos(alpha)*(d/2.0)+dx,-(blHoleWidth/2.0)-rTrans,40)
+      upperCutPoly = Polygon.new(Box.new(x0PT+Math.cos(alpha)*(d/2.0),y0PT,x0PT+Math.cos(alpha)*(d/2)+dx,y0PT+(blHoleWidth/2.0)+dy))  
+      lowerCutPoly = Polygon.new(Box.new(x0PT-Math.cos(alpha)*(d/2.0),y0PT,x0PT+Math.cos(alpha)*(d/2)+dx,y0PT-(blHoleWidth/2.0)-dy))       
+      upperCirc = Basic.createCircle(2*rTrans,x0PT+Math.cos(alpha)*(d/2.0)+dx,y0PT+(blHoleWidth/2.0)+rTrans,40)
+      lowerCirc = Basic.createCircle(2*rTrans,x0PT+Math.cos(alpha)*(d/2.0)+dx,y0PT-(blHoleWidth/2.0)-rTrans,40)
     end
     
     tmp = Merge.polyVector([lowerCutPoly,implantBLPT,upperCutPoly])
@@ -99,9 +99,9 @@ module Pixel
     dot = Basic.createCircle(dDot,x0PT,y0PT)
     
     if x0PT < 0
-      biasLine = Polygon.new(Box.new(x0PT-blLength,-blWidth/2.0,x0PT,blWidth/2.0)) 
+      biasLine = Polygon.new(Box.new(x0PT-blLength,y0PT-blWidth/2.0,x0PT,y0PT+blWidth/2.0)) 
     else
-      biasLine = Polygon.new(Box.new(x0PT,-blWidth/2.0,x0PT+blLength,blWidth/2.0)) 
+      biasLine = Polygon.new(Box.new(x0PT,y0PT-blWidth/2.0,x0PT+blLength,y0PT+blWidth/2.0)) 
     end
     biasBase = Merge.polyVector([dot,biasLine])
     
@@ -112,15 +112,15 @@ module Pixel
     dx = Math.cos(alpha)*rTrans
     
     if x0PT < 0
-      upperPoly = Polygon.new(Box.new(x0PT-Math.cos(alpha)*(dDot/2.0)-dx,y0,x0PT-Math.cos(alpha)*(dDot/2.0),y0+(blWidth/2.0)+dy))  
-      lowerPoly = Polygon.new(Box.new(x0PT-Math.cos(alpha)*(dDot/2.0)-dx,y0,x0PT-Math.cos(alpha)*(dDot/2.0),y0-(blWidth/2.0)-dy)) 
-      upperCirc = Basic.createCircle(2*rTrans,x0PT-Math.cos(alpha)*(dDot/2.0)-dx,(blWidth/2.0)+rTrans,40)
-      lowerCirc = Basic.createCircle(2*rTrans,x0PT-Math.cos(alpha)*(dDot/2.0)-dx,-(blWidth/2.0)-rTrans,40)
+      upperPoly = Polygon.new(Box.new(x0PT-Math.cos(alpha)*(dDot/2.0)-dx,y0PT,x0PT-Math.cos(alpha)*(dDot/2.0),y0PT+(blWidth/2.0)+dy))  
+      lowerPoly = Polygon.new(Box.new(x0PT-Math.cos(alpha)*(dDot/2.0)-dx,y0PT,x0PT-Math.cos(alpha)*(dDot/2.0),y0PT-(blWidth/2.0)-dy)) 
+      upperCirc = Basic.createCircle(2*rTrans,x0PT-Math.cos(alpha)*(dDot/2.0)-dx,y0PT+(blWidth/2.0)+rTrans,40)
+      lowerCirc = Basic.createCircle(2*rTrans,x0PT-Math.cos(alpha)*(dDot/2.0)-dx,y0PT-(blWidth/2.0)-rTrans,40)
     else
-      upperPoly = Polygon.new(Box.new(x0PT+Math.cos(alpha)*(dDot/2.0),y0,x0PT+Math.cos(alpha)*(dDot/2.0)+dx,y0+(blWidth/2.0)+dy))  
-      lowerPoly = Polygon.new(Box.new(x0PT+Math.cos(alpha)*(dDot/2.0),y0,x0PT+Math.cos(alpha)*(dDot/2.0)+dx,y0-(blWidth/2.0)-dy)) 
-      upperCirc = Basic.createCircle(2*rTrans,x0PT+Math.cos(alpha)*(dDot/2.0)+dx,(blWidth/2.0)+rTrans,40)
-      lowerCirc = Basic.createCircle(2*rTrans,x0PT+Math.cos(alpha)*(dDot/2.0)+dx,-(blWidth/2.0)-rTrans,40)
+      upperPoly = Polygon.new(Box.new(x0PT+Math.cos(alpha)*(dDot/2.0),y0PT,x0PT+Math.cos(alpha)*(dDot/2.0)+dx,y0PT+(blWidth/2.0)+dy))  
+      lowerPoly = Polygon.new(Box.new(x0PT+Math.cos(alpha)*(dDot/2.0),y0PT,x0PT+Math.cos(alpha)*(dDot/2.0)+dx,y0PT-(blWidth/2.0)-dy)) 
+      upperCirc = Basic.createCircle(2*rTrans,x0PT+Math.cos(alpha)*(dDot/2.0)+dx,y0PT+(blWidth/2.0)+rTrans,40)
+      lowerCirc = Basic.createCircle(2*rTrans,x0PT+Math.cos(alpha)*(dDot/2.0)+dx,y0PT-(blWidth/2.0)-rTrans,40)
     end
     
     biasTmp = Merge.polyVector([lowerPoly,biasBase,upperPoly])
@@ -140,15 +140,15 @@ module Pixel
     rTrans = 13e2
     
     if x0PT < 0
-      upperPoly = Polygon.new(Box.new(x0PT-blLength,blWidth/2.0,x0PT-blLength+rTrans,blWidth/2.0+rTrans))
-      lowerPoly = Polygon.new(Box.new(x0PT-blLength,-blWidth/2.0,x0PT-blLength+rTrans,-blWidth/2.0-rTrans))
-      upperCirc = Basic.createCircle(2*rTrans,x0PT-blLength+rTrans,blWidth/2.0+rTrans)
-      lowerCirc = Basic.createCircle(2*rTrans,x0PT-blLength+rTrans,-blWidth/2.0-rTrans)
+      upperPoly = Polygon.new(Box.new(x0PT-blLength,y0PT+blWidth/2.0,x0PT-blLength+rTrans,y0PT+blWidth/2.0+rTrans))
+      lowerPoly = Polygon.new(Box.new(x0PT-blLength,y0PT-blWidth/2.0,x0PT-blLength+rTrans,y0PT-blWidth/2.0-rTrans))
+      upperCirc = Basic.createCircle(2*rTrans,x0PT-blLength+rTrans,y0PT+blWidth/2.0+rTrans)
+      lowerCirc = Basic.createCircle(2*rTrans,x0PT-blLength+rTrans,y0PT-blWidth/2.0-rTrans)
     else
-      upperPoly = Polygon.new(Box.new(x0PT+blLength,blWidth/2.0,x0PT+blLength-rTrans,blWidth/2.0+rTrans))
-      lowerPoly = Polygon.new(Box.new(x0PT+blLength,-blWidth/2.0,x0PT+blLength-rTrans,-blWidth/2.0-rTrans))
-      upperCirc = Basic.createCircle(2*rTrans,x0PT+blLength-rTrans,blWidth/2.0+rTrans)
-      lowerCirc = Basic.createCircle(2*rTrans,x0PT+blLength-rTrans,-blWidth/2.0-rTrans)
+      upperPoly = Polygon.new(Box.new(x0PT+blLength,y0PT+blWidth/2.0,x0PT+blLength-rTrans,y0PT+blWidth/2.0+rTrans))
+      lowerPoly = Polygon.new(Box.new(x0PT+blLength,y0PT-blWidth/2.0,x0PT+blLength-rTrans,y0PT-blWidth/2.0-rTrans))
+      upperCirc = Basic.createCircle(2*rTrans,x0PT+blLength-rTrans,y0PT+blWidth/2.0+rTrans)
+      lowerCirc = Basic.createCircle(2*rTrans,x0PT+blLength-rTrans,y0PT-blWidth/2.0-rTrans)
     end
     biasTmp = Merge.polyVector([lowerPoly,biasTmp4,upperPoly])
     biasTmp2 = Merge.polyVector([upperCirc,biasTmp,lowerCirc])    
