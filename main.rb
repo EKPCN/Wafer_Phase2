@@ -8,12 +8,12 @@ module CISWafer
   load "Wafer_Phase2/structures/periphery.rb"
   load "Wafer_Phase2/utils/merge.rb"
   load "Wafer_Phase2/utils/cut.rb"
-
+  
   # sensors
 
   load "Wafer_Phase2/sensors/FPIXF/fpixf.rb"
   load "Wafer_Phase2/sensors/FPIXFPT/fpixfpt.rb"
-   
+  load "Wafer_Phase2/sensors/Roc4Sense_1/roc4sense_1.rb"
   # create mainWindow and layout
   
   mw = Application.instance.main_window
@@ -45,12 +45,12 @@ module CISWafer
   
   fPixFCell=FPixF.create()
   fPixFPTCell = FPixFPT.create()
-  
+  roc4Sense1 = Roc4Sense1.create()
   # draw designs on wafer
   
   Merge.cells(waferCell,fPixFCell)
   Merge.cells(waferCell,fPixFPTCell,10e6)
-  
+  Merge.cells(waferCell,roc4Sense1,20e6)
   # end
   
   layoutView.select_cell(waferCell.cell_index, 0)

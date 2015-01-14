@@ -18,9 +18,9 @@ module Pixel
   # @param y0 [int] Y postion of the center of the implant
   # return [Nill]
 
-  def Pixel.createImplant(layer,x,y,layerM=nil,metalOH=0,x0=0,y0=0)
-    implant = Basic.createRoundBox(x,y,x0,y0)
-    metal = Basic.createRoundBox(x+2*metalOH, y+2*metalOH, x0, y0)
+  def Pixel.createImplant(layer,x,y,layerM=nil,metalOH=0,x0=0,y0=0,r=5000)
+    implant = Basic.createRoundBox(x,y,x0,y0,r)
+    metal = Basic.createRoundBox(x+2*metalOH, y+2*metalOH, x0, y0, r)
     $Cell.shapes(layer).insert(implant)
     $Cell.shapes(layerM).insert(metal)
   end
