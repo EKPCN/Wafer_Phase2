@@ -13,7 +13,12 @@ module CISWafer
 
   load "Wafer_Phase2/sensors/FPIXF/fpixf.rb"
   load "Wafer_Phase2/sensors/FPIXFPT/fpixfpt.rb"
-  load "Wafer_Phase2/sensors/Roc4Sense_1/roc4sense_1.rb"
+  load "Wafer_Phase2/sensors/Roc4Sens50x50/roc4sens50x50.rb"
+  load "Wafer_Phase2/sensors/Roc4Sens50x50staggered/roc4sens50x50s.rb" 
+  load "Wafer_Phase2/sensors/Roc4Sens50x50staggered_2/roc4sens50x50s2.rb"     
+  load "Wafer_Phase2/sensors/Roc4Sens100x25/roc4sens100x25.rb"
+  
+  
   # create mainWindow and layout
   
   mw = Application.instance.main_window
@@ -43,14 +48,24 @@ module CISWafer
   
   # pixel designs
   
-  fPixFCell=FPixF.create()
+  fPixFCell = FPixF.create()
   fPixFPTCell = FPixFPT.create()
-  roc4Sense1 = Roc4Sense1.create()
+  roc4Sens50x50 = Roc4Sens50x50.create()
+  roc4Sens100x25 = Roc4Sens100x25.create()  
+  roc4Sens50x50staggered = Roc4Sens50x50s.create()
+  roc4Sens50x50staggered2 = Roc4Sens50x50s2.create()
+  
   # draw designs on wafer
   
   Merge.cells(waferCell,fPixFCell)
-  Merge.cells(waferCell,fPixFPTCell,10e6)
-  Merge.cells(waferCell,roc4Sense1,20e6)
+  Merge.cells(waferCell,fPixFPTCell,10e6)  
+  
+  Merge.cells(waferCell,roc4Sens50x50,0,10e6)
+  Merge.cells(waferCell,roc4Sens50x50staggered,10e6,10e6)
+  Merge.cells(waferCell,roc4Sens50x50staggered2,20e6,10e6)
+  
+  Merge.cells(waferCell,roc4Sens100x25,0,20e6)
+  
   # end
   
   layoutView.select_cell(waferCell.cell_index, 0)
