@@ -2,7 +2,7 @@ module Roc4Sens50x50
   
   include RBA
 
-  # Creates the FPIXF sensor
+  # Creates a sensor with an regular pitch of 50x50 µm² for the roc4sens pattern
   # @return [cell] Returns the cell with all structures
 
   def Roc4Sens50x50.create()

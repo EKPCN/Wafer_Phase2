@@ -2,7 +2,7 @@ module Roc4Sens100x25
   
   include RBA
 
-  # Creates a sensor with a pitch of 25x100 µm with roc4sens pattern
+  # Creates a sensor with a pitch of 25x100 µm² for the roc4sens pattern
   # @return [cell] Returns the cell with all structures
 
   def Roc4Sens100x25.create()

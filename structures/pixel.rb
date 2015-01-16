@@ -47,6 +47,16 @@ module Pixel
       
   end
   
+  # Creates the punch through metal 
+  # @param layer [layer] Used material
+  # @param x [int] Size in x direction
+  # @param y [int] Size in y direction
+  # @param x0PT [int] x position of PT
+  # @param y0PT [int] y position of PT
+  # @param d [int] diameter of PT hole
+  # @param blHoleWidth [int] Width of the cut in the metal layer for the bias line
+  # @param x0 [int] center of the implant
+  # @param y0 [int] center of the implant
   
   def Pixel.createPTMetal(layer,x,y,x0PT,y0PT,d,blHoleWidth,x0=0,y0=0)
 
@@ -93,6 +103,17 @@ module Pixel
     $Cell.shapes(layer).insert(implant)
   end
   
+  # Creates the bias structure for the punch throughs
+  # @param layer [layer] Used material
+  # @param x [int] Size in x direction
+  # @param y [int] Size in y direction
+  # @param x0PT [int] x position of PT
+  # @param y0PT [int] y position of PT
+  # @param dDot [int] Diameter of PT connection dot
+  # @param blLength [int] Length of the bias line
+  # @param blWidth [int] Width of the bias line 
+  # @param x0 [int] center of the implant
+  # @param y0 [int] center of the implant
   
   def Pixel.createPTBiasLine(layer,x,y,x0PT,y0PT,dDot,blLength,blWidth,x0=0,y0=0)
   
@@ -157,6 +178,12 @@ module Pixel
     $Cell.shapes(layer).insert(bias)
   end
 
+  # Creates the pstop ring in the punch through bias scheme
+  # @param layer [layer] Material
+  # @param x0PT [int] X Position of the punch through center
+  # @param y0PT [int] Y Position of the punch through center
+  # @param dIn [int] Inner diameter of the pstop ring
+  # @param dOut [int] Outer diameter of the pstop ring
   
   def Pixel.createPTPStop(layer, x0PT, y0PT, dIn, dOut)
     
@@ -164,7 +191,13 @@ module Pixel
     $Cell.shapes(layer).insert(pStop) 
   end
 
-  
+
+  # Creates the via in the punch through bias scheme
+  # @param layer [layer] Material
+  # @param x0PT [int] X Position of the punch through center
+  # @param y0PT [int] Y Position of the punch through center
+  # @param d [int] Diameter of the via
+
   def Pixel.createPTVia(layer, x0PT, y0PT, d)
 
     via = Basic.createCircle(d,x0PT,y0PT)
