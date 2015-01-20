@@ -17,7 +17,8 @@ module CISWafer
   load "Wafer_Phase2/sensors/Roc4Sens50x50staggered/roc4sens50x50s.rb" 
   load "Wafer_Phase2/sensors/Roc4Sens50x50staggered_2/roc4sens50x50s2.rb"     
   load "Wafer_Phase2/sensors/Roc4Sens100x25/roc4sens100x25.rb"
-  
+  load "Wafer_Phase2/sensors/Roc4Sens100x25s/roc4sens100x25s.rb"  
+  load "Wafer_Phase2/sensors/Roc4Sens100x25s2/roc4sens100x25s2.rb"    
   
   # create mainWindow and layout
   
@@ -52,6 +53,8 @@ module CISWafer
   fPixFPTCell = FPixFPT.create()
   roc4Sens50x50 = Roc4Sens50x50.create()
   roc4Sens100x25 = Roc4Sens100x25.create()  
+  roc4Sens100x25s = Roc4Sens100x25s.create()
+  roc4Sens100x25s2 = Roc4Sens100x25s2.create()
   roc4Sens50x50staggered = Roc4Sens50x50s.create()
   roc4Sens50x50staggered2 = Roc4Sens50x50s2.create()
   
@@ -65,7 +68,8 @@ module CISWafer
   Merge.cells(waferCell,roc4Sens50x50staggered2,20e6,10e6)
   
   Merge.cells(waferCell,roc4Sens100x25,0,20e6)
-  
+  Merge.cells(waferCell,roc4Sens100x25s,10e6,20e6)
+  Merge.cells(waferCell,roc4Sens100x25s2,20e6,20e6)
   # end
   
   layoutView.select_cell(waferCell.cell_index, 0)
