@@ -6,6 +6,7 @@ include RBA
   # @return [Polygon] Returns the final polygon
 
   def Cut.polyVector(polyVec)
+  
     edgeProc = EdgeProcessor.new
     poly = Array.new(1,polyVec[0])
            

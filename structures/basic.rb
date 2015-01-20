@@ -74,20 +74,34 @@ module Basic
     return ring
   end
 
-  def Basic.createCircle(d,x0=0,y0=0)
+  # Creates a circle
+  # @param d [int] Diameter of the circle
+  # @param x0 [int] Offset in x direction
+  # @param y0 [int] Offset in y direction
+  # @param p [int] Number of points that are used to create the circle
+  # @return [Polygon] The polygon object
+
+  def Basic.createCircle(d,x0=0,y0=0,p=32)
     box = Polygon.new(Box.new(-d/2,-d/2,d/2,d/2))
-    circ = box.round_corners(0,d/2,32)
+    circ = box.round_corners(0,d/2,p)
     circ.move(x0,y0)
     
     return circ
   end
 
+  # Creates a circular ring
+  # @param dIn [int] Inner diameter of the ring
+  # @param dOut [int] Outer diamerter of the ring
+  # @param x0 [int] Offset in x direction
+  # @param y0 [int] Offset in y direction  
+  # @return [Polygon] The polygon object
+  
   def Basic.createCircRing(dIn,dOut,x0=0,y0=0)
-    outerRing = Polygon.new(Box.new(-dOut/2,-dOut/2,dOut/2,dOut/2))
-    innerRing = Polygon.new(Box.new(-dIn/2,-dIn/2,dIn/2,dIn/2))
+    outerRing = Polygon.new(Box.new(-dOut/2.0,-dOut/2.0,dOut/2.0,dOut/2.0))
+    innerRing = Polygon.new(Box.new(-dIn/2.0,-dIn/2.0,dIn/2.0,dIn/2.0))
     
     ringPoly = Cut.polyVector([outerRing,innerRing])
-    ring = ringPoly.round_corners(rIn,rOut,32)
+    ring = ringPoly.round_corners(dIn/2.0,dOut/2.0,32)
     ring.move(x0,y0)
     
     return ring

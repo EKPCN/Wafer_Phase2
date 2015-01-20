@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-properties>
+ <properties>
+  <frame-color>#ff80a8</frame-color>
+  <fill-color>#ff80a8</fill-color>
+  <frame-brightness>0</frame-brightness>
+  <fill-brightness>0</fill-brightness>
+  <dither-pattern>I9</dither-pattern>
+  <valid>true</valid>
+  <visible>true</visible>
+  <transparent>false</transparent>
+  <width>1</width>
+  <marked>false</marked>
+  <animation>0</animation>
+  <name/>
+  <source>'p+' 1/0@1</source>
+ </properties>
+ <properties>
+  <frame-color>#ff80a8</frame-color>
+  <fill-color>#ff80a8</fill-color>
+  <frame-brightness>0</frame-brightness>
+  <fill-brightness>0</fill-brightness>
+  <dither-pattern>I5</dither-pattern>
+  <valid>true</valid>
+  <visible>true</visible>
+  <transparent>false</transparent>
+  <width>1</width>
+  <marked>false</marked>
+  <animation>0</animation>
+  <name/>
+  <source>'p+ e19' 1/1@1</source>
+ </properties>
+ <properties>
+  <frame-color>#c080ff</frame-color>
+  <fill-color>#c080ff</fill-color>
+  <frame-brightness>0</frame-brightness>
+  <fill-brightness>0</fill-brightness>
+  <dither-pattern>I9</dither-pattern>
+  <valid>true</valid>
+  <visible>true</visible>
+  <transparent>false</transparent>
+  <width>1</width>
+  <marked>false</marked>
+  <animation>0</animation>
+  <name/>
+  <source>'n+' 2/0@1</source>
+ </properties>
+ <properties>
+  <frame-color>#9580ff</frame-color>
+  <fill-color>#9580ff</fill-color>
+  <frame-brightness>0</frame-brightness>
+  <fill-brightness>0</fill-brightness>
+  <dither-pattern>I5</dither-pattern>
+  <valid>true</valid>
+  <visible>true</visible>
+  <transparent>false</transparent>
+  <width>1</width>
+  <marked>false</marked>
+  <animation>0</animation>
+  <name/>
+  <source>Alu 3/0@1</source>
+ </properties>
+ <properties>
+  <frame-color>#8086ff</frame-color>
+  <fill-color>#8086ff</fill-color>
+  <frame-brightness>0</frame-brightness>
+  <fill-brightness>0</fill-brightness>
+  <dither-pattern>I9</dither-pattern>
+  <valid>true</valid>
+  <visible>true</visible>
+  <transparent>false</transparent>
+  <width>1</width>
+  <marked>false</marked>
+  <animation>0</animation>
+  <name/>
+  <source>'Alu via' 4/0@1</source>
+ </properties>
+ <properties>
+  <frame-color>#8086ff</frame-color>
+  <fill-color>#8086ff</fill-color>
+  <frame-brightness>0</frame-brightness>
+  <fill-brightness>0</fill-brightness>
+  <dither-pattern>I5</dither-pattern>
+  <valid>true</valid>
+  <visible>true</visible>
+  <transparent>false</transparent>
+  <width>1</width>
+  <marked>false</marked>
+  <animation>0</animation>
+  <name/>
+  <source>'p substrate' 40/0@1</source>
+ </properties>
+ <name/>
+</layer-properties>
