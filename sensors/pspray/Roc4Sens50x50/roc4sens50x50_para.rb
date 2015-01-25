@@ -28,18 +28,6 @@ InnerPixelGrid = {
     'dY' => 50e3 
 }
 
-InnerPStop = {
-
-    'distX' => 5e3,
-    'distY' => 5e3,
-    'width' => 3e3,
-    'rIn' => 4e3,
-    'rOut' => 7e3,
-    'openX0' => 0,
-    'openY0' => 0,
-    'openWidth' => 0,
-}
-
 Via = {
 
     'sizeX' => 3e3,
@@ -48,7 +36,7 @@ Via = {
 
 BumpPad = {
 
-    'dia' => 2e3   
+    'dia' => 10e3   
 }
 
 BiasRing = {

@@ -43,33 +43,59 @@ module CISWafer
   # pStop
   
   load "Wafer_Phase2/sensors/pstop/sensorList.rb"
+  
 
+  #final
+
+  Merge.cells(waferCell,Roc4Sens50x50.create(),5e6,0)
+  Merge.cells(waferCell,Roc4Sens50x50wide.create(),15e6,0)
+  Merge.cells(waferCell,Roc4Sens50x50b.create(),25e6,0)
+  Merge.cells(waferCell,Roc4Sens50x50bwide.create(),35e6,0)
+  
+  Merge.cells(waferCell,FPixF.create(),5e6,30e6)
+  Merge.cells(waferCell,FPixFPT.create(),15e6,30e6)   
+
+
+  
 =begin
-  Merge.cells(waferCell,FPixF.create())
-  Merge.cells(waferCell,FPixFPT.create(),10e6)  
+
   
   Merge.cells(waferCell,Roc4Sens50x50.create(),0,10e6)
   Merge.cells(waferCell,Roc4Sens50x50staggered.create(),10e6,10e6)
   Merge.cells(waferCell,Roc4Sens50x50staggered2.create(),20e6,10e6)
-=end
-  
+
   Merge.cells(waferCell,Roc4Sens100x25.create(),5e6)
   Merge.cells(waferCell,Roc4Sens100x25wide.create(),15e6)
-=begin
+
   Merge.cells(waferCell,Roc4Sens100x25s.create(),5e6,30e6)
   Merge.cells(waferCell,Roc4Sens100x25s2.create(),10e6,30e6)
 =end
 
+
   # pSpray
 
   load "Wafer_Phase2/sensors/pspray/sensorList.rb"
-  
-  Merge.cells(waferCell,Roc4Sens100x25.create(),-5e6)
-  Merge.cells(waferCell,Roc4Sens100x25wide.create(),-15e6)
-  
-  
+
   
 
+
+  # final layouts
+
+  Merge.cells(waferCell,Roc4Sens50x50.create(),-5e6,0)
+  Merge.cells(waferCell,Roc4Sens50x50wide.create(),-15e6,0)
+  Merge.cells(waferCell,Roc4Sens50x50b.create(),-25e6,0)
+  Merge.cells(waferCell,Roc4Sens50x50bwide.create(),-35e6,0)
+  Merge.cells(waferCell,Roc4Sens50x50bsmall.create(),-45e6,0)
+  
+  Merge.cells(waferCell,Roc4Sens100x25.create(),-5e6,15e6)
+  Merge.cells(waferCell,Roc4Sens100x25wide.create(),-15e6,15e6)
+  Merge.cells(waferCell,Roc4Sens100x25b.create(),-25e6,15e6)
+  Merge.cells(waferCell,Roc4Sens100x25bwide.create(),-35e6,15e6)    
+  
+
+
+
+  
   # end
   layoutView.select_cell(waferCell.cell_index, 0)
   layoutView.max_hier_levels=(waferCell.hierarchy_levels+1)

@@ -9,7 +9,7 @@ module Roc4Sens100x25wide
   
     load "Wafer_Phase2/sensors/pspray/Roc4Sens100x25wide/roc4sens100x25wide_para.rb"
         
-    $roc4Sens100x25wide = $layout.create_cell("Roc4Sens100x25wide")
+    $sensor = $layout.create_cell("Roc4Sens100x25wide")
     
     innerPixelCell = $layout.create_cell("InnerPixel")      
     Pixel.init(innerPixelCell)
@@ -22,14 +22,14 @@ module Roc4Sens100x25wide
     Pixel.createGrid(innerPixelCell,InnerPixelGrid['nX'], InnerPixelGrid['nY'], InnerPixelGrid['dX'], InnerPixelGrid['dY'], -PixelGrid['sizeX']/2+(InnerPixelGrid['sizeX']/2), -PixelGrid['sizeY']/2+(InnerPixelGrid['sizeY']/2))
     Pixel.createGrid(innerPixelCell,InnerPixelGrid['nX'], InnerPixelGrid['nY'], InnerPixelGrid['dX'], InnerPixelGrid['dY'], -PixelGrid['sizeX']/2+(InnerPixelGrid['sizeX']/2), -PixelGrid['sizeY']/2+(3*InnerPixelGrid['sizeY']/2),180)
 
-    Merge.cells($roc4Sens100x25wide, pixelGridCell)
+    Merge.cells($sensor, pixelGridCell)
 
     periCell = $layout.create_cell("Periphery")
     Periphery.init(periCell)
     Periphery.create($layerNp,$layerAlu,$layerPpe19,PixelGrid,BiasRing,GuardRing,PixelEdge)
 
-    Merge.cells($roc4Sens100x25wide, periCell)
+    Merge.cells($sensor, periCell)
 
-    return $roc4Sens100x25wide
+    return $sensor
   end
 end

@@ -7,7 +7,7 @@ module FPixFPT
 
   def FPixFPT.create()
   
-    load "Wafer_Phase2/sensors/FPIXFPT/fpixfpt_para.rb"
+    load "Wafer_Phase2/sensors/pstop/FPIXFPT/fpixfpt_para.rb"
         
     $fPixFCell = $layout.create_cell("FPIXFPT")
     

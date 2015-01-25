@@ -6,8 +6,8 @@ PixelUnitCell = {
 
 InnerImplant = {
 
-    'sizeX' => 23e3,
-    'sizeY' => 23e3,
+    'sizeX' => 30e3,
+    'sizeY' => 30e3,
     'radius' => 4e3,
     'metalOH' => 1e3  
 }

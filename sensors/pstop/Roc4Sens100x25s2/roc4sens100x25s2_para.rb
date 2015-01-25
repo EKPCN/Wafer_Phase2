@@ -9,7 +9,7 @@ InnerImplant = {
     'sizeX' => 86e3,
     'sizeY' => 11e3,
     'radius' => 4e3,
-    'metalOH' => 1e3  
+    'metalOH' => 3e3  
 }
 
 OuterImplant = {

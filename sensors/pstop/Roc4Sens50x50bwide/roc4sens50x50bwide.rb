@@ -1,15 +1,15 @@
-module Roc4Sens50x50s2
+module Roc4Sens50x50bwide
   
   include RBA
 
   # Creates a sensor with a staggered pitch of 50x50 µm² and additional bigger pixels at the edge for the roc4sens pattern
   # @return [cell] Returns the cell with all structures
 
-  def Roc4Sens50x50s2.create()
+  def Roc4Sens50x50bwide.create()
   
-    load "Wafer_Phase2/sensors/Roc4Sens50x50staggered_2/roc4sens50x50s2_para.rb"
+    load "Wafer_Phase2/sensors/pstop/Roc4Sens50x50bwide/roc4sens50x50bwide_para.rb"
         
-    $roc4Sens50x50s2 = $layout.create_cell("Roc4Sens50x50staggered_2")
+    $sensor = $layout.create_cell("Roc4Sens50x50brickedwide")
     
     innerPixelCell = $layout.create_cell("InnerPixel")      
     Pixel.init(innerPixelCell)
@@ -33,14 +33,14 @@ module Roc4Sens50x50s2
     Pixel.createGrid(outerPixelCell,OuterPixelGrid['nX'], OuterPixelGrid['nY'], OuterPixelGrid['dX'], OuterPixelGrid['dY'], -PixelGrid['sizeX']/2+(3*OuterPixelGrid['sizeX']/2), -PixelGrid['sizeY']/2+(OuterPixelGrid['sizeY']/2))
     Pixel.createGrid(outerPixelCell,OuterPixelGrid['nX'], OuterPixelGrid['nY'], OuterPixelGrid['dX'], OuterPixelGrid['dY'], -PixelGrid['sizeX']/2+(OuterPixelGrid['sizeX']/2), PixelGrid['sizeY']/2-OuterPixelGrid['sizeY']/2,180)
     
-    Merge.cells($roc4Sens50x50s2, pixelGridCell)
+    Merge.cells($sensor, pixelGridCell)
 
     periCell = $layout.create_cell("Periphery")
     Periphery.init(periCell)
     Periphery.create($layerNp,$layerAlu,$layerPpe19,PixelGrid,BiasRing,GuardRing,PixelEdge)
 
-    Merge.cells($roc4Sens50x50s2, periCell)
+    Merge.cells($sensor, periCell)
 
-    return $roc4Sens50x50s2
+    return $sensor
   end
 end

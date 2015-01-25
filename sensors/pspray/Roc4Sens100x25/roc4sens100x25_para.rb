@@ -6,7 +6,7 @@ PixelUnitCell = {
 
 InnerImplant = {
 
-    'sizeX' => 80e3,
+    'sizeX' => 85e3,
     'sizeY' => 10e3,
     'radius' => 4e3,
     'metalOH' => 1e3  
@@ -36,7 +36,7 @@ Via = {
 
 BumpPad = {
 
-    'dia' => 8e3   
+    'dia' => 10e3   
 }
 
 BiasRing = {

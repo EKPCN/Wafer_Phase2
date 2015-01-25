@@ -7,7 +7,7 @@ module Roc4Sens50x50
 
   def Roc4Sens50x50.create()
   
-    load "Wafer_Phase2/sensors/Roc4Sens50x50/roc4sens50x50_para.rb"
+    load "Wafer_Phase2/sensors/pstop/Roc4Sens50x50/roc4sens50x50_para.rb"
         
     $roc4Sens50x50 = $layout.create_cell("Roc4Sens50x50")
     
