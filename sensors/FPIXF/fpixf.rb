@@ -10,153 +10,61 @@ module FPixF
     load "Wafer_Phase2/sensors/FPIXF/fpixf_para.rb"
         
     $fPixFCell = $layout.create_cell("FPIXF")
-  
-  
-##### PIXEL #####
-  
-    # innerPixelGrid1
+    
+    innerPixelCell = $layout.create_cell("InnerPixel")      
+    Pixel.init(innerPixelCell)
+    Pixel.createImplant($layerNp,InnerImplant['sizeX'],InnerImplant['sizeY'],$layerAlu,InnerImplant['metalOH'])
+    Pixel.createVia($layerAluVia, Via['sizeX'],Via['sizeY'],-25e3)
+    Pixel.createBumpPad($layerAlu,BumpPad['dia'],25e3)
+    Pixel.createPStop($layerPp, InnerImplant['sizeX']+2*InnerPStop['distX'], InnerImplant['sizeY']+2*InnerPStop['distY'], InnerPStop['width'], InnerPStop['rOut'] , InnerPStop['rIn'], InnerPStop['openX0'], InnerPStop['openY0'], InnerPStop['openWidth'],true)
+    
+    outerPixelCell = $layout.create_cell("OuterPixel")
+    Pixel.init(outerPixelCell)
+    Pixel.createImplant($layerNp,OuterImplant['sizeX'],OuterImplant['sizeY'],$layerAlu,OuterImplant['metalOH'])
+    Pixel.createVia($layerAluVia,Via['sizeX'],Via['sizeY'],100e3)
+    Pixel.createBumpPad($layerAlu,BumpPad['dia'],50e3)
+    Pixel.createPStop($layerPp, OuterImplant['sizeX']+2*OuterPStop['distX'], OuterImplant['sizeY']+2*OuterPStop['distY'], OuterPStop['width'], OuterPStop['rOut'] , OuterPStop['rIn'], OuterPStop['openX0'], OuterPStop['openY0'], OuterPStop['openWidth'],true)
 
-    implants = InnerImplants
-    pixelGrid = InnerPixelGrid
-    pStop = InnerPStop
-    via = Via
-    bumpPad = BumpPad
-    
-    innerPixelCell1 = $layout.create_cell("innerPixelCell1")  
-    Pixel.init(innerPixelCell1)
-    Pixel.createImplant($layerNp,implants['implantSizeX'],implants['implantSizeY'])
-    Pixel.createImplant($layerAlu,implants['implantAluSizeX'],implants['implantAluSizeY'],1500,1500)
-    Pixel.createVia($layerAluVia,via['pixelViaSizeX'],via['pixelViaSizeY'],12000,12000)
-    Pixel.createBumpPad($layerAlu,bumpPad['bumpPadDiameter'],98000-9000-30000,(48000-30000)/2)
-    Pixel.createPStop($layerPp, pStop['pStopSizeX'], pStop['pStopSizeY'], pStop['pStopWidth'], pStop['pStopCornerRout'] , pStop['pStopCornerRin'], pStop['pStopOpenX0'], pStop['pStopOpenY0'], pStop['pStopOpenWidth'],true, -20000, -20000)
-    
-    innerPixelGridCell1 = $layout.create_cell("InnerPixelGrid1")
-    Pixel.init(innerPixelGridCell1)
-    Pixel.createGrid(innerPixelCell1,pixelGrid['pixelGridnX'],pixelGrid['pixelGridnY'],pixelGrid['pixelGriddX'],pixelGrid['pixelGriddY']) 
-    Merge.cells($fPixFCell,innerPixelGridCell1,1336000,1336000)
-     
-    # innerPixelGrid2  
-    
-    innerPixelCell2 = $layout.create_cell("innerPixelCell2")  
-    Pixel.init(innerPixelCell2)
-    Pixel.createImplant($layerNp,implants['implantSizeX'],implants['implantSizeY'])
-    Pixel.createImplant($layerAlu,implants['implantAluSizeX'],implants['implantAluSizeY'],1500,1500)
-    Pixel.createVia($layerAluVia,via['pixelViaSizeX'],via['pixelViaSizeY'],implants['implantSizeX']-12000-via['pixelViaSizeX'],12000)
-    Pixel.createBumpPad($layerAlu,bumpPad['bumpPadDiameter'],9000,(48000-30000)/2)
-    Pixel.createPStop($layerPp, pStop['pStopSizeX'], pStop['pStopSizeY'], pStop['pStopWidth'], pStop['pStopCornerRout'] , pStop['pStopCornerRin'], pStop['pStopOpenX0'], pStop['pStopOpenY0'], pStop['pStopOpenWidth'],true, -20000, -20000)
-    
-    innerPixelGridCell2 = $layout.create_cell("InnerPixelGrid2")
-    Pixel.init(innerPixelGridCell2)
-    Pixel.createGrid(innerPixelCell2,pixelGrid['pixelGridnX'],pixelGrid['pixelGridnY'],pixelGrid['pixelGriddX'],pixelGrid['pixelGriddY']) 
-    Merge.cells($fPixFCell,innerPixelGridCell2,1336000+150000,1336000)    
-
-    # outerPixelGrid1
-
-    implants = OuterImplants
-    pStop = OuterPStop1
-    pixelGrid = OuterPixelGrid
-    
-    outerPixelCell1 = $layout.create_cell("outerPixelCell1")  
-    Pixel.init(outerPixelCell1)
-    Pixel.createImplant($layerNp,implants['implantSizeX'],implants['implantSizeY'])
-    Pixel.createImplant($layerAlu,implants['implantAluSizeX'],implants['implantAluSizeY'],1500,1500)
-    Pixel.createVia($layerAluVia,via['pixelViaSizeX'],via['pixelViaSizeY'],implants['implantSizeX']-12000-via['pixelViaSizeX'],12000)
-    Pixel.createBumpPad($layerAlu,bumpPad['bumpPadDiameter'],implants['implantSizeX']-59000-30000,(implants['implantSizeY']-30000)/2)
-    Pixel.createPStop($layerPp, pStop['pStopSizeX'], pStop['pStopSizeY'], pStop['pStopWidth'], pStop['pStopCornerRout'] , pStop['pStopCornerRin'], pStop['pStopOpenX0'], pStop['pStopOpenY0'], pStop['pStopOpenWidth'],true, -20000, -20000)
-    
-    outerPixelGridCell1 = $layout.create_cell("OuterPixelGrid1")   
-    Pixel.init(outerPixelGridCell1)
-    Pixel.createGrid(outerPixelCell1,pixelGrid['pixelGridnX'],pixelGrid['pixelGridnY'],0,pixelGrid['pixelGriddY'])
-    Merge.cells($fPixFCell,outerPixelGridCell1,584000+452000,884000+452000)
-  
-    # outerPixelGrid2  
-  
-    pStop = OuterPStop2
-    
-    outerPixelCell2 = $layout.create_cell("outerPixelCell2")  
-    Pixel.init(outerPixelCell2)
-    Pixel.createImplant($layerNp,implants['implantSizeX'],implants['implantSizeY'])
-    Pixel.createImplant($layerAlu,implants['implantAluSizeX'],implants['implantAluSizeY'],1500,1500)
-    Pixel.createVia($layerAluVia,via['pixelViaSizeX'],via['pixelViaSizeY'],12000,12000)
-    Pixel.createBumpPad($layerAlu,bumpPad['bumpPadDiameter'],59000,(implants['implantSizeY']-30000)/2)
-    Pixel.createPStop($layerPp, pStop['pStopSizeX'], pStop['pStopSizeY'], pStop['pStopWidth'], pStop['pStopCornerRout'] , pStop['pStopCornerRin'], pStop['pStopOpenX0'], pStop['pStopOpenY0'], pStop['pStopOpenWidth'],true, -20000, -20000)
-    
-    outerPixelGridCell2 = $layout.create_cell("OuterPixelGrid2")   
-    Pixel.init(outerPixelGridCell2)
-    Pixel.createGrid(outerPixelCell2,pixelGrid['pixelGridnX'],pixelGrid['pixelGridnY'],0,pixelGrid['pixelGriddY'])
-    Merge.cells($fPixFCell,outerPixelGridCell2,1036000+7800000,1336000)    
-    
-    # upperPixelGrid1
-    
-    implants = UpperImplants
-    pixelGrid = UpperPixelGrid
-    pStop = UpperPStop
-    
-    upperPixelCell1 = $layout.create_cell("upperPixelCell1")  
+    upperPixelCell1 = $layout.create_cell("UpperPixel1")
     Pixel.init(upperPixelCell1)
-    Pixel.createImplant($layerNp,implants['implantSizeX'],implants['implantSizeY'])
-    Pixel.createImplant($layerAlu,implants['implantAluSizeX'],implants['implantAluSizeY'],1500,1500)
-    Pixel.createVia($layerAluVia,via['pixelViaSizeX'],via['pixelViaSizeY'],12000,12000)
-    Pixel.createBumpPad($layerAlu,bumpPad['bumpPadDiameter'],98000-9000-30000,(48000-30000)/2)
-    Pixel.createPStop($layerPp, pStop['pStopSizeX'], pStop['pStopSizeY'], pStop['pStopWidth'], pStop['pStopCornerRout'] , pStop['pStopCornerRin'], pStop['pStopOpenX0'], pStop['pStopOpenY0'], pStop['pStopOpenWidth'],false, -20000, -20000)
-    
-    upperPixelGridCell1 = $layout.create_cell("UpperPixelGrid1")   
-    Pixel.init(upperPixelGridCell1)
-    Pixel.createGrid(upperPixelCell1,pixelGrid['pixelGridnX'],pixelGrid['pixelGridnY'],pixelGrid['pixelGriddX'],0)
-    Merge.cells($fPixFCell,upperPixelGridCell1,1336000,9236000) 
+    Pixel.createImplant($layerNp,UpperImplant['sizeX'],UpperImplant['sizeY'],$layerAlu,UpperImplant['metalOH'])
+    Pixel.createVia($layerAluVia,Via['sizeX'],Via['sizeY'],-25e3,-50e3)
+    Pixel.createBumpPad($layerAlu,BumpPad['dia'],25e3,-50e3)
+    Pixel.createPStop($layerPp, UpperImplant['sizeX']+2*UpperPStop['distX'], UpperImplant['sizeY']+2*UpperPStop['distY'], UpperPStop['width'], UpperPStop['rOut'] , UpperPStop['rIn'], UpperPStop['openX0'], UpperPStop['openY0'], UpperPStop['openWidth'],false)
 
-    # upperPixelGrid2
-    
-    upperPixelCell2 = $layout.create_cell("upperPixelCell2")  
+    upperPixelCell2 = $layout.create_cell("UpperPixel2")
     Pixel.init(upperPixelCell2)
-    Pixel.createImplant($layerNp,implants['implantSizeX'],implants['implantSizeY'])
-    Pixel.createImplant($layerAlu,implants['implantAluSizeX'],implants['implantAluSizeY'],1500,1500)
-    Pixel.createVia($layerAluVia,via['pixelViaSizeX'],via['pixelViaSizeY'],implants['implantSizeX']-12000-via['pixelViaSizeX'],12000)
-    Pixel.createBumpPad($layerAlu,bumpPad['bumpPadDiameter'],9000,(48000-30000)/2)
-    Pixel.createPStop($layerPp, pStop['pStopSizeX'], pStop['pStopSizeY'], pStop['pStopWidth'], pStop['pStopCornerRout'] , pStop['pStopCornerRin'], pStop['pStopOpenX0'], pStop['pStopOpenY0'], pStop['pStopOpenWidth'],false, -20000, -20000)
+    Pixel.createImplant($layerNp,UpperImplant['sizeX'],UpperImplant['sizeY'],$layerAlu,UpperImplant['metalOH'])
+    Pixel.createVia($layerAluVia,Via['sizeX'],Via['sizeY'],25e3,-50e3)
+    Pixel.createBumpPad($layerAlu,BumpPad['dia'],-25e3,-50e3)
+    Pixel.createPStop($layerPp, UpperImplant['sizeX']+2*UpperPStop['distX'], UpperImplant['sizeY']+2*UpperPStop['distY'], UpperPStop['width'], UpperPStop['rOut'] , UpperPStop['rIn'], UpperPStop['openX0'], UpperPStop['openY0'], UpperPStop['openWidth'],false)
+
+    cornerPixelCell = $layout.create_cell("CornerPixel")
+    Pixel.init(cornerPixelCell)
+    Pixel.createImplant($layerNp, CornerImplant['sizeX'], CornerImplant['sizeY'],$layerAlu,CornerImplant['metalOH'])
+    Pixel.createVia($layerAluVia, Via['sizeX'], Via['sizeY'],100e3,-50e3)
+    Pixel.createBumpPad($layerAlu, BumpPad['dia'],50e3,-50e3)
+    Pixel.createPStop($layerPp, CornerImplant['sizeX']+2*CornerPStop['distX'], CornerImplant['sizeY']+2*CornerPStop['distY'], CornerPStop['width'], CornerPStop['rOut'] , CornerPStop['rIn'], CornerPStop['openX0'], CornerPStop['openY0'], CornerPStop['openWidth'],true)
+
+    pixelGridCell = $layout.create_cell("PixelGrid")
+    Pixel.init(pixelGridCell)
+    Pixel.createGrid(innerPixelCell,InnerPixelGrid['nX'], InnerPixelGrid['nY'], InnerPixelGrid['dX'], InnerPixelGrid['dY'], -PixelGrid['sizeX']/2+OuterPixelGrid['sizeX']+(InnerPixelGrid['sizeX']/2), -PixelGrid['sizeY']/2+(InnerPixelGrid['sizeY']/2))
+    Pixel.createGrid(innerPixelCell,InnerPixelGrid['nX'], InnerPixelGrid['nY'], InnerPixelGrid['dX'], InnerPixelGrid['dY'], -PixelGrid['sizeX']/2+OuterPixelGrid['sizeX']+(3*InnerPixelGrid['sizeX']/2), -PixelGrid['sizeY']/2+(InnerPixelGrid['sizeY']/2),180,true)
+    Pixel.createGrid(outerPixelCell,OuterPixelGrid['nX'],OuterPixelGrid['nY'],OuterPixelGrid['dX'],OuterPixelGrid['dY'],-PixelGrid['sizeX']/2+OuterPixelGrid['sizeX']/2, -PixelGrid['sizeY']/2+(OuterPixelGrid['sizeY']/2))
+    Pixel.createGrid(outerPixelCell,OuterPixelGrid['nX'],OuterPixelGrid['nY'],OuterPixelGrid['dX'],OuterPixelGrid['dY'], PixelGrid['sizeX']/2-OuterPixelGrid['sizeX']/2, -PixelGrid['sizeY']/2+(OuterPixelGrid['sizeY']/2),180,true)
+    Pixel.createGrid(upperPixelCell1,UpperPixelGrid['nX'],UpperPixelGrid['nY'],UpperPixelGrid['dX'],UpperPixelGrid['dY'],-PixelGrid['sizeX']/2+OuterPixelGrid['sizeX']+(InnerPixelGrid['sizeX']/2), PixelGrid['sizeY']/2-UpperPixelGrid['sizeY']/2)
+    Pixel.createGrid(upperPixelCell2,UpperPixelGrid['nX'],UpperPixelGrid['nY'],UpperPixelGrid['dX'],UpperPixelGrid['dY'],-PixelGrid['sizeX']/2+OuterPixelGrid['sizeX']+(3*InnerPixelGrid['sizeX']/2), PixelGrid['sizeY']/2-UpperPixelGrid['sizeY']/2)
+    Pixel.createGrid(cornerPixelCell,CornerPixelGrid['nX'],CornerPixelGrid['nY'],CornerPixelGrid['dX'],CornerPixelGrid['dY'],-PixelGrid['sizeX']/2+CornerPixelGrid['sizeX']/2, PixelGrid['sizeY']/2-(CornerPixelGrid['sizeY']/2))
+    Pixel.createGrid(cornerPixelCell,CornerPixelGrid['nX'],CornerPixelGrid['nY'],CornerPixelGrid['dX'],CornerPixelGrid['dY'], PixelGrid['sizeX']/2-CornerPixelGrid['sizeX']/2, PixelGrid['sizeY']/2-(CornerPixelGrid['sizeY']/2),180,true)
     
-    upperPixelGridCell2 = $layout.create_cell("UpperPixelGrid2")   
-    Pixel.init(upperPixelGridCell2)
-    Pixel.createGrid(upperPixelCell2,pixelGrid['pixelGridnX'],pixelGrid['pixelGridnY'],pixelGrid['pixelGriddX'],0)
-    Merge.cells($fPixFCell,upperPixelGridCell2,1336000+150000,9236000) 
-    
-    # cornerPixel1
-    
-    implants = CornerImplants
-    pStop = CornerPStop1
-    
-    cornerPixelCell1 = $layout.create_cell("cornerPixelCell1")  
-    Pixel.init(cornerPixelCell1)
-    Pixel.createImplant($layerNp,implants['implantSizeX'],implants['implantSizeY'])
-    Pixel.createImplant($layerAlu,implants['implantAluSizeX'],implants['implantAluSizeY'],1500,1500)
-    Pixel.createVia($layerAluVia,via['pixelViaSizeX'],via['pixelViaSizeY'],implants['implantSizeX']-12000-via['pixelViaSizeX'],12000)
-    Pixel.createBumpPad($layerAlu,bumpPad['bumpPadDiameter'],implants['implantSizeX']-59000-30000,9000)
-    Pixel.createPStop($layerPp, pStop['pStopSizeX'], pStop['pStopSizeY'], pStop['pStopWidth'], pStop['pStopCornerRout'] , pStop['pStopCornerRin'], pStop['pStopOpenX0'], pStop['pStopOpenY0'], pStop['pStopOpenWidth'],true, -20000, -20000)
-    Merge.cells($fPixFCell,cornerPixelCell1,584000+452000,9236000)
-    
-    # cornerPixel2
-    
-    pStop = CornerPStop2
-    
-    cornerPixelCell2 = $layout.create_cell("cornerPixelCell2")  
-    Pixel.init(cornerPixelCell2)
-    Pixel.createImplant($layerNp,implants['implantSizeX'],implants['implantSizeY'])
-    Pixel.createImplant($layerAlu,implants['implantAluSizeX'],implants['implantAluSizeY'],1500,1500)
-    Pixel.createVia($layerAluVia,via['pixelViaSizeX'],via['pixelViaSizeY'],12000,12000)
-    Pixel.createBumpPad($layerAlu,bumpPad['bumpPadDiameter'],59000,9000)
-    Pixel.createPStop($layerPp, pStop['pStopSizeX'], pStop['pStopSizeY'], pStop['pStopWidth'], pStop['pStopCornerRout'] , pStop['pStopCornerRin'], pStop['pStopOpenX0'], pStop['pStopOpenY0'], pStop['pStopOpenWidth'],true, -20000, -20000)
-    Merge.cells($fPixFCell,cornerPixelCell2,584000+452000+7800000,9236000)
-    
-##### Periphery #####
-   
-    # BiasRing
-   
-    biasRingCell = $layout.create_cell("BiasRing")   
-    
-    biasRingCell.shapes($layerNp).insert(Basic.createRing(BiasRing['biasRingX'],BiasRing['biasRingY'],BiasRing['biasRingWidth'],0,BiasRing['biasRingROut']))
-    biasRingCell.shapes($layerAlu).insert(Basic.createRing(BiasRing['biasRingAluX'],BiasRing['biasRingAluY'],BiasRing['biasRingAluWidth'],0,BiasRing['biasRingAluROut'],-22500,-22500))
-    Merge.cells($fPixFCell,biasRingCell,904000,1204000)
-    
+    Merge.cells($fPixFCell, pixelGridCell)
+
+    periCell = $layout.create_cell("Periphery")
+    Periphery.init(periCell)
+    Periphery.create($layerNp,$layerAlu,$layerPpe19,PixelGrid,BiasRing,GuardRing,PixelEdge)
+
+    Merge.cells($fPixFCell, periCell)
+
     return $fPixFCell
   end
 end
