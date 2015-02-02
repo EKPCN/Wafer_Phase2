@@ -15,7 +15,7 @@ module Roc4Sens50x50
     Pixel.init(innerPixelCell)
     Pixel.createImplant($layerNp,InnerImplant['sizeX'],InnerImplant['sizeY'],$layerAlu,InnerImplant['metalOH'],0,0,InnerImplant['radius'])
     Pixel.createVia($layerAluVia, Via['sizeX'],Via['sizeY'])
-    Pixel.createBumpPad($layerAlu,BumpPad['dia'],-12.5e3,-12.5e3)
+    Pixel.createBumpPad($layerPassOpen,BumpPad['dia'],-12.5e3,-12.5e3)
     Pixel.createPStop($layerPp, InnerImplant['sizeX']+2*InnerPStop['distX'], InnerImplant['sizeY']+2*InnerPStop['distY'], InnerPStop['width'], InnerPStop['rOut'] , InnerPStop['rIn'])
 
     pixelGridCell = $layout.create_cell("PixelGrid")

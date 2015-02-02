@@ -23,12 +23,13 @@ module CISWafer
 
   # Layer
   
-  $layerP = $layout.insert_layer(LayerInfo.new(40,0,"p substrate"))
+  $layerP = $layout.insert_layer(LayerInfo.new(0,0,"p substrate"))
   $layerPp = $layout.insert_layer(LayerInfo.new(1,0,"p+"))
-  $layerPpe19 = $layout.insert_layer(LayerInfo.new(1,1,"p+ e19"))
-  $layerNp = $layout.insert_layer(LayerInfo.new(2,0,"n+"))
-  $layerAlu = $layout.insert_layer(LayerInfo.new(3,0,"Alu"))
-  $layerAluVia = $layout.insert_layer(LayerInfo.new(4,0,"Alu via"))
+  $layerPpe19 = $layout.insert_layer(LayerInfo.new(2,0,"p+ e19"))
+  $layerNp = $layout.insert_layer(LayerInfo.new(3,0,"n+"))
+  $layerAlu = $layout.insert_layer(LayerInfo.new(4,0,"Alu"))
+  $layerAluVia = $layout.insert_layer(LayerInfo.new(5,0,"Alu via"))
+  $layerPassOpen = $layout.insert_layer(LayerInfo.new(6,0,"Passivation Opening"))
   
   # wafer
   
@@ -40,7 +41,7 @@ module CISWafer
   
   # draw designs on wafer
 
-  # pStop
+  # --- PSTOP ---
   
   load "Wafer_Phase2/sensors/pstop/sensorList.rb"
   
@@ -48,22 +49,17 @@ module CISWafer
   #final
 
   Merge.cells(waferCell,Roc4Sens50x50.create(),5e6,0)
+=begin
   Merge.cells(waferCell,Roc4Sens50x50wide.create(),15e6,0)
   Merge.cells(waferCell,Roc4Sens50x50b.create(),25e6,0)
   Merge.cells(waferCell,Roc4Sens50x50bwide.create(),35e6,0)
   
   Merge.cells(waferCell,FPixF.create(),5e6,30e6)
   Merge.cells(waferCell,FPixFPT.create(),15e6,30e6)   
-
+=end
 
   
 =begin
-
-  
-  Merge.cells(waferCell,Roc4Sens50x50.create(),0,10e6)
-  Merge.cells(waferCell,Roc4Sens50x50staggered.create(),10e6,10e6)
-  Merge.cells(waferCell,Roc4Sens50x50staggered2.create(),20e6,10e6)
-
   Merge.cells(waferCell,Roc4Sens100x25.create(),5e6)
   Merge.cells(waferCell,Roc4Sens100x25wide.create(),15e6)
 
@@ -72,12 +68,11 @@ module CISWafer
 =end
 
 
-  # pSpray
+  # --- PSPRAY ---
 
   load "Wafer_Phase2/sensors/pspray/sensorList.rb"
 
-  
-
+=begin
 
   # final layouts
 
@@ -92,7 +87,7 @@ module CISWafer
   Merge.cells(waferCell,Roc4Sens100x25b.create(),-25e6,15e6)
   Merge.cells(waferCell,Roc4Sens100x25bwide.create(),-35e6,15e6)    
   
-
+=end
 
 
   
