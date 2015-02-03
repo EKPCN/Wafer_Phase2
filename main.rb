@@ -19,7 +19,6 @@ module CISWafer
   # standard parameters
 
   $layout.dbu = 0.001 #µm -> dbu = 1nm
-  $minDist = 5e3
 
   # Layer
   
@@ -49,6 +48,7 @@ module CISWafer
   #final
 
   Merge.cells(waferCell,Roc4Sens50x50.create(),5e6,0)
+  
 =begin
   Merge.cells(waferCell,Roc4Sens50x50wide.create(),15e6,0)
   Merge.cells(waferCell,Roc4Sens50x50b.create(),25e6,0)
