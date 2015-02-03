@@ -1,20 +1,20 @@
-module FPixFPT
+module FPixFPT_pspr
   
   include RBA
 
   # Creates the FPIXFPT sensor
   # @return [cell] Returns the cell with all structures
 
-  def FPixFPT.create()
+  def FPixFPT_pspr.create()
   
-    load "Wafer_Phase2/sensors/FPIXFPT/fpixfpt_para.rb"
+    load "Wafer_Phase2/sensors/FPIXFPT/p-spray/fpixfpt_para.rb"
         
     $fPixFCell = $layout.create_cell("FPixFPT")
     
     innerPixelCell = $layout.create_cell("InnerPixel")      
     Pixel.init(innerPixelCell)
-    Pixel.createPTImplant($layerNp,InnerPixel['implantSizeX'],InnerPixel['implantSizeY'],InnerPixel['PTX0'],InnerPixel['PTY0'],InnerPixel['PTholeDia'],InnerPixel['PTimplantDia'])
-    Pixel.createPTMetal($layerAlu,InnerPixel['implantSizeX']+2.0*InnerPixel['metalOH'],InnerPixel['implantSizeY']+2.0*InnerPixel['metalOH'],InnerPixel['PTX0'],InnerPixel['PTY0'],InnerPixel['PTholeDia']-2.0*InnerPixel['metalOH'],InnerPixel['bLHoleWidth'])
+    Pixel.createPTImplant($layerNp,InnerPixel['implantSizeX'],InnerPixel['implantSizeY'],InnerPixel['PTX0'],InnerPixel['PTY0'],InnerPixel['PTholeDia'],InnerPixel['PTimplantDia'],InnerPixel['PTminDistToEdge'])
+    Pixel.createPTMetal($layerAlu,InnerPixel['implantSizeX']+2.0*InnerPixel['metalOH'],InnerPixel['implantSizeY']+2.0*InnerPixel['metalOH'],InnerPixel['PTX0'],InnerPixel['PTY0'],InnerPixel['PTholeDia']-2.0*InnerPixel['metalOH'],InnerPixel['bLHoleWidth'],InnerPixel['PTminDistToEdge']+2*InnerPixel['metalOH'])
     Pixel.createPTVia($layerAluVia,InnerPixel['PTX0'],InnerPixel['PTY0'],InnerPixel['PTviaDia'])
     Pixel.createPTBiasLine($layerAlu,InnerPixel['cellSizeX'],InnerPixel['cellSizeY'],InnerPixel['PTX0'],InnerPixel['PTY0'],InnerPixel['bDotDia'],InnerPixel['bLWidth'])
     Pixel.createPTPStop($layerPp,InnerPixel['PTX0'],InnerPixel['PTY0'],(InnerPixel['bDotDia']+InnerPixel['PTholeDia']-2.0*InnerPixel['metalOH'])/2.0-InnerPixel['PTpStopWidth'],(InnerPixel['bDotDia']+InnerPixel['PTholeDia']-2.0*InnerPixel['metalOH'])/2.0+InnerPixel['PTpStopWidth'])
@@ -33,7 +33,7 @@ module FPixFPT
     Pixel.createBumpPad($layerAlu,OuterPixel['bPDia'],OuterPixel['bPX0'],OuterPixel['bPY0'],$layerPassivation,OuterPixel['bPDiaPassivation'])
     Pixel.createPTVia($layerAluVia,OuterPixel['viaX0'],OuterPixel['viaY0'],OuterPixel['viaDia'])
     Pixel.createPTVia($layerAluVia,OuterPixel['viaX0'],-1*OuterPixel['viaY0'],OuterPixel['viaDia'])
-    Pixel.createPStop($layerPp, OuterPixel['implantSizeX']+2*OuterPixel['PSdistX'], OuterPixel['implantSizeY']+2*OuterPixel['PSdistY'], OuterPixel['PSwidth'], OuterPixel['PSrOut'] , OuterPixel['PSrIn'], OuterPixel['PSopenX0'], OuterPixel['PSopenY0'], OuterPixel['PSopenWidth'],true)
+    #Pixel.createPStop($layerPp, OuterPixel['implantSizeX']+2*OuterPixel['PSdistX'], OuterPixel['implantSizeY']+2*OuterPixel['PSdistY'], OuterPixel['PSwidth'], OuterPixel['PSrOut'] , OuterPixel['PSrIn'], OuterPixel['PSopenX0'], OuterPixel['PSopenY0'], OuterPixel['PSopenWidth'],true)
 
     upperPixelCell = $layout.create_cell("UpperPixel")
     Pixel.init(upperPixelCell)
@@ -45,7 +45,7 @@ module FPixFPT
     Pixel.createBumpPad($layerAlu,UpperPixel['bPDia'],UpperPixel['bPX0'],UpperPixel['bPY0'],$layerPassivation,UpperPixel['bPDiaPassivation'])
     Pixel.createPTVia($layerAluVia,UpperPixel['viaX0'],UpperPixel['viaY0'],UpperPixel['viaDia'])
     Pixel.createPTVia($layerAluVia,UpperPixel['viaX0'],-1*UpperPixel['viaY0'],UpperPixel['viaDia'])
-    Pixel.createPStop($layerPp, UpperPixel['implantSizeX']+2*UpperPixel['PSdistX'], UpperPixel['implantSizeY']+2*UpperPixel['PSdistY'], UpperPixel['PSwidth'], UpperPixel['PSrOut'] , UpperPixel['PSrIn'], UpperPixel['PSopenX0'], UpperPixel['PSopenY0'], UpperPixel['PSopenWidth'],false)
+   # Pixel.createPStop($layerPp, UpperPixel['implantSizeX']+2*UpperPixel['PSdistX'], UpperPixel['implantSizeY']+2*UpperPixel['PSdistY'], UpperPixel['PSwidth'], UpperPixel['PSrOut'] , UpperPixel['PSrIn'], UpperPixel['PSopenX0'], UpperPixel['PSopenY0'], UpperPixel['PSopenWidth'],false)
 
     cornerPixelCell = $layout.create_cell("CornerPixel")
     Pixel.init(cornerPixelCell)
@@ -57,7 +57,7 @@ module FPixFPT
     Pixel.createBumpPad($layerAlu, CornerPixel['bPDia'],CornerPixel['bPX0'],CornerPixel['bPY0'],$layerPassivation,CornerPixel['bPDiaPassivation'])
     Pixel.createPTVia($layerAluVia,CornerPixel['viaX0'],CornerPixel['viaY0'],CornerPixel['viaDia'])
     Pixel.createPTVia($layerAluVia,CornerPixel['viaX0'],-1*CornerPixel['viaY0'],CornerPixel['viaDia'])
-    Pixel.createPStop($layerPp, CornerPixel['implantSizeX']+2*CornerPixel['PSdistX'], CornerPixel['implantSizeY']+2*CornerPixel['PSdistY'], CornerPixel['PSwidth'], CornerPixel['PSrOut'] , CornerPixel['PSrIn'], CornerPixel['PSopenX0'], CornerPixel['PSopenY0'], CornerPixel['PSopenWidth'],true)
+   # Pixel.createPStop($layerPp, CornerPixel['implantSizeX']+2*CornerPixel['PSdistX'], CornerPixel['implantSizeY']+2*CornerPixel['PSdistY'], CornerPixel['PSwidth'], CornerPixel['PSrOut'] , CornerPixel['PSrIn'], CornerPixel['PSopenX0'], CornerPixel['PSopenY0'], CornerPixel['PSopenWidth'],true)
 
     pixelGridCell = $layout.create_cell("PixelGrid")
     Pixel.init(pixelGridCell)
@@ -76,10 +76,6 @@ module FPixFPT
     Pixel.createGrid(cornerPixelCell,CornerPixel['nX'],CornerPixel['nY'],CornerPixel['dX'],CornerPixel['dY'],-PixelGrid['sizeX']/2+CornerPixel['cellSizeX']/2, PixelGrid['sizeY']/2-(CornerPixel['cellSizeY']/2))
     
     Pixel.createGrid(cornerPixelCell,CornerPixel['nX'],CornerPixel['nY'],CornerPixel['dX'],CornerPixel['dY'], PixelGrid['sizeX']/2-CornerPixel['cellSizeX']/2, PixelGrid['sizeY']/2-(CornerPixel['cellSizeY']/2),180,true)
-    
-    
-    #OUTER PSTOP
-    Periphery.createRing($layerPp,PixelGrid['sizeX'],PixelGrid['sizeY'],InnerPixel['PSwidth'],0,InnerPixel['PSrIn']+2*InnerPixel['PSwidth'])
     
     Merge.cells($fPixFCell, pixelGridCell)
     

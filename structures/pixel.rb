@@ -31,13 +31,20 @@ module Pixel
   # @param y [int] Size in y direction
   # @param x0PT [int] x position of PT
   # @param y0PT [int] y position of PT
-  # @param d [int] diameter of PT hole
+  # @param dHole [int] diameter of PT hole
+  # @param dImplant [int] diameter of inner PT implant
+  # @param minDistToEdge [int] minimum distance to edge of implant
   # @param x0 [int] center of the implant
   # @param y0 [int] center of the implant
   
-  def Pixel.createPTImplant(layer,x,y,x0PT,y0PT,dHole,dImplant=0,x0=0,y0=0)
-  
+  def Pixel.createPTImplant(layer,x,y,x0PT,y0PT,dHole,dImplant=0,minDistToEdge=0,x0=0,y0=0)
+    
     implant = Basic.createRoundBox(x,y,x0,y0)
+    if (x0PT).abs + dHole/2.0 + minDistToEdge >= x/2.0 || (y0PT).abs + dHole/2.0 + minDistToEdge >= y/2.0
+      ptAddImplant = Basic.createCircle(dHole + 2.0*minDistToEdge,x0PT,y0PT)
+      tmp = Merge.polyVector([implant,ptAddImplant])
+      implant = tmp
+    end
     ptHole = Basic.createCircle(dHole,x0PT,y0PT)
     implantHole = Cut.polyVector([implant,ptHole])
     ptImplant = Basic.createCircle(dImplant,x0PT,y0PT)
@@ -55,26 +62,34 @@ module Pixel
   # @param y0PT [int] y position of PT
   # @param d [int] diameter of PT hole
   # @param blHoleWidth [int] Width of the cut in the metal layer for the bias line
+  # @param minDistToEdge [int] minimum distance to edge of implant (add
   # @param x0 [int] center of the implant
   # @param y0 [int] center of the implant
   
-  def Pixel.createPTMetal(layer,x,y,x0PT,y0PT,d,blHoleWidth,x0=0,y0=0)
+  def Pixel.createPTMetal(layer,x,y,x0PT,y0PT,d,blHoleWidth,minDistToEdge=0,x0=0,y0=0)
     
-#     the implant
     implantPoly = Polygon.new(Box.new(-x/2,-y/2,x/2,y/2))
+    
+#     increase size of metal around the pt
+    if (x0PT).abs + d/2.0 + minDistToEdge >= x/2.0 || (y0PT).abs + d/2.0 + minDistToEdge >= y/2.0
+      ptAddImplant = Basic.createCircle(d + 2.0*minDistToEdge,x0PT,y0PT)
+      tmp = Merge.polyVector([implantPoly,ptAddImplant])
+      implantPoly = tmp
+    end
     
 #     create box to cut a path in the implant for the bias line
     if x0PT < 0
-      biasLineHole = Polygon.new(Box.new(-x/2,y0PT-blHoleWidth/2,x0PT,y0PT+blHoleWidth/2.0))
+      biasLineHole = Polygon.new(Box.new(-x/2-minDistToEdge,y0PT-blHoleWidth/2,x0PT,y0PT+blHoleWidth/2.0))
     else
-      biasLineHole = Polygon.new(Box.new(x0PT,y0PT-blHoleWidth/2,x/2,y0PT+blHoleWidth/2.0))
+      biasLineHole = Polygon.new(Box.new(x0PT,y0PT-blHoleWidth/2,x/2+minDistToEdge,y0PT+blHoleWidth/2.0))
     end
     
 #     create hole in implant for the actual punch through
     ptHole = Basic.createCircle(d,x0PT,y0PT,40)
     
     tmp = Merge.polyVector([biasLineHole,ptHole])
-    implant = Cut.polyVector([implantPoly,tmp])
+    tmp1 = Merge.polyVector([implantPoly,biasLineHole])
+    implant = Cut.polyVector([tmp1,tmp])
 #     round corners (does not always work in transition from pt hole to bias line hole)
 #     diameter of corners 
 #     PUT IN PARAMETER FILE???
@@ -97,8 +112,8 @@ module Pixel
       dy -= 1e1
       
       if dy < 0.0
-	puts ERROR! change dy
-	break
+	  puts 'error! change dy'
+	  break
       end
     end
     
@@ -213,7 +228,7 @@ module Pixel
     biasTmp3 = Cut.polyVector([upperCirc,biasTmp2,lowerCirc])
     
 #     overlap of biasline into upper and lower pixel (defined by the distance of last pixel to the current collection ring)
-    distY = 10e3
+    distY = 13e3
     
     if x0PT < 0
       globalBiasLine = Polygon.new(Box.new(x0PT-blLength-blWidth/2.0,-pixSizeY/2.0-distY,x0PT-blLength,pixSizeY/2.0+distY))
@@ -252,9 +267,12 @@ module Pixel
   # @param dOut [int] Outer diameter of the pstop ring
   
   def Pixel.createPTPStop(layer, x0PT, y0PT, dIn, dOut)
-    
-    pStop = Basic.createCircRing(dIn,dOut,x0PT,y0PT)    
-    $Cell.shapes(layer).insert(pStop) 
+    if dIn<dOut
+      pStop = Basic.createCircRing(dIn,dOut,x0PT,y0PT)    
+      $Cell.shapes(layer).insert(pStop) 
+    else
+      puts 'CHECK PT PSTOP PARAMETERS'
+    end
   end
 
 
@@ -345,7 +363,7 @@ module Pixel
     
     if (layerPass!=0)
       bumpPass = Basic.createOctagon(diaPass,x0,y0)
-    $Cell.shapes(layerPass).insert(bumpPass)
+      $Cell.shapes(layerPass).insert(bumpPass)
     end
   end
 
@@ -363,39 +381,39 @@ module Pixel
   # @param x0 [int] X position of the center of the ring
   # @param y0 [int] Y position of the center of the ring
   # @return [Nill]
-
-  def Pixel.createPStop(layer, x, y, width, rOut, rIn, oX=0, oY=0, oW=0, horizontal=true ,x0=0, y0=0)
-        
-    ring = Basic.createRing(x,y,width,rIn,rOut)
-
-    if horizontal
-    
-      openBox = Polygon.new(Box.new(oX,oY,oX+oW,oY+width))
-      ringOpen = Cut.polyVector([ring,openBox])
-    
-      endPoly1 = Polygon.new(Box.new(oX-(width/2.0),oY,oX+(width/2.0),oY+width))
-      endCirc1 = endPoly1.round_corners(0,(width/2.0),32)
-    
-      endPoly2 = Polygon.new(Box.new(oX+oW-(width/2.0),oY,oX+oW+(width/2.0),oY+width))
-      endCirc2 = endPoly2.round_corners(0,(width/2.0),32)
-      
-    else
-      
-      openBox = Polygon.new(Box.new(oX,oY,oX+width,oY+oW))
-      ringOpen = Cut.polyVector([ring,openBox])
-    
-      endPoly1 = Polygon.new(Box.new(oX,oY-(width/2.0),oX+width,oY+(width/2.0)))
-      endCirc1 = endPoly1.round_corners(0,(width/2.0),32)
-    
-      endPoly2 = Polygon.new(Box.new(oX,oY+oW-(width/2.0),oX+width,oY+oW+(width/2.0)))
-      endCirc2 = endPoly2.round_corners(0,(width/2.0),32)      
-         
-    end
-     
-    pStop = Merge.polyVector([ringOpen,endCirc1,endCirc2])
-    pStop.move(x0,y0)
-    
-    $Cell.shapes(layer).insert(pStop)  
-  end
   
+  def Pixel.createPStop(layer, x, y, width, rOut, rIn, oX=0, oY=0, oW=0, horizontal=true ,x0=0, y0=0)
+  puts width
+    if width!=0
+      puts 'here'
+      ring = Basic.createRing(x,y,width,rIn,rOut)
+      
+      if horizontal
+	  openBox = Polygon.new(Box.new(oX,oY,oX+oW,oY+width))
+	  ringOpen = Cut.polyVector([ring,openBox])
+	
+	  endPoly1 = Polygon.new(Box.new(oX-(width/2.0),oY,oX+(width/2.0),oY+width))
+	  endCirc1 = endPoly1.round_corners(0,(width/2.0),32)
+	
+	  endPoly2 = Polygon.new(Box.new(oX+oW-(width/2.0),oY,oX+oW+(width/2.0),oY+width))
+	  endCirc2 = endPoly2.round_corners(0,(width/2.0),32)
+      else
+	  openBox = Polygon.new(Box.new(oX,oY,oX+width,oY+oW))
+	  ringOpen = Cut.polyVector([ring,openBox])
+	
+	  endPoly1 = Polygon.new(Box.new(oX,oY-(width/2.0),oX+width,oY+(width/2.0)))
+	  endCirc1 = endPoly1.round_corners(0,(width/2.0),32)
+	
+	  endPoly2 = Polygon.new(Box.new(oX,oY+oW-(width/2.0),oX+width,oY+oW+(width/2.0)))
+	  endCirc2 = endPoly2.round_corners(0,(width/2.0),32)      
+      end
+      
+      pStop = Merge.polyVector([ringOpen,endCirc1,endCirc2])
+      pStop.move(x0,y0)
+      
+      $Cell.shapes(layer).insert(pStop)  
+    else
+      puts 'CHECK PSTOP PARAMETERS'
+    end
+  end
 end
