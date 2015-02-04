@@ -1,6 +1,8 @@
 module CISWafer
   include RBA
 
+  $GLOBAL_PATH = File.dirname(__FILE__)
+
   # include files
 
   load "Wafer_Phase2/structures/basic.rb"
@@ -9,7 +11,7 @@ module CISWafer
   load "Wafer_Phase2/utils/merge.rb"
   load "Wafer_Phase2/utils/cut.rb"
 
-
+  load File.expand_path($GLOBAL_PATH + "/utils/MiscTools.rb", $PHTOOLS)
   # create mainWindow and layout
   
   mw = Application.instance.main_window
@@ -47,7 +49,7 @@ module CISWafer
 
   #final
 
-  Merge.cells(waferCell,Roc4Sens50x50.create(),5e6,0)
+ # Merge.cells(waferCell,Roc4Sens50x50.create(),5e6,0)
   
 =begin
   Merge.cells(waferCell,Roc4Sens50x50wide.create(),15e6,0)
@@ -89,8 +91,48 @@ module CISWafer
   
 =end
 
+=begin  
+  layoutView.transaction("Bring in external file")
+    begin
 
+      #layout = Application.instance.main_window.current_view.active_cellview.layout
+      file = "/home/schell/test.gds"
+      
+      unless file.nil?
+        load File.expand_path(file)
+
+        layout_to_grab = Layout.new
+        layout_to_grab.read(file) unless file.nil?
+
+        lmap = {}
+        linfo_to_index = {}
+
+        layout_to_grab.layer_indices.each { |l|
+          linfo = layout_to_grab.get_info(l)
+          layer = $layout.layer(linfo)
+          lmap[l] = layer;
+          linfo_to_index[linfo.to_s] = layer
+        }
+
+        layout_to_grab_top = MiscTools.copy_cells(layout_to_grab, $layout, lmap)
+        #$layout.cell(waferCell).insert(CellInstArray.new(layout_to_grab_top, Trans.new)) #Do this line if you want to instantiate the cell in the "top" cell
+      end
+
+    ensure 
+      layoutView.commit
+    end
+=end
+
+  # Read the first layout
+  layout = RBA::Layout.new
+  lmap = layout.read($file1)
+
+  # read the second file which basically performs the merge
+  load_layout_options = RBA::LoadLayoutOptions.new
+  load_layout_options.set_layer_map(lmap, true)
+  layout.read($file2, load_layout_options)
   
+
   # end
   layoutView.select_cell(waferCell.cell_index, 0)
   layoutView.max_hier_levels=(waferCell.hierarchy_levels+1)
