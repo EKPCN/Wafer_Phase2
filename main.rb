@@ -123,14 +123,64 @@ module CISWafer
     end
 =end
 
-  # Read the first layout
-  layout = RBA::Layout.new
-  lmap = layout.read($file1)
+# Builds a layout from separate files
+# To use: Make a new layout with at least one cell, called "TOP"
+# Modify the INPUTS accordingly.
+# This script will instance other gds/oas files under "TOP".
 
-  # read the second file which basically performs the merge
-  load_layout_options = RBA::LoadLayoutOptions.new
-  load_layout_options.set_layer_map(lmap, true)
-  layout.read($file2, load_layout_options)
+
+
+begin
+
+  # INPUTS:
+
+  top_cell_name = "Wafer" # The name of the cell you will instantiate the imported files in to
+
+  # Get relevant handles
+  app = Application.instance
+  mw = app.main_window
+  lv = mw.current_view
+  if lv == nil; raise "No view selected"; end
+  master_layout = lv.active_cellview.layout
+  top_cell_idx = lv.active_cellview.cell.cell_index
+
+  # Ask the user for the files
+  dialog = QFileDialog::new(mw)
+  dialog.setDirectory(QDir::homePath())
+  dialog.setFileMode(QFileDialog::ExistingFiles)
+  if (dialog.exec())
+    files = dialog.selectedFiles()
+  end
+
+  # Create a progress bar
+  progress = RelativeProgress::new("Loading...", files.length)
+
+  # Loop through each file and instantiate it under the parent cell
+  files.each_with_index { |f,i|
+    p "Reading #{f}"
+    master_layout.read(f) # This reads it in but instantiates it as new top cells rather than child cells under the parent cell.
+
+    # Find the just-read-in layout
+    top_cells = master_layout.top_cells
+    top_cells.each { |cell|
+      next if cell.name == top_cell_name # Skip the parent cell
+
+      # Figure out where to place each one. You can modify this line.
+      trans = Trans.new(Point.new(0,0))
+
+      # Instantiate the other cells under the parent cell
+      master_layout.cell(top_cell_idx).insert(CellInstArray.new(cell.cell_index, trans))
+
+    }
+
+    progress.inc
+  }
+
+ensure
+  progress.destroy
+end
+  
+  
   
 
   # end
