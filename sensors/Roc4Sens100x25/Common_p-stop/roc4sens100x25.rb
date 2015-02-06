@@ -28,6 +28,10 @@ module Roc4Sens100x25_ptcpst
     Pixel.createGrid(innerPixelCell,InnerPixel['nX'], InnerPixel['nY'], InnerPixel['dX'], InnerPixel['dY'], -PixelGrid['sizeX']/2+(InnerPixel['cellSizeX']/2), -PixelGrid['sizeY']/2+(InnerPixel['cellSizeY']/2))
     Pixel.createGrid(innerPixelCell,InnerPixel['nX'], InnerPixel['nY'], InnerPixel['dX'], InnerPixel['dY'], -PixelGrid['sizeX']/2+(InnerPixel['cellSizeX']/2), -PixelGrid['sizeY']/2+(3*InnerPixel['cellSizeY']/2),180)
 
+
+    #OUTER PSTOP
+    Periphery.createRing($layerPp,PixelGrid['sizeX'],PixelGrid['sizeY'],InnerPixel['PSwidth'],0,InnerPixel['PSrIn']+2*InnerPixel['PSwidth'])
+
     Merge.cells($roc4Sens100x25, pixelGridCell)
 
     periCell = $layout.create_cell("Periphery")

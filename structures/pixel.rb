@@ -143,7 +143,7 @@ module Pixel
     y1ubc = (blHoleWidth/2.0)+2.0*rTrans+spar
     y1ulc = (blHoleWidth/2.0)+1.5*dy
     
-    if x0PT > 0
+    if x0PT >= 0
       x0ucp *= -1.0
       x1ucp *= -1.0
       y1ucp *= -1.0
@@ -228,7 +228,8 @@ module Pixel
     biasTmp3 = Cut.polyVector([upperCirc,biasTmp2,lowerCirc])
     
 #     overlap of biasline into upper and lower pixel (defined by the distance of last pixel to the current collection ring)
-    distY = 13e3
+#     PUT IN PARAMETER FILE?? 31 um only needed for 2 corner pixels in 100x25 not bricked design
+    distY = 31e3
     
     if x0PT < 0
       globalBiasLine = Polygon.new(Box.new(x0PT-blLength-blWidth/2.0,-pixSizeY/2.0-distY,x0PT-blLength,pixSizeY/2.0+distY))
@@ -383,9 +384,9 @@ module Pixel
   # @return [Nill]
   
   def Pixel.createPStop(layer, x, y, width, rOut, rIn, oX=0, oY=0, oW=0, horizontal=true ,x0=0, y0=0)
-  puts width
+    
     if width!=0
-      puts 'here'
+      
       ring = Basic.createRing(x,y,width,rIn,rOut)
       
       if horizontal
