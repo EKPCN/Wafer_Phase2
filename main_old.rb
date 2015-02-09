@@ -27,11 +27,6 @@ module CISWafer
 
   Layer.insert(layout)
   
-  # Create gds
-  
-  load ($GLOBAL_PATH + "/sensors/r4s50x50b/r4s50x50b.rb")
-  #Gds.create("r4s50x50b_wide")
-  
   # wafer
   
   waferCell = layout.create_cell("Wafer")  
@@ -39,32 +34,26 @@ module CISWafer
   waferInnerDia = 140e6  
   Basic.createWafer($layerP, waferCell, waferInnerDia, waferOuterDia)
 
-  # Get SensorList from file
+  # --- PSPRAY ---
 
-  sensors = []
-  f = File.open($GLOBAL_PATH + "/sensors/sensorList.txt")
-  f.each_line{ 
-    |line| sensors << line 
-  }   
-  f.close
+  load "Wafer_Phase2/sensors/sensorList.rb"
+ # Gds.create("r4s50x50b")
 
-  # Merge gds files
-
-  x0 = 0
-  y0 = 0
-    
-  sensors.each{ |sensor| 
+=begin
+  pstopFiles = Dir[$GLOBAL_PATH + "/gds/pstop/*.gds"]
+  psprayFiles = Dir[$GLOBAL_PATH + "/gds/pspray/*.gds"]
   
-    loadCell = layout.create_cell(sensor)
-    importLayout = Layout.new
-    
-    importLayout.read($GLOBAL_PATH + "/gds/"+ sensor.delete("\n") + ".gds") 
-    loadCell.copy_tree(importLayout.top_cell)
-  
-    Merge.cells(waferCell,loadCell,x0,y0)
-    y0 += 10e6 
+  puts pstopFiles[0]
+=end  
 
-  }
+  loadCell = layout.create_cell("Roc4Sens50x50")
+  importLayout = Layout.new
+  importLayout.read($GLOBAL_PATH + "/gds/r4s50x50b.gds") 
+  loadCell.copy_tree(importLayout.top_cell)
+  
+  Merge.cells(waferCell,loadCell) 
+
+
 
   # end
 

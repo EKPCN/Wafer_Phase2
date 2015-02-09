@@ -1,0 +1,2 @@
+r4s50x50b_normal
+r4s50x50b_wide

@@ -5,13 +5,13 @@ module Roc4Sens50x50
   # Creates a sensor with an regular pitch of 50x50 µm² for the roc4sens pattern
   # @return [cell] Returns the cell with all structures
 
-  def Roc4Sens50x50.create()
+  def Roc4Sens50x50.create(layout)
   
     load "Wafer_Phase2/sensors/pstop/Roc4Sens50x50/roc4sens50x50_para.rb"
         
-    $roc4Sens50x50 = $layout.create_cell("Roc4Sens50x50")
+    $roc4Sens50x50 = layout.create_cell("Roc4Sens50x50")
     
-    innerPixelCell = $layout.create_cell("InnerPixel")      
+    innerPixelCell = layout.create_cell("InnerPixel")      
     Pixel.init(innerPixelCell)
     Pixel.createImplant($layerNp,InnerImplant['sizeX'],InnerImplant['sizeY'],$layerAlu,InnerImplant['metalOH'],0,0,InnerImplant['radius'])
     Pixel.createVia($layerAluVia, Via['sizeX'],Via['sizeY'])
@@ -25,7 +25,7 @@ module Roc4Sens50x50
 
     Merge.cells($roc4Sens50x50, innerPixelCell)
 
-    periCell = $layout.create_cell("Periphery")
+    periCell = layout.create_cell("Periphery")
     Periphery.init(periCell)
     Periphery.create($layerNp,$layerAlu,$layerPpe19,PixelGrid,BiasRing,GuardRing,PixelEdge)
 
