@@ -62,7 +62,7 @@ module Pixel
   # @param y0PT [int] y position of PT
   # @param d [int] diameter of PT hole
   # @param blHoleWidth [int] Width of the cut in the metal layer for the bias line
-  # @param minDistToEdge [int] minimum distance to edge of implant (add
+  # @param minDistToEdge [int] minimum distance to edge of implant
   # @param x0 [int] center of the implant
   # @param y0 [int] center of the implant
   
@@ -72,6 +72,7 @@ module Pixel
     
 #     increase size of metal around the pt
     if (x0PT).abs + d/2.0 + minDistToEdge >= x/2.0 || (y0PT).abs + d/2.0 + minDistToEdge >= y/2.0
+    puts 'here'
       ptAddImplant = Basic.createCircle(d + 2.0*minDistToEdge,x0PT,y0PT)
       tmp = Merge.polyVector([implantPoly,ptAddImplant])
       implantPoly = tmp
@@ -177,6 +178,8 @@ module Pixel
     
     implant = Merge.polyVector([tmpImplant,mtpu,mtpl])
     
+    implant.move(x0,y0)
+    
     $Cell.shapes(layer).insert(implant)
   end
   
@@ -187,19 +190,26 @@ module Pixel
   # @param x0PT [int] x position of PT
   # @param y0PT [int] y position of PT
   # @param dDot [int] Diameter of PT connection dot
-  # @param blWidth [int] Width of the bias line 
+  # @param blWidth [int] Width of the internal bias line
+  # @param globalBLwidth [int] Optional: width of the global bias line
   # @param x0 [int] center of the implant
   # @param y0 [int] center of the implant
   
-  def Pixel.createPTBiasLine(layer,pixSizeX,pixSizeY,x0PT,y0PT,dDot,blWidth,x0=0,y0=0)
+  def Pixel.createPTBiasLine(layer,pixSizeX,pixSizeY,x0PT,y0PT,dDot,blWidth,globalBLwidth=0,x0=0,y0=0)
   
     dot = Basic.createCircle(dDot,x0PT,y0PT)
     
+#     make global bias line with same width as the inner bias line
+    if globalBLwidth==0
+      globalBLwidth = blWidth
+    end
+    
+    
     if x0PT < 0
-      blLength = pixSizeX/2.0 - blWidth/2.0 + x0PT
+      blLength = pixSizeX/2.0 - globalBLwidth/2.0 + x0PT
       biasLine = Polygon.new(Box.new(x0PT-blLength,y0PT-blWidth/2.0,x0PT,y0PT+blWidth/2.0)) 
     else
-      blLength = pixSizeX/2.0 - blWidth/2.0 - x0PT
+      blLength = pixSizeX/2.0 - globalBLwidth/2.0 - x0PT
       biasLine = Polygon.new(Box.new(x0PT,y0PT-blWidth/2.0,x0PT+blLength,y0PT+blWidth/2.0)) 
     end
     biasBase = Merge.polyVector([dot,biasLine])
@@ -231,11 +241,12 @@ module Pixel
 #     PUT IN PARAMETER FILE?? 31 um only needed for 2 corner pixels in 100x25 not bricked design
     distY = 31e3
     
+    
     if x0PT < 0
-      globalBiasLine = Polygon.new(Box.new(x0PT-blLength-blWidth/2.0,-pixSizeY/2.0-distY,x0PT-blLength,pixSizeY/2.0+distY))
+      globalBiasLine = Polygon.new(Box.new(x0PT-blLength-globalBLwidth/2.0,-pixSizeY/2.0-distY,x0PT-blLength,pixSizeY/2.0+distY))
       biasTmp4 = Merge.polyVector([biasTmp3,globalBiasLine])
     else
-      globalBiasLine = Polygon.new(Box.new(x0PT+blLength,-pixSizeY/2.0-distY,x0PT+blLength+blWidth,pixSizeY/2.0+distY))
+      globalBiasLine = Polygon.new(Box.new(x0PT+blLength,-pixSizeY/2.0-distY,x0PT+blLength+globalBLwidth,pixSizeY/2.0+distY))
       biasTmp4 = Merge.polyVector([biasTmp3,globalBiasLine])
     end
     
@@ -256,6 +267,8 @@ module Pixel
     biasTmp = Merge.polyVector([lowerPoly,biasTmp4,upperPoly])
     biasTmp2 = Merge.polyVector([upperCirc,biasTmp,lowerCirc])    
     bias = Cut.polyVector([upperCirc,biasTmp2,lowerCirc])
+    
+    bias.move(x0,y0)
       
     $Cell.shapes(layer).insert(bias)
   end

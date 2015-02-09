@@ -57,8 +57,8 @@ module CISWafer
   # pixel designs
   
 #   fPixFCell = FPixF.create()
-#  fPixFPTCell_cpst = FPixFPT_cpst.create()
-#  fPixFPTCell_pspr = FPixFPT_pspr.create()
+  fPixFPTCell_cpst = FPixFPT_cpst.create()
+  fPixFPTCell_pspr = FPixFPT_pspr.create()
 #   roc4Sens50x50 = Roc4Sens50x50.create()
 #   roc4Sens100x25 = Roc4Sens100x25.create()  
 #   roc4Sens100x25s = Roc4Sens100x25s.create()
@@ -67,17 +67,17 @@ module CISWafer
 #   roc4Sens50x50staggered2 = Roc4Sens50x50s2.create()
 
     roc4Sens100x25_ptcpst = Roc4Sens100x25_ptcpst.create()
-#    roc4Sens100x25_ptpspr = Roc4Sens100x25_ptpspr.create()
-#     roc4Sens100x25s2_ptpspr = Roc4Sens100x25s2_ptpspr.create()
-#    roc4Sens100x25s2_ptcpst = Roc4Sens100x25s2_ptcpst.create()
+    roc4Sens100x25_ptpspr = Roc4Sens100x25_ptpspr.create()
+     roc4Sens100x25s2_ptpspr = Roc4Sens100x25s2_ptpspr.create()
+    roc4Sens100x25s2_ptcpst = Roc4Sens100x25s2_ptcpst.create()
     
  # roc4Sens50x50sPT = R4S50x50PT.create()
   
   # draw designs on wafer
   
 #   Merge.cells(waferCell,fPixFCell)
-#   Merge.cells(waferCell,fPixFPTCell_cpst,-10e6,-10e6)  
-#   Merge.cells(waferCell,fPixFPTCell_pspr,0e6,-10e6)
+  Merge.cells(waferCell,fPixFPTCell_cpst,0e6,-10e6)  
+   Merge.cells(waferCell,fPixFPTCell_pspr,10e6,-10e6)
 #   
 #   Merge.cells(waferCell,roc4Sens50x50,0,10e6)
 #   Merge.cells(waferCell,roc4Sens50x50staggered,10e6,10e6)
@@ -89,11 +89,12 @@ module CISWafer
    
   
 #  Merge.cells(waferCell,roc4Sens50x50sPT,20e6,20e6)
-  Merge.cells(waferCell,roc4Sens100x25_ptcpst,-10e6,0e6)
-#  Merge.cells(waferCell,roc4Sens100x25_ptpspr,0,0e6)
+  Merge.cells(waferCell,roc4Sens100x25_ptcpst,0e6,0e6)
+  Merge.cells(waferCell,roc4Sens100x25_ptpspr,10e6,0e6)
    
-#    Merge.cells(waferCell,roc4Sens100x25s2_ptpspr,20e6,10e6)
-#   Merge.cells(waferCell,roc4Sens100x25s2_ptcpst,20e6,0e6)
+  Merge.cells(waferCell,roc4Sens100x25s2_ptcpst,0e6,10e6)
+  Merge.cells(waferCell,roc4Sens100x25s2_ptpspr,10e6,10e6)
+  
    
    
   # end

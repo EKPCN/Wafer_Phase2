@@ -30,7 +30,11 @@ InnerPixel = {
   'bDotDia' => 22e3,	#bias dot
   'PTviaDia' => 5e3,
   'PTpStopWidth' => 4e3,
-  'PTminDistToEdge' =>3e3,
+  'PTminDistToEdge' => 3e3,
+#   extra parameters needed to reproduce FPIXF
+  'innerPTmetalOH' => 5.0e3,
+  'metalOHatPTside' => 2.5e3,
+  'globalBLWidth' => 15.0e3,
 #   PSTOP
   'PSdistX' => 16e3,
   'PSdistY' => 16e3,
@@ -74,7 +78,12 @@ OuterPixel = {
   'bDotDia' => 22e3,
   'PTviaDia' => 5e3,
   'PTpStopWidth' => 4e3,
-  #   PSTOP
+  'PTminDistToEdge' => 3e3,
+#   extra parameters needed to reproduce FPIXF
+  'innerPTmetalOH' => 5.0e3,
+  'metalOHatPTside' => 2.5e3,
+  'globalBLWidth' => 15.0e3,
+#   PSTOP
   'PSdistX' => 16e3,
   'PSdistY' => 16e3,
   'PSwidth' => 2e3,
@@ -117,6 +126,11 @@ UpperPixel = {
   'bDotDia' => 22e3,
   'PTviaDia' => 5e3,
   'PTpStopWidth' => 4e3,
+  'PTminDistToEdge' => 3e3,
+#   extra parameters needed to reproduce FPIXF
+  'innerPTmetalOH' => 5.0e3,
+  'metalOHatPTside' => 2.5e3,
+  'globalBLWidth' => 15.0e3,
 #   PSTOP
   'PSdistX' => 16e3,
   'PSdistY' => 15.25e3,
@@ -160,6 +174,11 @@ CornerPixel = {
   'bDotDia' => 22e3,
   'PTviaDia' => 5e3,
   'PTpStopWidth' => 4e3,
+  'PTminDistToEdge' => 3e3,
+#   extra parameters needed to reproduce FPIXF
+  'innerPTmetalOH' => 5.0e3,
+  'metalOHatPTside' => 2.5e3,
+  'globalBLWidth' => 15.0e3,
 #   PSTOP
   'PSdistX' => 16e3,
   'PSdistY' => 16e3,
