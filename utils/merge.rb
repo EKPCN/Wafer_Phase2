@@ -41,8 +41,4 @@ module Merge
     cell1.insert(CellInstArray::new(cell2.cell_index,CplxTrans::new(1,rot,mir,DPoint::new(x0,y0))))
   end
 
-  def Merge.gds()
-  
-  end
-
 end

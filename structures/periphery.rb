@@ -7,13 +7,25 @@ module Periphery
   end
 
 
-  def Periphery.create(layerImp, layerMet, layerEdge, pixelGrid, biasRing, guardRing, pixelEdge)
+  def Periphery.create(layerImp, layerMet, layerPassOpen, layerEdge, pixelGrid, biasRing, guardRing, pixelEdge)
   
     Periphery.createRing(layerImp,pixelGrid['sizeX']+2*biasRing['distX'],pixelGrid['sizeY']+2*biasRing['distY'],biasRing['width'],biasRing['rIn'],biasRing['rOut'])
     Periphery.createRing(layerMet,pixelGrid['sizeX']+2*biasRing['aluDistX'],pixelGrid['sizeY']+2*biasRing['aluDistY'],biasRing['aluWidth'],biasRing['aluRIn'],biasRing['aluROut'])
               
+    Pixel.createViaGrid(layerMet,6e3,6e3,(pixelGrid['sizeX']/74.5e3).round,1,74.5e3,0,-pixelGrid['sizeX']/2,-pixelGrid['sizeY']/2-biasRing['width']/2)
+    Pixel.createViaGrid(layerMet,6e3,6e3,(pixelGrid['sizeX']/74.5e3).round,1,74.5e3,0,-pixelGrid['sizeX']/2,pixelGrid['sizeY']/2+biasRing['width']/2)    
+    Pixel.createViaGrid(layerMet,6e3,6e3,1,(pixelGrid['sizeY']/74.5e3).round,0,74.5e3,-pixelGrid['sizeX']/2-biasRing['width']/2,-pixelGrid['sizeY']/2)   
+    Pixel.createViaGrid(layerMet,6e3,6e3,1,(pixelGrid['sizeY']/74.5e3).round,0,74.5e3,pixelGrid['sizeX']/2+biasRing['width']/2,-pixelGrid['sizeY']/2)             
+    Periphery.passOpening(layerPassOpen,pixelGrid['sizeX'],biasRing['width']-10e3,0,-pixelGrid['sizeY']/2-biasRing['distY']-biasRing['width']/2) 
+              
     Periphery.createRing(layerImp,pixelGrid['sizeX']+2*guardRing['distX'],pixelGrid['sizeY']+2*guardRing['distY'],guardRing['width'],guardRing['rIn'],guardRing['rOut'])
     Periphery.createRing(layerMet,pixelGrid['sizeX']+2*guardRing['aluDistX'],pixelGrid['sizeY']+2*guardRing['aluDistY'],guardRing['aluWidth'],guardRing['aluRIn'],guardRing['aluROut'])
+  
+    Pixel.createViaGrid(layerMet,6e3,6e3,(pixelGrid['sizeX']/74.5e3).round,1,74.5e3,0,-pixelGrid['sizeX']/2,-pixelGrid['sizeY']/2-guardRing['distY']-guardRing['width']/2)
+    Pixel.createViaGrid(layerMet,6e3,6e3,(pixelGrid['sizeX']/74.5e3).round,1,74.5e3,0,-pixelGrid['sizeX']/2,pixelGrid['sizeY']/2+guardRing['distY']+guardRing['width']/2)
+    Pixel.createViaGrid(layerMet,6e3,6e3,1,(pixelGrid['sizeY']/74.5e3).round,0,74.5e3,-pixelGrid['sizeX']/2-guardRing['distX']-guardRing['width']/2,-pixelGrid['sizeY']/2)
+    Pixel.createViaGrid(layerMet,6e3,6e3,1,(pixelGrid['sizeY']/74.5e3).round,0,74.5e3,pixelGrid['sizeX']/2+guardRing['distX']+guardRing['width']/2,-pixelGrid['sizeY']/2)
+    Periphery.passOpening(layerPassOpen,pixelGrid['sizeX'],guardRing['aluWidth']-10e3,0,-pixelGrid['sizeY']/2-guardRing['aluDistY']-guardRing['aluWidth']/2)
   
     Periphery.createEdge(layerEdge,pixelGrid['sizeX']+2*pixelEdge['distX'],pixelGrid['sizeY']+2*pixelEdge['distY'],pixelEdge['sizeX'],pixelEdge['sizeY'],pixelEdge['outerX0'],pixelEdge['outerY0'])
     Periphery.createEdge(layerMet,pixelGrid['sizeX']+2*pixelEdge['aluDistX'],pixelGrid['sizeY']+2*pixelEdge['aluDistY'],pixelEdge['aluSizeX'],pixelEdge['aluSizeY'],pixelEdge['outerX0'],pixelEdge['outerY0'])
@@ -34,6 +46,11 @@ module Periphery
     
     edge = Cut.polyVector([outerBox,innerBox])
     $Cell.shapes(layer).insert(edge)
+  end
+
+  def Periphery.passOpening(layer,x,y,x0=0,y0=0,r=10e3)
+    opening = Basic.createRoundBox(x,y,x0,y0,r)
+    $Cell.shapes(layer).insert(opening)
   end
 
 end

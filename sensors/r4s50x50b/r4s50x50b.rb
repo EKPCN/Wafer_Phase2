@@ -7,22 +7,24 @@ module Roc4Sens50x50b
 
   def Roc4Sens50x50b.create(layout)
   
-    load ($GLOBAL_PATH + "/sensors/r4s50x50b/r4s50x50b_wide.rb")
+    load ($GLOBAL_PATH + "/sensors/r4s50x50b/r4s50x50b_normal.rb")
         
-    $sensor = layout.create_cell("r4s50x50_normal")
+    $sensor = layout.create_cell("r4s50x50b_normal")
     
     innerPixelCell = layout.create_cell("InnerPixel")      
     Pixel.init(innerPixelCell)
     Pixel.createImplant($layerNp,InnerImplant['sizeX'],InnerImplant['sizeY'],$layerAlu,InnerImplant['metalOH'],0,0,InnerImplant['radius'])
-    Pixel.createVia($layerAluVia, Via['sizeX'],Via['sizeY'],-8e3,-8e3)
-    Pixel.createBumpPad($layerAlu,BumpPad['dia'])
+    Pixel.createVia($layerAluVia, InnerVia['sizeX'],InnerVia['sizeY'],-InnerVia['x0'],-InnerVia['y0'])
+    Pixel.createVia($layerAluVia, InnerVia['sizeX'],InnerVia['sizeY'],InnerVia['x0'],InnerVia['y0'])
+    Pixel.createBumpPad($layerPassOpen,BumpPad['dia'])
     Pixel.createPStop($layerPp, InnerImplant['sizeX']+2*InnerPStop['distX'], InnerImplant['sizeY']+2*InnerPStop['distY'], InnerPStop['width'], InnerPStop['rOut'] , InnerPStop['rIn'])
 
     outerPixelCell = layout.create_cell("OuterPixel")      
     Pixel.init(outerPixelCell)
     Pixel.createImplant($layerNp,OuterImplant['sizeX'],OuterImplant['sizeY'],$layerAlu,OuterImplant['metalOH'],0,0,OuterImplant['radius'])
-    Pixel.createVia($layerAluVia, Via['sizeX'],Via['sizeY'],-10e3,-10e3)
-    Pixel.createBumpPad($layerAlu,BumpPad['dia'],0,12.5e3)
+    Pixel.createVia($layerAluVia, OuterVia['sizeX'],OuterVia['sizeY'],-OuterVia['x0'],-OuterVia['y0'])
+    Pixel.createVia($layerAluVia, OuterVia['sizeX'],OuterVia['sizeY'],OuterVia['x0'],-OuterVia['y0'])
+    Pixel.createBumpPad($layerPassOpen,BumpPad['dia'],0,12.5e3)
     Pixel.createPStop($layerPp, OuterImplant['sizeX']+2*InnerPStop['distX'], OuterImplant['sizeY']+2*InnerPStop['distY'], InnerPStop['width'], InnerPStop['rOut'] , InnerPStop['rIn'])
 
 
@@ -37,7 +39,7 @@ module Roc4Sens50x50b
 
     periCell = layout.create_cell("Periphery")
     Periphery.init(periCell)
-    Periphery.create($layerNp,$layerAlu,$layerPpe19,PixelGrid,BiasRing,GuardRing,PixelEdge)
+    Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,PixelGrid,BiasRing,GuardRing,PixelEdge)
 
     Merge.cells($sensor, periCell)
 

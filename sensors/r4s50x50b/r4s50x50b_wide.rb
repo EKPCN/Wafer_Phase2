@@ -59,15 +59,25 @@ InnerPStop = {
     'openWidth' => 0,
 }
 
-Via = {
+InnerVia = {
 
     'sizeX' => 3e3,
-    'sizeY' => 3e3
+    'sizeY' => 3e3,
+    'x0'    => 8.5e3,
+    'y0'    => 8.5e3,
+}
+
+OuterVia = {
+
+    'sizeX' => 3e3,
+    'sizeY' => 3e3,
+    'x0'    => 7.5e3,
+    'y0'    => 10e3,
 }
 
 BumpPad = {
 
-    'dia' => 10e3   
+    'dia' => 15e3   
 }
 
 BiasRing = {

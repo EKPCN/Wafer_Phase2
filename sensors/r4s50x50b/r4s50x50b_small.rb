@@ -6,16 +6,16 @@ PixelUnitCell = {
 
 InnerImplant = {
 
-    'sizeX' => 23e3,
-    'sizeY' => 23e3,
+    'sizeX' => 15e3,
+    'sizeY' => 15e3,
     'radius' => 4e3,
     'metalOH' => 1e3  
 }
 
 OuterImplant = {
   
-    'sizeX' => 23e3,
-    'sizeY' => 48e3,
+    'sizeX' => 15e3,
+    'sizeY' => 40e3,
     'radius' => 4e3,
     'metalOH' => 1e3 
          
@@ -49,8 +49,8 @@ OuterPixelGrid = {
 
 InnerPStop = {
 
-    'distX' => 6e3,
-    'distY' => 6e3,
+    'distX' => 10e3,
+    'distY' => 10e3,
     'width' => 5e3,
     'rIn' => 4e3,
     'rOut' => 9e3,
@@ -61,23 +61,22 @@ InnerPStop = {
 
 InnerVia = {
 
-    'sizeX' => 3e3,
-    'sizeY' => 3e3,
-    'x0'    => 8.5e3,
-    'y0'    => 8.5e3,
+    'sizeX' => 1.5e3,
+    'sizeY' => 1.5e3,
+    'x0'    => 5e3,
+    'y0'    => 5e3,
 }
 
 OuterVia = {
 
     'sizeX' => 3e3,
     'sizeY' => 3e3,
-    'x0'    => 7.5e3,
+    'x0'    => 5e3,
     'y0'    => 10e3,
 }
-
 BumpPad = {
 
-    'dia' => 18e3   
+    'dia' => 13e3   
 }
 
 BiasRing = {
