@@ -27,21 +27,12 @@ module CISWafer
 
   Layer.insert(layout)
   
-# ----------------- AUTOMATIZATION REQUIERED!!!! ----------------- 
-  
-  # Create gds
-  
-  #load ($GLOBAL_PATH + "/sensors/r4s50x50b/r4s50x50b.rb")
-  #Gds.create("r4s50x50b_normal")
-  
-# ----------------------------------------------------------------  
-  
   # wafer
   
   waferCell = layout.create_cell("Wafer")  
   waferOuterDia = 150e6
   waferInnerDia = 140e6  
-  Basic.createWafer($layerP, waferCell, waferInnerDia, waferOuterDia)
+  Basic.wafer($layerP, waferCell, waferInnerDia, waferOuterDia)
 
   # Get SensorList from file
 
@@ -49,7 +40,7 @@ module CISWafer
   
   f = File.open($GLOBAL_PATH + "/sensors/sensorList.txt")
   f.each_line{ 
-    |line| sensors << line 
+    |line| sensors << line.delete("\n") 
   }   
   f.close
 
@@ -58,23 +49,29 @@ module CISWafer
   x0 = 0
   y0 = 0
 
-  # Check if gds file ist present
+  # Check if gds file ist present and if not, create one
   
-  sensors.each{ |sensor|  
-  
-    if File.exist?($GLOBAL_PATH + "/gds/" + sensor.delete("\n") + ".gds")  
-      
+  sensors.each{ |sensor|   
+    
+    if !File.exist?($GLOBAL_PATH + "/gds/" + sensor + ".gds")     
+      Gds.create(sensor)
+    end
+
+    if File.exist?($GLOBAL_PATH + "/gds/" + sensor + ".gds") 
+    
       # Merge gds files
   
       loadCell = layout.create_cell(sensor)
       importLayout = Layout.new
     
-      importLayout.read($GLOBAL_PATH + "/gds/" + sensor.delete("\n") + ".gds") 
+      importLayout.read($GLOBAL_PATH + "/gds/" + sensor + ".gds") 
       loadCell.copy_tree(importLayout.top_cell)
   
       Merge.cells(waferCell,loadCell,x0,y0)
       y0 += 10e6 
+  
     end
+    
   }
   
   # end

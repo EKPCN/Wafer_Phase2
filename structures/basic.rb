@@ -9,7 +9,7 @@ module Basic
   # @param diaOuter [int] Outer diamert in um
   # @return [Nill]
 
-  def Basic.createWafer(layer,cell, diaInner, diaOuter)
+  def Basic.wafer(layer,cell, diaInner, diaOuter)
     waferOuterPoly = Polygon.new([Point.new(diaOuter/2,diaOuter/2),Point.new(-diaOuter/2,diaOuter/2), Point.new(-diaOuter/2,-diaOuter/2), Point.new(diaOuter/2,-diaOuter/2)])
     waferOuterLayer = waferOuterPoly.round_corners(0,diaOuter/2,50)
   
@@ -29,7 +29,7 @@ module Basic
   # @param r [int] Radius of corner circle
   # @return [Polygon] The polygon object
 
-  def Basic.createRoundBox(x,y,x0=0,y0=0,r=5000)
+  def Basic.roundBox(x,y,x0=0,y0=0,r=5000)
     box = Polygon.new(Box.new(-x/2,-y/2,x/2,y/2))
     roundBox = box.round_corners(0,r,32) 
     roundBox.move(x0,y0)
@@ -44,7 +44,7 @@ module Basic
   # @param y0 [int] Y postion of the center of the object
   # @return [Polygon] The polygon object
 
-  def Basic.createOctagon(dia,x0=0,y0=0)
+  def Basic.octagon(dia,x0=0,y0=0)
     a = 2*(dia/2.0)/(1.0+Math.sqrt(2.0))
     octagon = Polygon.new([Point.new(a/2.0,dia/2.0),Point.new(dia/2.0,a/2.0),Point.new(dia/2.0,-a/2.0),Point.new(a/2.0,-dia/2.0),Point.new(-a/2.0,-dia/2.0),Point.new(-dia/2.0,-a/2.0),Point.new(-dia/2.0,a/2.0),Point.new(-a/2.0,dia/2.0)])
     octagon.move(x0,y0)
@@ -62,7 +62,7 @@ module Basic
   # @param y0 [int] Y postion of the center of the object
   # @return [Polygon] The polygon object
 
-  def Basic.createRing(x,y,width,rIn=0,rOut=0,x0=0,y0=0)
+  def Basic.ring(x,y,width,rIn=0,rOut=0,x0=0,y0=0)
     
     innerRing = Polygon.new(Box.new(-x/2,-y/2,x/2,y/2))
     outerRing = Polygon.new(Box.new((-x/2)-width,(-y/2)-width,(x/2)+width,(y/2)+width))
@@ -81,7 +81,7 @@ module Basic
   # @param p [int] Number of points that are used to create the circle
   # @return [Polygon] The polygon object
 
-  def Basic.createCircle(d,x0=0,y0=0,p=32)
+  def Basic.circle(d,x0=0,y0=0,p=32)
     box = Polygon.new(Box.new(-d/2,-d/2,d/2,d/2))
     circ = box.round_corners(0,d/2,p)
     circ.move(x0,y0)
@@ -96,7 +96,7 @@ module Basic
   # @param y0 [int] Offset in y direction  
   # @return [Polygon] The polygon object
   
-  def Basic.createCircRing(dIn,dOut,x0=0,y0=0)
+  def Basic.circularRing(dIn,dOut,x0=0,y0=0)
     outerRing = Polygon.new(Box.new(-dOut/2.0,-dOut/2.0,dOut/2.0,dOut/2.0))
     innerRing = Polygon.new(Box.new(-dIn/2.0,-dIn/2.0,dIn/2.0,dIn/2.0))
     
