@@ -2,3 +2,5 @@ r4s50x50b_normal
 r4s50x50b_small
 r4s50x50b_wide
 fpixf_pstop
+r4s100x25cPT_test
+r4s50x50cPT_test

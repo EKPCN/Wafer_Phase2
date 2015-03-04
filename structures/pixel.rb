@@ -38,17 +38,30 @@ module Pixel
   # @param y0 [int] center of the implant
   
   def Pixel.ptImplant(layer,x,y,x0PT,y0PT,dHole,dImplant=0,minDistToEdge=0,x0=0,y0=0)
-    
-    implant = Basic.roundBox(x,y,x0,y0)
-    if (x0PT).abs + dHole/2.0 + minDistToEdge >= x/2.0 || (y0PT).abs + dHole/2.0 + minDistToEdge >= y/2.0
-      ptAddImplant = Basic.circle(dHole + 2.0*minDistToEdge,x0PT,y0PT)
-      tmp = Merge.polyVector([implant,ptAddImplant])
-      implant = tmp
+    if (x0PT).abs+dHole/2<x/2 && (y0PT).abs+dHole/2<y/2
+      #standard PT
+      implant = Basic.roundBox(x,y,x0,y0)
+      if minDistToEdge!=0 && ((x0PT).abs + dHole/2.0 + minDistToEdge >= x/2.0 || (y0PT).abs + dHole/2.0 + minDistToEdge >= y/2.0)
+        ptAddImplant = Basic.circle(dHole + 2.0*minDistToEdge,x0PT,y0PT)
+        tmp = Merge.polyVector([implant,ptAddImplant])
+        implant = tmp
+      end
+      ptHole = Basic.circle(dHole,x0PT,y0PT)
+      tmp = Merge.polyVector([implant,ptHole])
+      implantHole = Cut.polyVector([tmp,ptHole])
+    else
+      #common PT
+      implantPoly = Polygon.new(Box.new(-x/2,-y/2,x/2,y/2))
+      ptHole = Basic.circle(dHole,x0PT,y0PT)
+      tmp = Merge.polyVector([implantPoly,ptHole])
+      implant = Cut.polyVector([tmp,ptHole])
+      #diameter of corners 
+      outercornerdia = 5e3
+      implantHole = implant.round_corners(0,outercornerdia,32)
     end
-    ptHole = Basic.circle(dHole,x0PT,y0PT)
-    implantHole = Cut.polyVector([implant,ptHole])
     ptImplant = Basic.circle(dImplant,x0PT,y0PT)
-    
+    implantHole.move(x0,y0)
+    ptImplant.move(x0,y0)
     $Cell.shapes(layer).insert(ptImplant)
     $Cell.shapes(layer).insert(implantHole)
       
@@ -181,6 +194,37 @@ module Pixel
     
     $Cell.shapes(layer).insert(implant)
   end
+
+  # Creates the punch through metal 
+  # @param layer [layer] Used material
+  # @param x [int] Size in x direction
+  # @param y [int] Size in y direction
+  # @param x0PT [int] x position of PT
+  # @param y0PT [int] y position of PT
+  # @param d [int] diameter of PT hole
+  # @param x0 [int] center of the implant
+  # @param y0 [int] center of the implant
+  
+  def Pixel.cptMetal(layer,x,y,x0PT,y0PT,d,x0=0,y0=0)
+    
+    implantPoly = Polygon.new(Box.new(-x/2,-y/2,x/2,y/2))
+    
+      #create hole in implant for the actual punch through
+    ptHole = Basic.circle(d,x0PT,y0PT,40)
+    
+    tmp = Merge.polyVector([implantPoly,ptHole])
+    implant = Cut.polyVector([tmp,ptHole])
+      #round corners (does not always work in transition from pt hole to bias line hole)
+      #diameter of corners 
+      #PUT IN PARAMETER FILE???
+    outercornerdia = 5e3
+    implant = implant.round_corners(0,outercornerdia,32)
+    
+    implant.move(x0,y0)
+    
+    $Cell.shapes(layer).insert(implant)
+  end
+
   
   # Creates the bias structure for the punch throughs
   # @param layer [layer] Used material
@@ -195,80 +239,91 @@ module Pixel
   # @param y0 [int] center of the implant
   
   def Pixel.ptBiasLine(layer,pixSizeX,pixSizeY,x0PT,y0PT,dDot,blWidth,globalBLwidth=0,x0=0,y0=0)
-  
-    dot = Basic.createCircle(dDot,x0PT,y0PT)
     
-      #make global bias line with same width as the inner bias line
+    dot = Basic.circle(dDot,x0PT,y0PT)
+    
+    #overlap of biasline into upper and lower pixel (defined by the distance of last pixel to the current collection ring)
+    #PUT IN PARAMETER FILE?? 31 um only needed for 2 corner pixels in 100x25 not bricked design
+    distY = 31e3
+    
+    #make global bias line with same width as the inner bias line
     if globalBLwidth==0
       globalBLwidth = blWidth
     end
     
-    
-    if x0PT < 0
-      blLength = pixSizeX/2.0 - globalBLwidth/2.0 + x0PT
-      biasLine = Polygon.new(Box.new(x0PT-blLength,y0PT-blWidth/2.0,x0PT,y0PT+blWidth/2.0)) 
-    else
-      blLength = pixSizeX/2.0 - globalBLwidth/2.0 - x0PT
-      biasLine = Polygon.new(Box.new(x0PT,y0PT-blWidth/2.0,x0PT+blLength,y0PT+blWidth/2.0)) 
-    end
-    biasBase = Merge.polyVector([dot,biasLine])
-    
+    #check if common PT
+    if (x0PT).abs+dDot/2+globalBLwidth<pixSizeX/2 && (y0PT).abs+dDot/2+globalBLwidth<pixSizeY/2
+      
+      if x0PT < 0
+	blLength = pixSizeX/2.0 - globalBLwidth/2.0 + x0PT
+	biasLine = Polygon.new(Box.new(x0PT-blLength,y0PT-blWidth/2.0,x0PT,y0PT+blWidth/2.0)) 
+      else
+	blLength = pixSizeX/2.0 - globalBLwidth/2.0 - x0PT
+	biasLine = Polygon.new(Box.new(x0PT,y0PT-blWidth/2.0,x0PT+blLength,y0PT+blWidth/2.0)) 
+      end
+      biasBase = Merge.polyVector([dot,biasLine])
+      
       #diameter of transition between bias dot and bias line (should be <(dDot-blWidth)/3.0))
-    dy = (dDot-blWidth)/4.0
-    
-    alpha = Math.asin((blWidth/2.0+dy)/(dDot/2.0))
-    rTrans = dy/(1.0-Math.sin(alpha))
-    dx = Math.cos(alpha)*rTrans
-    
-    if x0PT < 0
-      upperPoly = Polygon.new(Box.new(x0PT-Math.cos(alpha)*(dDot/2.0)-dx,y0PT,x0PT-Math.cos(alpha)*(dDot/2.0),y0PT+(blWidth/2.0)+dy))  
-      lowerPoly = Polygon.new(Box.new(x0PT-Math.cos(alpha)*(dDot/2.0)-dx,y0PT,x0PT-Math.cos(alpha)*(dDot/2.0),y0PT-(blWidth/2.0)-dy)) 
-      upperCirc = Basic.createCircle(2*rTrans,x0PT-Math.cos(alpha)*(dDot/2.0)-dx,y0PT+(blWidth/2.0)+rTrans,60)
-      lowerCirc = Basic.createCircle(2*rTrans,x0PT-Math.cos(alpha)*(dDot/2.0)-dx,y0PT-(blWidth/2.0)-rTrans,60)
-    else
-      upperPoly = Polygon.new(Box.new(x0PT+Math.cos(alpha)*(dDot/2.0),y0PT,x0PT+Math.cos(alpha)*(dDot/2.0)+dx,y0PT+(blWidth/2.0)+dy))  
-      lowerPoly = Polygon.new(Box.new(x0PT+Math.cos(alpha)*(dDot/2.0),y0PT,x0PT+Math.cos(alpha)*(dDot/2.0)+dx,y0PT-(blWidth/2.0)-dy)) 
-      upperCirc = Basic.createCircle(2*rTrans,x0PT+Math.cos(alpha)*(dDot/2.0)+dx,y0PT+(blWidth/2.0)+rTrans,60)
-      lowerCirc = Basic.createCircle(2*rTrans,x0PT+Math.cos(alpha)*(dDot/2.0)+dx,y0PT-(blWidth/2.0)-rTrans,60)
-    end
-    
-    biasTmp = Merge.polyVector([lowerPoly,biasBase,upperPoly])
-    biasTmp2 = Merge.polyVector([upperCirc,biasTmp,lowerCirc])    
-    biasTmp3 = Cut.polyVector([upperCirc,biasTmp2,lowerCirc])
-    
-      #overlap of biasline into upper and lower pixel (defined by the distance of last pixel to the current collection ring)
-      #PUT IN PARAMETER FILE?? 31 um only needed for 2 corner pixels in 100x25 not bricked design
-    distY = 31e3
-    
-    
-    if x0PT < 0
-      globalBiasLine = Polygon.new(Box.new(x0PT-blLength-globalBLwidth/2.0,-pixSizeY/2.0-distY,x0PT-blLength,pixSizeY/2.0+distY))
-      biasTmp4 = Merge.polyVector([biasTmp3,globalBiasLine])
-    else
-      globalBiasLine = Polygon.new(Box.new(x0PT+blLength,-pixSizeY/2.0-distY,x0PT+blLength+globalBLwidth,pixSizeY/2.0+distY))
-      biasTmp4 = Merge.polyVector([biasTmp3,globalBiasLine])
-    end
-    
+      dy = (dDot-blWidth)/4.0
+      
+      alpha = Math.asin((blWidth/2.0+dy)/(dDot/2.0))
+      rTrans = dy/(1.0-Math.sin(alpha))
+      dx = Math.cos(alpha)*rTrans
+      
+      if x0PT < 0
+	upperPoly = Polygon.new(Box.new(x0PT-Math.cos(alpha)*(dDot/2.0)-dx,y0PT,x0PT-Math.cos(alpha)*(dDot/2.0),y0PT+(blWidth/2.0)+dy))  
+	lowerPoly = Polygon.new(Box.new(x0PT-Math.cos(alpha)*(dDot/2.0)-dx,y0PT,x0PT-Math.cos(alpha)*(dDot/2.0),y0PT-(blWidth/2.0)-dy)) 
+	upperCirc = Basic.circle(2*rTrans,x0PT-Math.cos(alpha)*(dDot/2.0)-dx,y0PT+(blWidth/2.0)+rTrans,60)
+	lowerCirc = Basic.circle(2*rTrans,x0PT-Math.cos(alpha)*(dDot/2.0)-dx,y0PT-(blWidth/2.0)-rTrans,60)
+      else
+	upperPoly = Polygon.new(Box.new(x0PT+Math.cos(alpha)*(dDot/2.0),y0PT,x0PT+Math.cos(alpha)*(dDot/2.0)+dx,y0PT+(blWidth/2.0)+dy))  
+	lowerPoly = Polygon.new(Box.new(x0PT+Math.cos(alpha)*(dDot/2.0),y0PT,x0PT+Math.cos(alpha)*(dDot/2.0)+dx,y0PT-(blWidth/2.0)-dy)) 
+	upperCirc = Basic.circle(2*rTrans,x0PT+Math.cos(alpha)*(dDot/2.0)+dx,y0PT+(blWidth/2.0)+rTrans,60)
+	lowerCirc = Basic.circle(2*rTrans,x0PT+Math.cos(alpha)*(dDot/2.0)+dx,y0PT-(blWidth/2.0)-rTrans,60)
+      end
+      
+      biasTmp = Merge.polyVector([lowerPoly,biasBase,upperPoly])
+      biasTmp2 = Merge.polyVector([upperCirc,biasTmp,lowerCirc])    
+      biasTmp3 = Cut.polyVector([upperCirc,biasTmp2,lowerCirc])
+      
+      
       #diameter of transition between horizontal and vertical ("global") biasline
-    rTrans = 1.0e3
-    
-    if x0PT < 0
-      upperPoly = Polygon.new(Box.new(x0PT-blLength,y0PT+blWidth/2.0,x0PT-blLength+rTrans,y0PT+blWidth/2.0+rTrans))
-      lowerPoly = Polygon.new(Box.new(x0PT-blLength,y0PT-blWidth/2.0,x0PT-blLength+rTrans,y0PT-blWidth/2.0-rTrans))
-      upperCirc = Basic.createCircle(2*rTrans,x0PT-blLength+rTrans,y0PT+blWidth/2.0+rTrans)
-      lowerCirc = Basic.createCircle(2*rTrans,x0PT-blLength+rTrans,y0PT-blWidth/2.0-rTrans)
+      rTrans = 1.0e3
+      
+      if x0PT < 0
+	#create global biasline
+	globalBiasLine = Polygon.new(Box.new(x0PT-blLength-globalBLwidth/2.0,-pixSizeY/2.0-distY,x0PT-blLength,pixSizeY/2.0+distY))
+	#make the transition
+	upperPoly = Polygon.new(Box.new(x0PT-blLength,y0PT+blWidth/2.0,x0PT-blLength+rTrans,y0PT+blWidth/2.0+rTrans))
+	lowerPoly = Polygon.new(Box.new(x0PT-blLength,y0PT-blWidth/2.0,x0PT-blLength+rTrans,y0PT-blWidth/2.0-rTrans))
+	upperCirc = Basic.circle(2*rTrans,x0PT-blLength+rTrans,y0PT+blWidth/2.0+rTrans)
+	lowerCirc = Basic.circle(2*rTrans,x0PT-blLength+rTrans,y0PT-blWidth/2.0-rTrans)
+      else
+	#create global biasline
+	globalBiasLine = Polygon.new(Box.new(x0PT+blLength,-pixSizeY/2.0-distY,x0PT+blLength+globalBLwidth,pixSizeY/2.0+distY))
+	#make the transition
+	upperPoly = Polygon.new(Box.new(x0PT+blLength,y0PT+blWidth/2.0,x0PT+blLength-rTrans,y0PT+blWidth/2.0+rTrans))
+	lowerPoly = Polygon.new(Box.new(x0PT+blLength,y0PT-blWidth/2.0,x0PT+blLength-rTrans,y0PT-blWidth/2.0-rTrans))
+	upperCirc = Basic.circle(2*rTrans,x0PT+blLength-rTrans,y0PT+blWidth/2.0+rTrans)
+	lowerCirc = Basic.circle(2*rTrans,x0PT+blLength-rTrans,y0PT-blWidth/2.0-rTrans)
+      end
+      biasTmp4 = Merge.polyVector([biasTmp3,globalBiasLine])
+      biasTmp = Merge.polyVector([lowerPoly,biasTmp4,upperPoly])
+      biasTmp2 = Merge.polyVector([upperCirc,biasTmp,lowerCirc])    
+      bias = Cut.polyVector([upperCirc,biasTmp2,lowerCirc])
+      
     else
-      upperPoly = Polygon.new(Box.new(x0PT+blLength,y0PT+blWidth/2.0,x0PT+blLength-rTrans,y0PT+blWidth/2.0+rTrans))
-      lowerPoly = Polygon.new(Box.new(x0PT+blLength,y0PT-blWidth/2.0,x0PT+blLength-rTrans,y0PT-blWidth/2.0-rTrans))
-      upperCirc = Basic.createCircle(2*rTrans,x0PT+blLength-rTrans,y0PT+blWidth/2.0+rTrans)
-      lowerCirc = Basic.createCircle(2*rTrans,x0PT+blLength-rTrans,y0PT-blWidth/2.0-rTrans)
+      #create global biasline fot common PT design
+      if x0PT < 0
+	globalBiasLine = Polygon.new(Box.new(x0PT-globalBLwidth/2.0,-pixSizeY/2.0-distY,x0PT,pixSizeY/2.0+distY))
+      else
+	globalBiasLine = Polygon.new(Box.new(x0PT,-pixSizeY/2.0-distY,x0PT+globalBLwidth,pixSizeY/2.0+distY))
+      end
+      bias=Merge.polyVector([globalBiasLine,dot])
     end
-    biasTmp = Merge.polyVector([lowerPoly,biasTmp4,upperPoly])
-    biasTmp2 = Merge.polyVector([upperCirc,biasTmp,lowerCirc])    
-    bias = Cut.polyVector([upperCirc,biasTmp2,lowerCirc])
     
     bias.move(x0,y0)
-      
+    
     $Cell.shapes(layer).insert(bias)
   end
 
@@ -278,10 +333,13 @@ module Pixel
   # @param y0PT [int] Y Position of the punch through center
   # @param dIn [int] Inner diameter of the pstop ring
   # @param dOut [int] Outer diameter of the pstop ring
-  
-  def Pixel.ptPStop(layer, x0PT, y0PT, dIn, dOut)
+  # @param x0 [int] center of the implant
+  # @param y0 [int] center of the implant
+
+  def Pixel.ptPStop(layer, x0PT, y0PT, dIn, dOut, x0=0, y0=0)
     if dIn<dOut
       pStop = Basic.circularRing(dIn,dOut,x0PT,y0PT)    
+      pStop.move(x0,y0)
       $Cell.shapes(layer).insert(pStop) 
     else
       puts 'CHECK PT PSTOP PARAMETERS'
@@ -294,10 +352,13 @@ module Pixel
   # @param x0PT [int] X Position of the punch through center
   # @param y0PT [int] Y Position of the punch through center
   # @param d [int] Diameter of the via
-
-  def Pixel.ptVia(layer, x0PT, y0PT, d)
+  # @param x0 [int] center of the implant
+  # @param y0 [int] center of the implant
+  
+  def Pixel.ptVia(layer, x0PT, y0PT, d, x0=0, y0=0)
 
     via = Basic.circle(d,x0PT,y0PT)
+    via.move(x0,y0)
     $Cell.shapes(layer).insert(via)    
   end
   
