@@ -12,10 +12,19 @@ InnerImplant = {
     'metalOH' => 1e3  
 }
 
+OuterImplant = {
+  
+    'sizeX' => 30e3,
+    'sizeY' => 55e3,
+    'radius' => 4e3,
+    'metalOH' => 1e3 
+         
+}
+
 PixelGrid = {
 
     'sizeX' => 8000e3,
-    'sizeY' => 8000e3
+    'sizeY' => 8025e3
 }
 
 InnerPixelGrid = {
@@ -23,9 +32,19 @@ InnerPixelGrid = {
     'sizeX' => 50e3,
     'sizeY' => 50e3,
     'nX' => 80,
-    'nY' => 160,
+    'nY' => 159,
     'dX' => 100e3,
     'dY' => 50e3 
+}
+
+OuterPixelGrid = {
+
+    'sizeX' => 50e3,
+    'sizeY' => 75e3,
+    'nX' => 80,
+    'nY' => 1,
+    'dX' => 100e3,
+    'dY' => 0
 }
 
 InnerPStop = {
@@ -40,15 +59,25 @@ InnerPStop = {
     'openWidth' => 0,
 }
 
-Via = {
+InnerVia = {
 
     'sizeX' => 3e3,
-    'sizeY' => 3e3
+    'sizeY' => 3e3,
+    'x0'    => 8.5e3,
+    'y0'    => 8.5e3,
+}
+
+OuterVia = {
+
+    'sizeX' => 3e3,
+    'sizeY' => 3e3,
+    'x0'    => 7.5e3,
+    'y0'    => 10e3,
 }
 
 BumpPad = {
 
-    'dia' => 2e3   
+    'dia' => 15e3   
 }
 
 BiasRing = {
