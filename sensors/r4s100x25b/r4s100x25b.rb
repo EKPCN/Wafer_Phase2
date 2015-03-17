@@ -44,6 +44,9 @@ module Roc4Sens100x25b
     Periphery.init(periCell)
     Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,PixelGrid,BiasRing,GuardRing,PixelEdge)
 
+    textCell = Text.create(layout, $layerPassOpen, sensor , -4000e3, 4500e3) 
+    Merge.cells(periCell, textCell) 
+
     Merge.cells(topCell, periCell)
 
     return topCell
