@@ -52,12 +52,31 @@ module Pixel
     else
       #common PT
       implantPoly = Polygon.new(Box.new(-x/2,-y/2,x/2,y/2))
+      implantPoly = implantPoly.round_corners(0,5e3,32) 
       ptHole = Basic.circle(dHole,x0PT,y0PT)
       tmp = Merge.polyVector([implantPoly,ptHole])
       implant = Cut.polyVector([tmp,ptHole])
-      #diameter of corners 
-      outercornerdia = 5e3
-      implantHole = implant.round_corners(0,outercornerdia,32)
+      
+      #round corners
+      #corner parameter
+      cp = 2e3
+      #calculate position for left and right box
+      #NOW ONLY FOR UPPER RIGHT CORNER COMMOM PUNCH-THRU
+      alphal = Math.acos((cp+y0PT-y/2)*2/dHole)
+      rc = cp/(1-Math.cos(alphal))
+      xl = x0PT-Math.sin(alphal)*(dHole/2+rc)
+      lbox = Polygon.new(Box.new(xl,y/2-cp,xl+rc*Math.sin(alphal),y/2))
+      lcirc = Basic.circle(2*rc,xl,y/2-rc,30)
+        
+      alphar = Math.asin((cp+x0PT-x/2)*2/dHole)
+      rc = cp/(1-Math.sin(alphar))
+      yr = y0PT-Math.cos(alphar)*(dHole/2+rc)#SOME ERROR IN Y
+      rbox = Polygon.new(Box.new(x/2-cp,yr,x/2,yr+rc*Math.cos(alphar)))
+      rcirc = Basic.circle(2*rc,x/2-rc,yr,30)
+    
+      tmp = Merge.polyVector([implant,lbox,rbox])
+      ptm = Cut.polyVector([tmp,lbox,rbox])
+      implantHole = Merge.polyVector([ptm,lcirc,rcirc])
     end
     ptImplant = Basic.circle(dImplant,x0PT,y0PT)
     implantHole.move(x0,y0)
@@ -208,17 +227,36 @@ module Pixel
   def Pixel.cptMetal(layer,x,y,x0PT,y0PT,d,x0=0,y0=0)
     
     implantPoly = Polygon.new(Box.new(-x/2,-y/2,x/2,y/2))
+    outercornerdia = 5e3
+    implantPoly = implantPoly.round_corners(0,outercornerdia,32)
     
-      #create hole in implant for the actual punch through
+    #create hole in implant for the actual punch through
     ptHole = Basic.circle(d,x0PT,y0PT,40)
     
+    #round corners
+    #corner parameter
+    cp = 2e3
+    #calculate position for left and right box
+    #NOW ONLY FOR UPPER RIGHT CORNER COMMOM PUNCH-THRU
+    alphal = Math.acos((cp+y0PT-y/2)*2/d)
+    rc = cp/(1-Math.cos(alphal))
+    xl = x0PT-Math.sin(alphal)*(d/2+rc)
+    lbox = Polygon.new(Box.new(xl,y/2-cp,xl+rc*Math.sin(alphal),y/2))
+    lcirc = Basic.circle(2*rc,xl,y/2-rc,30)
+    
+        
+    alphar = Math.asin((cp+x0PT-x/2)*2/d)
+    rc = cp/(1-Math.sin(alphar))
+    yr = y0PT-Math.cos(alphar)*(d/2+rc)#SOME ERROR IN Y
+    rbox = Polygon.new(Box.new(x/2-cp,yr,x/2,yr+rc*Math.cos(alphar)))
+    rcirc = Basic.circle(2*rc,x/2-rc,yr,30)
+
+    
     tmp = Merge.polyVector([implantPoly,ptHole])
-    implant = Cut.polyVector([tmp,ptHole])
-      #round corners (does not always work in transition from pt hole to bias line hole)
-      #diameter of corners 
-      #PUT IN PARAMETER FILE???
-    outercornerdia = 5e3
-    implant = implant.round_corners(0,outercornerdia,32)
+    ptm = Cut.polyVector([tmp,ptHole])
+    tmp = Merge.polyVector([ptm,lbox,rbox])
+    ptm = Cut.polyVector([tmp,lbox,rbox])
+    implant = Merge.polyVector([ptm,lcirc,rcirc])
     
     implant.move(x0,y0)
     

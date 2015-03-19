@@ -26,7 +26,7 @@ module Periphery
     Pixel.viaGrid(layerMet,6e3,6e3,1,(pixelGrid['sizeY']/74.5e3).round,0,74.5e3,-pixelGrid['sizeX']/2-guardRing['distX']-guardRing['width']/2,-pixelGrid['sizeY']/2)
     Pixel.viaGrid(layerMet,6e3,6e3,1,(pixelGrid['sizeY']/74.5e3).round,0,74.5e3,pixelGrid['sizeX']/2+guardRing['distX']+guardRing['width']/2,-pixelGrid['sizeY']/2)
     Periphery.passOpening(layerPassOpen,pixelGrid['sizeX'],guardRing['aluWidth']-10e3,0,-pixelGrid['sizeY']/2-guardRing['aluDistY']-guardRing['aluWidth']/2)
-  
+   
     Periphery.edge(layerEdge,pixelGrid['sizeX']+2*pixelEdge['distX'],pixelGrid['sizeY']+2*pixelEdge['distY'],pixelEdge['sizeX'],pixelEdge['sizeY'],pixelEdge['outerX0'],pixelEdge['outerY0'])
     Periphery.edge(layerMet,pixelGrid['sizeX']+2*pixelEdge['aluDistX'],pixelGrid['sizeY']+2*pixelEdge['aluDistY'],pixelEdge['aluSizeX'],pixelEdge['aluSizeY'],pixelEdge['outerX0'],pixelEdge['outerY0'])
   end
@@ -41,12 +41,13 @@ module Periphery
 
   def Periphery.edge(layer,xi,yi,xo,yo,x0=0,y0=0)
     innerBox = Polygon.new(Box.new(-xi/2,-yi/2,xi/2,yi/2))
-    outerBox = Polygon.new(Box.new(-xo/2,-yo/2,xo/2,yo/2))
+    outerBox = Polygon.new(Box.new(-xo/2,-yo/2,xo/2,yo/2))  
     outerBox.move(x0,y0)
-    
-    edge = Cut.polyVector([outerBox,innerBox])
+  
+    edge = Cut.polyVector([outerBox,innerBox])   
     $Cell.shapes(layer).insert(edge)
   end
+
 
   def Periphery.passOpening(layer,x,y,x0=0,y0=0,r=10e3)
     opening = Basic.roundBox(x,y,x0,y0,r)

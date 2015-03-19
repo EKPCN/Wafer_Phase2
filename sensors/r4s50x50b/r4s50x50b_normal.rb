@@ -61,17 +61,17 @@ InnerPStop = {
 
 InnerVia = {
 
-    'sizeX' => 3e3,
-    'sizeY' => 3e3,
-    'x0'    => 8.5e3,
-    'y0'    => 8.5e3,
+    'sizeX' => 5e3,
+    'sizeY' => 5e3,
+    'x0'    => 7e3,
+    'y0'    => 7e3,
 }
 
 OuterVia = {
 
-    'sizeX' => 3e3,
-    'sizeY' => 3e3,
-    'x0'    => 7.5e3,
+    'sizeX' => 5e3,
+    'sizeY' => 5e3,
+    'x0'    => 7e3,
     'y0'    => 10e3,
 }
 
