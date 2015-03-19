@@ -12,6 +12,7 @@ module CISWafer
   load "Wafer_Phase2/utils/merge.rb"
   load "Wafer_Phase2/utils/cut.rb"
   load "Wafer_Phase2/utils/gds.rb"
+  load "Wafer_Phase2/utils/text.rb"
 
   # create mainWindow and layout
   
@@ -44,10 +45,12 @@ module CISWafer
   }   
   f.close
 
-  # Set default position on wafer
+  # Set default position and steps on wafer
 
-  x0 = 0
-  y0 = 0
+  x0 = -40000e3
+  y0 = 45000e3
+  nXmax = Math.sqrt(sensors.length).ceil
+  nX = 0
 
   # Check if gds file ist present and if not, create one
   
@@ -68,8 +71,17 @@ module CISWafer
       loadCell.copy_tree(importLayout.top_cell)
   
       Merge.cells(waferCell,loadCell,x0,y0)
-      y0 += 10e6 
-  
+      
+      # stepping
+      
+      x0 += 9960e3
+      nX += 1
+      
+      if nX == nXmax
+        y0 -= 10260e3
+        x0 = -40000e3
+        nX = 0
+      end
     end
   
   }

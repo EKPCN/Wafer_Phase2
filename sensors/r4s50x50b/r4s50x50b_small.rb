@@ -9,7 +9,7 @@ InnerImplant = {
     'sizeX' => 15e3,
     'sizeY' => 15e3,
     'radius' => 4e3,
-    'metalOH' => 1e3  
+    'metalOH' => 2.5e3  
 }
 
 OuterImplant = {
@@ -17,7 +17,7 @@ OuterImplant = {
     'sizeX' => 15e3,
     'sizeY' => 40e3,
     'radius' => 4e3,
-    'metalOH' => 1e3 
+    'metalOH' => 2.5e3 
          
 }
 
@@ -61,22 +61,22 @@ InnerPStop = {
 
 InnerVia = {
 
-    'sizeX' => 1.5e3,
-    'sizeY' => 1.5e3,
-    'x0'    => 5e3,
-    'y0'    => 5e3,
+    'sizeX' => 5e3,
+    'sizeY' => 5e3,
+    'x0'    => 0,
+    'y0'    => 0,
 }
 
 OuterVia = {
 
-    'sizeX' => 3e3,
-    'sizeY' => 3e3,
-    'x0'    => 5e3,
+    'sizeX' => 5e3,
+    'sizeY' => 5e3,
+    'x0'    => 0e3,
     'y0'    => 10e3,
 }
 BumpPad = {
 
-    'dia' => 13e3   
+    'dia' => 18e3   
 }
 
 BiasRing = {
