@@ -54,4 +54,6 @@ module R4S100x25cPT
 
     return $sensor
   end
+
 end
+
