@@ -59,24 +59,39 @@ module Pixel
       
       #round corners
       #corner parameter
-      cp = 2e3
+      cp = 1.0e3
+      #extra parameter to account for deviation from perfect circle
+      ep = 0.5e3
+      
       #calculate position for left and right box
       #NOW ONLY FOR UPPER RIGHT CORNER COMMOM PUNCH-THRU
       alphal = Math.acos((cp+y0PT-y/2)*2/dHole)
       rc = cp/(1-Math.cos(alphal))
       xl = x0PT-Math.sin(alphal)*(dHole/2+rc)
-      lbox = Polygon.new(Box.new(xl,y/2-cp,xl+rc*Math.sin(alphal),y/2))
+      lbox = Polygon.new(Box.new(xl,y/2-cp-ep,xl+rc*Math.sin(alphal),y/2))
       lcirc = Basic.circle(2*rc,xl,y/2-rc,30)
         
       alphar = Math.asin((cp+x0PT-x/2)*2/dHole)
       rc = cp/(1-Math.sin(alphar))
-      yr = y0PT-Math.cos(alphar)*(dHole/2+rc)#SOME ERROR IN Y
-      rbox = Polygon.new(Box.new(x/2-cp,yr,x/2,yr+rc*Math.cos(alphar)))
+      yr = y0PT-Math.cos(alphar)*(dHole/2+rc)
+      rbox = Polygon.new(Box.new(x/2-cp-ep,yr,x/2,yr+rc*Math.cos(alphar)))
       rcirc = Basic.circle(2*rc,x/2-rc,yr,30)
-    
+      
+      tmpl = Merge.polyVector([lbox,lcirc])
+      ptml = Cut.polyVector([tmpl,lcirc])
+      tmpl = Cut.polyVector([ptml,lbox])
+      tmpr = Merge.polyVector([rbox,rcirc])
+      ptmr = Cut.polyVector([tmpr,rcirc])
+      tmpr = Cut.polyVector([ptmr,rbox])
+      
       tmp = Merge.polyVector([implant,lbox,rbox])
       ptm = Cut.polyVector([tmp,lbox,rbox])
-      implantHole = Merge.polyVector([ptm,lcirc,rcirc])
+      if yr>=5e3
+        #check whether the cpt starts after the rounding of the implant corners (rad = 5 um). for small implant width in the order of y = 2*rad
+        implantHole = Merge.polyVector([ptm,tmpl,tmpr])
+      else
+        implantHole = Merge.polyVector([ptm,tmpl,rcirc])
+      end
     end
     ptImplant = Basic.circle(dImplant,x0PT,y0PT)
     implantHole.move(x0,y0)
@@ -233,30 +248,41 @@ module Pixel
     #create hole in implant for the actual punch through
     ptHole = Basic.circle(d,x0PT,y0PT,40)
     
+    tmp = Merge.polyVector([implantPoly,ptHole])
+    implantPoly = Cut.polyVector([tmp,ptHole])
+    
     #round corners
     #corner parameter
-    cp = 2e3
+    cp = 1.0e3
+    #extra parameter to account for deviation from perfect circle
+    ep = 0.5e3
+
     #calculate position for left and right box
     #NOW ONLY FOR UPPER RIGHT CORNER COMMOM PUNCH-THRU
     alphal = Math.acos((cp+y0PT-y/2)*2/d)
     rc = cp/(1-Math.cos(alphal))
     xl = x0PT-Math.sin(alphal)*(d/2+rc)
-    lbox = Polygon.new(Box.new(xl,y/2-cp,xl+rc*Math.sin(alphal),y/2))
+    lbox = Polygon.new(Box.new(xl,y/2-cp-ep,xl+rc*Math.sin(alphal),y/2))
     lcirc = Basic.circle(2*rc,xl,y/2-rc,30)
     
         
     alphar = Math.asin((cp+x0PT-x/2)*2/d)
     rc = cp/(1-Math.sin(alphar))
-    yr = y0PT-Math.cos(alphar)*(d/2+rc)#SOME ERROR IN Y
-    rbox = Polygon.new(Box.new(x/2-cp,yr,x/2,yr+rc*Math.cos(alphar)))
+    yr = y0PT-Math.cos(alphar)*(d/2+rc)
+    rbox = Polygon.new(Box.new(x/2-cp-ep,yr,x/2,yr+rc*Math.cos(alphar)))
     rcirc = Basic.circle(2*rc,x/2-rc,yr,30)
-
     
-    tmp = Merge.polyVector([implantPoly,ptHole])
-    ptm = Cut.polyVector([tmp,ptHole])
-    tmp = Merge.polyVector([ptm,lbox,rbox])
+    tmpl = Merge.polyVector([lbox,lcirc])
+    ptml = Cut.polyVector([tmpl,lcirc])
+    tmpl = Cut.polyVector([ptml,lbox])
+    tmpr = Merge.polyVector([rbox,rcirc])
+    ptmr = Cut.polyVector([tmpr,rcirc])
+    tmpr = Cut.polyVector([ptmr,rbox])
+      
+    tmp = Merge.polyVector([implantPoly,lbox,rbox])
     ptm = Cut.polyVector([tmp,lbox,rbox])
-    implant = Merge.polyVector([ptm,lcirc,rcirc])
+    implant = Merge.polyVector([ptm,tmpl,tmpr])
+    
     
     implant.move(x0,y0)
     

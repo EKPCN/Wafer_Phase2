@@ -21,5 +21,15 @@ r4s100x25_pspray_normal
 r4s100x25_pspray_small
 r4s100x25_pspray_wide
 fpixf_pstop
-r4s100x25cPT_test
-r4s50x50cPT_test
+r4s100x25cPT_wide
+r4s100x25cPT_normal
+r4s100x25cPT_small
+r4s50x50cPT_wide
+r4s50x50cPT_normal
+fcp130100x30cPT_wide
+fcp130100x30cPT_normal
+fcp130100x30cPT_small
+fcp130100x30_pspray_wide
+fcp130100x30_pspray_small
+fcp130100x30_cpstop_wide
+fcp130100x30_ipstop_small
