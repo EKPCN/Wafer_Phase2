@@ -53,7 +53,7 @@ module Pixel
       #common PT
       implantPoly = Polygon.new(Box.new(-x/2,-y/2,x/2,y/2))
       implantPoly = implantPoly.round_corners(0,5e3,32) 
-      ptHole = Basic.circle(dHole,x0PT,y0PT)
+      ptHole = Basic.circle(dHole,x0PT,y0PT,60)
       tmp = Merge.polyVector([implantPoly,ptHole])
       implant = Cut.polyVector([tmp,ptHole])
       
@@ -61,7 +61,7 @@ module Pixel
       #corner parameter
       cp = 1.0e3
       #extra parameter to account for deviation from perfect circle
-      ep = 0.5e3
+      ep = 0.1e3
       
       #calculate position for left and right box
       #NOW ONLY FOR UPPER RIGHT CORNER COMMOM PUNCH-THRU
@@ -246,7 +246,7 @@ module Pixel
     implantPoly = implantPoly.round_corners(0,outercornerdia,32)
     
     #create hole in implant for the actual punch through
-    ptHole = Basic.circle(d,x0PT,y0PT,40)
+    ptHole = Basic.circle(d,x0PT,y0PT,60)
     
     tmp = Merge.polyVector([implantPoly,ptHole])
     implantPoly = Cut.polyVector([tmp,ptHole])
@@ -255,7 +255,7 @@ module Pixel
     #corner parameter
     cp = 1.0e3
     #extra parameter to account for deviation from perfect circle
-    ep = 0.5e3
+    ep = 0.1e3
 
     #calculate position for left and right box
     #NOW ONLY FOR UPPER RIGHT CORNER COMMOM PUNCH-THRU
