@@ -51,7 +51,10 @@ module FCP130100x30cPT
     periCell = layout.create_cell("Periphery")
     Periphery.init(periCell)
     Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,PixelGrid,BiasRing,GuardRing,PixelEdge)
-
+    
+    textCell = Text.create(layout, $layerPassOpen, sensor , -4000e3, 4500e3)
+    Merge.cells(periCell, textCell)
+    
     Merge.cells($sensor, periCell)
 
     return $sensor
