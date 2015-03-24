@@ -13,9 +13,6 @@ module FCP130100x30cPT
     Pixel.init(innerPixelCell1)
     Pixel.ptImplant($layerNp,InnerPixel['implantSizeX'],InnerPixel['implantSizeY'],InnerPixel['PTX0'],InnerPixel['PTY0'],InnerPixel['PTholeDia'],InnerPixel['PTimplantDia'],0,-InnerPixel['shiftX'])
     Pixel.ptImplant($layerAlu,InnerPixel['implantSizeX']+2.0*InnerPixel['metalOH'],InnerPixel['implantSizeY']+2.0*InnerPixel['metalOH'],InnerPixel['PTX0'],InnerPixel['PTY0'],InnerPixel['PTholeDia']-2.0*InnerPixel['innerPTmetalOH'],-InnerPixel['shiftX'])
-    #Pixel.ptVia($layerAluVia,InnerPixel['PTX0'],InnerPixel['PTY0'],InnerPixel['PTviaDia'],-InnerPixel['shiftX'])
-    #Pixel.ptBiasLine($layerAlu,InnerPixel['cellSizeX'],InnerPixel['cellSizeY'],InnerPixel['PTX0'],InnerPixel['PTY0'],InnerPixel['bDotDia'],InnerPixel['bLWidth'],0,-InnerPixel['shiftX'])
-    #Pixel.ptPStop($layerPp,InnerPixel['PTX0'],InnerPixel['PTY0'],(InnerPixel['bDotDia']+InnerPixel['PTholeDia']-2.0*InnerPixel['metalOH'])/2.0-InnerPixel['PTpStopWidth'],(InnerPixel['bDotDia']+InnerPixel['PTholeDia']-2.0*InnerPixel['metalOH'])/2.0+InnerPixel['PTpStopWidth'],-InnerPixel['shiftX'])
     Pixel.bumpPad($layerPassOpen,InnerPixel1['bPDia']-2e3,InnerPixel1['bPX0'],InnerPixel1['bPY0'])
     Pixel.bumpPad($layerAlu,InnerPixel1['bPDia'],InnerPixel1['bPX0'],InnerPixel1['bPY0'])
     Pixel.ptVia($layerAluVia,InnerPixel1['viaX0'],InnerPixel1['viaY0'],InnerPixel1['viaDia'])
@@ -25,9 +22,6 @@ module FCP130100x30cPT
     Pixel.init(innerPixelCell2)
     Pixel.ptImplant($layerNp,InnerPixel['implantSizeX'],InnerPixel['implantSizeY'],InnerPixel['PTX0'],InnerPixel['PTY0'],InnerPixel['PTholeDia'],InnerPixel['PTimplantDia'],0,-InnerPixel['shiftX'])
     Pixel.ptImplant($layerAlu,InnerPixel['implantSizeX']+2.0*InnerPixel['metalOH'],InnerPixel['implantSizeY']+2.0*InnerPixel['metalOH'],InnerPixel['PTX0'],InnerPixel['PTY0'],InnerPixel['PTholeDia']-2.0*InnerPixel['innerPTmetalOH'],-InnerPixel['shiftX'])
-    #Pixel.ptVia($layerAluVia,InnerPixel['PTX0'],InnerPixel['PTY0'],InnerPixel['PTviaDia'],-InnerPixel['shiftX'])
-    #Pixel.ptBiasLine($layerAlu,InnerPixel['cellSizeX'],InnerPixel['cellSizeY'],InnerPixel['PTX0'],InnerPixel['PTY0'],InnerPixel['bDotDia'],InnerPixel['bLWidth'],0,-InnerPixel['shiftX'])
-    #Pixel.ptPStop($layerPp,InnerPixel['PTX0'],InnerPixel['PTY0'],(InnerPixel['bDotDia']+InnerPixel['PTholeDia']-2.0*InnerPixel['metalOH'])/2.0-InnerPixel['PTpStopWidth'],(InnerPixel['bDotDia']+InnerPixel['PTholeDia']-2.0*InnerPixel['metalOH'])/2.0+InnerPixel['PTpStopWidth'],-InnerPixel['shiftX'])
     Pixel.bumpPad($layerPassOpen,InnerPixel2['bPDia']-2e3,InnerPixel2['bPX0'],InnerPixel2['bPY0'])
     Pixel.bumpPad($layerAlu,InnerPixel2['bPDia'],InnerPixel2['bPX0'],InnerPixel2['bPY0'])
     Pixel.ptVia($layerAluVia,InnerPixel2['viaX0'],InnerPixel2['viaY0'],InnerPixel2['viaDia'])
@@ -51,7 +45,10 @@ module FCP130100x30cPT
     periCell = layout.create_cell("Periphery")
     Periphery.init(periCell)
     Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,PixelGrid,BiasRing,GuardRing,PixelEdge)
-
+    
+    textCell = Text.create(layout, $layerPassOpen, sensor , -4000e3, 4500e3)
+    Merge.cells(periCell, textCell)
+    
     Merge.cells($sensor, periCell)
 
     return $sensor
