@@ -25,6 +25,52 @@ module Pixel
     $Cell.shapes(layerM).insert(metal)
   end
   
+    # Create a punch through implant (implant with hole)
+  # @param layer [layer] Used material
+  # @param x [int] Size in x direction
+  # @param y [int] Size in y direction
+  # @param dist [int] distance between routing and pad
+  # @param w [int] width of routing
+  # @param bpdia [int] diameter of bump paps
+  # @param bppar [int] array of positions of bump pads (index 0,4,.. are x0, index 1,5,.. are y0) and the centers of corresponding pixels (index 2,6,.. are x0, index 3,7,.. are y0) to be routed to
+  # @param m [bool] true for metal (create routing line), false for implant (cut only, no routing line)
+  # @param x0 [int] center of the implant
+  # @param y0 [int] center of the implant
+  
+  def Pixel.routingImplant(layer,x,y,dist,w,bpdia,bppar,m=true,x0=0,y0=0)
+    
+    implant = Basic.roundBox(x,y)
+    
+#     loop to create several routing lines
+    i=0
+    while bppar[i]!=nil do
+      alpha = Math.asin((bppar[i+1]-bppar[i+3]).abs/((bppar[i]-bppar[i+2])**2+(bppar[i+1]-bppar[i+3])**2)**(0.5))
+      
+#       cut the metal/implant
+      routingcut = Polygon.new([Point.new(bppar[i]-(w+2*dist)*Math.sin(alpha)/2,bppar[i+1]-(w+2*dist)*Math.cos(alpha)/2), Point.new(bppar[i]+(w+2*dist)*Math.sin(alpha)/2,bppar[i+1]+(w+2*dist)*Math.cos(alpha)/2), Point.new(bppar[i+2]+(w+2*dist)*Math.sin(alpha)/2,bppar[i+3]+(w+2*dist)*Math.cos(alpha)/2), Point.new(bppar[i+2]-(w+2*dist)*Math.sin(alpha)/2,bppar[i+3]-(w+2*dist)*Math.cos(alpha)/2)])
+      
+      bumppadcut = Basic.circle(bpdia+dist*2,bppar[i],bppar[i+1])
+      
+      tmp = Merge.polyVector([routingcut,bumppadcut,implant])
+      tmp1 = Merge.polyVector([bumppadcut,routingcut])
+      implant = Cut.polyVector([tmp,tmp1])
+      
+      implant = implant.round_corners(1e3,5e3,32)
+      
+#       create routing lines
+      if m
+	routing = Polygon.new([Point.new(bppar[i]-w*Math.sin(alpha)/2,bppar[i+1]-w*Math.cos(alpha)/2), Point.new(bppar[i]+w*Math.sin(alpha)/2,bppar[i+1]+w*Math.cos(alpha)/2), Point.new(bppar[i+2]+w*Math.sin(alpha)/2,bppar[i+3]+w*Math.cos(alpha)/2), Point.new(bppar[i+2]-w*Math.sin(alpha)/2,bppar[i+3]-w*Math.cos(alpha)/2)])
+	
+	routing.move(x0,y0)
+	$Cell.shapes(layer).insert(routing)
+      end
+      i+=4
+    end
+    
+    implant.move(x0,y0)
+    $Cell.shapes(layer).insert(implant)
+  end
+  
   # Create a punch through implant (implant with hole)
   # @param layer [layer] Used material
   # @param x [int] Size in x direction
