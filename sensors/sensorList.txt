@@ -33,4 +33,7 @@ fcp130100x30_pspray_wide
 fcp130100x30_pspray_small
 fcp130100x30_cpstop_wide
 fcp130100x30_ipstop_small
-psi46dig100x25x3_pspray_wide
+psi46dig100x25x3s_pspray_wide
+psi46dig100x25x2_pspray_wide
+psi46dig100x25x2s_pspray_wide
+psi46dig50x50_pspray_wide

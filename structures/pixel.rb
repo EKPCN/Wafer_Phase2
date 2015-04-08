@@ -37,32 +37,41 @@ module Pixel
   # @param x0 [int] center of the implant
   # @param y0 [int] center of the implant
   
-  def Pixel.routingImplant(layer,x,y,dist,w,bpdia,bppar,m=true,x0=0,y0=0)
+  def Pixel.routingImplant(layer,x,y,dist,w,bpdia,bppar=[nil],m=true,x0=0,y0=0)
     
     implant = Basic.roundBox(x,y)
     
 #     loop to create several routing lines
     i=0
     while bppar[i]!=nil do
-      alpha = Math.asin((bppar[i+1]-bppar[i+3]).abs/((bppar[i]-bppar[i+2])**2+(bppar[i+1]-bppar[i+3])**2)**(0.5))
-      
-#       cut the metal/implant
-      routingcut = Polygon.new([Point.new(bppar[i]-(w+2*dist)*Math.sin(alpha)/2,bppar[i+1]-(w+2*dist)*Math.cos(alpha)/2), Point.new(bppar[i]+(w+2*dist)*Math.sin(alpha)/2,bppar[i+1]+(w+2*dist)*Math.cos(alpha)/2), Point.new(bppar[i+2]+(w+2*dist)*Math.sin(alpha)/2,bppar[i+3]+(w+2*dist)*Math.cos(alpha)/2), Point.new(bppar[i+2]-(w+2*dist)*Math.sin(alpha)/2,bppar[i+3]-(w+2*dist)*Math.cos(alpha)/2)])
-      
-      bumppadcut = Basic.circle(bpdia+dist*2,bppar[i],bppar[i+1])
-      
-      tmp = Merge.polyVector([routingcut,bumppadcut,implant])
-      tmp1 = Merge.polyVector([bumppadcut,routingcut])
-      implant = Cut.polyVector([tmp,tmp1])
-      
-      implant = implant.round_corners(1e3,5e3,32)
-      
-#       create routing lines
-      if m
-	routing = Polygon.new([Point.new(bppar[i]-w*Math.sin(alpha)/2,bppar[i+1]-w*Math.cos(alpha)/2), Point.new(bppar[i]+w*Math.sin(alpha)/2,bppar[i+1]+w*Math.cos(alpha)/2), Point.new(bppar[i+2]+w*Math.sin(alpha)/2,bppar[i+3]+w*Math.cos(alpha)/2), Point.new(bppar[i+2]-w*Math.sin(alpha)/2,bppar[i+3]-w*Math.cos(alpha)/2)])
+      if bppar[i]!=bppar[i+2] && bppar[i+1]!=bppar[i+3]
+	alpha = Math.asin((bppar[i+1]-bppar[i+3]).abs/((bppar[i]-bppar[i+2])**2+(bppar[i+1]-bppar[i+3])**2)**(0.5))
 	
-	routing.move(x0,y0)
-	$Cell.shapes(layer).insert(routing)
+	#       cut the metal/implant
+	routingcut = Polygon.new([Point.new(bppar[i]+(w+2*dist)*Math.sin(alpha)/2,bppar[i+1]-(w+2*dist)*Math.cos(alpha)/2), Point.new(bppar[i]-(w+2*dist)*Math.sin(alpha)/2,bppar[i+1]+(w+2*dist)*Math.cos(alpha)/2), Point.new(bppar[i+2]-(w+2*dist)*Math.sin(alpha)/2,bppar[i+3]+(w+2*dist)*Math.cos(alpha)/2), Point.new(bppar[i+2]+(w+2*dist)*Math.sin(alpha)/2,bppar[i+3]-(w+2*dist)*Math.cos(alpha)/2)])
+	
+	bumppadcut = Basic.circle(bpdia+dist*2,bppar[i],bppar[i+1],64)
+	
+	tmp = Merge.polyVector([routingcut,bumppadcut,implant])
+	tmp1 = Merge.polyVector([bumppadcut,routingcut])
+	implant = Cut.polyVector([tmp,tmp1])
+	
+	implant = implant.round_corners(1e3,1e3,64)
+	
+	#       create routing lines
+	if m
+	  routing = Polygon.new([Point.new(bppar[i]+w*Math.sin(alpha)/2,bppar[i+1]-w*Math.cos(alpha)/2), Point.new(bppar[i]-w*Math.sin(alpha)/2,bppar[i+1]+w*Math.cos(alpha)/2), Point.new(bppar[i+2]-w*Math.sin(alpha)/2,bppar[i+3]+w*Math.cos(alpha)/2), Point.new(bppar[i+2]+w*Math.sin(alpha)/2,bppar[i+3]-w*Math.cos(alpha)/2)])
+	  
+	  routing.move(x0,y0)
+	  $Cell.shapes(layer).insert(routing)
+	end
+	
+      else
+	bumppadcut = Basic.circle(bpdia+dist*2,bppar[i],bppar[i+1])
+	tmp = Merge.polyVector([bumppadcut,implant])
+	implant = Cut.polyVector([tmp,bumppadcut])
+	
+	implant = implant.round_corners(1e3,1e3,64)
       end
       i+=4
     end
