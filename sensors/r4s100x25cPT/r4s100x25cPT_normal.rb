@@ -8,8 +8,8 @@ InnerPixel = {
   'dX' => 200e3,
   'dY' => 25e3,
 #   IMPLANT
-  'implantSizeX' => 85.5e3,
-  'implantSizeY' => 15e3,
+  'implantSizeX' => 85e3,
+  'implantSizeY' => 10e3,
   'metalOH' => 1e3,
   'shiftX' => 2.25e3,
 #   VIA
@@ -20,7 +20,7 @@ InnerPixel = {
   'bPX0' => -25.0e3,
   'bPY0' => 0.0e3,
   'bPDia' => 20e3,
-  'bPDiaPassivation' => 10e3,
+  'bPDiaPassivation' => 12e3,
 #   PUNCH THROUGH STRUCTURE
   'PTX0' => 52.25e3, 
   'PTY0' => 12.5e3,
@@ -91,8 +91,9 @@ PixelEdge = {
 
     'aluDistX' => 376e3,
     'aluDistY' => 376e3,
-    'aluSizeX' => 9960e3,
-    'aluSizeY' => 10260e3,
+    'aluSizeX' => 9880e3,
+
+    'aluSizeY' => 10180e3,
 
     'outerX0'    => 0,
     'outerY0'    => -150e3

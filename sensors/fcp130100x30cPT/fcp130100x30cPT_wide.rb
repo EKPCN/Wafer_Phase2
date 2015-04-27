@@ -3,8 +3,8 @@ InnerPixel = {
 #   PIXEL GRID
   'cellSizeX' => 100e3,
   'cellSizeY' => 30e3,
-  'nX' => 40,
-  'nY' => 133,
+  'nX' => 24,
+  'nY' => 78,
   'dX' => 200e3,
   'dY' => 30e3,
 #   IMPLANT
@@ -43,7 +43,7 @@ InnerPixel1 = {
   'bPX0' => -30.0e3,
   'bPY0' => 0.0e3,
   'bPDia' => 20e3,
-  'bPDiaPassivation' => 10e3,
+  'bPDiaPassivation' => 12e3,
 }
 
 InnerPixel2 = {
@@ -55,14 +55,14 @@ InnerPixel2 = {
   'bPX0' => 10.0e3,
   'bPY0' => 0.0e3,
   'bPDia' => 20e3,
-  'bPDiaPassivation' => 10e3,
+  'bPDiaPassivation' => 12e3,
 }
 
 
 PixelGrid = {
 
-    'sizeX' => 8000e3,
-    'sizeY' => 7980e3
+    'sizeX' => 4800e3,
+    'sizeY' => 4680e3,
 }
 
 #   PERIPHERY
@@ -107,8 +107,9 @@ PixelEdge = {
 
     'aluDistX' => 376e3,
     'aluDistY' => 376e3,
-    'aluSizeX' => 9960e3,
-    'aluSizeY' => 10260e3,
+    'aluSizeX' => 9880e3,
+
+    'aluSizeY' => 10180e3,
 
     'outerX0'    => 0,
     'outerY0'    => -150e3
