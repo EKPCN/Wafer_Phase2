@@ -59,7 +59,7 @@ InnerPixel = {
 
   InnerPixel3 = {
 #   VIA
-  'viaX0' => 25.0e3, 
+  'viaX0' => 35.0e3, 
 #   BUMP PAD
   'bPX0' => -20.0e3,
 }

@@ -86,7 +86,7 @@ module PSI46DIG50x50s
     pixel2Cell = layout.create_cell("Pixel2")      
     Pixel.init(pixel2Cell)
     Pixel.routingImplant($layerNp,Pixel2['implantSizeX'],Pixel2['implantSizeY'], AllPixel['routingdist'], AllPixel['routingwidth'], AllPixel['bPDia'], Pixel2BPPar, false)
-    Pixel.routingImplant($layerAlu,Pixel2['implantSizeX']+2.0*AllPixel['metalOH'],Pixel2['implantSizeY']+2.0*AllPixel['metalOH'], AllPixel['routingdist']-AllPixel['metalOH'], AllPixel['routingwidth'], AllPixel['bPDia'], Pixel2BPPar, true,0,0,true)
+    Pixel.routingImplant($layerAlu,Pixel2['implantSizeX']+2.0*AllPixel['metalOH'],Pixel2['implantSizeY']+2.0*AllPixel['metalOH'], AllPixel['routingdist']-AllPixel['metalOH'], AllPixel['routingwidth'], AllPixel['bPDia'], Pixel2BPPar, true)
     Pixel.bumpPad($layerPassOpen,AllPixel['bPDiaPassivation'],Pixel2['bPX0'],Pixel2['bPY0'])
     Pixel.bumpPad($layerAlu,AllPixel['bPDia'],Pixel2['bPX0'],Pixel2['bPY0'])
     Pixel.bumpPad($layerPassOpen,AllPixel['bPDiaPassivation'],Pixel2BPPar[0],Pixel2BPPar[1])
@@ -219,7 +219,7 @@ module PSI46DIG50x50s
 
     periCell = layout.create_cell("Periphery")
     Periphery.init(periCell)
-    Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
+    Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPp,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
     
     textCell = Text.create(layout, $layerPassOpen, sensor , -4000e3, 4500e3)
     Merge.cells(periCell, textCell)
