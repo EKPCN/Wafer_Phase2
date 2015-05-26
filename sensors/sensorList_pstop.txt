@@ -1,0 +1,9 @@
+r4s50x50_cpstop_normal
+r4s50x50b_cpstop_normal
+r4s100x25_cpstop_normal
+r4s100x25b_cpstop_normal
+fcp130100x30_cpstop_normal
+fcp130100x30_ipstop_wide
+fcp130100x30b_cpstop_normal
+fpixf_pstop
+bpixpt_cpstop

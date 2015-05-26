@@ -87,7 +87,7 @@ module BPixPT
     periCell = layout.create_cell("Periphery")
     textCell = Text.create(layout, $layerPassOpen, sensor ,-4000e3, 4500e3) 
     Periphery.init(periCell)
-    Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPp,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
+    Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
     
     Merge.cells(periCell, textCell) 
     Merge.cells($sensor, pixelGridCell)
