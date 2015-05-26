@@ -35,6 +35,7 @@ fcp130100x30cPT_normal
 fcp130100x30cPT_wide
 fcp130100x30b_cpstop_normal
 fpixf_pstop
+fpixf_gbolla_pspray
 bpixpt_pspray
 bpixpt_cpstop
 psi46dig100x25x3s_pspray_wide
