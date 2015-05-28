@@ -18,3 +18,4 @@ bpixpt_pspray
 psi46dig100x25x3s_pspray_wide
 psi46dig100x25x2s_pspray_wide
 psi46dig50x50s_pspray_wide
+fpixf_multi-pitch_pspray

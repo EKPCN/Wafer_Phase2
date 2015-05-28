@@ -22,7 +22,8 @@ fcp130100x30_ipstop_wide
 fcp130100x30cPT_wide
 fcp130100x30b_cpstop_normal
 fpixf_pstop
-fpixf_gbolla_pspray
+fpixf_multi-pitch_pspray
+fpixf_multi-pitch_pstop
 bpixpt_pspray
 bpixpt_cpstop
 psi46dig100x25x3s_pspray_wide
