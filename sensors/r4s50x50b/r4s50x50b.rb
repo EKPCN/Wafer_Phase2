@@ -16,7 +16,8 @@ module Roc4Sens50x50b
     Pixel.implant($layerNp,InnerImplant['sizeX'],InnerImplant['sizeY'],$layerAlu,InnerImplant['metalOH'],0,0,InnerImplant['radius'])
     Pixel.via($layerAluVia, InnerVia['sizeX'],InnerVia['sizeY'],-InnerVia['x0'],-InnerVia['y0'])
     Pixel.via($layerAluVia, InnerVia['sizeX'],InnerVia['sizeY'],InnerVia['x0'],InnerVia['y0'])
-    Pixel.bumpPad($layerPassOpen,BumpPad['dia'])
+    Pixel.bumpPad($layerAlu,BumpPad['bPDia'])
+    Pixel.bumpPad($layerPassOpen,BumpPad['bPDiaPassivation'])
     Pixel.pStop($layerPp, InnerImplant['sizeX']+2*InnerPStop['distX'], InnerImplant['sizeY']+2*InnerPStop['distY'], InnerPStop['width'], InnerPStop['rOut'] , InnerPStop['rIn'])
 
     outerPixelCell = layout.create_cell("OuterPixel")      
@@ -24,7 +25,8 @@ module Roc4Sens50x50b
     Pixel.implant($layerNp,OuterImplant['sizeX'],OuterImplant['sizeY'],$layerAlu,OuterImplant['metalOH'],0,0,OuterImplant['radius'])
     Pixel.via($layerAluVia, OuterVia['sizeX'],OuterVia['sizeY'],-OuterVia['x0'],-OuterVia['y0'])
     Pixel.via($layerAluVia, OuterVia['sizeX'],OuterVia['sizeY'],OuterVia['x0'],-OuterVia['y0'])
-    Pixel.bumpPad($layerPassOpen,BumpPad['dia'],0,12.5e3)
+    Pixel.bumpPad($layerAlu,BumpPad['bPDia'],0,12.5e3)
+    Pixel.bumpPad($layerPassOpen,BumpPad['bPDiaPassivation'],0,12.5e3)
     Pixel.pStop($layerPp, OuterImplant['sizeX']+2*InnerPStop['distX'], OuterImplant['sizeY']+2*InnerPStop['distY'], InnerPStop['width'], InnerPStop['rOut'] , InnerPStop['rIn'])
 
 
@@ -39,7 +41,7 @@ module Roc4Sens50x50b
 
     periCell = layout.create_cell("Periphery")
     Periphery.init(periCell)
-    Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,PixelGrid,BiasRing,GuardRing,PixelEdge)
+    Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
 
     textCell = Text.create(layout, $layerPassOpen, sensor , -4000e3, 4500e3)    
     Merge.cells(periCell, textCell) 

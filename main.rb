@@ -33,7 +33,7 @@ module CISWafer
   waferCell = layout.create_cell("Wafer")  
   waferOuterDia = 150e6
   waferInnerDia = 140e6  
-  Basic.wafer($layerP, waferCell, waferInnerDia, waferOuterDia)
+  Basic.wafer($layerPpe19, waferCell, waferInnerDia, waferOuterDia)
 
   # Get SensorList from file
 
