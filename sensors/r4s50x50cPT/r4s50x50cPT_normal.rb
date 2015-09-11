@@ -8,10 +8,10 @@ InnerPixel = {
   'dX' => 100e3,
   'dY' => 50e3,
 #   IMPLANT
-  'implantSizeX' => 40e3,
+  'implantSizeX' => 35.5e3,
   'implantSizeY' => 40e3,
   'metalOH' => 1e3,
-  'shiftX' => 0e3,
+  'shiftX' => 2.25e3,
 #   VIA
   'viaX0' => -12.5e3, 
   'viaY0' => 12.5e3,
@@ -22,7 +22,7 @@ InnerPixel = {
   'bPDia' => 20e3,
   'bPDiaPassivation' => 10e3,
 #   PUNCH THROUGH STRUCTURE
-  'PTX0' => 25.0e3, 
+  'PTX0' => 27.25e3, 
   'PTY0' => 25e3,
   'PTholeDia' => 30e3,	#minimum biasDotDia+2*metalOH (+2*PTpStopWidth)
   'PTimplantDia' => 10e3,

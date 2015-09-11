@@ -16,8 +16,8 @@ module Basic
     waferInnerPoly = Polygon.new([Point.new(diaInner/2,diaInner/2),Point.new(-diaInner/2,diaInner/2), Point.new(-(diaInner/2),-diaInner/2), Point.new(diaInner/2,-(diaInner/2))])
     waferInnerLayer = waferInnerPoly.round_corners(0,diaInner/2,50)    
     
-    cell.shapes(layer).insert(waferOuterLayer)
-    cell.shapes(layer).insert(waferInnerLayer)     
+    wafer = Cut.polyVector([waferOuterLayer,waferInnerLayer])
+    cell.shapes(layer).insert(wafer)     
   
   end
 

@@ -4,7 +4,6 @@ module Layer
 
   def Layer.insert(layout)
   
-    $layerP = layout.insert_layer(LayerInfo.new(0,0,"p substrate"))
     $layerPp = layout.insert_layer(LayerInfo.new(1,0,"p+"))
     $layerPpe19 = layout.insert_layer(LayerInfo.new(2,0,"p+ e19"))
     $layerNp = layout.insert_layer(LayerInfo.new(3,0,"n+"))
