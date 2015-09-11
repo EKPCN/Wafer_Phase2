@@ -44,34 +44,37 @@ module Pixel
 #     loop to create several routing lines
     i=0
     while bppar[i]!=nil do
-      if bppar[i]!=bppar[i+2] && bppar[i+1]!=bppar[i+3]
-	alpha = Math.asin((bppar[i+1]-bppar[i+3]).abs/((bppar[i]-bppar[i+2])**2+(bppar[i+1]-bppar[i+3])**2)**(0.5))
-	
-	#       cut the metal/implant
-	routingcut = Polygon.new([Point.new(bppar[i]+(w+2*dist)*Math.sin(alpha)/2,bppar[i+1]-(w+2*dist)*Math.cos(alpha)/2), Point.new(bppar[i]-(w+2*dist)*Math.sin(alpha)/2,bppar[i+1]+(w+2*dist)*Math.cos(alpha)/2), Point.new(bppar[i+2]-(w+2*dist)*Math.sin(alpha)/2,bppar[i+3]+(w+2*dist)*Math.cos(alpha)/2), Point.new(bppar[i+2]+(w+2*dist)*Math.sin(alpha)/2,bppar[i+3]-(w+2*dist)*Math.cos(alpha)/2)])
-	
-	bumppadcut = Basic.circle(bpdia+dist*2,bppar[i],bppar[i+1],64)
-	
-	tmp = Merge.polyVector([routingcut,bumppadcut,implant])
-	tmp1 = Merge.polyVector([bumppadcut,routingcut])
-	implant = Cut.polyVector([tmp,tmp1])
-	
-	implant = implant.round_corners(1e3,1e3,64)
-	
-	#       create routing lines
-	if m
-	  routing = Polygon.new([Point.new(bppar[i]+w*Math.sin(alpha)/2,bppar[i+1]-w*Math.cos(alpha)/2), Point.new(bppar[i]-w*Math.sin(alpha)/2,bppar[i+1]+w*Math.cos(alpha)/2), Point.new(bppar[i+2]-w*Math.sin(alpha)/2,bppar[i+3]+w*Math.cos(alpha)/2), Point.new(bppar[i+2]+w*Math.sin(alpha)/2,bppar[i+3]-w*Math.cos(alpha)/2)])
+      if bppar[i]!=bppar[i+2] || bppar[i+1]!=bppar[i+3]
+        #       cut the metal/implant
+        alpha = Math.asin((bppar[i+1]-bppar[i+3]).abs/((bppar[i]-bppar[i+2])**2+(bppar[i+1]-bppar[i+3])**2)**(0.5))
+        
+        routingcut = Polygon.new([Point.new(bppar[i]+(w+2*dist)*Math.sin(alpha)/2,bppar[i+1]-(w+2*dist)*Math.cos(alpha)/2), Point.new(bppar[i]-(w+2*dist)*Math.sin(alpha)/2,bppar[i+1]+(w+2*dist)*Math.cos(alpha)/2), Point.new(bppar[i+2]-(w+2*dist)*Math.sin(alpha)/2,bppar[i+3]+(w+2*dist)*Math.cos(alpha)/2), Point.new(bppar[i+2]+(w+2*dist)*Math.sin(alpha)/2,bppar[i+3]-(w+2*dist)*Math.cos(alpha)/2)])
+        
+        bumppadcut = Basic.circle(bpdia+dist*2,bppar[i],bppar[i+1],64)
+        
+        tmp1 = Merge.polyVector([bumppadcut,routingcut])
+        tmp1 = tmp1.round_corners(5e3,5e3,32)
+        
+        tmp = Merge.polyVector([tmp1,implant])#routingcut,bumppadcut,implant])
+        implant = Cut.polyVector([tmp,tmp1])
+        
+        implant = implant.round_corners(0,5e3,32)
+        
+        if m
+          #       create routing lines
+          routing = Polygon.new([Point.new(bppar[i]+w*Math.sin(alpha)/2,bppar[i+1]-w*Math.cos(alpha)/2), Point.new(bppar[i]-w*Math.sin(alpha)/2,bppar[i+1]+w*Math.cos(alpha)/2), Point.new(bppar[i+2]-w*Math.sin(alpha)/2,bppar[i+3]+w*Math.cos(alpha)/2), Point.new(bppar[i+2]+w*Math.sin(alpha)/2,bppar[i+3]-w*Math.cos(alpha)/2)])
+          
+          routing.move(x0,y0)
+          $Cell.shapes(layer).insert(routing)
+        end
 	  
-	  routing.move(x0,y0)
-	  $Cell.shapes(layer).insert(routing)
-	end
-	
       else
-	bumppadcut = Basic.circle(bpdia+dist*2,bppar[i],bppar[i+1])
-	tmp = Merge.polyVector([bumppadcut,implant])
-	implant = Cut.polyVector([tmp,bumppadcut])
-	
-	implant = implant.round_corners(1e3,1e3,64)
+        #       no routing line at all
+        bumppadcut = Basic.circle(bpdia+dist*2,bppar[i],bppar[i+1],128)
+        tmp = Merge.polyVector([bumppadcut,implant])
+        implant = Cut.polyVector([tmp,bumppadcut])
+        
+        implant = implant.round_corners(0,5e3,32)
       end
       i+=4
     end
@@ -93,7 +96,7 @@ module Pixel
   # @param y0 [int] center of the implant
   
   def Pixel.ptImplant(layer,x,y,x0PT,y0PT,dHole,dImplant=0,minDistToEdge=0,x0=0,y0=0)
-    if (x0PT).abs+dHole/2<x/2 && (y0PT).abs+dHole/2<y/2
+    if (x0PT).abs+dHole/2<x/2+2*minDistToEdge && (y0PT).abs+dHole/2<y/2+2*minDistToEdge
       #standard PT
       implant = Basic.roundBox(x,y,x0,y0)
       if minDistToEdge!=0 && ((x0PT).abs + dHole/2.0 + minDistToEdge >= x/2.0 || (y0PT).abs + dHole/2.0 + minDistToEdge >= y/2.0)

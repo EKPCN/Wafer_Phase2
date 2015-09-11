@@ -76,7 +76,8 @@ OuterVia = {
 }
 BumpPad = {
 
-    'dia' => 18e3   
+    'bPDia' => 20e3,
+    'bPDiaPassivation' => 12e3,   
 }
 
 BiasRing = {
@@ -118,8 +119,9 @@ PixelEdge = {
 
     'aluDistX' => 376e3,
     'aluDistY' => 376e3,
-    'aluSizeX' => 9960e3,
-    'aluSizeY' => 10260e3,
+    'aluSizeX' => 9880e3,
+
+    'aluSizeY' => 10180e3,
 
     'outerX0'    => 0,
     'outerY0'    => -150e3
