@@ -13,7 +13,7 @@ module PSI46DIG100x25x3noedge
     Pixel.init(innerPixelCell1)
     Pixel.ptImplant($layerNp,InnerPixel['implantSizeX'],InnerPixel['implantSizeY'],InnerPixel['PTX0'],InnerPixel['PTY0'],InnerPixel['PTholeDia'],InnerPixel['PTimplantDia'],0,-InnerPixel['shiftX'])
     Pixel.ptImplant($layerAlu,InnerPixel['implantSizeX']+2.0*InnerPixel['metalOH'],InnerPixel['implantSizeY']+2.0*InnerPixel['metalOH'],InnerPixel['PTX0'],InnerPixel['PTY0'],InnerPixel['PTholeDia']-2.0*InnerPixel['innerPTmetalOH'],-InnerPixel['shiftX'])
-    Pixel.bumpPad($layerPassOpen,BumpPad['bPDiaPassivation']-2e3,InnerPixel['bPX0'],InnerPixel['bPY0'])
+    Pixel.bumpPad($layerPassOpen,BumpPad['bPDiaPassivation'],InnerPixel['bPX0'],InnerPixel['bPY0'])
     Pixel.bumpPad($layerAlu,BumpPad['bPDia'],InnerPixel['bPX0'],InnerPixel['bPY0'])
     Pixel.ptVia($layerAluVia,InnerPixel['viaX0'],InnerPixel['viaY0'],InnerPixel['viaDia'])
     Pixel.ptVia($layerAluVia,InnerPixel['viaX0'],-InnerPixel['viaY0'],InnerPixel['viaDia'])
@@ -208,7 +208,7 @@ module PSI46DIG100x25x3noedge
     Periphery.init(periCell)
     Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
     
-    textCell = Text.create(layout, $layerPassOpen, sensor , -4000e3, 4500e3)
+    textCell = Text.create(layout, $layerPassOpen, sensor , -4800e3, 4500e3)
     Merge.cells(periCell, textCell)
     
     Merge.cells($sensor, periCell)

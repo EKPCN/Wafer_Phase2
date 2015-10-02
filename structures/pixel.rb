@@ -177,7 +177,6 @@ module Pixel
     
       #increase size of metal around the pt
     if minDistToEdge!=0 && ((x0PT).abs + d/2.0 + minDistToEdge >= x/2.0 || (y0PT).abs + d/2.0 + minDistToEdge >= y/2.0)
-    puts 'here'
       ptAddImplant = Basic.circle(d + 2.0*minDistToEdge,x0PT,y0PT)
       tmp = Merge.polyVector([implantPoly,ptAddImplant])
       implantPoly = tmp

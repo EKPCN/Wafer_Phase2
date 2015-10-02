@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-properties>
  <properties>
-  <frame-color>#ff80a8</frame-color>
+  <frame-color>#000000</frame-color>
   <fill-color>#ff80a8</fill-color>
   <frame-brightness>0</frame-brightness>
   <fill-brightness>0</fill-brightness>
@@ -16,7 +16,7 @@
   <source>'p+' 1/0@1</source>
  </properties>
  <properties>
-  <frame-color>#ff0000</frame-color>
+  <frame-color>#000000</frame-color>
   <fill-color>#ff0000</fill-color>
   <frame-brightness>0</frame-brightness>
   <fill-brightness>0</fill-brightness>
@@ -46,7 +46,7 @@
   <source>'n+' 3/0@1</source>
  </properties>
  <properties>
-  <frame-color>#0080ff</frame-color>
+  <frame-color>#000000</frame-color>
   <fill-color>#0080ff</fill-color>
   <frame-brightness>0</frame-brightness>
   <fill-brightness>0</fill-brightness>
@@ -61,7 +61,7 @@
   <source>Alu 4/0@1</source>
  </properties>
  <properties>
-  <frame-color>#0000ff</frame-color>
+  <frame-color>#000000</frame-color>
   <fill-color>#0000ff</fill-color>
   <frame-brightness>0</frame-brightness>
   <fill-brightness>0</fill-brightness>
@@ -76,11 +76,11 @@
   <source>'Alu via' 5/0@1</source>
  </properties>
  <properties>
-  <frame-color>#01ff6b</frame-color>
+  <frame-color>#000000</frame-color>
   <fill-color>#01ff6b</fill-color>
   <frame-brightness>0</frame-brightness>
   <fill-brightness>0</fill-brightness>
-  <dither-pattern>I13</dither-pattern>
+  <dither-pattern>I6</dither-pattern>
   <valid>true</valid>
   <visible>true</visible>
   <transparent>false</transparent>
