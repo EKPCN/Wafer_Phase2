@@ -16,7 +16,7 @@ module Gds
 
     # set the parameters
     param = { "text" => text, "layer" => 
-    LayerInfo::new(layer, 0), "mag" => 500}
+    LayerInfo::new(4, 0, "Alu"), "mag" => 500}
 
     #, "inverse" => true
     # build a param array using the param hash as a source

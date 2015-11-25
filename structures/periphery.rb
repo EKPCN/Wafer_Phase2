@@ -48,11 +48,19 @@ module Periphery
     innerBox = Polygon.new(Box.new(-xi/2,-yi/2,xi/2,yi/2))
     outerBox = Polygon.new(Box.new(-xo/2,-yo/2,xo/2,yo/2))  
     outerBox.move(x0,y0)
-  
+    
     edge = Cut.polyVector([outerBox,innerBox])
+    
+    if layer == 3
+      labelBox = Polygon.new(Box.new(-xo/2+900,yo/2-500,xo/2-900,yo/2-20))
+      #edge2 = Merge.polyVector([edge,labelBox])
+      edge = Cut.polyVector([outerBox,labelBox])
+    end
+    
     edge.move(xg0,yg0)
     
     $Cell.shapes(layer).insert(edge)
+
   end
 
 
