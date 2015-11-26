@@ -45,6 +45,10 @@ module R4S50x50cPT
     
     Pixel.grid(innerPixelCell2,InnerPixel['nX'], InnerPixel['nY'], InnerPixel['dX'], 2*InnerPixel['dY'], -PixelGrid['sizeX']/2+(3*InnerPixel['cellSizeX']/2), -PixelGrid['sizeY']/2+3*(InnerPixel['cellSizeY']/2),180)
     
+    # Last Pixel Row
+    
+    Pixel.grid(innerPixelCell2,1, InnerPixel['nY'], InnerPixel['dX'], 2*InnerPixel['dY'], PixelGrid['sizeX']/2-(InnerPixel['cellSizeX']/2), -PixelGrid['sizeY']/2+(InnerPixel['cellSizeY']/2))
+    
     
     Merge.cells($sensor, pixelGridCell)
 
