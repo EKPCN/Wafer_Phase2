@@ -1,3 +1,8 @@
 r4s50x50cPT_normal
 r4s50x50cPT_wide
 r4s50x50PT_wide
+r4s100x25cPT_normal
+r4s100x25cPT_wide
+r4s50x50_pspray_normal
+r4s50x50_pspray_wide
+r4s100x25_pspray_normal
