@@ -32,7 +32,7 @@ module Periphery
    
     Periphery.edge(layerEdge,pixelGrid['sizeX']+2*pixelEdge['distX'],pixelGrid['sizeY']+2*pixelEdge['distY'],pixelEdge['sizeX'],pixelEdge['sizeY'],pixelEdge['outerX0'],pixelEdge['outerY0'])
     Periphery.edge(layerMet,pixelGrid['sizeX']+2*pixelEdge['aluDistX'],pixelGrid['sizeY']+2*pixelEdge['aluDistY'],pixelEdge['aluSizeX'],pixelEdge['aluSizeY'],pixelEdge['outerX0'],pixelEdge['outerY0'])
-    Periphery.edge(layerVia,pixelEdge['aluSizeX']-40e3,pixelEdge['aluSizeY']-40e3,pixelEdge['aluSizeX']+80e3,pixelEdge['aluSizeY']+80e3,0,0,pixelEdge['outerX0'],pixelEdge['outerY0'])
+    #Periphery.edge(layerVia,pixelEdge['aluSizeX']-40e3,pixelEdge['aluSizeY']-40e3,pixelEdge['aluSizeX']+80e3,pixelEdge['aluSizeY']+80e3,0,0,pixelEdge['outerX0'],pixelEdge['outerY0'])
     Periphery.edge(layerPassOpen,pixelEdge['aluSizeX']-20e3,pixelEdge['aluSizeY']-20e3,pixelEdge['aluSizeX']+80e3,pixelEdge['aluSizeY']+80e3,0,0,pixelEdge['outerX0'],pixelEdge['outerY0'])
   end
 
@@ -48,8 +48,15 @@ module Periphery
     innerBox = Polygon.new(Box.new(-xi/2,-yi/2,xi/2,yi/2))
     outerBox = Polygon.new(Box.new(-xo/2,-yo/2,xo/2,yo/2))  
     outerBox.move(x0,y0)
-  
-    edge = Cut.polyVector([outerBox,innerBox])
+    
+    if layer == 3
+      labelBox = Polygon.new(Box.new(-xo/2+700e3,yo/2-625e3,xo/2-700e3,yo/2-200e3))
+      #labelBox = Polygon.new(Box.new(-xi/2,yi/2+50e3,xi/2,yi/2+450e3))
+      edge = Cut.polyVector([outerBox,innerBox,labelBox])
+    else
+      edge = Cut.polyVector([outerBox,innerBox])  
+    end
+    
     edge.move(xg0,yg0)
     
     $Cell.shapes(layer).insert(edge)

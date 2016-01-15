@@ -14,7 +14,7 @@ InnerImplant = {
 
 PixelGrid = {
 
-    'sizeX' => 8000e3,
+    'sizeX' => 7750e3,
     'sizeY' => 8000e3
 }
 
@@ -22,7 +22,7 @@ InnerPixelGrid = {
   
     'sizeX' => 50e3,
     'sizeY' => 50e3,
-    'nX' => 80,
+    'nX' => 77,
     'nY' => 160,
     'dX' => 100e3,
     'dY' => 50e3 
