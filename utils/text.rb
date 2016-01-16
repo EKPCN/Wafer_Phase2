@@ -18,6 +18,7 @@ module Gds
     param = { "text" => text, "layer" => 
 
     LayerInfo::new(layer+1, 0), "mag" => size}
+    # Christian size = 100
 
     #, "inverse" => true
     # build a param array using the param hash as a source

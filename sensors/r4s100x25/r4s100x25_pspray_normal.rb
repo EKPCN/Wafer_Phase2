@@ -143,3 +143,21 @@ PixelEdge = {
     'outerX0'    => 0,
     'outerY0'    => -150e3
 }
+
+RightImplant = {
+
+    'sizeX' => 85e3,
+    'sizeY' => 35e3,
+    'radius' => 4e3,
+    'metalOH' => 2.5e3  
+}
+
+RightPixelGrid = {
+  
+    'sizeX' => 100e3,
+    'sizeY' => 50e3,
+    'nX' => 0,
+    'nY' => 0,
+    'dX' => 7700e3,
+    'dY' => 50e3 
+}
