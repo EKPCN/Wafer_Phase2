@@ -5,9 +5,11 @@ module PSI46DIG100x25x3noedge
   # Creates PSI46DIG100x25x3noedge
   # @return [cell] Returns the cell with all structures
 
-  load "TESTSTRUCTURES/guardring_cell.rb"
-  load "SYSTEM/Newfunctions.rb"
-  load "SYSTEM/NStruc.rb"
+  # Can not load TESTSTRUCTURES and SYSTEM functions
+  # 
+  #load "TESTSTRUCTURES/guardring_cell.rb"
+  #load "SYSTEM/Newfunctions.rb"
+  #load "SYSTEM/NStruc.rb"
   
   def PSI46DIG100x25x3noedge.create(layout,sensor)
     
