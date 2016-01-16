@@ -8,7 +8,7 @@ module BPixPT
   def BPixPT.create(layout,sensor)
     
         
-    $sensor = layout.create_cell("BPixPT")
+    $sensor = layout.create_cell(sensor)
     
     innerPixelCell = layout.create_cell("InnerPixel")      
     Pixel.init(innerPixelCell)
@@ -18,7 +18,7 @@ module BPixPT
     Pixel.ptBiasLine($layerAlu,InnerPixel['cellSizeX'],InnerPixel['cellSizeY'],InnerPixel['PTX0'],InnerPixel['PTY0'],InnerPixel['bDotDia'],InnerPixel['bLWidth'],InnerPixel['globalBLWidth'])
     Pixel.ptPStop($layerPp,InnerPixel['PTX0'],InnerPixel['PTY0'],(InnerPixel['bDotDia']+InnerPixel['PTholeDia']-2.0*InnerPixel['metalOH'])/2.0-InnerPixel['PTpStopWidth'],(InnerPixel['bDotDia']+InnerPixel['PTholeDia']-2.0*InnerPixel['metalOH'])/2.0+InnerPixel['PTpStopWidth'])
     Pixel.bumpPad($layerAlu,InnerPixel['bPDia'],InnerPixel['bPX0'],InnerPixel['bPY0'])
-    Pixel.bumpPad($layerPassivation,InnerPixel['bPDiaPassivation'],InnerPixel['bPX0'],InnerPixel['bPY0'])
+    Pixel.bumpPad($layerPassOpen,InnerPixel['bPDiaPassivation'],InnerPixel['bPX0'],InnerPixel['bPY0'])
     Pixel.ptVia($layerAluVia,InnerPixel['viaX0'],InnerPixel['viaY0'],InnerPixel['viaDia'])
     Pixel.ptVia($layerAluVia,InnerPixel['viaX0'],-1*InnerPixel['viaY0'],InnerPixel['viaDia'])
     Pixel.pStop($layerPp, InnerPixel['implantSizeX']+2*InnerPixel['PSdistX'], InnerPixel['implantSizeY']+2*InnerPixel['PSdistY'], InnerPixel['PSwidth'], InnerPixel['PSrOut'] , InnerPixel['PSrIn'], InnerPixel['PSopenX0'], InnerPixel['PSopenY0'], InnerPixel['PSopenWidth'],true)
@@ -31,7 +31,7 @@ module BPixPT
     Pixel.ptBiasLine($layerAlu,OuterPixel['cellSizeX'],OuterPixel['cellSizeY'],OuterPixel['PTX0'],OuterPixel['PTY0'],OuterPixel['bDotDia'],OuterPixel['bLWidth'],OuterPixel['globalBLWidth'])
     Pixel.ptPStop($layerPp,OuterPixel['PTX0'],OuterPixel['PTY0'],(OuterPixel['bDotDia']+OuterPixel['PTholeDia']-2.0*OuterPixel['metalOH'])/2.0-OuterPixel['PTpStopWidth'],(OuterPixel['bDotDia']+OuterPixel['PTholeDia']-2.0*OuterPixel['metalOH'])/2.0+OuterPixel['PTpStopWidth'])
     Pixel.bumpPad($layerAlu,OuterPixel['bPDia'],OuterPixel['bPX0'],OuterPixel['bPY0'])
-    Pixel.bumpPad($layerPassivation,OuterPixel['bPDiaPassivation'],OuterPixel['bPX0'],OuterPixel['bPY0'])
+    Pixel.bumpPad($layerPassOpen,OuterPixel['bPDiaPassivation'],OuterPixel['bPX0'],OuterPixel['bPY0'])
     Pixel.ptVia($layerAluVia,OuterPixel['viaX0'],OuterPixel['viaY0'],OuterPixel['viaDia'])
     Pixel.ptVia($layerAluVia,OuterPixel['viaX0'],-1*OuterPixel['viaY0'],OuterPixel['viaDia'])
     Pixel.pStop($layerPp, OuterPixel['implantSizeX']+2*OuterPixel['PSdistX'], OuterPixel['implantSizeY']+2*OuterPixel['PSdistY'], OuterPixel['PSwidth'], OuterPixel['PSrOut'] , OuterPixel['PSrIn'], OuterPixel['PSopenX0'], OuterPixel['PSopenY0'], OuterPixel['PSopenWidth'],true)
@@ -44,7 +44,7 @@ module BPixPT
     Pixel.ptBiasLine($layerAlu,UpperPixel['cellSizeX'],UpperPixel['cellSizeY'],UpperPixel['PTX0'],UpperPixel['PTY0'],UpperPixel['bDotDia'],UpperPixel['bLWidth'],UpperPixel['globalBLWidth'])
     Pixel.ptPStop($layerPp,UpperPixel['PTX0'],UpperPixel['PTY0'],(UpperPixel['bDotDia']+UpperPixel['PTholeDia']-2.0*UpperPixel['metalOH'])/2.0-UpperPixel['PTpStopWidth'],(UpperPixel['bDotDia']+UpperPixel['PTholeDia']-2.0*UpperPixel['metalOH'])/2.0+UpperPixel['PTpStopWidth'])
     Pixel.bumpPad($layerAlu,UpperPixel['bPDia'],UpperPixel['bPX0'],UpperPixel['bPY0'])
-    Pixel.bumpPad($layerPassivation,UpperPixel['bPDiaPassivation'],UpperPixel['bPX0'],UpperPixel['bPY0'])
+    Pixel.bumpPad($layerPassOpen,UpperPixel['bPDiaPassivation'],UpperPixel['bPX0'],UpperPixel['bPY0'])
     Pixel.ptVia($layerAluVia,UpperPixel['viaX0'],UpperPixel['viaY0'],UpperPixel['viaDia'])
     Pixel.ptVia($layerAluVia,UpperPixel['viaX0'],-1*UpperPixel['viaY0'],UpperPixel['viaDia'])
     Pixel.pStop($layerPp, UpperPixel['implantSizeX']+2*UpperPixel['PSdistX'], UpperPixel['implantSizeY']+2*UpperPixel['PSdistY'], UpperPixel['PSwidth'], UpperPixel['PSrOut'] , UpperPixel['PSrIn'], UpperPixel['PSopenX0'], UpperPixel['PSopenY0'], UpperPixel['PSopenWidth'],false)
@@ -57,7 +57,7 @@ module BPixPT
     Pixel.ptBiasLine($layerAlu,CornerPixel['cellSizeX'],CornerPixel['cellSizeY'],CornerPixel['PTX0'],CornerPixel['PTY0'],CornerPixel['bDotDia'],CornerPixel['bLWidth'],CornerPixel['globalBLWidth'])
     Pixel.ptPStop($layerPp,CornerPixel['PTX0'],CornerPixel['PTY0'],(CornerPixel['bDotDia']+CornerPixel['PTholeDia']-2.0*CornerPixel['metalOH'])/2.0-CornerPixel['PTpStopWidth'],(CornerPixel['bDotDia']+CornerPixel['PTholeDia']-2.0*CornerPixel['metalOH'])/2.0+CornerPixel['PTpStopWidth'])
     Pixel.bumpPad($layerAlu, CornerPixel['bPDia'],CornerPixel['bPX0'],CornerPixel['bPY0'])
-    Pixel.bumpPad($layerPassivation,CornerPixel['bPDiaPassivation'],CornerPixel['bPX0'],CornerPixel['bPY0'])
+    Pixel.bumpPad($layerPassOpen,CornerPixel['bPDiaPassivation'],CornerPixel['bPX0'],CornerPixel['bPY0'])
     Pixel.ptVia($layerAluVia,CornerPixel['viaX0'],CornerPixel['viaY0'],CornerPixel['viaDia'])
     Pixel.ptVia($layerAluVia,CornerPixel['viaX0'],-1*CornerPixel['viaY0'],CornerPixel['viaDia'])
     Pixel.pStop($layerPp, CornerPixel['implantSizeX']+2*CornerPixel['PSdistX'], CornerPixel['implantSizeY']+2*CornerPixel['PSdistY'], CornerPixel['PSwidth'], CornerPixel['PSrOut'] , CornerPixel['PSrIn'], CornerPixel['PSopenX0'], CornerPixel['PSopenY0'], CornerPixel['PSopenWidth'],true)
@@ -80,17 +80,16 @@ module BPixPT
     
     Pixel.grid(cornerPixelCell,CornerPixel['nX'],CornerPixel['nY'],CornerPixel['dX'],CornerPixel['dY'], PixelGrid['sizeX']/2-CornerPixel['cellSizeX']/2, PixelGrid['sizeY']/2-(CornerPixel['cellSizeY']/2),180,true)
     
+    
     Merge.cells($sensor, pixelGridCell)
     
-    
-
     periCell = layout.create_cell("Periphery")
-    textCell = Text.create(layout, $layerPassOpen, sensor ,-4000e3, 4500e3) 
     Periphery.init(periCell)
     Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
     
-    Merge.cells(periCell, textCell) 
-    Merge.cells($sensor, pixelGridCell)
+    textCell = Text.create(layout, $layerPassOpen, sensor ,-4000e3, 4500e3) 
+    Merge.cells(periCell, textCell)
+    
     Merge.cells($sensor, periCell)
 
     return $sensor

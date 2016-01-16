@@ -6,3 +6,4 @@ r4s100x25cPT_wide
 r4s50x50_pspray_wide
 r4s100x25_pspray_normal
 psi46dig100x25x3s_pspray
+psi46dig100x25x3s_pspray_wide

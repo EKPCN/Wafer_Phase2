@@ -2,7 +2,7 @@ module Gds
 
   include RBA
   
-  def Text.create(layout, layer, text, x0=0, y0=0)
+  def Text.create(layout, layer, text, x0=0, y0=0, size=500)
   
     textCell = layout.create_cell("Label")
 
@@ -16,7 +16,8 @@ module Gds
 
     # set the parameters
     param = { "text" => text, "layer" => 
-    LayerInfo::new(4, 0, "Alu"), "mag" => 500}
+
+    LayerInfo::new(layer+1, 0), "mag" => size}
 
     #, "inverse" => true
     # build a param array using the param hash as a source

@@ -5,9 +5,9 @@ module R4S50x50PT
   # Creates the FPIXFPT sensor
   # @return [cell] Returns the cell with all structures
 
-  def R4S50x50PT.create(layout,sensor)
-      
-    $sensor = layout.create_cell("R4S50x50PT")
+  def R4S50x50PT.create(layout,sensor="R4S50x50PT")
+          
+    $sensor = layout.create_cell(sensor)
     
     innerPixelCell = layout.create_cell("InnerPixel")      
     Pixel.init(innerPixelCell)
@@ -35,13 +35,16 @@ module R4S50x50PT
     Merge.cells($sensor, pixelGridCell)
 
     periCell = layout.create_cell("Periphery")
+
+    # Conflict?
     textCell = Text.create(layout, $layerAlu, sensor ,-4000e3, 4500e3) 
+
     Periphery.init(periCell)
     Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
-    #textCell.delete
     
+    textCell = Text.create(layout, $layerPassOpen, sensor ,-4000e3, 4500e3) 
     Merge.cells(periCell, textCell) 
-    Merge.cells($sensor, pixelGridCell)
+    
     Merge.cells($sensor, periCell)
 
     return $sensor
