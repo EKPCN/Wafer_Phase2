@@ -74,12 +74,15 @@ module CISWafer
       
       # stepping
       
-      x0 += 9960e3
+      #x0 += 9960e3
+      x0 += 20000e3
       nX += 1
       
       if nX == nXmax
-        y0 -= 10260e3
-        x0 = -40000e3
+        #y0 -= 10260e3
+        #x0 = -40000e3
+        y0 -= 20260e3
+        x0 = -50000e3
         nX = 0
       end
     end
