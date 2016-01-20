@@ -220,8 +220,10 @@ module PSI46DIG100x25x3noedge
     Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
 	
     textCell = Text.create(layout, $layerAlu, "CMS Phase II Upgrade Pixel PSI46DIG 100um x 25um 2016 HIP-DESY" , -3600e3, PixelEdge['outerY0'] + (PixelGrid['sizeY']+2*PixelEdge['aluDistY'])/2+(PixelEdge['aluSizeY']-(PixelGrid['sizeY']+2*PixelEdge['aluDistY']))/4 - 35e3, 200)#4857.25e3)#4884.75e3)
-    Merge.cells(periCell, textCell)
+    lowerTextCell = Text.create(layout,$layerAlu,"Place chip periphery over here",-3500e3, PixelEdge['outerY0'] + -(PixelGrid['sizeY']+2*PixelEdge['aluDistY'])/2-(PixelEdge['aluSizeY']-(PixelGrid['sizeY']+2*PixelEdge['aluDistY']))/4, 400)    
     
+    Merge.cells(periCell, textCell)
+    Merge.cells(periCell, lowerTextCell)
     Merge.cells($sensor, periCell)
 	
     return $sensor

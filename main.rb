@@ -5,7 +5,7 @@ module CISWafer
 
   # include files
 
-  load "Wafer_Phase2/layer.rb"
+  load "Wafer_Phase2/layer_HPK.rb"
   load "Wafer_Phase2/structures/basic.rb"
   load "Wafer_Phase2/structures/pixel.rb"
   load "Wafer_Phase2/structures/periphery.rb"

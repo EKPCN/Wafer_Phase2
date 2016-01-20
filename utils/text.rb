@@ -15,9 +15,8 @@ module Gds
     pcell_decl || raise("Unknown PCell 'TEXT'")
 
     # set the parameters
-    param = { "text" => text, "layer" => 
-
-    LayerInfo::new(layer+1, 0), "mag" => size}
+    param = { "text" => text, "layer" => layout.get_info(layer), "mag" => size}
+    #=> LayerInfo::new(5, 0, "Metal"), "mag" => size}
     # Christian size = 100
 
     #, "inverse" => true

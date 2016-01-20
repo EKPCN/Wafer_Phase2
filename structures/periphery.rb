@@ -64,6 +64,13 @@ module Periphery
       edge = Cut.polyVector([outerBox,innerBox])  
     end
 
+
+    # place periphery here label
+    if cutfortext
+      labelBox = Polygon.new(Box.new(-xo/2+700e3, -yo/2+200, xo/2-700e3, -yo/2+600e3))
+      edge = Cut.polyVector([edge,labelBox])    
+    end
+
 # Textbox (Christian)
 #
 #  edg = Cut.polyVector([outerBox,innerBox])
