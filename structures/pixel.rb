@@ -495,12 +495,9 @@ module Pixel
   # @return [Nill]
 
   def Pixel.grid(pixel,nx=1,ny=1,distX=0,distY=0,x0=0,y0=0,rot=0,mir=false) 
+
+    $Cell.insert(CellInstArray::new(pixel.cell_index,CplxTrans::new(1,rot,mir,DPoint::new(x0,y0)), RBA::Point::new(distX,0.0),RBA::Point::new(0.0,distY),nx,ny))
   
-    for i in 0..nx-1
-      for j in 0..ny-1
-        Merge.cells($Cell,pixel,x0+(i*distX),y0+(j*distY),rot,mir)
-      end
-    end    
   end
 
   # Creates a via
