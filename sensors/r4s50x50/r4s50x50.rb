@@ -19,16 +19,16 @@ module Roc4Sens50x50
 
     pixelGridCell = layout.create_cell("PixelGrid")
     Pixel.init(pixelGridCell)
-    Pixel.grid(innerPixelCell,InnerPixelGrid['nX'], InnerPixelGrid['nY'], InnerPixelGrid['dX'], InnerPixelGrid['dY'], -PixelGrid['sizeX']/2+(InnerPixelGrid['sizeX']/2), -PixelGrid['sizeY']/2+InnerPixelGrid['sizeY']/2)
+    Pixel.grid(innerPixelCell,InnerPixelGrid['nX']+1, InnerPixelGrid['nY'], InnerPixelGrid['dX'], InnerPixelGrid['dY'], -PixelGrid['sizeX']/2+(InnerPixelGrid['sizeX']/2), -PixelGrid['sizeY']/2+InnerPixelGrid['sizeY']/2)
     Pixel.grid(innerPixelCell,InnerPixelGrid['nX'], InnerPixelGrid['nY'], InnerPixelGrid['dX'], InnerPixelGrid['dY'], -PixelGrid['sizeX']/2+3*(InnerPixelGrid['sizeX']/2), -PixelGrid['sizeY']/2+InnerPixelGrid['sizeY']/2,90)
     
     Merge.cells($sensor, pixelGridCell)
 
     periCell = layout.create_cell("Periphery")
     Periphery.init(periCell)
-    Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,PixelGrid,BiasRing,GuardRing,PixelEdge)
+    Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
   
-    textCell = Text.create(layout, $layerPassOpen, sensor , -4000e3, 4500e3) 
+    textCell = Text.create(layout, $layerAlu, sensor , -4000e3, 4500e3) 
     Merge.cells(periCell, textCell) 
     
     Merge.cells($sensor, periCell)

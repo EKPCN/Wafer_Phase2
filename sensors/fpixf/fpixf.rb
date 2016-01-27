@@ -56,15 +56,19 @@ module FPixF
     Pixel.grid(cornerPixelCell,CornerPixelGrid['nX'],CornerPixelGrid['nY'],CornerPixelGrid['dX'],CornerPixelGrid['dY'],-PixelGrid['sizeX']/2+CornerPixelGrid['sizeX']/2, PixelGrid['sizeY']/2-(CornerPixelGrid['sizeY']/2))
     Pixel.grid(cornerPixelCell,CornerPixelGrid['nX'],CornerPixelGrid['nY'],CornerPixelGrid['dX'],CornerPixelGrid['dY'], PixelGrid['sizeX']/2-CornerPixelGrid['sizeX']/2, PixelGrid['sizeY']/2-(CornerPixelGrid['sizeY']/2),180,true)
     
+    Merge.cells($sensor, pixelGridCell)
 
     periCell = layout.create_cell("Periphery")
-    textCell = Text.create(layout, $layerPassOpen, sensor ,-4000e3, 4500e3) 
+
+    # conflict?
+    textCell = Text.create(layout, $layerAlu, sensor ,-4000e3, 4500e3) 
+
     Periphery.init(periCell)
-    Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,PixelGrid,BiasRing,GuardRing,PixelEdge)
-    #textCell.delete
+    Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
     
-    Merge.cells(periCell, textCell) 
-    Merge.cells($sensor, pixelGridCell)
+    textCell = Text.create(layout, $layerPassOpen, sensor ,-4000e3, 4500e3) 
+    Merge.cells(periCell, textCell)
+    
     Merge.cells($sensor, periCell)
 
     return $sensor

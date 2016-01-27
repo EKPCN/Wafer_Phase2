@@ -5,7 +5,7 @@ module CISWafer
 
   # include files
 
-  load "Wafer_Phase2/layer.rb"
+  load "Wafer_Phase2/layer_HPK.rb"
   load "Wafer_Phase2/structures/basic.rb"
   load "Wafer_Phase2/structures/pixel.rb"
   load "Wafer_Phase2/structures/periphery.rb"
@@ -33,7 +33,7 @@ module CISWafer
   waferCell = layout.create_cell("Wafer")  
   waferOuterDia = 150e6
   waferInnerDia = 140e6  
-  Basic.wafer($layerP, waferCell, waferInnerDia, waferOuterDia)
+  Basic.wafer($layerPpe19, waferCell, waferInnerDia, waferOuterDia)
 
   # Get SensorList from file
 
@@ -74,12 +74,15 @@ module CISWafer
       
       # stepping
       
-      x0 += 9960e3
+      #x0 += 9960e3
+      x0 += 20000e3
       nX += 1
       
       if nX == nXmax
-        y0 -= 10260e3
-        x0 = -40000e3
+        #y0 -= 10260e3
+        #x0 = -40000e3
+        y0 -= 20260e3
+        x0 = -50000e3
         nX = 0
       end
     end

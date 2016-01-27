@@ -92,7 +92,7 @@ OuterVia = {
 
 BumpPad = {
 
-    'dia' => 18e3,   
+    'dia' => 12e3,   
     'x0'  => 25e3,
     'y0'  => 0
 }
@@ -136,9 +136,28 @@ PixelEdge = {
 
     'aluDistX' => 376e3,
     'aluDistY' => 376e3,
-    'aluSizeX' => 9960e3,
-    'aluSizeY' => 10260e3,
+    'aluSizeX' => 9880e3,
+
+    'aluSizeY' => 10180e3,
 
     'outerX0'    => 0,
     'outerY0'    => -150e3
+}
+
+RightImplant = {
+
+    'sizeX' => 85e3,
+    'sizeY' => 35e3,
+    'radius' => 4e3,
+    'metalOH' => 2.5e3  
+}
+
+RightPixelGrid = {
+  
+    'sizeX' => 100e3,
+    'sizeY' => 50e3,
+    'nX' => 0,
+    'nY' => 0,
+    'dX' => 7700e3,
+    'dY' => 50e3 
 }

@@ -3,7 +3,7 @@ InnerPixel = {
 #   PIXEL GRID
   'cellSizeX' => 50e3,
   'cellSizeY' => 50e3,
-  'nX' => 80,
+  'nX' => 77,
   'nY' => 80,
   'dX' => 100e3,
   'dY' => 50e3,
@@ -20,7 +20,7 @@ InnerPixel = {
   'bPX0' => 0.0e3,
   'bPY0' => -12.5e3,
   'bPDia' => 20e3,
-  'bPDiaPassivation' => 10e3,
+  'bPDiaPassivation' => 12e3,
 #   PUNCH THROUGH STRUCTURE
   'PTX0' => 27.25e3, 
   'PTY0' => 25e3,
@@ -45,7 +45,7 @@ InnerPixel = {
 
 PixelGrid = {
 
-    'sizeX' => 8000e3,
+    'sizeX' => 7760e3,
     'sizeY' => 8000e3
 }
 
@@ -91,8 +91,9 @@ PixelEdge = {
 
     'aluDistX' => 376e3,
     'aluDistY' => 376e3,
-    'aluSizeX' => 9960e3,
-    'aluSizeY' => 10260e3,
+    'aluSizeX' => 9880e3,
+
+    'aluSizeY' => 10180e3,
 
     'outerX0'    => 0,
     'outerY0'    => -150e3

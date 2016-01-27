@@ -14,7 +14,7 @@ InnerImplant = {
 
 PixelGrid = {
 
-    'sizeX' => 8000e3,
+    'sizeX' => 7750e3,
     'sizeY' => 8000e3
 }
 
@@ -22,7 +22,7 @@ InnerPixelGrid = {
   
     'sizeX' => 50e3,
     'sizeY' => 50e3,
-    'nX' => 80,
+    'nX' => 77,
     'nY' => 160,
     'dX' => 100e3,
     'dY' => 50e3 
@@ -52,7 +52,7 @@ InnerVia = {
 
 BumpPad = {
 
-    'dia' => 18e3,
+    'dia' => 12e3,
     'x0'  => -12.5e3,
     'y0'  => 12.5e3   
 }
@@ -96,8 +96,9 @@ PixelEdge = {
 
     'aluDistX' => 376e3,
     'aluDistY' => 376e3,
-    'aluSizeX' => 9960e3,
-    'aluSizeY' => 10260e3,
+    'aluSizeX' => 9880e3,
+
+    'aluSizeY' => 10180e3,
 
     'outerX0'    => 0,
     'outerY0'    => -150e3
