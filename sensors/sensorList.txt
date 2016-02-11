@@ -1,1 +1,4 @@
-psi46dig100x25x3s_pspray_wide
+r4s50x50cPT_cpst
+r4s100x25cPT_cpst
+r4s50x50cPTw_cpst
+r4s100x25cPTw_cpst
