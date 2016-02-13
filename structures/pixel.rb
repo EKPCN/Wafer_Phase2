@@ -96,6 +96,7 @@ module Pixel
   # @param y0 [int] center of the implant
   
   def Pixel.ptImplant(layer,x,y,x0PT,y0PT,dHole,dImplant=0,minDistToEdge=0,x0=0,y0=0)
+	outercornerdia = 1.5e3
     if (x0PT).abs+dHole/2<x/2+2*minDistToEdge && (y0PT).abs+dHole/2<y/2+2*minDistToEdge
       #standard PT
       implant = Basic.roundBox(x,y,x0,y0)
@@ -110,16 +111,16 @@ module Pixel
     else
       #common PT
       implantPoly = Polygon.new(Box.new(-x/2,-y/2,x/2,y/2))
-      implantPoly = implantPoly.round_corners(0,5e3,32) 
+      implantPoly = implantPoly.round_corners(0,outercornerdia,32) 
       ptHole = Basic.circle(dHole,x0PT,y0PT,60)
       tmp = Merge.polyVector([implantPoly,ptHole])
       implant = Cut.polyVector([tmp,ptHole])
       
       #round corners
       #corner parameter
-      cp = 1.0e3
+      cp = 0.250e3
       #extra parameter to account for deviation from perfect circle
-      ep = 0.1e3
+      ep = 0.01e3
       
       #calculate position for left and right box
       #NOW ONLY FOR UPPER RIGHT CORNER COMMOM PUNCH-THRU
@@ -295,11 +296,12 @@ module Pixel
   # @param d [int] diameter of PT hole
   # @param x0 [int] center of the implant
   # @param y0 [int] center of the implant
+  # @param cutfrommetal [int] cut some area from the metal for a wiggle bias line
   
-  def Pixel.cptMetal(layer,x,y,x0PT,y0PT,d,x0=0,y0=0)
+  def Pixel.cptMetal(layer,x,y,x0PT,y0PT,d,x0=0,y0=0,cutfrommetal=0)
     
     implantPoly = Polygon.new(Box.new(-x/2,-y/2,x/2,y/2))
-    outercornerdia = 5e3
+    outercornerdia = 2.5e3
     implantPoly = implantPoly.round_corners(0,outercornerdia,32)
     
     #create hole in implant for the actual punch through
@@ -310,9 +312,9 @@ module Pixel
     
     #round corners
     #corner parameter
-    cp = 1.0e3
+    cp = 0.50e3
     #extra parameter to account for deviation from perfect circle
-    ep = 0.1e3
+    ep = 0.01e3
 
     #calculate position for left and right box
     #NOW ONLY FOR UPPER RIGHT CORNER COMMOM PUNCH-THRU
@@ -340,6 +342,12 @@ module Pixel
     ptm = Cut.polyVector([tmp,lbox,rbox])
     implant = Merge.polyVector([ptm,tmpl,tmpr])
     
+	if cutfrommetal!=0
+		box = Polygon.new(Box.new(x/2-cutfrommetal,-y/2,x/2,y/2)) 
+		tmp = Merge.polyVector([implant,box])
+		implant = Cut.polyVector([box,tmp])
+		implant = implant.round_corners(0,outercornerdia,32)
+	end
     
     implant.move(x0,y0)
     
@@ -357,8 +365,9 @@ module Pixel
   # @param globalBLwidth [int] Optional: width of the global bias line
   # @param x0 [int] center of the implant
   # @param y0 [int] center of the implant
+  # @param outerxbl [int] distance from cell edge to the outer edge of the bias line for a wiggle bias line
   
-  def Pixel.ptBiasLine(layer,pixSizeX,pixSizeY,x0PT,y0PT,dDot,blWidth,globalBLwidth=0,x0=0,y0=0)
+  def Pixel.ptBiasLine(layer,pixSizeX,pixSizeY,x0PT,y0PT,dDot,blWidth,globalBLwidth=0,x0=0,y0=0,outerxbl=0)
     
     dot = Basic.circle(dDot,x0PT,y0PT)
     
@@ -433,13 +442,24 @@ module Pixel
       bias = Cut.polyVector([upperCirc,biasTmp2,lowerCirc])
       
     else
-      #create global biasline fot common PT design
-      if x0PT < 0
-	globalBiasLine = Polygon.new(Box.new(x0PT-globalBLwidth/2.0,-pixSizeY/2.0-distY,x0PT,pixSizeY/2.0+distY))
-      else
-	globalBiasLine = Polygon.new(Box.new(x0PT,-pixSizeY/2.0-distY,x0PT+globalBLwidth,pixSizeY/2.0+distY))
-      end
-      bias=Merge.polyVector([globalBiasLine,dot])
+		#create global biasline for common PT design
+		if outerxbl==0
+			if x0PT < 0
+				globalBiasLine = Polygon.new(Box.new(x0PT-globalBLwidth/2.0,-pixSizeY/2.0-distY,x0PT,pixSizeY/2.0+distY))
+			else
+				globalBiasLine = Polygon.new(Box.new(x0PT,-pixSizeY/2.0-distY,x0PT+globalBLwidth,pixSizeY/2.0+distY))
+			end
+		else
+			#wiggle bias line
+			rot45 = RBA::ICplxTrans::new(1, -45, true, x0PT,y0PT)#RBA::Point::new)
+			length = Math.sqrt(2)*(outerxbl-globalBLwidth*Math.sin(0.25*Math::PI))
+			ffd = Polygon.new(Box.new(-globalBLwidth,-length,globalBLwidth,length)).transformed(rot45)
+			yshift = Math.sqrt((length+globalBLwidth)**2-outerxbl**2)-Math.sqrt(2)*globalBLwidth
+			down = Polygon.new(Box.new(x0PT-outerxbl,y0PT-yshift+1,x0PT-outerxbl+2*globalBLwidth,y0PT-yshift+1-1.5*pixSizeY))
+			globalBiasLine = Merge.polyVector([ffd,down])
+			globalBiasLine = globalBiasLine.round_corners(5e3,5e3,24)
+		end
+      bias = Merge.polyVector([globalBiasLine,dot])
     end
     
     bias.move(x0,y0)
@@ -569,7 +589,7 @@ module Pixel
   # @param y0 [int] Y position of the center of the ring
   # @return [Nill]
 
-  def Pixel.pStop(layer, x, y, width, rOut, rIn, oX=0, oY=0, oW=0, horizontal=true ,x0=0, y0=0)
+  def Pixel.pStop(layer, x, y, width, rOut, rIn, oX=0, oY=0, oW=0, horizontal=true ,x0=0, y0=0, stopforcpt=0)
     
     if width!=0
         
@@ -600,6 +620,13 @@ module Pixel
      end
      
      pStop = Merge.polyVector([ringOpen,endCirc1,endCirc2])
+	 
+	 if stopforcpt!=0
+		box = Polygon.new(Box.new(x/2+width-stopforcpt/2,y/2+width-stopforcpt/2,x/2+width,y/2+width))
+		tmp = Merge.polyVector([pStop,box])
+		pStop = Cut.polyVector([tmp,box])
+	end
+	 
      pStop.move(x0,y0)
     
      $Cell.shapes(layer).insert(pStop)  
