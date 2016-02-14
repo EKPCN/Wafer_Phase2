@@ -52,7 +52,7 @@ module Periphery
   end
 
 
-  def Periphery.edge(layer,xi,yi,xo,yo,x0=0,y0=0,xg0=0,yg0=0,cutfortext=false,alignmentmark=false)
+  def Periphery.edge(layer,xi,yi,xo,yo,x0=0,y0=0,xg0=0,yg0=0,cutfortext=false,alignmentmark=false,lowerText=false)
     innerBox = Polygon.new(Box.new(-xi/2,-yi/2,xi/2,yi/2))
     outerBox = Polygon.new(Box.new(-xo/2,-yo/2,xo/2,yo/2))  
     outerBox.move(x0,y0)
@@ -66,7 +66,7 @@ module Periphery
 
 
     # place periphery here label
-    if cutfortext
+    if lowerText
       labelBox = Polygon.new(Box.new(-xo/2+700e3, -yo/2+200, xo/2-700e3, -yo/2+600e3))
       edge = Cut.polyVector([edge,labelBox])    
     end

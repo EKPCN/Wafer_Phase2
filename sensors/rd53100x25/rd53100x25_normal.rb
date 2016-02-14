@@ -1,16 +1,39 @@
 PixelUnitCell = {
 
-    'sizeX' => 50e3,
-    'sizeY' => 50e3,
+    'sizeX' => 100e3,
+    'sizeY' => 25e3,
 }
 
-InnerImplant = {
+Implant = {
 
-    'sizeX' => 23e3,
-    'sizeY' => 23e3,
+    'sizeX' => 85e3,
+    'sizeY' => 10e3,
     'radius' => 4e3,
-    'metalOH' => 3e3  
+    'metalOH' => 1e3  
 }
+
+ImplantAlu1 = {
+
+    'sizeX' => 65e3,
+    'sizeY' => 16e3,
+    'x0' => 13e3,
+    'y0' => 0,
+    'radius' => 4e3
+}
+
+BumpPad1 = {
+
+    'dia' => 15e3,
+    'x0'  => 14.5e3,
+    'y0'  => 0   
+}
+
+BumpPad2 = {
+    'dia' => 15e3,
+    'x0'  => -35.5e3,
+    'y0'  => -25e3  
+}
+
 
 PixelGrid = {
 
@@ -18,21 +41,20 @@ PixelGrid = {
     'sizeX' => 20000e3
 }
 
-InnerPixelGrid = {
+PixelGrid1 = {
   
-    'sizeX' => 50e3,
-    'sizeY' => 50e3,
+    'sizeX' => 100e3,
+    'sizeY' => 25e3,
     'nY' => 192,
-    'nX' => 400,
-    'dX' => 50e3,
+    'nX' => 200,
+    'dX' => 100e3,
     'dY' => 50e3 
 }
 
-
 InnerPStop = {
 
-    'distX' => 6e3,
-    'distY' => 6e3,
+    'distX' => 5e3,
+    'distY' => 5e3,
     'width' => 5e3,
     'rIn' => 4e3,
     'rOut' => 9e3,
@@ -41,21 +63,30 @@ InnerPStop = {
     'openWidth' => 0,
 }
 
-InnerVia = {
+Via10 = {
 
     'sizeX' => 5e3,
     'sizeY' => 5e3,
-    'x0'    => 7e3,
-    'y0'    => 7e3
+    'x0'    => -2.5e3,
+    'y0'    => 0
 }
 
+Via11 = {
 
-BumpPad = {
-
-    'dia' => 15e3,
-    'x0'  => 0,
-    'y0'  => 0   
+    'sizeX' => 5e3,
+    'sizeY' => 5e3,
+    'x0'    => 31.5e3,
+    'y0'    => 0
 }
+
+Via2 = {
+
+    'sizeX' => 5e3,
+    'sizeY' => 5e3,
+    'x0'    => 30e3,
+    'y0'    => 0
+}
+
 
 BiasRing = {
 

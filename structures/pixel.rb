@@ -8,6 +8,24 @@ module Pixel
     $Cell = cell
   end
 
+  def Pixel.roundBox(layer,x,y,x0=0,y0=0,r=5000)
+    implant = Basic.roundBox(x,y,x0,y0,r)
+    $Cell.shapes(layer).insert(implant)    
+  end 
+
+  def Pixel.implantRouting(layer,x,y,x0BB=0,y0BB=0,r=5000)
+    metal = Basic.roundBox(x,y,0,0,r)
+    routing = Basic.roundBox(20e3,y0BB.abs+2*r,x0BB,(y0BB)/2,r)
+    cornerBox = Basic.roundBox(r,r,x0BB+10e3+r/2,-y/2-r/2,0)
+    circ = Basic.circle(2*r,x0BB+10e3+r,-y/2-r,p=32)
+
+    tmp1 = Cut.polyVector([cornerBox,circ])
+    edge = Merge.polyVector([metal,routing,tmp1])
+    
+    $Cell.shapes(layer).insert(edge)  
+      
+  end
+
   # Creates an implant 
   # @param layer [layer] Used material
   # @param x [int] Size in x direction
