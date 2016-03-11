@@ -8,6 +8,29 @@ module Pixel
     $Cell = cell
   end
 
+  def Pixel.roundBox(layer,x,y,x0=0,y0=0,r=5000)
+    implant = Basic.roundBox(x,y,x0,y0,r)
+    $Cell.shapes(layer).insert(implant)    
+  end 
+
+  def Pixel.implantRouting(layer,x,y,x0BB=0,y0BB=0,r=5000)
+    metal = Basic.roundBox(x,y,-18.5e3,0,r)
+    routing = Basic.roundBox(20e3,y0BB.abs+2*r,x0BB,(y0BB)/2,r)
+
+    # 10e3 = width/2 of the routing
+    cornerBox = Basic.roundBox(r,r,x0BB+10e3+r/2,-y/2-r/2,0)
+    circ = Basic.circle(2*r,x0BB+10e3+r,-y/2-r,p=32) 
+    cornerBox2 = Basic.roundBox(r,r,x0BB-10e3-r/2,-y/2-r/2,0)
+    circ2 = Basic.circle(2*r,x0BB-10e3-r,-y/2-r,p=32)
+
+    corner1 = Cut.polyVector([cornerBox,circ])
+    corner2 = Cut.polyVector([cornerBox2,circ2,circ2])
+    edge = Merge.polyVector([metal,routing,corner1,corner2])    
+    
+    $Cell.shapes(layer).insert(edge)  
+      
+  end
+
   # Creates an implant 
   # @param layer [layer] Used material
   # @param x [int] Size in x direction
@@ -515,12 +538,9 @@ module Pixel
   # @return [Nill]
 
   def Pixel.grid(pixel,nx=1,ny=1,distX=0,distY=0,x0=0,y0=0,rot=0,mir=false) 
+
+    $Cell.insert(CellInstArray::new(pixel.cell_index,CplxTrans::new(1,rot,mir,DPoint::new(x0,y0)), RBA::Point::new(distX,0.0),RBA::Point::new(0.0,distY),nx,ny))
   
-    for i in 0..nx-1
-      for j in 0..ny-1
-        Merge.cells($Cell,pixel,x0+(i*distX),y0+(j*distY),rot,mir)
-      end
-    end    
   end
 
   # Creates a via

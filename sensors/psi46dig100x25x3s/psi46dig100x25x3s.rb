@@ -5,13 +5,15 @@ module PSI46DIG100x25x3noedge
   # Creates PSI46DIG100x25x3noedge
   # @return [cell] Returns the cell with all structures
 
-  load "TESTSTRUCTURES/guardring_cell.rb"
-  load "SYSTEM/Newfunctions.rb"
-  load "SYSTEM/NStruc.rb"
+  # Can not load TESTSTRUCTURES and SYSTEM functions
+  # 
+  #load "TESTSTRUCTURES/guardring_cell.rb"
+  #load "SYSTEM/Newfunctions.rb"
+  #load "SYSTEM/NStruc.rb"
   
   def PSI46DIG100x25x3noedge.create(layout,sensor)
     
-    $sensor = layout.create_cell("PSI46DIG100x25")
+    $sensor = layout.create_cell("PSI46DIG100x25x3s")
     
     innerPixelCell1 = layout.create_cell("PSI46DIG100x25InnerPixel1")      
     Pixel.init(innerPixelCell1)
@@ -216,14 +218,20 @@ module PSI46DIG100x25x3noedge
 	periCell = layout.create_cell("PSI46DIG100x25Periphery")
     Periphery.init(periCell)
     Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
+	#bump pads for guard ring connection
+	Pixel.bumpPad($layerPassOpen,BumpPad['bPDiaPassivation'],LeftPixel['bPX0']-PixelGrid['sizeX']/2+LeftPixel['cellSizeX']/2,LeftPixel['bPY0']-PixelGrid['sizeY']/2+InnerPixel['cellSizeY']/2-300e3)
+    Pixel.bumpPad($layerAlu,BumpPad['bPDia'],LeftPixel['bPX0']-PixelGrid['sizeX']/2+LeftPixel['cellSizeX']/2,LeftPixel['bPY0']-PixelGrid['sizeY']/2+InnerPixel['cellSizeY']/2-300e3)
+	Pixel.roundBox($layerAlu,BumpPad['bPDia'],40e3,LeftPixel['bPX0']-PixelGrid['sizeX']/2+LeftPixel['cellSizeX']/2,LeftPixel['bPY0']-PixelGrid['sizeY']/2+InnerPixel['cellSizeY']/2-300e3+20e3,0e3)
+	Pixel.bumpPad($layerPassOpen,BumpPad['bPDiaPassivation'],RightPixel['bPX0']-PixelGrid['sizeX']/2+LeftPixel['cellSizeX']+RightPixel['cellSizeX']/2+(InnerPixel['nX1']-1)*InnerPixel['dX']+2*InnerPixel['cellSizeX'],RightPixel['bPY0']-PixelGrid['sizeY']/2+InnerPixel['cellSizeY']/2-300e3)
+    Pixel.bumpPad($layerAlu,BumpPad['bPDia'],RightPixel['bPX0']-PixelGrid['sizeX']/2+LeftPixel['cellSizeX']+RightPixel['cellSizeX']/2+(InnerPixel['nX1']-1)*InnerPixel['dX']+2*InnerPixel['cellSizeX'],RightPixel['bPY0']-PixelGrid['sizeY']/2+InnerPixel['cellSizeY']/2-300e3)
+	Pixel.roundBox($layerAlu,BumpPad['bPDia'],40e3,RightPixel['bPX0']-PixelGrid['sizeX']/2+LeftPixel['cellSizeX']+RightPixel['cellSizeX']/2+(InnerPixel['nX1']-1)*InnerPixel['dX']+2*InnerPixel['cellSizeX'],RightPixel['bPY0']-PixelGrid['sizeY']/2+InnerPixel['cellSizeY']/2-300e3+20e3,0e3)
 	
-    textCell = Text.create(layout, $layerAlu, "CMS Phase II Upgrade Pixel PSI46DIG 100um x 25um 2016 HIP-DESY" , -2400e3, PixelEdge['outerY0'] + (PixelGrid['sizeY']+2*PixelEdge['aluDistY'])/2+(PixelEdge['aluSizeY']-(PixelGrid['sizeY']+2*PixelEdge['aluDistY']))/4 - 35e3)#4857.25e3)#4884.75e3)
-    Merge.cells(periCell, textCell)
+    textCell = Text.create(layout, $layerAlu, "CMS Phase II Upgrade Pixel PSI46DIG 100um x 25um 2016 HIP-DESY" , -3600e3, PixelEdge['outerY0'] + (PixelGrid['sizeY']+2*PixelEdge['aluDistY'])/2+(PixelEdge['aluSizeY']-(PixelGrid['sizeY']+2*PixelEdge['aluDistY']))/4 - 35e3, 200)#4857.25e3)#4884.75e3)
+    lowerTextCell = Text.create(layout,$layerAlu,"Place chip periphery over here",-3500e3, PixelEdge['outerY0'] + -(PixelGrid['sizeY']+2*PixelEdge['aluDistY'])/2-(PixelEdge['aluSizeY']-(PixelGrid['sizeY']+2*PixelEdge['aluDistY']))/4, 400)    
     
+    Merge.cells(periCell, textCell)
+    Merge.cells(periCell, lowerTextCell)
     Merge.cells($sensor, periCell)
-	
-	
-	
 	
     return $sensor
   end

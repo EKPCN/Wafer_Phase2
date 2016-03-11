@@ -14,6 +14,9 @@ module Gds
   
     layout = Layout.new
     Layer.insert(layout)
+  
+    puts pathToGenFile
+    puts pathToParaFile
 
     moduleName = Object.const_get((File.open(pathToGenFile){|f| f.readline}).split.last)
 

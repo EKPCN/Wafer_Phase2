@@ -14,7 +14,7 @@ InnerImplant = {
 
 PixelGrid = {
 
-    'sizeX' => 8000e3,
+    'sizeX' => 7800e3,
     'sizeY' => 8000e3
 }
 
@@ -22,7 +22,7 @@ InnerPixelGrid = {
   
     'sizeX' => 100e3,
     'sizeY' => 25e3,
-    'nX' => 78,
+    'nX' => 76,
     'nY' => 160,
     'dX' => 100e3,
     'dY' => 50e3 
@@ -32,9 +32,9 @@ OuterPixelGrid = {
   
     'sizeX' => 100e3,
     'sizeY' => 25e3,
-    'nX' => 2,
+    'nX' => 1,
     'nY' => 160,
-    'dX' => 7900e3,
+    'dX' => 7650e3,
     'dY' => 50e3 
 }
 
@@ -131,15 +131,32 @@ PixelEdge = {
     
     'distX' => 426e3,
     'distY' => 426e3,
-    'sizeX' => 9960e3,
-    'sizeY' => 10260e3,
+    'sizeX' => 10000e3,
+    'sizeY' => 10000e3,
 
     'aluDistX' => 376e3,
     'aluDistY' => 376e3,
-    'aluSizeX' => 9880e3,
-
-    'aluSizeY' => 10180e3,
+    'aluSizeX' => 9920e3,
+    'aluSizeY' => 9920e3,
 
     'outerX0'    => 0,
     'outerY0'    => -150e3
+}
+
+RightImplant = {
+
+    'sizeX' => 85e3,
+    'sizeY' => 35e3,
+    'radius' => 4e3,
+    'metalOH' => 2.5e3  
+}
+
+RightPixelGrid = {
+  
+    'sizeX' => 100e3,
+    'sizeY' => 50e3,
+    'nX' => 1,
+    'nY' => 160,
+    'dX' => 7700e3,
+    'dY' => 50e3 
 }

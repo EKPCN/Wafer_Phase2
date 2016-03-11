@@ -5,7 +5,7 @@ module CISWafer
 
   # include files
 
-  load "Wafer_Phase2/layer.rb"
+  load "Wafer_Phase2/layer_HPK.rb"
   load "Wafer_Phase2/structures/basic.rb"
   load "Wafer_Phase2/structures/pixel.rb"
   load "Wafer_Phase2/structures/periphery.rb"
@@ -56,11 +56,13 @@ module CISWafer
   
   sensors.each{ |sensor|   
     
-    if !File.exist?($GLOBAL_PATH + "/gds/" + sensor + ".gds")     
-      Gds.create(sensor)
-    end
+    #if !File.exist?($GLOBAL_PATH + "/gds/" + sensor + ".gds")     
+    #  Gds.create(sensor)
+    #end
 
-    if File.exist?($GLOBAL_PATH + "/gds/" + sensor + ".gds") 
+    #if File.exist?($GLOBAL_PATH + "/gds/" + sensor + ".gds") 
+    
+      Gds.create(sensor)
     
       # Merge gds files
   
@@ -74,15 +76,18 @@ module CISWafer
       
       # stepping
       
-      x0 += 9960e3
+      #x0 += 9960e3
+      x0 += 25000e3
       nX += 1
       
       if nX == nXmax
-        y0 -= 10260e3
-        x0 = -40000e3
+        #y0 -= 10260e3
+        #x0 = -40000e3
+        y0 -= 20260e3
+        x0 = -50000e3
         nX = 0
       end
-    end
+    #end
   
   }
   

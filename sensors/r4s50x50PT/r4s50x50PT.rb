@@ -5,9 +5,8 @@ module R4S50x50PT
   # Creates the FPIXFPT sensor
   # @return [cell] Returns the cell with all structures
 
-  def R4S50x50PT.create(layout,sensor)
-  
-        
+  def R4S50x50PT.create(layout,sensor="R4S50x50PT")
+          
     $sensor = layout.create_cell(sensor)
     
     innerPixelCell = layout.create_cell("InnerPixel")      
@@ -22,20 +21,29 @@ module R4S50x50PT
     Pixel.ptVia($layerAluVia,InnerPixel['viaX0'],InnerPixel['viaY0'],InnerPixel['viaDia'])
     Pixel.pStop($layerPp, InnerPixel['implantSizeX']+2*InnerPixel['PSdistX'], InnerPixel['implantSizeY']+2*InnerPixel['PSdistY'], InnerPixel['PSwidth'], InnerPixel['PSrOut'] , InnerPixel['PSrIn'], InnerPixel['PSopenX0'], InnerPixel['PSopenY0'], InnerPixel['PSopenWidth'],true)
     
-
-
     pixelGridCell = layout.create_cell("PixelGrid")
     Pixel.init(pixelGridCell)
     Pixel.grid(innerPixelCell,InnerPixel['nX'], InnerPixel['nY'], InnerPixel['dX'], InnerPixel['dY'], -PixelGrid['sizeX']/2+InnerPixel['cellSizeX']/2, -PixelGrid['sizeY']/2+InnerPixel['cellSizeY']/2)
     Pixel.grid(innerPixelCell,InnerPixel['nX'], InnerPixel['nY'], InnerPixel['dX'], InnerPixel['dY'], -PixelGrid['sizeX']/2+3*InnerPixel['cellSizeX']/2, -PixelGrid['sizeY']/2+InnerPixel['cellSizeY']/2,0,true)
+
+    # Last Pixel Row
+    
+    Pixel.grid(innerPixelCell,1, InnerPixel['nY'], InnerPixel['dX'], InnerPixel['dY'], PixelGrid['sizeX']/2-InnerPixel['cellSizeX']/2, -PixelGrid['sizeY']/2+InnerPixel['cellSizeY']/2)
+    #Pixel.grid(innerPixelCell,1, InnerPixel['nY'], InnerPixel['dX'], InnerPixel['dY'], PixelGrid['sizeX']/2-InnerPixel['cellSizeX']/2, -PixelGrid['sizeY']/2+3*InnerPixel['cellSizeY']/2,0,true)
+      
     
     Merge.cells($sensor, pixelGridCell)
 
     periCell = layout.create_cell("Periphery")
+
+    # Conflict?
+    textCell = Text.create(layout, $layerAlu, sensor ,-4000e3, 4500e3) 
+
     Periphery.init(periCell)
     Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
     
-    textCell = Text.create(layout, $layerPassOpen, sensor ,-4000e3, 4500e3) 
+	lowerTextCell = Text.create(layout,$layerAlu,"Place chip periphery over here",-3500e3, PixelEdge['outerY0'] + -(PixelGrid['sizeY']+2*PixelEdge['aluDistY'])/2-(PixelEdge['aluSizeY']-(PixelGrid['sizeY']+2*PixelEdge['aluDistY']))/4, 400)    
+    Merge.cells(periCell, lowerTextCell)
     Merge.cells(periCell, textCell) 
     
     Merge.cells($sensor, periCell)
