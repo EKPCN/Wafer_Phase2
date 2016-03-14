@@ -15,6 +15,7 @@ module Pixel
 
   def Pixel.implantRouting(layer,x,y,x0BB=0,y0BB=0,r=5000)
 
+#<<<<<< HEAD
 #    metal = Basic.roundBox(x,y,0,0,r)
 #    routing = Basic.roundBox(20e3,y0BB.abs+2*r,x0BB,(y0BB)/2,r)
 #    cornerBox = Basic.roundBox(r,r,x0BB+10e3+r/2,-y/2-r/2,0)
@@ -22,6 +23,8 @@ module Pixel
 
 #    tmp1 = Cut.polyVector([cornerBox,circ])
 #    edge = Merge.polyVector([metal,routing,tmp1])
+
+#=======
 
     metal = Basic.roundBox(x,y,-18.5e3,0,r)
     routing = Basic.roundBox(20e3,y0BB.abs+2*r,x0BB,(y0BB)/2,r)
@@ -36,7 +39,6 @@ module Pixel
     corner2 = Cut.polyVector([cornerBox2,circ2,circ2])
     edge = Merge.polyVector([metal,routing,corner1,corner2])    
 
-  
     $Cell.shapes(layer).insert(edge)  
       
   end

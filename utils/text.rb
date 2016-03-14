@@ -2,7 +2,7 @@ module Gds
 
   include RBA
 
-  def Text.create(layout, layer, text, x0=0, y0=0, size=500) #350
+  def Text.create(layout, layer, text, x0=0, y0=0, size=350) #500
 
       textCell = layout.create_cell("Label")
 
