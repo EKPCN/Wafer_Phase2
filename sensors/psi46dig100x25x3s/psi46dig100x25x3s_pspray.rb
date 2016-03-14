@@ -99,6 +99,7 @@ LeftPixel = {
   'implantSizeX' => 272.5e3,
 #   PIXEL BUMP PAD
   'bPX0' => -121.25e3,
+  'bPY0' => 0.0e3,
 }
 
 LeftPixelBPPar = [
@@ -122,6 +123,7 @@ RightPixel = {
   'implantSizeX' => 197.5e3,
 #   BUMP PAD
   'bPX0' => 83.75e3,
+  'bPY0' => 0.0e3,
 }
 
 BumpPad = {
@@ -173,14 +175,23 @@ PixelEdge = {
     
     'distX' => 426e3,
     'distY' => 426e3,
-    'sizeX' => 9960e3,
-    'sizeY' => 10260e3,
+#<<<<<<< HEAD
+#    'sizeX' => 9960e3,
+#    'sizeY' => 10260e3,
+
+#    'aluDistX' => 376e3,
+#    'aluDistY' => 376e3,
+#    'aluSizeX' => 9880e3,
+
+#    'aluSizeY' => 10180e3,
+#=======
+    'sizeX' => 10000e3,
+    'sizeY' => 10000e3,
 
     'aluDistX' => 376e3,
     'aluDistY' => 376e3,
-    'aluSizeX' => 9880e3,
-
-    'aluSizeY' => 10180e3,
+    'aluSizeX' => 9920e3,
+    'aluSizeY' => 9920e3,
 
     'outerX0'    => 0,
     'outerY0'    => -150e3

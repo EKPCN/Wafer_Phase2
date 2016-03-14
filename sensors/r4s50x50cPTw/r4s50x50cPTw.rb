@@ -75,14 +75,38 @@ module R4S50x50cPTw
     Pixel.grid(innerPixelCell3,InnerPixel['nX'], InnerPixel['nY']/2, InnerPixel['dX'], 4*InnerPixel['dY'], -PixelGrid['sizeX']/2+(3*InnerPixel['cellSizeX']/2), -PixelGrid['sizeY']/2+5*(InnerPixel['cellSizeY']/2),180,true)
     
     Pixel.grid(innerPixelCell4,InnerPixel['nX'], InnerPixel['nY']/2, InnerPixel['dX'], 4*InnerPixel['dY'], -PixelGrid['sizeX']/2+(3*InnerPixel['cellSizeX']/2), -PixelGrid['sizeY']/2+7*(InnerPixel['cellSizeY']/2),180)
+	
+	#last row
+	#Pixel.grid(innerPixelCell2,1, InnerPixel['nY']/2, InnerPixel['dX'], 4*InnerPixel['dY'], -PixelGrid['sizeX']/2+(4*InnerPixel['nX']+1)*(InnerPixel['cellSizeX']/2), -PixelGrid['sizeY']/2+(InnerPixel['cellSizeY']/2))
+    
+    Pixel.grid(innerPixelCell1,1, InnerPixel['nY'], InnerPixel['dX'], 2*InnerPixel['dY'], (-PixelGrid['sizeX']/2+(4*InnerPixel['nX']+1)*(InnerPixel['cellSizeX']/2)), -PixelGrid['sizeY']/2+3*(InnerPixel['cellSizeY']/2),0,true)
+    
+    #Pixel.grid(innerPixelCell1,1, InnerPixel['nY']/2, InnerPixel['dX'], 4*InnerPixel['dY'], -PixelGrid['sizeX']/2+(3*InnerPixel['cellSizeX']/2), -PixelGrid['sizeY']/2+(InnerPixel['cellSizeY']/2),180,true)
+    
+    #Pixel.grid(innerPixelCell2,1, InnerPixel['nY']/2, InnerPixel['dX'], 4*InnerPixel['dY'], -PixelGrid['sizeX']/2+(3*InnerPixel['cellSizeX']/2), -PixelGrid['sizeY']/2+3*(InnerPixel['cellSizeY']/2),180)
+    
+	Pixel.grid(innerPixelCell4,1, InnerPixel['nY'], InnerPixel['dX'], 2*InnerPixel['dY'], -PixelGrid['sizeX']/2+(4*InnerPixel['nX']+1)*(InnerPixel['cellSizeX']/2), -PixelGrid['sizeY']/2+(InnerPixel['cellSizeY']/2))
+    
+    #Pixel.grid(innerPixelCell3,1, InnerPixel['nY']/2, InnerPixel['dX'], 4*InnerPixel['dY'], (-PixelGrid['sizeX']/2+(4*InnerPixel['nX']+1)*(InnerPixel['cellSizeX']/2)), -PixelGrid['sizeY']/2+7*(InnerPixel['cellSizeY']/2),0,true)
+    
+    #Pixel.grid(innerPixelCell3,1, InnerPixel['nY']/2, InnerPixel['dX'], 4*InnerPixel['dY'], -PixelGrid['sizeX']/2+(3*InnerPixel['cellSizeX']/2), -PixelGrid['sizeY']/2+5*(InnerPixel['cellSizeY']/2),180,true)
+    
+    #Pixel.grid(innerPixelCell4,1, InnerPixel['nY']/2, InnerPixel['dX'], 4*InnerPixel['dY'], -PixelGrid['sizeX']/2+(3*InnerPixel['cellSizeX']/2), -PixelGrid['sizeY']/2+7*(InnerPixel['cellSizeY']/2),180)
     
     Merge.cells($sensor, pixelGridCell)
 
     periCell = layout.create_cell("Periphery")
     Periphery.init(periCell)
     Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
+	#bump pads for guard ring connection
+    Pixel.bumpPad($layerPassOpen,InnerPixel['bPDiaPassivation'],-InnerPixel['bPX0']-PixelGrid['sizeX']/2+InnerPixel['cellSizeX']/2,InnerPixel['bPY0']-PixelGrid['sizeY']/2+(InnerPixel['cellSizeY']/2)-225e3)
+    Pixel.bumpPad($layerAlu,InnerPixel['bPDia'],-InnerPixel['bPX0']-PixelGrid['sizeX']/2+InnerPixel['cellSizeX']/2,InnerPixel['bPY0']-PixelGrid['sizeY']/2+(InnerPixel['cellSizeY']/2)-225e3)
+	Pixel.bumpPad($layerPassOpen,InnerPixel['bPDiaPassivation'],-InnerPixel['bPX0']-PixelGrid['sizeX']/2+(4*InnerPixel['nX']+1)*(InnerPixel['cellSizeX']/2),InnerPixel['bPY0']-PixelGrid['sizeY']/2+(InnerPixel['cellSizeY']/2)-225e3)
+    Pixel.bumpPad($layerAlu,InnerPixel['bPDia'],-InnerPixel['bPX0']-PixelGrid['sizeX']/2+(4*InnerPixel['nX']+1)*(InnerPixel['cellSizeX']/2),InnerPixel['bPY0']-PixelGrid['sizeY']/2+(InnerPixel['cellSizeY']/2)-225e3)
     
-    textCell = Text.create(layout, $layerPassOpen, sensor , -4000e3, 4500e3)
+    textCell = Text.create(layout, $layerAlu, sensor , -4000e3, 4500e3)
+	lowerTextCell = Text.create(layout,$layerAlu,"Place chip periphery over here",-3500e3, PixelEdge['outerY0'] + -(PixelGrid['sizeY']+2*PixelEdge['aluDistY'])/2-(PixelEdge['aluSizeY']-(PixelGrid['sizeY']+2*PixelEdge['aluDistY']))/4, 400)    
+    Merge.cells(periCell, lowerTextCell)
     Merge.cells(periCell, textCell)
     
     Merge.cells($sensor, periCell)

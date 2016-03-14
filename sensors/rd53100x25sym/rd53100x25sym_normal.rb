@@ -1,38 +1,60 @@
 PixelUnitCell = {
 
-    'sizeX' => 50e3,
-    'sizeY' => 50e3,
+    'sizeX' => 100e3,
+    'sizeY' => 25e3,
 }
 
-InnerImplant = {
+Implant = {
 
-    'sizeX' => 15e3,
-    'sizeY' => 15e3,
+    'sizeX' => 85e3,
+    'sizeY' => 10e3,
     'radius' => 4e3,
     'metalOH' => 1e3  
 }
 
-PixelGrid = {
+ImplantAlu1 = {
 
-    'sizeX' => 8000e3,
-    'sizeY' => 8000e3
+    'sizeX' => 65e3,
+    'sizeY' => 16e3,
+    'x0' => 13e3,
+    'y0' => 0,
+    'radius' => 4e3
 }
 
-InnerPixelGrid = {
+BumpPad1 = {
+
+    'dia' => 15e3,
+    'x0'  => 25e3,
+    'y0'  => 25e3   
+}
+
+BumpPad2 = {
+    'dia' => 15e3,
+    'x0'  => -25e3,
+    'y0'  => -12.5e3  
+}
+
+
+PixelGrid = {
+
+    'sizeY' => 9600e3,
+    'sizeX' => 20000e3
+}
+
+PixelGrid1 = {
   
-    'sizeX' => 50e3,
-    'sizeY' => 50e3,
-    'nX' => 80,
-    'nY' => 160,
+    'sizeX' => 100e3,
+    'sizeY' => 25e3,
+    'nY' => 192,
+    'nX' => 200,
     'dX' => 100e3,
     'dY' => 50e3 
 }
 
-
 InnerPStop = {
 
-    'distX' => 10e3,
-    'distY' => 10e3,
+    'distX' => 5e3,
+    'distY' => 5e3,
     'width' => 5e3,
     'rIn' => 4e3,
     'rOut' => 9e3,
@@ -41,21 +63,30 @@ InnerPStop = {
     'openWidth' => 0,
 }
 
-InnerVia = {
+Via10 = {
 
     'sizeX' => 5e3,
     'sizeY' => 5e3,
-    'x0'    => 0,
+    'x0'    => -2.5e3,
     'y0'    => 0
 }
 
+Via11 = {
 
-BumpPad = {
-
-    'dia' => 12e3,
-    'x0'  => -12.5e3,
-    'y0'  => 12.5e3   
+    'sizeX' => 5e3,
+    'sizeY' => 5e3,
+    'x0'    => 31.5e3,
+    'y0'    => 0
 }
+
+Via2 = {
+
+    'sizeX' => 5e3,
+    'sizeY' => 5e3,
+    'x0'    => 30e3,
+    'y0'    => 0
+}
+
 
 BiasRing = {
 
@@ -91,14 +122,14 @@ PixelEdge = {
     
     'distX' => 426e3,
     'distY' => 426e3,
-    'sizeX' => 10000e3,
-    'sizeY' => 10000e3,
+    'sizeY' => 11800e3,
+    'sizeX' => 22200e3,
 
     'aluDistX' => 376e3,
     'aluDistY' => 376e3,
-    'aluSizeX' => 9920e3,
-    'aluSizeY' => 9920e3,
+    'aluSizeY' => 11720e3,
+    'aluSizeX' => 22130e3,
 
     'outerX0'    => 0,
-    'outerY0'    => -150e3
+    'outerY0'    => 0
 }
