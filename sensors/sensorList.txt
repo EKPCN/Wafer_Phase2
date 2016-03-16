@@ -1,11 +1,2 @@
-r4s100x25cPT_normal
-r4s100x25cPT_wide
-r4s100x25cPT_cpst
-r4s100x25_pspray_normal
-r4s50x50cPT_cpst
-r4s50x50cPT_normal
-r4s50x50cPT_wide
-r4s50x50cPTw_cpst
-r4s50x50_pspray_wide
-psi46dig100x25x3s_pspray
-psi46dig100x25x3s_pspray_wide
+fcp130100x30_pspray_wide
+fcp130100x30cpt_wide

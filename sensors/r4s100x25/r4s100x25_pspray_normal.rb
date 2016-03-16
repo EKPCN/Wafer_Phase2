@@ -14,6 +14,9 @@ InnerImplant = {
 
 PixelGrid = {
 
+#<<<<<<< HEAD
+#    'sizeX' => 7700e3,
+#=======
     'sizeX' => 7800e3,
     'sizeY' => 8000e3
 }
@@ -155,6 +158,10 @@ RightPixelGrid = {
   
     'sizeX' => 100e3,
     'sizeY' => 50e3,
+#<<<<<<< HEAD
+#    'nX' => 0,
+#    'nY' => 0,
+#=======
     'nX' => 1,
     'nY' => 160,
     'dX' => 7700e3,

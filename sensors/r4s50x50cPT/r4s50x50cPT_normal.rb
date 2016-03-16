@@ -46,7 +46,10 @@ InnerPixel = {
 PixelGrid = {
 
     #'sizeX' => 8000e3,
+#    'sizeX' => 7760e3,
+
     'sizeX' => 7762e3,
+
     'sizeY' => 8000e3
 }
 
