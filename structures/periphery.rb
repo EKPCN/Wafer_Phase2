@@ -65,10 +65,6 @@ module Periphery
   end
   
   
-  
-  
-  
-  
   def Periphery.ring(layer,x,y,width,rIn,rOut,x0=0,y0=0)
 
     ring = Basic.ring(x,y,width,rIn,rOut,x0,y0)

@@ -15,7 +15,7 @@ module FCP130100x30
     Pixel.ptImplant($layerAlu,InnerPixel['implantSizeX']+2.0*InnerPixel['metalOH'],InnerPixel['implantSizeY']+2.0*InnerPixel['metalOH'],InnerPixel['PTX0'],InnerPixel['PTY0'],InnerPixel['PTholeDia']-2.0*InnerPixel['innerPTmetalOH'],-InnerPixel['shiftX'])
     Pixel.bumpPad($layerPassOpen,InnerPixel1['bPDiaPassivation'],InnerPixel1['bPX0'],InnerPixel1['bPY0'])
     Pixel.bumpPad($layerAlu,InnerPixel1['bPDia'],InnerPixel1['bPX0'],InnerPixel1['bPY0'])
-    Pixel.ptVia($layerAluVia,InnerPixel1['viaX0'],InnerPixel1['viaY0'],InnerPixel1['viaDia'])
+    Pixel.via($layerAluVia,InnerPixel1['viaDia'],InnerPixel1['viaDia'],InnerPixel1['viaX0'],InnerPixel1['viaY0'])
     Pixel.pStop($layerPp, InnerPixel['implantSizeX']+2*InnerPixel['PSdistX'], InnerPixel['implantSizeY']+2*InnerPixel['PSdistY'], InnerPixel['PSwidth'], InnerPixel['PSrOut'] , InnerPixel['PSrIn'], InnerPixel['PSopenX0'], InnerPixel['PSopenY0'], InnerPixel['PSopenWidth'],true)
     
     innerPixelCell2 = layout.create_cell("InnerPixel2")      
@@ -24,7 +24,7 @@ module FCP130100x30
     Pixel.ptImplant($layerAlu,InnerPixel['implantSizeX']+2.0*InnerPixel['metalOH'],InnerPixel['implantSizeY']+2.0*InnerPixel['metalOH'],InnerPixel['PTX0'],InnerPixel['PTY0'],InnerPixel['PTholeDia']-2.0*InnerPixel['innerPTmetalOH'],-InnerPixel['shiftX'])
     Pixel.bumpPad($layerPassOpen,InnerPixel2['bPDiaPassivation'],InnerPixel2['bPX0'],InnerPixel2['bPY0'])
     Pixel.bumpPad($layerAlu,InnerPixel2['bPDia'],InnerPixel2['bPX0'],InnerPixel2['bPY0'])
-    Pixel.ptVia($layerAluVia,InnerPixel2['viaX0'],InnerPixel2['viaY0'],InnerPixel2['viaDia'])
+    Pixel.via($layerAluVia,InnerPixel2['viaDia'],InnerPixel2['viaDia'],InnerPixel2['viaX0'],InnerPixel2['viaY0'])
     Pixel.pStop($layerPp, InnerPixel['implantSizeX']+2*InnerPixel['PSdistX'], InnerPixel['implantSizeY']+2*InnerPixel['PSdistY'], InnerPixel['PSwidth'], InnerPixel['PSrOut'] , InnerPixel['PSrIn'], InnerPixel['PSopenX0'], InnerPixel['PSopenY0'], InnerPixel['PSopenWidth'],true)
     
     
