@@ -28,10 +28,10 @@ module Roc4Sens50x50
     Periphery.init(periCell)
     Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
 	#bump pads for guard ring connection
-    Pixel.bumpPad($layerPassOpen,InnerPixel['bPDiaPassivation'],-InnerPixel['bPX0']-PixelGrid['sizeX']/2+InnerPixel['cellSizeX']/2,InnerPixel['bPY0']-PixelGrid['sizeY']/2+(InnerPixel['cellSizeY']/2)-225e3)
-    Pixel.bumpPad($layerAlu,InnerPixel['bPDia'],-InnerPixel['bPX0']-PixelGrid['sizeX']/2+InnerPixel['cellSizeX']/2,InnerPixel['bPY0']-PixelGrid['sizeY']/2+(InnerPixel['cellSizeY']/2)-225e3)
-	Pixel.bumpPad($layerPassOpen,InnerPixel['bPDiaPassivation'],-InnerPixel['bPX0']-PixelGrid['sizeX']/2+(4*InnerPixel['nX']+1)*(InnerPixel['cellSizeX']/2),InnerPixel['bPY0']-PixelGrid['sizeY']/2+(InnerPixel['cellSizeY']/2)-225e3)
-    Pixel.bumpPad($layerAlu,InnerPixel['bPDia'],-InnerPixel['bPX0']-PixelGrid['sizeX']/2+(4*InnerPixel['nX']+1)*(InnerPixel['cellSizeX']/2),InnerPixel['bPY0']-PixelGrid['sizeY']/2+(InnerPixel['cellSizeY']/2)-225e3)
+    Pixel.bumpPad($layerPassOpen,BumpPad['dia'],-PixelGrid['sizeX']/2+PixelUnitCell['sizeX']/4,-PixelGrid['sizeY']/2-212.5e3)
+    Pixel.bumpPad($layerAlu,20e3,-PixelGrid['sizeX']/2+PixelUnitCell['sizeX']/4,-PixelGrid['sizeY']/2-212.5e3)
+	Pixel.bumpPad($layerPassOpen,BumpPad['dia'],-PixelGrid['sizeX']/2+(4*InnerPixelGrid['nX']+0.5)*(PixelUnitCell['sizeX']/2),-PixelGrid['sizeY']/2-212.5e3)
+    Pixel.bumpPad($layerAlu,20e3,-PixelGrid['sizeX']/2+(4*InnerPixelGrid['nX']+0.5)*(PixelUnitCell['sizeX']/2),-PixelGrid['sizeY']/2-212.5e3)
   
 
     textCell = Text.create(layout, $layerAlu, sensor , -4000e3, 4500e3)

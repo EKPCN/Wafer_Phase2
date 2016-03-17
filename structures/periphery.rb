@@ -45,7 +45,7 @@ module Periphery
 		Pixel.viaGrid(layerVia,6e3,6e3,(pixelGrid['sizeX']/74.5e3).round,1,74.5e3,0,-pixelGrid['sizeX']/2,pixelGrid['sizeY']/2+guardRing['distY']+guardRing['width']/2)
 		Pixel.viaGrid(layerVia,6e3,6e3,1,(pixelGrid['sizeY']/74.5e3).round,0,74.5e3,-pixelGrid['sizeX']/2-guardRing['distX']-guardRing['width']/2,-pixelGrid['sizeY']/2)
 		Pixel.viaGrid(layerVia,6e3,6e3,1,(pixelGrid['sizeY']/74.5e3).round,0,74.5e3,pixelGrid['sizeX']/2+guardRing['distX']+guardRing['width']/2,-pixelGrid['sizeY']/2)
-		Periphery.passOpening(layerPassOpen,pixelGrid['sizeX'],guardRing['aluWidth']-10e3,0,-pixelGrid['sizeY']/2-guardRing['aluDistY']-guardRing['aluWidth']/2)
+		Periphery.passOpening(layerPassOpen,pixelGrid['sizeX']-100e3,guardRing['aluWidth']-10e3,0,-pixelGrid['sizeY']/2-guardRing['aluDistY']-guardRing['aluWidth']/2)
 	end
 	
 	#scribeline + cut edge

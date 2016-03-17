@@ -22,3 +22,5 @@ r4s50x50cPTw_cpst
 r4s50x50_pspray_wide
 psi46dig100x25x3s_pspray
 psi46dig100x25x3s_pspray_wide
+fcp130100x30_pspray_wide
+fcp130100x30cpt_wide
