@@ -93,8 +93,11 @@ module Periphery
 #<<<<<<< HEAD
 #      labelBox = Polygon.new(Box.new(-xo/2+700e3, -yo/2+200, xo/2-700e3, -yo/2+600e3))
 #======
-      labelBox = Polygon.new(Box.new(-xo/2+700e3, -yo/2+200, xo/2-700e3, -yo/2+500e3))
-      edge = Cut.polyVector([edge,labelBox])    
+
+# I removed the lower text box to simplify the design and the bug fixing (Daniel) 
+
+#      labelBox = Polygon.new(Box.new(-xo/2+700e3, -yo/2+200, xo/2-700e3, -yo/2+500e3))
+#      edge = Cut.polyVector([edge,labelBox])    
     end
 
 # Textbox (Christian)
