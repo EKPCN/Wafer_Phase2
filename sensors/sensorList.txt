@@ -25,3 +25,5 @@ psi46dig100x25x3s_pspray_wide
 fcp130100x30_pspray_wide
 fcp130100x30cPT_wide
 fpixf_pstop
+bpixpt_cpstop
+bpixpt_pspray

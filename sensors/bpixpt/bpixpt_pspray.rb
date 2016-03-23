@@ -18,8 +18,8 @@ InnerPixel = {
 #   BUMP PAD
   'bPX0' => 25e3,
   'bPY0' => 0e3,
-  'bPDia' => 32e3,
-  'bPDiaPassivation' => 12e3,
+  'bPDia' => 20e3,
+  'bPDiaPassivation' => 15e3,
 #   PUNCH THROUGH STRUCTURE
   'PTX0' => -25e3, 
   'PTY0' => 0e3,
@@ -66,8 +66,8 @@ OuterPixel = {
 #   BUMP PAD
   'bPX0' => 50e3,
   'bPY0' => 0e3,
-  'bPDia' => 30e3,
-  'bPDiaPassivation' => 12e3,
+  'bPDia' => 20e3,
+  'bPDiaPassivation' => 15e3,
 #   PUNCH THROUGH STRUCTURE
   'PTX0' => 100.0e3, 
   'PTY0' => 0e3,
@@ -114,8 +114,8 @@ UpperPixel = {
 #   BUMP PAD
   'bPX0' => 25e3,
   'bPY0' => -50e3,
-  'bPDia' => 30e3,
-  'bPDiaPassivation' => 12e3,
+  'bPDia' => 20e3,
+  'bPDiaPassivation' => 15e3,
 #   PUNCH THROUGH STRUCTURE
   'PTX0' => -25e3, 
   'PTY0' => 50e3,
@@ -238,9 +238,9 @@ PixelEdge = {
 
     'aluDistX' => 376e3,
     'aluDistY' => 376e3,
-    'aluSizeX' => 9880e3,
-    'aluSizeY' => 10180e3,
+    'aluSizeX' => 9920e3,
+    'aluSizeY' => 9920e3,
 
     'outerX0'    => 0,
-    'outerY0'    => -150e3
+    'outerY0'    => 0
 }
