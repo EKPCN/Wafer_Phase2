@@ -129,7 +129,7 @@ RightPixel = {
 BumpPad = {
   
   'bPDia' => 20e3,
-  'bPDiaPassivation' => 12e3,
+  'bPDiaPassivation' => 15e3,
 }
   
 PixelGrid = {

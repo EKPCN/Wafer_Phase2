@@ -78,14 +78,6 @@ module Roc4Sens100x25
     Pixel.bumpPad($layerAlu,InnerPixel['bPDia'],-InnerPixel['bPX0']-PixelGrid['sizeX']/2+(4*InnerPixel['nX']-2)*(InnerPixel['cellSizeX']/2),InnerPixel['bPY0']-PixelGrid['sizeY']/2+(InnerPixel['cellSizeY']/2)-225e3)
 
     textCell = Text.create(layout, $layerAlu, sensor , -4000e3, 4500e3) 
-	lowerTextCell = Text.create(layout,$layerAlu,"Place chip periphery over here",-3500e3, PixelEdge['outerY0'] + -(PixelGrid['sizeY']+2*PixelEdge['aluDistY'])/2-(PixelEdge['aluSizeY']-(PixelGrid['sizeY']+2*PixelEdge['aluDistY']))/4, 400)    
-    Merge.cells(periCell, lowerTextCell)
-
-
-#<<<<<<< HEAD
-#    textCell = Text.create(layout, $layerAlu, sensor , -4000e3, 4500e3) 
-
-
     Merge.cells(periCell, textCell) 
 	
     Merge.cells(topCell, periCell)

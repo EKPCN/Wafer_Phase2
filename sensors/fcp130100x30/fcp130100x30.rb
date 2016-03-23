@@ -47,11 +47,8 @@ module FCP130100x30
     Periphery.init(periCell)
     Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
     
-    textCell = Text.create(layout, $layerAlu, sensor , -2700e3, 3100e3)
-	lowerTextCell = Text.create(layout,$layerAlu,"Place chip periphery over here",-2800e3, PixelEdge['outerY0'] + -(PixelGrid['sizeY']+2*PixelEdge['aluDistY'])/2-(PixelEdge['aluSizeY']-(PixelGrid['sizeY']+2*PixelEdge['aluDistY']))/4, 300)    
-    
+    textCell = Text.create(layout, $layerAlu, sensor , -2700e3, 3100e3)    
     Merge.cells(periCell, textCell)
-    Merge.cells(periCell, lowerTextCell)
     
     Merge.cells($sensor, periCell)
 

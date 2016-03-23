@@ -99,6 +99,7 @@ LeftPixel = {
   'implantSizeX' => 265.0e3,
   # PIXEL BUMP PAD
   'bPX0' => -122.5e3,
+  'bPY0' => 0
 }
 
 LeftPixelBPPar = [
@@ -122,12 +123,13 @@ RightPixel = {
   'implantSizeX' => 195.0e3,
   # BUMP PAD
   'bPX0' => 82.5e3,
+  'bPY0' => 0
 }
 
 BumpPad = {
   
   'bPDia' => 20e3,
-  'bPDiaPassivation' => 12e3,
+  'bPDiaPassivation' => 15e3,
 }
   
 PixelGrid = {

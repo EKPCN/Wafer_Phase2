@@ -15,16 +15,16 @@ module PSI46DIG100x25x3noedge
     Pixel.ptImplant($layerAlu,InnerPixel['implantSizeX']+2.0*InnerPixel['metalOH'],InnerPixel['implantSizeY']+2.0*InnerPixel['metalOH'],InnerPixel['PTX0'],InnerPixel['PTY0'],InnerPixel['PTholeDia']-2.0*InnerPixel['innerPTmetalOH'],-InnerPixel['shiftX'])
     Pixel.bumpPad($layerPassOpen,BumpPad['bPDiaPassivation'],InnerPixel['bPX0'],InnerPixel['bPY0'])
     Pixel.bumpPad($layerAlu,BumpPad['bPDia'],InnerPixel['bPX0'],InnerPixel['bPY0'])
-    Pixel.ptVia($layerAluVia,InnerPixel['viaX0'],InnerPixel['viaY0'],InnerPixel['viaDia'])
-    Pixel.ptVia($layerAluVia,InnerPixel['viaX0'],-InnerPixel['viaY0'],InnerPixel['viaDia'])
+    Pixel.via($layerAluVia,InnerPixel['viaDia'],InnerPixel['viaDia'],InnerPixel['viaX0'],InnerPixel['viaY0'])
+    Pixel.via($layerAluVia,InnerPixel['viaDia'],InnerPixel['viaDia'],InnerPixel['viaX0'],-InnerPixel['viaY0'])
     Pixel.pStop($layerPp, InnerPixel['implantSizeX']+2*InnerPixel['PSdistX'], InnerPixel['implantSizeY']+2*InnerPixel['PSdistY'], InnerPixel['PSwidth'], InnerPixel['PSrOut'] , InnerPixel['PSrIn'], InnerPixel['PSopenX0'], InnerPixel['PSopenY0'], InnerPixel['PSopenWidth'],true)
     
     innerPixelCell2 = layout.create_cell("PSI46DIG100x25InnerPixel2")      
     Pixel.init(innerPixelCell2)
     Pixel.ptImplant($layerNp,InnerPixel['implantSizeX'],InnerPixel['implantSizeY'],InnerPixel['PTX0'],InnerPixel['PTY0'],InnerPixel['PTholeDia'],InnerPixel['PTimplantDia'],0,-InnerPixel['shiftX'])
     Pixel.ptImplant($layerAlu,InnerPixel['implantSizeX']+2.0*InnerPixel['metalOH'],InnerPixel['implantSizeY']+2.0*InnerPixel['metalOH'],InnerPixel['PTX0'],InnerPixel['PTY0'],InnerPixel['PTholeDia']-2.0*InnerPixel['innerPTmetalOH'],-InnerPixel['shiftX'])
-    Pixel.ptVia($layerAluVia,InnerPixel['viaX0'],InnerPixel['viaY0'],InnerPixel['viaDia'])
-    Pixel.ptVia($layerAluVia,InnerPixel['viaX0'],-InnerPixel['viaY0'],InnerPixel['viaDia'])
+    Pixel.via($layerAluVia,InnerPixel['viaDia'],InnerPixel['viaDia'],InnerPixel['viaX0'],InnerPixel['viaY0'])
+    Pixel.via($layerAluVia,InnerPixel['viaDia'],InnerPixel['viaDia'],InnerPixel['viaX0'],-InnerPixel['viaY0'])
     Pixel.pStop($layerPp, InnerPixel['implantSizeX']+2*InnerPixel['PSdistX'], InnerPixel['implantSizeY']+2*InnerPixel['PSdistY'], InnerPixel['PSwidth'], InnerPixel['PSrOut'] , InnerPixel['PSrIn'], InnerPixel['PSopenX0'], InnerPixel['PSopenY0'], InnerPixel['PSopenWidth'],true)    
     
     largePixelCell = layout.create_cell("PSI46DIG100x25LargePixel")      
@@ -43,7 +43,7 @@ module PSI46DIG100x25x3noedge
     # distance between vias
     dist = 50e3
     while i*dist<=LargePixel['implantSizeX']-2*LargePixel['viaX0'] do 
-      Pixel.ptVia($layerAluVia,LargePixel['viaX0']+i*dist-LargePixel['implantSizeX']/2,sign*LargePixel['viaY0'],LargePixel['viaDia'])
+      Pixel.via($layerAluVia,LargePixel['viaDia'],LargePixel['viaDia'],LargePixel['viaX0']+i*dist-LargePixel['implantSizeX']/2,sign*LargePixel['viaY0'])
       i+=1
       if sign==1 && i*dist>LargePixel['implantSizeX']-2*LargePixel['viaX0']
         sign = -1
@@ -66,7 +66,7 @@ module PSI46DIG100x25x3noedge
     # distance between vias
     dist = 50e3
     while i*dist<=LeftPixel['implantSizeX']-2*LargePixel['viaX0'] do 
-      Pixel.ptVia($layerAluVia,LargePixel['viaX0']+i*dist-LeftPixel['implantSizeX']/2,sign*LargePixel['viaY0'],LargePixel['viaDia'])
+      Pixel.via($layerAluVia,LargePixel['viaDia'],LargePixel['viaDia'],LargePixel['viaX0']+i*dist-LeftPixel['implantSizeX']/2,sign*LargePixel['viaY0'])
       i+=1
       if sign==1 && i*dist>LeftPixel['implantSizeX']-2*LargePixel['viaX0']
         sign = -1
@@ -128,7 +128,7 @@ module PSI46DIG100x25x3noedge
     #lowerTextCell = Text.create(layout,$layerAlu,"Place chip periphery over here",-3500e3, PixelEdge['outerY0'] + -(PixelGrid['sizeY']+2*PixelEdge['aluDistY'])/2-(PixelEdge['aluSizeY']-(PixelGrid['sizeY']+2*PixelEdge['aluDistY']))/4, 400)    
     #Merge.cells(periCell, lowerTextCell)
     
-    textCell = Text.create(layout, $layerAlu, "CMS Phase II Upgrade Pixel PSI46DIG 100um x 25um 2016 HIP-DESY" , -3600e3, PixelEdge['outerY0'] + (PixelGrid['sizeY']+2*PixelEdge['aluDistY'])/2+(PixelEdge['aluSizeY']-(PixelGrid['sizeY']+2*PixelEdge['aluDistY']))/4 - 125e3, 200)    
+    textCell = Text.create(layout, $layerAlu, sensor,-3600e3, PixelEdge['outerY0'] + (PixelGrid['sizeY']+2*PixelEdge['aluDistY'])/2+(PixelEdge['aluSizeY']-(PixelGrid['sizeY']+2*PixelEdge['aluDistY']))/4 - 125e3, 200)    
     Merge.cells(periCell, textCell)
     Merge.cells($sensor, periCell)
 	
