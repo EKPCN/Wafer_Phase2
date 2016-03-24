@@ -27,10 +27,16 @@ module Roc4Sens50x50
     periCell = layout.create_cell("Periphery")
     Periphery.init(periCell)
     Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
+	#bump pads for guard ring connection
+    Pixel.bumpPad($layerPassOpen,BumpPad['dia'],-PixelGrid['sizeX']/2+PixelUnitCell['sizeX']/4,-PixelGrid['sizeY']/2-212.5e3)
+    Pixel.bumpPad($layerAlu,20e3,-PixelGrid['sizeX']/2+PixelUnitCell['sizeX']/4,-PixelGrid['sizeY']/2-212.5e3)
+	Pixel.bumpPad($layerPassOpen,BumpPad['dia'],-PixelGrid['sizeX']/2+(4*InnerPixelGrid['nX']+0.5)*(PixelUnitCell['sizeX']/2),-PixelGrid['sizeY']/2-212.5e3)
+    Pixel.bumpPad($layerAlu,20e3,-PixelGrid['sizeX']/2+(4*InnerPixelGrid['nX']+0.5)*(PixelUnitCell['sizeX']/2),-PixelGrid['sizeY']/2-212.5e3)
   
-    textCell = Text.create(layout, $layerAlu, sensor , -4000e3, 4500e3) 
+
+    textCell = Text.create(layout, $layerAlu, sensor , -4000e3, 4500e3)
     Merge.cells(periCell, textCell) 
-    
+  
     Merge.cells($sensor, periCell)
 
     return $sensor

@@ -6,7 +6,6 @@ module FPixF
   # @return [cell] Returns the cell with all structures
 
   def FPixF.create(layout,sensor)
-
         
     $sensor = layout.create_cell("FPIXF")
     
@@ -59,16 +58,12 @@ module FPixF
     Merge.cells($sensor, pixelGridCell)
 
     periCell = layout.create_cell("Periphery")
-
-    # conflict?
-    textCell = Text.create(layout, $layerAlu, sensor ,-4000e3, 4500e3) 
-
+  
     Periphery.init(periCell)
     Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
     
-    textCell = Text.create(layout, $layerPassOpen, sensor ,-4000e3, 4500e3) 
+    textCell = Text.create(layout, $layerAlu, sensor ,-1000e3, 4525e3, 250)
     Merge.cells(periCell, textCell)
-    
     Merge.cells($sensor, periCell)
 
     return $sensor

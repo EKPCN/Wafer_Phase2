@@ -30,7 +30,7 @@ InnerPixel = {
   'bLHoleWidth' => 10e3,
   'bDotDia' => 16e3,	#bias dot
   'PTviaDia' => 5e3,
-  'PTpStopWidth' => 0e3,
+  'PTpStopWidth' => 4e3,
   'innerPTmetalOH' => 1.0e3,
 #   PSTOP
   'PSdistX' => 0e3,
@@ -45,7 +45,9 @@ InnerPixel = {
 
 PixelGrid = {
 
-    'sizeX' => 7760e3,
+#    'sizeX' => 7760e3,
+
+    'sizeX' => 7764e3,
     'sizeY' => 8000e3
 }
 
@@ -86,14 +88,13 @@ PixelEdge = {
     
     'distX' => 426e3,
     'distY' => 426e3,
-    'sizeX' => 9960e3,
-    'sizeY' => 10260e3,
+    'sizeX' => 10000e3,
+    'sizeY' => 10000e3,
 
     'aluDistX' => 376e3,
     'aluDistY' => 376e3,
-    'aluSizeX' => 9880e3,
-
-    'aluSizeY' => 10180e3,
+    'aluSizeX' => 9920e3,
+    'aluSizeY' => 9920e3,
 
     'outerX0'    => 0,
     'outerY0'    => -150e3

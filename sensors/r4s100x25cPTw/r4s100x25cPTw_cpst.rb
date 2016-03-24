@@ -3,14 +3,14 @@ InnerPixel = {
 #   PIXEL GRID
   'cellSizeX' => 100e3,
   'cellSizeY' => 25e3,
-  'nX' => 40,
-  'nY' => 160,
+  'nX' => 4,#40,
+  'nY' => 4,#160,
   'dX' => 200e3,
   'dY' => 25e3,
 #   IMPLANT
-  'implantSizeX' => 85e3,
-  'implantSizeY' => 10e3,
-  'metalOH' => 1e3,
+  'implantSizeX' => 86e3,
+  'implantSizeY' => 11e3,
+  'metalOH' => 3e3,
   'shiftX' => 0.0e3,
 #   VIA
   'viaX0' => 25.0e3, 
@@ -24,25 +24,29 @@ InnerPixel = {
 #   PUNCH THROUGH STRUCTURE
   'PTX0' => 50.0e3, 
   'PTY0' => 12.5e3,
-  'PTholeDia' => 30e3,	#minimum biasDotDia+2*metalOH (+2*PTpStopWidth)
+  'PTholeDia' => 38.0e3,	#minimum biasDotDia+2*metalOH (+2*PTpStopWidth)
   'PTimplantDia' => 10e3,
   'bLWidth' => 3e3,	#bias line
   'bLHoleWidth' => 10e3,
   'bDotDia' => 16e3,	#bias dot
   'PTviaDia' => 5e3,
-  'PTpStopWidth' => 0e3,
-  'innerPTmetalOH' => 1.0e3,
+  'PTpStopWidth' => 4e3,
+  'innerPTmetalOH' => 3.0e3,
 #   PSTOP
-  'PSdistX' => 0e3,
-  'PSdistY' => 0e3,
-  'PSwidth' => 0e3,
+  'PSdistX' => 5.0e3,
+  'PSdistY' => 5.0e3,
+  'PSwidth' => 2.0e3,
   'PSrIn' => 2e3,
-  'PSrOut' => 5e3,
+  'PSrOut' => 0e3,
   'PSopenX0' => 0,
   'PSopenY0' => 0,
   'PSopenWidth' => 0,
 }
 
+WiggleBiasLine = {
+	'cutfrommetal' => 11e3,
+	'outerxbl' => 10e3
+}
 
 PixelGrid = {
 

@@ -1,10 +1,10 @@
 module Gds
 
   include RBA
-  
-  def Text.create(layout, layer, text, x0=0, y0=0, size=500)
-  
-    textCell = layout.create_cell("Label")
+
+  def Text.create(layout, layer, text, x0=0, y0=0, size=350)
+
+      textCell = layout.create_cell("Label")
 
     # find the lib
     lib = RBA::Library.library_by_name("Basic")
