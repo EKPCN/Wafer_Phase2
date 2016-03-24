@@ -15,17 +15,6 @@ module Pixel
 
   def Pixel.implantRouting(layer,x,y,x0BB=0,y0BB=0,r=5000)
 
-#<<<<<< HEAD
-#    metal = Basic.roundBox(x,y,0,0,r)
-#    routing = Basic.roundBox(20e3,y0BB.abs+2*r,x0BB,(y0BB)/2,r)
-#    cornerBox = Basic.roundBox(r,r,x0BB+10e3+r/2,-y/2-r/2,0)
-#    circ = Basic.circle(2*r,x0BB+10e3+r,-y/2-r,p=32)
-
-#    tmp1 = Cut.polyVector([cornerBox,circ])
-#    edge = Merge.polyVector([metal,routing,tmp1])
-
-#=======
-
     metal = Basic.roundBox(x,y,-18.5e3,0,r)
     routing = Basic.roundBox(20e3,y0BB.abs+2*r,x0BB,(y0BB)/2,r)
 
@@ -76,11 +65,11 @@ module Pixel
     
     implant = Basic.roundBox(x,y)
     
-#     loop to create several routing lines
+    # loop to create several routing lines
     i=0
     while bppar[i]!=nil do
       if bppar[i]!=bppar[i+2] || bppar[i+1]!=bppar[i+3]
-        #       cut the metal/implant
+        # cut the metal/implant
         alpha = Math.asin((bppar[i+1]-bppar[i+3]).abs/((bppar[i]-bppar[i+2])**2+(bppar[i+1]-bppar[i+3])**2)**(0.5))
         
         routingcut = Polygon.new([Point.new(bppar[i]+(w+2*dist)*Math.sin(alpha)/2,bppar[i+1]-(w+2*dist)*Math.cos(alpha)/2), Point.new(bppar[i]-(w+2*dist)*Math.sin(alpha)/2,bppar[i+1]+(w+2*dist)*Math.cos(alpha)/2), Point.new(bppar[i+2]-(w+2*dist)*Math.sin(alpha)/2,bppar[i+3]+(w+2*dist)*Math.cos(alpha)/2), Point.new(bppar[i+2]+(w+2*dist)*Math.sin(alpha)/2,bppar[i+3]-(w+2*dist)*Math.cos(alpha)/2)])
@@ -96,7 +85,7 @@ module Pixel
         implant = implant.round_corners(0,5e3,32)
         
         if m
-          #       create routing lines
+          # create routing lines
           routing = Polygon.new([Point.new(bppar[i]+w*Math.sin(alpha)/2,bppar[i+1]-w*Math.cos(alpha)/2), Point.new(bppar[i]-w*Math.sin(alpha)/2,bppar[i+1]+w*Math.cos(alpha)/2), Point.new(bppar[i+2]-w*Math.sin(alpha)/2,bppar[i+3]+w*Math.cos(alpha)/2), Point.new(bppar[i+2]+w*Math.sin(alpha)/2,bppar[i+3]-w*Math.cos(alpha)/2)])
           
           routing.move(x0,y0)
@@ -104,7 +93,7 @@ module Pixel
         end
 	  
       else
-        #       no routing line at all
+        # no routing line at all
         bumppadcut = Basic.circle(bpdia+dist*2,bppar[i],bppar[i+1],128)
         tmp = Merge.polyVector([bumppadcut,implant])
         implant = Cut.polyVector([tmp,bumppadcut])
@@ -155,7 +144,7 @@ module Pixel
       #corner parameter
       cp = 0.250e3
       #extra parameter to account for deviation from perfect circle
-      ep = 0.01e3
+      ep = 0.1e3
       
       #calculate position for left and right box
       #NOW ONLY FOR UPPER RIGHT CORNER COMMOM PUNCH-THRU

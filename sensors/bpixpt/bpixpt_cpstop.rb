@@ -10,7 +10,7 @@ InnerPixel = {
 #   IMPLANT
   'implantSizeX' => 114e3,
   'implantSizeY' => 64e3,
-  'metalOH' => 5e3,
+  'metalOH' => 6.5e3,
 #   VIA
   'viaX0' => 12.0e3, 
   'viaY0' => -21.0e3,
@@ -18,8 +18,8 @@ InnerPixel = {
 #   BUMP PAD
   'bPX0' => 25e3,
   'bPY0' => 0e3,
-  'bPDia' => 30e3,
-  'bPDiaPassivation' => 12e3,
+  'bPDia' => 20e3,
+  'bPDiaPassivation' => 15e3,
 #   PUNCH THROUGH STRUCTURE
   'PTX0' => -25e3, 
   'PTY0' => 0e3,
@@ -32,13 +32,13 @@ InnerPixel = {
   'PTpStopWidth' => 4e3,
   'PTminDistToEdge' => 3e3,
 #   extra parameters needed to reproduce FPIXF
-  'innerPTmetalOH' => 5.0e3,
+  'innerPTmetalOH' => 5.5e3,
   'metalOHatPTside' => 2.5e3,
   'globalBLWidth' => 15.0e3,
 #   PSTOP
   'PSdistX' => 16e3,
   'PSdistY' => 16e3,
-  'PSwidth' => 2e3,
+  'PSwidth' => 4e3,
   'PSrIn' => 2e3,
   'PSrOut' => 0e3,
   'PSopenX0' => 0,
@@ -58,7 +58,7 @@ OuterPixel = {
 #   IMPLANT
   'implantSizeX' => 264e3,
   'implantSizeY' => 64e3,
-  'metalOH' => 5e3,
+  'metalOH' => 6.5e3,
 #   VIA
   'viaX0' => 12.0e3, 
   'viaY0' => -21.0e3,
@@ -66,8 +66,8 @@ OuterPixel = {
 #   BUMP PAD
   'bPX0' => 50e3,
   'bPY0' => 0e3,
-  'bPDia' => 30e3,
-  'bPDiaPassivation' => 12e3,
+  'bPDia' => 20e3,
+  'bPDiaPassivation' => 15e3,
 #   PUNCH THROUGH STRUCTURE
   'PTX0' => 100.0e3, 
   'PTY0' => 0e3,
@@ -80,15 +80,15 @@ OuterPixel = {
   'PTpStopWidth' => 4e3,
   'PTminDistToEdge' => 3e3,
 #   extra parameters needed to reproduce FPIXF
-  'innerPTmetalOH' => 5.0e3,
+  'innerPTmetalOH' => 5.5e3,
   'metalOHatPTside' => 2.5e3,
   'globalBLWidth' => 15.0e3,
 #   PSTOP
   'PSdistX' => 16e3,
   'PSdistY' => 16e3,
-  'PSwidth' => 2e3,
+  'PSwidth' => 4e3,
   'PSrIn' => 2e3,
-  'PSrOut' => 0e3,
+  'PSrOut' => 2e3,
   'PSopenX0' => 0,
   'PSopenY0' => 0,
   'PSopenWidth' => 0, 
@@ -106,7 +106,7 @@ UpperPixel = {
 #   IMPLANT
   'implantSizeX' => 114e3,
   'implantSizeY' => 165.5e3,
-  'metalOH' => 5e3,
+  'metalOH' => 6.5e3,
 #   VIA
   'viaX0' => 12.0e3, 
   'viaY0' => -21.0e3,
@@ -114,8 +114,8 @@ UpperPixel = {
 #   BUMP PAD
   'bPX0' => 25e3,
   'bPY0' => -50e3,
-  'bPDia' => 30e3,
-  'bPDiaPassivation' => 12e3,
+  'bPDia' => 20e3,
+  'bPDiaPassivation' => 15e3,
 #   PUNCH THROUGH STRUCTURE
   'PTX0' => -25e3, 
   'PTY0' => 50e3,
@@ -128,15 +128,15 @@ UpperPixel = {
   'PTpStopWidth' => 4e3,
   'PTminDistToEdge' => 3e3,
 #   extra parameters needed to reproduce FPIXF
-  'innerPTmetalOH' => 5.0e3,
+  'innerPTmetalOH' => 5.5e3,
   'metalOHatPTside' => 2.5e3,
   'globalBLWidth' => 15.0e3,
 #   PSTOP
   'PSdistX' => 16e3,
   'PSdistY' => 15.25e3,
-  'PSwidth' => 2e3,
+  'PSwidth' => 4e3,
   'PSrIn' => 2e3,
-  'PSrOut' => 0e3,
+  'PSrOut' => 2e3,
   'PSopenX0' => 0,
   'PSopenY0' => 0,
   'PSopenWidth' => 0,
@@ -154,7 +154,7 @@ CornerPixel = {
 #   IMPLANT
   'implantSizeX' => 264e3,
   'implantSizeY' => 164e3,
-  'metalOH' => 5e3,
+  'metalOH' => 6.5e3,
 #   VIA
   'viaX0' => 12.0e3, 
   'viaY0' => -21.0e3,
@@ -162,8 +162,8 @@ CornerPixel = {
 #   BUMP PAD
   'bPX0' => 50e3,
   'bPY0' => -50e3,
-  'bPDia' => 30e3,
-  'bPDiaPassivation' => 12e3,
+  'bPDia' => 20e3,
+  'bPDiaPassivation' => 15e3,
 #   PUNCH THROUGH STRUCTURE
   'PTX0' => 100e3, 
   'PTY0' => 50e3,
@@ -176,15 +176,15 @@ CornerPixel = {
   'PTpStopWidth' => 4e3,
   'PTminDistToEdge' => 3e3,
 #   extra parameters needed to reproduce FPIXF
-  'innerPTmetalOH' => 5.0e3,
+  'innerPTmetalOH' => 5.5e3,
   'metalOHatPTside' => 2.5e3,
   'globalBLWidth' => 15.0e3,
 #   PSTOP
   'PSdistX' => 16e3,
   'PSdistY' => 16e3,
-  'PSwidth' => 2e3,
+  'PSwidth' => 4e3,
   'PSrIn' => 2e3,
-  'PSrOut' => 0e3,
+  'PSrOut' => 2e3,
   'PSopenX0' => 0,
   'PSopenY0' => 0,
   'PSopenWidth' => 0,
@@ -238,9 +238,9 @@ PixelEdge = {
 
     'aluDistX' => 376e3,
     'aluDistY' => 376e3,
-    'aluSizeX' => 9880e3,
-    'aluSizeY' => 10180e3,
+    'aluSizeX' => 9920e3,
+    'aluSizeY' => 9920e3,
 
     'outerX0'    => 0,
-    'outerY0'    => -150e3
+    'outerY0'    => 0
 }

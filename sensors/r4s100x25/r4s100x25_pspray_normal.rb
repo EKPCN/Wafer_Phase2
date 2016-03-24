@@ -9,14 +9,11 @@ InnerImplant = {
     'sizeX' => 85e3,
     'sizeY' => 10e3,
     'radius' => 4e3,
-    'metalOH' => 1e3  
+    'metalOH' => 3e3  
 }
 
 PixelGrid = {
 
-#<<<<<<< HEAD
-#    'sizeX' => 7700e3,
-#=======
     'sizeX' => 7800e3,
     'sizeY' => 8000e3
 }
@@ -25,19 +22,9 @@ InnerPixelGrid = {
   
     'sizeX' => 100e3,
     'sizeY' => 25e3,
-    'nX' => 76,
+    'nX' => 77,
     'nY' => 160,
     'dX' => 100e3,
-    'dY' => 50e3 
-}
-
-OuterPixelGrid = {
-  
-    'sizeX' => 100e3,
-    'sizeY' => 25e3,
-    'nX' => 1,
-    'nY' => 160,
-    'dX' => 7650e3,
     'dY' => 50e3 
 }
 
@@ -65,32 +52,12 @@ InnerPStop = {
     'openWidth' => 0,
 }
 
-OuterPStop = {
-
-    'distX' => 5e3,
-    'distY' => 5e3,
-    'width' => 0,
-    'rIn' => 4e3,
-    'rOut' => 9e3,
-    'openX0' => 0,
-    'openY0' => 0,
-    'openWidth' => 0,
-}
-
 InnerVia = {
 
     'sizeX' => 5e3,
     'sizeY' => 5e3,
     'x0'    => -25e3,
     'y0'    => 0e3,
-}
-
-OuterVia = {
-
-    'sizeX' => 5e3,
-    'sizeY' => 5e3,
-    'x0'    => 50e3,
-    'y0'    => 0,
 }
 
 BumpPad = {
@@ -158,10 +125,6 @@ RightPixelGrid = {
   
     'sizeX' => 100e3,
     'sizeY' => 50e3,
-#<<<<<<< HEAD
-#    'nX' => 0,
-#    'nY' => 0,
-#=======
     'nX' => 1,
     'nY' => 160,
     'dX' => 7700e3,

@@ -40,7 +40,6 @@ module RD53100x25
     Periphery.init(periCell)
     Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
   
-    #textCell = Text.create(layout, $layerAlu, sensor , -2500e3, 10485e3) 
     textCell = Text.create(layout, $layerAlu, sensor , -2500e3, 5272.5e3) 
     Merge.cells(periCell, textCell) 
     

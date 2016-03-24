@@ -19,8 +19,8 @@ module BPixPT
     Pixel.ptPStop($layerPp,InnerPixel['PTX0'],InnerPixel['PTY0'],(InnerPixel['bDotDia']+InnerPixel['PTholeDia']-2.0*InnerPixel['metalOH'])/2.0-InnerPixel['PTpStopWidth'],(InnerPixel['bDotDia']+InnerPixel['PTholeDia']-2.0*InnerPixel['metalOH'])/2.0+InnerPixel['PTpStopWidth'])
     Pixel.bumpPad($layerAlu,InnerPixel['bPDia'],InnerPixel['bPX0'],InnerPixel['bPY0'])
     Pixel.bumpPad($layerPassOpen,InnerPixel['bPDiaPassivation'],InnerPixel['bPX0'],InnerPixel['bPY0'])
-    Pixel.ptVia($layerAluVia,InnerPixel['viaX0'],InnerPixel['viaY0'],InnerPixel['viaDia'])
-    Pixel.ptVia($layerAluVia,InnerPixel['viaX0'],-1*InnerPixel['viaY0'],InnerPixel['viaDia'])
+    Pixel.via($layerAluVia,InnerPixel['viaDia'],InnerPixel['viaDia'],InnerPixel['viaX0'],InnerPixel['viaY0'])
+    Pixel.via($layerAluVia,InnerPixel['viaDia'],InnerPixel['viaDia'],InnerPixel['viaX0'],-1*InnerPixel['viaY0'])
     Pixel.pStop($layerPp, InnerPixel['implantSizeX']+2*InnerPixel['PSdistX'], InnerPixel['implantSizeY']+2*InnerPixel['PSdistY'], InnerPixel['PSwidth'], InnerPixel['PSrOut'] , InnerPixel['PSrIn'], InnerPixel['PSopenX0'], InnerPixel['PSopenY0'], InnerPixel['PSopenWidth'],true)
     
     outerPixelCell = layout.create_cell("OuterPixel")
@@ -32,8 +32,8 @@ module BPixPT
     Pixel.ptPStop($layerPp,OuterPixel['PTX0'],OuterPixel['PTY0'],(OuterPixel['bDotDia']+OuterPixel['PTholeDia']-2.0*OuterPixel['metalOH'])/2.0-OuterPixel['PTpStopWidth'],(OuterPixel['bDotDia']+OuterPixel['PTholeDia']-2.0*OuterPixel['metalOH'])/2.0+OuterPixel['PTpStopWidth'])
     Pixel.bumpPad($layerAlu,OuterPixel['bPDia'],OuterPixel['bPX0'],OuterPixel['bPY0'])
     Pixel.bumpPad($layerPassOpen,OuterPixel['bPDiaPassivation'],OuterPixel['bPX0'],OuterPixel['bPY0'])
-    Pixel.ptVia($layerAluVia,OuterPixel['viaX0'],OuterPixel['viaY0'],OuterPixel['viaDia'])
-    Pixel.ptVia($layerAluVia,OuterPixel['viaX0'],-1*OuterPixel['viaY0'],OuterPixel['viaDia'])
+    Pixel.via($layerAluVia,OuterPixel['viaDia'],OuterPixel['viaDia'],OuterPixel['viaX0'],OuterPixel['viaY0'])
+    Pixel.via($layerAluVia,OuterPixel['viaDia'],OuterPixel['viaDia'],OuterPixel['viaX0'],-1*OuterPixel['viaY0'])
     Pixel.pStop($layerPp, OuterPixel['implantSizeX']+2*OuterPixel['PSdistX'], OuterPixel['implantSizeY']+2*OuterPixel['PSdistY'], OuterPixel['PSwidth'], OuterPixel['PSrOut'] , OuterPixel['PSrIn'], OuterPixel['PSopenX0'], OuterPixel['PSopenY0'], OuterPixel['PSopenWidth'],true)
 
     upperPixelCell = layout.create_cell("UpperPixel")
@@ -45,8 +45,8 @@ module BPixPT
     Pixel.ptPStop($layerPp,UpperPixel['PTX0'],UpperPixel['PTY0'],(UpperPixel['bDotDia']+UpperPixel['PTholeDia']-2.0*UpperPixel['metalOH'])/2.0-UpperPixel['PTpStopWidth'],(UpperPixel['bDotDia']+UpperPixel['PTholeDia']-2.0*UpperPixel['metalOH'])/2.0+UpperPixel['PTpStopWidth'])
     Pixel.bumpPad($layerAlu,UpperPixel['bPDia'],UpperPixel['bPX0'],UpperPixel['bPY0'])
     Pixel.bumpPad($layerPassOpen,UpperPixel['bPDiaPassivation'],UpperPixel['bPX0'],UpperPixel['bPY0'])
-    Pixel.ptVia($layerAluVia,UpperPixel['viaX0'],UpperPixel['viaY0'],UpperPixel['viaDia'])
-    Pixel.ptVia($layerAluVia,UpperPixel['viaX0'],-1*UpperPixel['viaY0'],UpperPixel['viaDia'])
+    Pixel.via($layerAluVia,UpperPixel['viaDia'],UpperPixel['viaDia'],UpperPixel['viaX0'],UpperPixel['viaY0'])
+    Pixel.via($layerAluVia,UpperPixel['viaDia'],UpperPixel['viaDia'],UpperPixel['viaX0'],-1*UpperPixel['viaY0'])
     Pixel.pStop($layerPp, UpperPixel['implantSizeX']+2*UpperPixel['PSdistX'], UpperPixel['implantSizeY']+2*UpperPixel['PSdistY'], UpperPixel['PSwidth'], UpperPixel['PSrOut'] , UpperPixel['PSrIn'], UpperPixel['PSopenX0'], UpperPixel['PSopenY0'], UpperPixel['PSopenWidth'],false)
 
     cornerPixelCell = layout.create_cell("CornerPixel")
@@ -58,8 +58,8 @@ module BPixPT
     Pixel.ptPStop($layerPp,CornerPixel['PTX0'],CornerPixel['PTY0'],(CornerPixel['bDotDia']+CornerPixel['PTholeDia']-2.0*CornerPixel['metalOH'])/2.0-CornerPixel['PTpStopWidth'],(CornerPixel['bDotDia']+CornerPixel['PTholeDia']-2.0*CornerPixel['metalOH'])/2.0+CornerPixel['PTpStopWidth'])
     Pixel.bumpPad($layerAlu, CornerPixel['bPDia'],CornerPixel['bPX0'],CornerPixel['bPY0'])
     Pixel.bumpPad($layerPassOpen,CornerPixel['bPDiaPassivation'],CornerPixel['bPX0'],CornerPixel['bPY0'])
-    Pixel.ptVia($layerAluVia,CornerPixel['viaX0'],CornerPixel['viaY0'],CornerPixel['viaDia'])
-    Pixel.ptVia($layerAluVia,CornerPixel['viaX0'],-1*CornerPixel['viaY0'],CornerPixel['viaDia'])
+    Pixel.via($layerAluVia,CornerPixel['viaDia'],CornerPixel['viaDia'],CornerPixel['viaX0'],CornerPixel['viaY0'])
+    Pixel.via($layerAluVia,CornerPixel['viaDia'],CornerPixel['viaDia'],CornerPixel['viaX0'],-1*CornerPixel['viaY0'])
     Pixel.pStop($layerPp, CornerPixel['implantSizeX']+2*CornerPixel['PSdistX'], CornerPixel['implantSizeY']+2*CornerPixel['PSdistY'], CornerPixel['PSwidth'], CornerPixel['PSrOut'] , CornerPixel['PSrIn'], CornerPixel['PSopenX0'], CornerPixel['PSopenY0'], CornerPixel['PSopenWidth'],true)
 
     pixelGridCell = layout.create_cell("PixelGrid")
@@ -87,7 +87,7 @@ module BPixPT
     Periphery.init(periCell)
     Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
     
-    textCell = Text.create(layout, $layerPassOpen, sensor ,-4000e3, 4500e3) 
+    textCell = Text.create(layout, $layerAlu, sensor ,-1000e3, 4525e3, 250) 
     Merge.cells(periCell, textCell)
     
     Merge.cells($sensor, periCell)

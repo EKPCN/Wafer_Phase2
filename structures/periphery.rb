@@ -65,10 +65,6 @@ module Periphery
   end
   
   
-  
-  
-  
-  
   def Periphery.ring(layer,x,y,width,rIn,rOut,x0=0,y0=0)
 
     ring = Basic.ring(x,y,width,rIn,rOut,x0,y0)
@@ -97,8 +93,11 @@ module Periphery
 #<<<<<<< HEAD
 #      labelBox = Polygon.new(Box.new(-xo/2+700e3, -yo/2+200, xo/2-700e3, -yo/2+600e3))
 #======
-      labelBox = Polygon.new(Box.new(-xo/2+700e3, -yo/2+200, xo/2-700e3, -yo/2+500e3))
-      edge = Cut.polyVector([edge,labelBox])    
+
+# I removed the lower text box to simplify the design and the bug fixing (Daniel) 
+
+#      labelBox = Polygon.new(Box.new(-xo/2+700e3, -yo/2+200, xo/2-700e3, -yo/2+500e3))
+#      edge = Cut.polyVector([edge,labelBox])    
     end
 
 # Textbox (Christian)

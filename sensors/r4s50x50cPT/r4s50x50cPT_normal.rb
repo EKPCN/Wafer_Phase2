@@ -10,7 +10,7 @@ InnerPixel = {
 #   IMPLANT
   'implantSizeX' => 35.5e3,
   'implantSizeY' => 40e3,
-  'metalOH' => 1e3,
+  'metalOH' => 3e3,
   'shiftX' => 2.25e3,
 #   VIA
   'viaX0' => -12.5e3, 

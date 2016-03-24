@@ -5,7 +5,7 @@ module CISWafer
 
   # include files
 
-  load "Wafer_Phase2/layer_HPK.rb"
+  load "Wafer_Phase2/layer.rb"
   load "Wafer_Phase2/structures/basic.rb"
   load "Wafer_Phase2/structures/pixel.rb"
   load "Wafer_Phase2/structures/periphery.rb"
@@ -14,6 +14,7 @@ module CISWafer
   load "Wafer_Phase2/utils/gds.rb"
   load "Wafer_Phase2/utils/text.rb"
 
+  
   # create mainWindow and layout
   
   mw = Application.instance.main_window
@@ -98,4 +99,8 @@ module CISWafer
   layoutView.add_missing_layers
   layoutView.zoom_fit  
 
+  
+  
+  
+  
 end
