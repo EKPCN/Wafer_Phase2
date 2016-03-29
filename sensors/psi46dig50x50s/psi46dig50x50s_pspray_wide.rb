@@ -6,11 +6,11 @@ AllPixel = {
   'dX' => 900e3,
   'dY' => 600e3,
 #   IMPLANT
-  'metalOH' => 1e3,
+  'metalOH' => 3e3,
   'shiftX' => 0.0e3,
 #   ROUTING
-  'routingwidth' => 6e3,
-  'routingdist' => 5e3, #dist from routing line to pad
+  'routingwidth' => 4e3,
+  'routingdist' => 7e3, #dist from routing line to pad
 #   VIA
   'viaX0' => 17.5e3, 
   'viaY0' => 25.0e3,
@@ -192,8 +192,8 @@ PixelEdge = {
 
     'aluDistX' => 376e3,
     'aluDistY' => 376e3,
-    'aluSizeX' => 9880e3,
-    'aluSizeY' => 10180e3,
+    'aluSizeX' => 9920e3,
+    'aluSizeY' => 9920e3,
 
     'outerX0'    => 0,
     'outerY0'    => -150e3

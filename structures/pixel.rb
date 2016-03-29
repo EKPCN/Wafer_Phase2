@@ -144,7 +144,7 @@ module Pixel
       #corner parameter
       cp = 0.250e3
       #extra parameter to account for deviation from perfect circle
-      ep = 0.01e3
+      ep = 0.1e3
       
       #calculate position for left and right box
       #NOW ONLY FOR UPPER RIGHT CORNER COMMOM PUNCH-THRU
