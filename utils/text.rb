@@ -2,9 +2,16 @@ module Gds
 
   include RBA
 
-  def Text.create(layout, layer, text, x0=0, y0=0, size=350)
+  def Text.create(layout, layer, text, x0=0, y0=0, size=240,sensor="")
 
-      textCell = layout.create_cell("Label")
+   if text == "Place chip periphery over here"
+       name = sensor + "."
+       textCell = layout.create_cell(name+"Label_Placement")
+    else
+       name = text + "."
+       textCell = layout.create_cell(name+"Label") 
+    end
+
 
     # find the lib
     lib = RBA::Library.library_by_name("Basic")
@@ -15,7 +22,7 @@ module Gds
     pcell_decl || raise("Unknown PCell 'TEXT'")
 
     # set the parameters
-    param = { "text" => text, "layer" => layout.get_info(layer), "mag" => size}
+    param = { "text" => text, "layer" => layout.get_info(layer), "mag" => size.to_f/0.7}
     #=> LayerInfo::new(5, 0, "Metal"), "mag" => size}
     # Christian size = 100
 
@@ -35,4 +42,5 @@ module Gds
     return textCell
   
   end
+  
 end

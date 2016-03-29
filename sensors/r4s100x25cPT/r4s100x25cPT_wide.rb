@@ -3,9 +3,6 @@ InnerPixel = {
 #   PIXEL GRID
   'cellSizeX' => 100e3,
   'cellSizeY' => 25e3,
-#<<<<<<< HEAD
-#  'nX' => 38,
-#=======
   'nX' => 39,
   'nY' => 160,
   'dX' => 200e3,
@@ -13,12 +10,14 @@ InnerPixel = {
 #   IMPLANT
   'implantSizeX' => 85.5e3,
   'implantSizeY' => 15e3,
-  'metalOH' => 1e3,
+  'metalOH' => 3e3,
   'shiftX' => 2.25e3,
 #   VIA
   'viaX0' => 25.0e3, 
   'viaY0' => 0.0e3,
   'viaDia' => 5e3,
+  'viaSizeX' => 5e3,
+  'viaSizeY' => 5e3,
 #   BUMP PAD
   'bPX0' => -25.0e3,
   'bPY0' => 0.0e3,
@@ -48,9 +47,6 @@ InnerPixel = {
 
 PixelGrid = {
 
-#<<<<<<< HEAD
-#    'sizeX' => 7710e3,
-#=======
     'sizeX' => 7800e3,
     'sizeY' => 8000e3
 }

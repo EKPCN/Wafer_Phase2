@@ -7,10 +7,10 @@ module PSI46DIG50x50s
 
   def PSI46DIG50x50s.create(layout,sensor)
     
-    $sensor = layout.create_cell("PSI46DIG100x25")
+    $sensor = layout.create_cell(sensor)
+    name = sensor + "."    
     
-    
-    pixel1Cell = layout.create_cell("Pixel1")      
+    pixel1Cell = layout.create_cell(name+"Pixel1")      
     Pixel.init(pixel1Cell)
     Pixel.routingImplant($layerNp,Pixel1['implantSizeX'],Pixel1['implantSizeY'], AllPixel['routingdist'], AllPixel['routingwidth'], AllPixel['bPDia'])
     Pixel.routingImplant($layerAlu,Pixel1['implantSizeX']+2.0*AllPixel['metalOH'],Pixel1['implantSizeY']+2.0*AllPixel['metalOH'], AllPixel['routingdist']-AllPixel['metalOH'], AllPixel['routingwidth'], AllPixel['bPDia'])
@@ -32,7 +32,7 @@ module PSI46DIG50x50s
     Pixel.pStop($layerPp, Pixel1['implantSizeX']+2*AllPixel['PSdistX'], Pixel1['implantSizeY']+2*AllPixel['PSdistY'], AllPixel['PSwidth'], AllPixel['PSrOut'] , AllPixel['PSrIn'], AllPixel['PSopenX0'], AllPixel['PSopenY0'], AllPixel['PSopenWidth'],true)
     
     
-    pixel3Cell = layout.create_cell("Pixel3")      
+    pixel3Cell = layout.create_cell(name+"Pixel3")      
     Pixel.init(pixel3Cell)
     Pixel.routingImplant($layerNp,Pixel3['implantSizeX'],Pixel3['implantSizeY'], AllPixel['routingdist'], AllPixel['routingwidth'], AllPixel['bPDia'], Pixel3BPPar, false)
     Pixel.routingImplant($layerAlu,Pixel3['implantSizeX']+2.0*AllPixel['metalOH'],Pixel3['implantSizeY']+2.0*AllPixel['metalOH'], AllPixel['routingdist']-AllPixel['metalOH'], AllPixel['routingwidth'], AllPixel['bPDia'], Pixel3BPPar, true)
@@ -59,7 +59,7 @@ module PSI46DIG50x50s
    
     
     
-    pixel4Cell = layout.create_cell("Pixel4")      
+    pixel4Cell = layout.create_cell(name+"Pixel4")      
     Pixel.init(pixel4Cell)
     Pixel.routingImplant($layerNp,Pixel4['implantSizeX'],Pixel4['implantSizeY'], AllPixel['routingdist'], AllPixel['routingwidth'], AllPixel['bPDia'], Pixel4BPPar, false)
     Pixel.routingImplant($layerAlu,Pixel4['implantSizeX']+2.0*AllPixel['metalOH'],Pixel4['implantSizeY']+2.0*AllPixel['metalOH'], AllPixel['routingdist']-AllPixel['metalOH'], AllPixel['routingwidth'], AllPixel['bPDia'], Pixel4BPPar, true)
@@ -83,7 +83,7 @@ module PSI46DIG50x50s
     Pixel.pStop($layerPp, Pixel2['implantSizeX']+2*AllPixel['PSdistX'], Pixel3['implantSizeY']+2*AllPixel['PSdistY'], AllPixel['PSwidth'], AllPixel['PSrOut'] , AllPixel['PSrIn'], AllPixel['PSopenX0'], AllPixel['PSopenY0'], AllPixel['PSopenWidth'],true)
     
     
-    pixel2Cell = layout.create_cell("Pixel2")      
+    pixel2Cell = layout.create_cell(name+"Pixel2")      
     Pixel.init(pixel2Cell)
     Pixel.routingImplant($layerNp,Pixel2['implantSizeX'],Pixel2['implantSizeY'], AllPixel['routingdist'], AllPixel['routingwidth'], AllPixel['bPDia'], Pixel2BPPar, false)
     Pixel.routingImplant($layerAlu,Pixel2['implantSizeX']+2.0*AllPixel['metalOH'],Pixel2['implantSizeY']+2.0*AllPixel['metalOH'], AllPixel['routingdist']-AllPixel['metalOH'], AllPixel['routingwidth'], AllPixel['bPDia'], Pixel2BPPar, true)
@@ -95,7 +95,7 @@ module PSI46DIG50x50s
     i = 0
     sign = 1
     # distance between vias
-    dist = 50e3
+    dist = 75e3
     while i*dist<=Pixel2['implantSizeX']-2*AllPixel['viaX0'] do 
       Pixel.ptVia($layerAluVia,AllPixel['viaX0']+i*dist-Pixel2['implantSizeX']/2,sign*AllPixel['viaY0'],AllPixel['viaDia'])
       i+=1
@@ -107,7 +107,7 @@ module PSI46DIG50x50s
     Pixel.pStop($layerPp, Pixel2['implantSizeX']+2*AllPixel['PSdistX'], Pixel3['implantSizeY']+2*AllPixel['PSdistY'], AllPixel['PSwidth'], AllPixel['PSrOut'] , AllPixel['PSrIn'], AllPixel['PSopenX0'], AllPixel['PSopenY0'], AllPixel['PSopenWidth'],true)
     
     
-    pixelIICell = layout.create_cell("PixelII")      
+    pixelIICell = layout.create_cell(name+"PixelII")      
     Pixel.init(pixelIICell)
     Pixel.routingImplant($layerNp,PixelI['implantSizeX'],PixelI['implantSizeY'], AllPixel['routingdist'], AllPixel['routingwidth'], AllPixel['bPDia'], PixelIIBPPar, false)
     Pixel.routingImplant($layerAlu,PixelI['implantSizeX']+2.0*AllPixel['metalOH'],PixelI['implantSizeY']+2.0*AllPixel['metalOH'], AllPixel['routingdist']-AllPixel['metalOH'], AllPixel['routingwidth'], AllPixel['bPDia'], PixelIIBPPar, true)
@@ -116,7 +116,7 @@ module PSI46DIG50x50s
     Pixel.ptVia($layerAluVia,PixelI['viaX0'],PixelI['viaY0'],AllPixel['viaDia'])
     Pixel.pStop($layerPp, PixelI['implantSizeX']+2*AllPixel['PSdistX'], Pixel3['implantSizeY']+2*AllPixel['PSdistY'], AllPixel['PSwidth'], AllPixel['PSrOut'] , AllPixel['PSrIn'], AllPixel['PSopenX0'], AllPixel['PSopenY0'], AllPixel['PSopenWidth'],true)
     
-    pixelICell = layout.create_cell("PixelI")      
+    pixelICell = layout.create_cell(name+"PixelI")      
     Pixel.init(pixelICell)
     Pixel.routingImplant($layerNp,PixelI['implantSizeX'],PixelI['implantSizeY'], AllPixel['routingdist'], AllPixel['routingwidth'], AllPixel['bPDia'])
     Pixel.routingImplant($layerAlu,PixelI['implantSizeX']+2.0*AllPixel['metalOH'],PixelI['implantSizeY']+2.0*AllPixel['metalOH'], AllPixel['routingdist']-AllPixel['metalOH'], AllPixel['routingwidth'], AllPixel['bPDia'])
@@ -125,7 +125,7 @@ module PSI46DIG50x50s
     
 #     CREAT GRID
     
-    pixelGridCell = layout.create_cell("PixelGrid")
+    pixelGridCell = layout.create_cell(name+"PixelGrid")
     Pixel.init(pixelGridCell)
 #     pixels are created from lower left to right upwards in rows
 #     edges
@@ -217,13 +217,15 @@ module PSI46DIG50x50s
     
     Merge.cells($sensor, pixelGridCell)
 
-    periCell = layout.create_cell("Periphery")
+    periCell = layout.create_cell(name+"Periphery")
     Periphery.init(periCell)
     Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
     
-    textCell = Text.create(layout, $layerPassOpen, sensor , -4000e3, 4500e3)
+    textCell = Text.create(layout, $layerAlu, sensor ,-1000e3, 4590e3, 240) 
+    lowerTextCell = Text.create(layout,$layerAlu,"Place chip periphery over here",-3138e3, -4830e3, 240,sensor)        
+    Merge.cells(periCell, lowerTextCell)  
     Merge.cells(periCell, textCell)
-    
+     
     Merge.cells($sensor, periCell)
 
     return $sensor

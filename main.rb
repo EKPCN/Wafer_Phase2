@@ -1,3 +1,4 @@
+# $show-in-menu
 module CISWafer
   include RBA
 
@@ -38,8 +39,9 @@ module CISWafer
   # Get SensorList from file
 
   sensors = []
-  
-  f = File.open($GLOBAL_PATH + "/sensors/sensorList.txt")
+
+# f = File.open($GLOBAL_PATH + "/sensors/sensorList.txt")
+  f = File.open($GLOBAL_PATH + "/sensors/sensorList_js.txt")
   f.each_line{ 
     |line| sensors << line.delete("\n") 
   }   

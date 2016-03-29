@@ -1,74 +1,59 @@
 PixelUnitCell = {
 
-    'sizeX' => 100e3,
-    'sizeY' => 25e3,
+    'sizeX' => 50e3,
+    'sizeY' => 50e3,
 }
 
 InnerImplant = {
 
-    'sizeX' => 80e3,
-    'sizeY' => 5e3,
+    'sizeX' => 37e3,
+    'sizeY' => 37e3,
     'radius' => 4e3,
-    'metalOH' => 1e3  
+    'metalOH' => 3e3  
+}
+
+OuterImplant = {
+  
+    'sizeX' => 37e3,
+    'sizeY' => 62e3,
+    'radius' => 4e3,
+    'metalOH' => 3e3 
+         
 }
 
 PixelGrid = {
 
-    'sizeX' => 8000e3,
-    'sizeY' => 8000e3
+    'sizeX' => 7750e3,
+    'sizeY' => 8025e3
 }
 
 InnerPixelGrid = {
   
-    'sizeX' => 100e3,
-    'sizeY' => 25e3,
-    'nX' => 78,
-    'nY' => 160,
+    'sizeX' => 50e3,
+    'sizeY' => 50e3,
+    'nX' => 77,
+    'nY' => 159,
     'dX' => 100e3,
     'dY' => 50e3 
 }
 
 OuterPixelGrid = {
-  
-    'sizeX' => 100e3,
-    'sizeY' => 25e3,
-    'nX' => 2,
-    'nY' => 160,
-    'dX' => 7900e3,
-    'dY' => 50e3 
-}
 
-GridPStop = {
-
-    'distX' => 5e3,
-    'distY' => 5e3,
-    'width' => 0,
-    'rIn' => 4e3,
-    'rOut' => 9e3,
-    'openX0' => 0,
-    'openY0' => 0,
-    'openWidth' => 0,
+    'sizeX' => 50e3,
+    'sizeY' => 75e3,
+    'nX' => 77,
+    'nY' => 1,
+    'dX' => 100e3,
+    'dY' => 0
 }
 
 InnerPStop = {
 
-    'distX' => 5e3,
-    'distY' => 5e3,
+    'distX' => 0,
+    'distY' => 0,
     'width' => 0,
-    'rIn' => 4e3,
-    'rOut' => 0e3,
-    'openX0' => 0,
-    'openY0' => 0,
-    'openWidth' => 0,
-}
-
-OuterPStop = {
-
-    'distX' => 5e3,
-    'distY' => 5e3,
-    'width' => 0,
-    'rIn' => 4e3,
-    'rOut' => 9e3,
+    'rIn' => 0,
+    'rOut' => 0,
     'openX0' => 0,
     'openY0' => 0,
     'openWidth' => 0,
@@ -78,23 +63,22 @@ InnerVia = {
 
     'sizeX' => 5e3,
     'sizeY' => 5e3,
-    'x0'    => -25e3,
-    'y0'    => 0e3,
+    'x0'    => 12e3,
+    'y0'    => 10e3,
 }
 
 OuterVia = {
 
     'sizeX' => 5e3,
     'sizeY' => 5e3,
-    'x0'    => 50e3,
-    'y0'    => 0,
+    'x0'    => 12e3,
+    'y0'    => 10e3,
 }
 
 BumpPad = {
 
-    'dia' => 12e3,   
-    'x0'  => 25e3,
-    'y0'  => 0
+    'bPDia' => 20e3,
+    'bPDiaPassivation' => 12e3,  
 }
 
 BiasRing = {
@@ -140,5 +124,5 @@ PixelEdge = {
     'aluSizeY' => 9920e3,
 
     'outerX0'    => 0,
-    'outerY0'    => -150e3
+    'outerY0'    => 0
 }

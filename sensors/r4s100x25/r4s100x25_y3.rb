@@ -1,59 +1,52 @@
 PixelUnitCell = {
 
-    'sizeX' => 50e3,
-    'sizeY' => 50e3,
+    'sizeX' => 100e3,
+    'sizeY' => 25e3,
 }
 
 InnerImplant = {
 
-    'sizeX' => 30e3,
-    'sizeY' => 30e3,
+    'sizeX' => 87.5e3,
+    'sizeY' => 12.5e3,
     'radius' => 4e3,
-    'metalOH' => 1e3  
-}
-
-OuterImplant = {
-  
-    'sizeX' => 30e3,
-    'sizeY' => 55e3,
-    'radius' => 4e3,
-    'metalOH' => 1e3 
-         
+    'metalOH' => -1.5e3  
 }
 
 PixelGrid = {
 
-    'sizeX' => 8000e3,
-    'sizeY' => 8025e3
+    'sizeX' => 7800e3,
+    'sizeY' => 8000e3
 }
 
 InnerPixelGrid = {
   
-    'sizeX' => 50e3,
-    'sizeY' => 50e3,
-    'nX' => 80,
-    'nY' => 159,
+    'sizeX' => 100e3,
+    'sizeY' => 25e3,
+    'nX' => 77,
+    'nY' => 160,
     'dX' => 100e3,
     'dY' => 50e3 
 }
 
-OuterPixelGrid = {
+GridPStop = {
 
-    'sizeX' => 50e3,
-    'sizeY' => 75e3,
-    'nX' => 80,
-    'nY' => 1,
-    'dX' => 100e3,
-    'dY' => 0
+    'distX' => 5e3,
+    'distY' => 5e3,
+    'width' => 0,
+    'rIn' => 4e3,
+    'rOut' => 9e3,
+    'openX0' => 0,
+    'openY0' => 0,
+    'openWidth' => 0,
 }
 
 InnerPStop = {
 
-    'distX' => 0,
-    'distY' => 0,
+    'distX' => 5e3,
+    'distY' => 5e3,
     'width' => 0,
-    'rIn' => 0,
-    'rOut' => 0,
+    'rIn' => 4e3,
+    'rOut' => 0e3,
     'openX0' => 0,
     'openY0' => 0,
     'openWidth' => 0,
@@ -63,21 +56,15 @@ InnerVia = {
 
     'sizeX' => 5e3,
     'sizeY' => 5e3,
-    'x0'    => 10e3,
-    'y0'    => 10e3,
+    'x0'    => -25e3,
+    'y0'    => 0e3,
 }
 
-OuterVia = {
-
-    'sizeX' => 5e3,
-    'sizeY' => 5e3,
-    'x0'    => 10e3,
-    'y0'    => 10e3,
-}
 BumpPad = {
 
-    'bPDia' => 20e3,
-    'bPDiaPassivation' => 12e3,   
+    'dia' => 12e3,   
+    'x0'  => 25e3,
+    'y0'  => 0
 }
 
 BiasRing = {
@@ -123,5 +110,28 @@ PixelEdge = {
     'aluSizeY' => 9920e3,
 
     'outerX0'    => 0,
-    'outerY0'    => -150e3
+    'outerY0'    => 0
+}
+
+RightImplant = {
+
+    'sizeX' => 87.5e3,
+    'sizeY' => 37.5e3,
+    'radius' => 4e3,
+    'metalOH' => -1.5e3  
+}
+
+RightPixelGrid = {
+  
+    'sizeX' => 100e3,
+    'sizeY' => 50e3,
+    'nX' => 1,
+    'nY' => 160,
+    'dX' => 7700e3,
+    'dY' => 50e3 
+}
+
+RightVia = {
+    'sizeX' => 5e3,
+    'sizeY' => 5e3
 }

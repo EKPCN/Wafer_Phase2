@@ -5,8 +5,9 @@ module RD53100x25
   def RD53100x25.create(layout,sensor)
         
     $sensor = layout.create_cell(sensor)
+    name = sensor + "."
     
-    pixelCell1 = layout.create_cell("Pixel1")
+    pixelCell1 = layout.create_cell(name+"Pixel1")
     Pixel.init(pixelCell1)
     Pixel.roundBox($layerNp,Implant['sizeX'],Implant['sizeY'],0,0,Implant['radius'])
     Pixel.pStop($layerPp, Implant['sizeX']+2*InnerPStop['distX'], Implant['sizeY']+2*InnerPStop['distY'], InnerPStop['width'], InnerPStop['rOut'] , InnerPStop['rIn'])
@@ -17,7 +18,7 @@ module RD53100x25
     Pixel.ptVia($layerAluVia,Via11['x0'],Via11['y0'],Via11['sizeX'])
     
     
-    pixelCell2 = layout.create_cell("Pixel2")
+    pixelCell2 = layout.create_cell(name+"Pixel2")
     Pixel.init(pixelCell2)    
     Pixel.roundBox($layerNp,Implant['sizeX'],Implant['sizeY'],0,0,Implant['radius'])
     Pixel.implantRouting($layerAlu,Implant['sizeX']+6e3,Implant['sizeY']+6e3,BumpPad2['x0'],BumpPad2['y0'])    
@@ -28,7 +29,7 @@ module RD53100x25
     Pixel.ptVia($layerAluVia,Via2['x0'],Via2['y0'],Via2['sizeX'])
     Pixel.ptVia($layerAluVia,-Via2['x0'],Via2['y0'],Via2['sizeX'])
 
-    pixelGridCell = layout.create_cell("PixelGrid")
+    pixelGridCell = layout.create_cell(name+"PixelGrid")
     Pixel.init(pixelGridCell)
     Pixel.grid(pixelCell1,PixelGrid1['nX'], PixelGrid1['nY'], PixelGrid1['dX'], PixelGrid1['dY'], -PixelGrid['sizeX']/2+(PixelGrid1['sizeX']/2), -PixelGrid['sizeY']/2+PixelGrid1['sizeY']/2)
     Pixel.grid(pixelCell2,PixelGrid1['nX'], PixelGrid1['nY'], PixelGrid1['dX'], PixelGrid1['dY'], -PixelGrid['sizeX']/2+(PixelGrid1['sizeX']/2), -PixelGrid['sizeY']/2+3*PixelGrid1['sizeY']/2)
@@ -36,7 +37,7 @@ module RD53100x25
       
     Merge.cells($sensor, pixelGridCell)
 
-    periCell = layout.create_cell("Periphery")
+    periCell = layout.create_cell(name+"Periphery")
     Periphery.init(periCell)
     Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
   

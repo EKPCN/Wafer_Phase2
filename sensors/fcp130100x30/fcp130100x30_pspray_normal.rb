@@ -10,7 +10,7 @@ InnerPixel = {
 #   IMPLANT
   'implantSizeX' => 85.0e3,
   'implantSizeY' => 15e3,
-  'metalOH' => 1e3,
+  'metalOH' => 3e3,
   'shiftX' => 0.0e3,
 #   PUNCH THROUGH STRUCTURE
   'PTX0' => 0.0e3, 
@@ -36,9 +36,10 @@ InnerPixel = {
 
 InnerPixel1 = {
 #   VIA
+  'sizeX' => 5e3,
+   'sizeY' => 5e3,
   'viaX0' => 25.0e3, 
   'viaY0' => 0.0e3,
-  'viaDia' => 5e3,
 #   BUMP PAD
   'bPX0' => -30.0e3,
   'bPY0' => 0.0e3,
@@ -48,9 +49,10 @@ InnerPixel1 = {
 
 InnerPixel2 = {
 #   VIA
+  'sizeX' => 5e3,
+   'sizeY' => 5e3,
   'viaX0' => -25.0e3, 
   'viaY0' => 0.0e3,
-  'viaDia' => 5e3,
 #   BUMP PAD
   'bPX0' => 10.0e3,
   'bPY0' => 0.0e3,

@@ -35,9 +35,9 @@ InnerPixel = {
 #   PSTOP
   'PSdistX' => 5.0e3,
   'PSdistY' => 5.0e3,
-  'PSwidth' => 2.0e3,
+  'PSwidth' => 4.0e3,
   'PSrIn' => 2e3,
-  'PSrOut' => 0e3,
+  'PSrOut' => 2e3,
   'PSopenX0' => 0,
   'PSopenY0' => 0,
   'PSopenWidth' => 0,

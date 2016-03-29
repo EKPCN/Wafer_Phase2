@@ -9,7 +9,7 @@ InnerImplant = {
     'sizeX' => 40e3,
     'sizeY' => 40e3,
     'radius' => 4e3,
-    'metalOH' => 1e3  
+    'metalOH' => 3e3  
 }
 
 PixelGrid = {
@@ -100,5 +100,5 @@ PixelEdge = {
     'aluSizeY' => 9920e3,
 
     'outerX0'    => 0,
-    'outerY0'    => -150e3
+    'outerY0'    => 0 
 }

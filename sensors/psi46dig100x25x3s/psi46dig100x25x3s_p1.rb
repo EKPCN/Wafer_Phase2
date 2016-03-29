@@ -1,6 +1,6 @@
 InnerPixel = {
   
-  # PIXEL GRID
+#   PIXEL GRID
   'cellSizeX' => 25e3,
   'cellSizeY' => 100e3,
   'nX1' => 13, #left and middle pixel
@@ -8,19 +8,19 @@ InnerPixel = {
   'nY' => 80,
   'dX' => 600e3,
   'dY' => 100e3,
-  # IMPLANT
-  'implantSizeX' => 15.0e3,
-  'implantSizeY' => 90e3,
-  'metalOH' => 1e3,
+#   IMPLANT
+  'implantSizeX' => 9.0e3,
+  'implantSizeY' => 84e3,
+  'metalOH' => 3e3,
   'shiftX' => 0.0e3,
-  # VIA
+#   VIA
   'viaX0' => 0.0e3, 
   'viaY0' => 25.0e3,
   'viaDia' => 5e3,
-  # BUMP PAD
+#   BUMP PAD
   'bPX0' => 0.0e3,
   'bPY0' => 0.0e3,
-  # PUNCH THROUGH STRUCTURE
+#   PUNCH THROUGH STRUCTURE
   'PTX0' => 0.0e3, 
   'PTY0' => 0.0e3,
   'PTholeDia' => 0e3,	#minimum biasDotDia+2*metalOH (+2*PTpStopWidth)
@@ -31,12 +31,12 @@ InnerPixel = {
   'PTviaDia' => 0e3,
   'PTpStopWidth' => 0e3,
   'innerPTmetalOH' => 0.0e3,
-  # PSTOP
-  'PSdistX' => 0e3,
-  'PSdistY' => 0e3,
-  'PSwidth' => 0e3,
+#   PSTOP
+  'PSdistX' => 6e3,
+  'PSdistY' => 6e3,
+  'PSwidth' => 4e3,
   'PSrIn' => 2e3,
-  'PSrOut' => 5e3,
+  'PSrOut' => 2e3,
   'PSopenX0' => 0,
   'PSopenY0' => 0,
   'PSopenWidth' => 0,
@@ -44,47 +44,47 @@ InnerPixel = {
 
 LargePixel = {
   
-  # PIXEL GRID
+#   PIXEL GRID
   'cellSizeX' => 525e3,
   'cellSizeY' => 100e3,
   'nX' => 12,
   'nY' => 80,
   'dX' => 600e3,
   'dY' => 100e3,
-  # IMPLANT
-  'implantSizeX' => 515.0e3,
-  'implantSizeY' => 90e3,
-  'metalOH' => 1e3,
+#   IMPLANT
+  'implantSizeX' => 509e3,
+  'implantSizeY' => 84e3,
+  'metalOH' => 3e3,
   'shiftX' => 0.0e3,
-  # ROUTING
-  'routingwidth' => 6e3,
-  'routingdist' => 5e3, #dist from routing line to pad
-  # VIA
+#   ROUTING
+  'routingwidth' => 5e3,
+  'routingdist' => 10e3, #dist from routing line to pad
+#   VIA
   'viaX0' => 57.50e3, 
   'viaY0' => 25.0e3,
   'viaDia' => 5e3,
-  # PSTOP
-  'PSdistX' => 0e3,
-  'PSdistY' => 0e3,
-  'PSwidth' => 0e3,
+#   PSTOP
+  'PSdistX' => 6e3,
+  'PSdistY' => 6e3,
+  'PSwidth' => 4e3,
   'PSrIn' => 2e3,
-  'PSrOut' => 5e3,
+  'PSrOut' => 2e3,
   'PSopenX0' => 0,
   'PSopenY0' => 0,
   'PSopenWidth' => 0,
 }
   
 LargePixelBPPar = [
-  # ROUTING BUMP PAD COORDINATES X,Y and PIXEL CENTER X,Y
-  # BP2
+#   ROUTING BUMP PAD COORDINATES X,Y and PIXEL CENTER X,Y
+#   BP2
   -100.0e3, 0.0e3,-275e3,0e3,
-  # BP3
+#   BP3
   200.0e3,0e3,275e3,0e3,
 ]
 
 
 LargePixelBP = {
-  # PIXEL BUMP PAD
+#   PIXEL BUMP PAD
   'bPX0' => 0.0e3,
   'bPY0' => 0.0e3,
 }
@@ -92,20 +92,20 @@ LargePixelBP = {
 
 LeftPixel = {
   
-  # PIXEL GRID
-  'cellSizeX' => 282.5e3,
+#   PIXEL GRID
+  'cellSizeX' => 280.0e3,
   'nX' => 1,
-  # IMPLANT
-  'implantSizeX' => 272.5e3,
-  # PIXEL BUMP PAD
-  'bPX0' => -121.25e3,
-  'bPY0' => 0.0e3,
+#   IMPLANT
+  'implantSizeX' => 264.0e3,
+#   PIXEL BUMP PAD
+  'bPX0' => -122.5e3,
 }
 
 LeftPixelBPPar = [
-  # ROUTING BUMP PAD COORDINATES X,Y and PIXEL CENTER X,Y
-  # BP2
-  78.75e3, 0.0e3,153.75e3,0e3,
+#   ROUTING BUMP PAD COORDINATES X,Y and PIXEL CENTER X,Y
+#   BP2
+  77.5e3, 0.0e3,153.75e3,0e3,
+  # 78.75e3, 0.0e3,153.75e3,0e3,
 ]
   
 UpperRow = {
@@ -116,20 +116,19 @@ UpperRow = {
 
 RightPixel = {
   
-  # PIXEL GRID
-  'cellSizeX' => 207.5e3,
+#   PIXEL GRID
+  'cellSizeX' => 210.0e3,
   'nX' => 1,
-  # IMPLANT
-  'implantSizeX' => 197.5e3,
-  # BUMP PAD
-  'bPX0' => 83.75e3,
-  'bPY0' => 0.0e3,
+#   IMPLANT
+  'implantSizeX' => 195.0e3,
+#   BUMP PAD
+  'bPX0' => 82.5e3,
 }
 
 BumpPad = {
   
   'bPDia' => 20e3,
-  'bPDiaPassivation' => 15e3,
+  'bPDiaPassivation' => 12e3,
 }
   
 PixelGrid = {
@@ -138,7 +137,7 @@ PixelGrid = {
     'sizeY' => 8000e3
 }
 
-# PERIPHERY
+#   PERIPHERY
 
 BiasRing = {
 
@@ -174,7 +173,6 @@ PixelEdge = {
     
     'distX' => 426e3,
     'distY' => 426e3,
-
     'sizeX' => 10000e3,
     'sizeY' => 10000e3,
 
@@ -183,6 +181,6 @@ PixelEdge = {
     'aluSizeX' => 9920e3,
     'aluSizeY' => 9920e3,
 
-    'outerX0' => 0,
+    'outerX0'    => 0,
     'outerY0' => 0
 }

@@ -5,13 +5,13 @@ InnerPixel = {
   'cellSizeY' => 100e3,
   'nX1' => 13, #left and middle pixel
   'nX2' => 12, #right pixel
-  'nY' => 79,
+  'nY' => 80,
   'dX' => 600e3,
   'dY' => 100e3,
 #   IMPLANT
-  'implantSizeX' => 15.0e3,
-  'implantSizeY' => 90e3,
-  'metalOH' => 1e3,
+  'implantSizeX' => 12.5e3,
+  'implantSizeY' => 87.5e3,
+  'metalOH' => 3e3,
   'shiftX' => 0.0e3,
 #   VIA
   'viaX0' => 0.0e3, 
@@ -47,18 +47,19 @@ LargePixel = {
 #   PIXEL GRID
   'cellSizeX' => 275e3,
   'cellSizeY' => 100e3,
-  'nX' => 12,
-  'nY' => 79,
+  'nX' => 13,
+  'nY' => 80,
   'dX' => 600e3,
   'dY' => 100e3,
 #   IMPLANT
-  'implantSizeX' => 265.0e3,
-  'implantSizeY' => 90e3,
-  'metalOH' => 1e3,
+  'implantSizeX' => 262.5e3,
+  'implantSizeY' => 87.5e3,
+  'metalOH' => 3e3,
   'shiftX' => 0.0e3,
 #   ROUTING
-  'routingwidth' => 6e3,
-  'routingdist' => 5e3, #dist from routing line to pad
+  'routingwidth' => 5e3,
+#  'routingdist' => 7e3, #dist from routing line to pad
+  'routingdist' => 9e3, #dist from routing line to pad
 #   VIA
   'viaX0' => 57.50e3, 
   'viaY0' => 25.0e3,
@@ -99,29 +100,6 @@ LargePixel3 = {
   'bPY0' => 0.0e3,
 }
 
-LeftPixel = {
-  
-#   PIXEL GRID
-  'cellSizeX' => 462.5e3,
-  'nX' => 1,
-#   IMPLANT
-  'implantSizeX' => 452.5e3,
-}
-  
-UpperRow = {
-  
-  'Yplus' => 100.0e3,
-  'nY' => 1,
-}
-
-RightPixel = {
-  
-#   PIXEL GRID
-  'cellSizeX' => 387.5e3,
-  'nX' => 1,
-#   IMPLANT
-  'implantSizeX' => 377.5e3,
-}
 
 BumpPad = {
   
@@ -131,8 +109,8 @@ BumpPad = {
   
 PixelGrid = {
 
-    'sizeX' => 8100e3,
-    'sizeY' => 8100e3
+    'sizeX' => 7800e3,
+    'sizeY' => 8000e3
 }
 
 #   PERIPHERY
@@ -181,5 +159,5 @@ PixelEdge = {
     'aluSizeY' => 9920e3,
 
     'outerX0'    => 0,
-    'outerY0'    => -150e3
+    'outerY0'    => 0
 }

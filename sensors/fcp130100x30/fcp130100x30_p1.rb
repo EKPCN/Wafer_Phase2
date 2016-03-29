@@ -8,27 +8,27 @@ InnerPixel = {
   'dX' => 200e3,
   'dY' => 30e3,
 #   IMPLANT
-  'implantSizeX' => 85e3,
-  'implantSizeY' => 10e3,
-  'metalOH' => 1e3,
+  'implantSizeX' => 83.0e3,
+  'implantSizeY' => 13e3,
+  'metalOH' => 3e3,
   'shiftX' => 0.0e3,
 #   PUNCH THROUGH STRUCTURE
-  'PTX0' => 50.0e3, 
-  'PTY0' => 15.0e3,
-  'PTholeDia' => 30e3,	#minimum biasDotDia+2*metalOH (+2*PTpStopWidth)
-  'PTimplantDia' => 10e3,
-  'bLWidth' => 3e3,	#bias line
-  'bLHoleWidth' => 10e3,
-  'bDotDia' => 16e3,	#bias dot
-  'PTviaDia' => 5e3,
+  'PTX0' => 0.0e3, 
+  'PTY0' => 0.0e3,
+  'PTholeDia' => 0e3,	#minimum biasDotDia+2*metalOH (+2*PTpStopWidth)
+  'PTimplantDia' => 0e3,
+  'bLWidth' => 0e3,	#bias line
+  'bLHoleWidth' => 0e3,
+  'bDotDia' => 0e3,	#bias dot
+  'PTviaDia' => 0e3,
   'PTpStopWidth' => 0e3,
-  'innerPTmetalOH' => 1.0e3,
+  'innerPTmetalOH' => 0.0e3,
 #   PSTOP
-  'PSdistX' => 0e3,
-  'PSdistY' => 0e3,
-  'PSwidth' => 0e3,
+  'PSdistX' => 6.5e3,
+  'PSdistY' => 6.5e3,
+  'PSwidth' => 4e3,
   'PSrIn' => 2e3,
-  'PSrOut' => 5e3,
+  'PSrOut' => 2e3,
   'PSopenX0' => 0,
   'PSopenY0' => 0,
   'PSopenWidth' => 0,
@@ -36,9 +36,10 @@ InnerPixel = {
 
 InnerPixel1 = {
 #   VIA
+   'sizeX' => 10e3,
+   'sizeY' => 5e3,
   'viaX0' => 25.0e3, 
   'viaY0' => 0.0e3,
-  'viaDia' => 5e3,
 #   BUMP PAD
   'bPX0' => -30.0e3,
   'bPY0' => 0.0e3,
@@ -48,9 +49,10 @@ InnerPixel1 = {
 
 InnerPixel2 = {
 #   VIA
+   'sizeX' => 10e3,
+   'sizeY' => 5e3,
   'viaX0' => -25.0e3, 
   'viaY0' => 0.0e3,
-  'viaDia' => 5e3,
 #   BUMP PAD
   'bPX0' => 10.0e3,
   'bPY0' => 0.0e3,
@@ -111,5 +113,5 @@ PixelEdge = {
     'aluSizeY' => 7120e3,
 
     'outerX0'    => 0,
-    'outerY0'    => -150e3
+    'outerY0'    => 0
 }

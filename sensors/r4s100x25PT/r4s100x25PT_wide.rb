@@ -3,7 +3,7 @@ InnerPixel = {
 #   PIXEL GRID
   'cellSizeX' => 100e3,
   'cellSizeY' => 25e3,
-  'nX' => 80,
+  'nX' => 78,
   'nY' => 160,
   'dX' => 100e3,
   'dY' => 50e3,
@@ -44,7 +44,7 @@ InnerPixel = {
 
 PixelGrid = {
 
-    'sizeX' => 8000e3,
+    'sizeX' => 7800e3,
     'sizeY' => 8000e3
 }
 
