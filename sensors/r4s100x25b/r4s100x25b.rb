@@ -2,6 +2,9 @@ module Roc4Sens100x25b
   
   include RBA
 
+  #last pixel row is not present on ROC
+  puts 'last pixel row is not present on ROC'
+  
   # Creates a sensor with a staggered pitch of 50x50 µm² and additional bigger pixels at the edge for the roc4sens pattern
   # @return [cell] Returns the cell with all structures
 

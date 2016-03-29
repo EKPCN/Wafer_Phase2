@@ -11,7 +11,7 @@ InnerPixel = {
 #   IMPLANT
   'implantSizeX' => 15.0e3,
   'implantSizeY' => 90e3,
-  'metalOH' => 1e3,
+  'metalOH' => 3e3,
   'shiftX' => 0.0e3,
 #   VIA
   'viaX0' => 0.0e3, 
@@ -54,11 +54,11 @@ LargePixel = {
 #   IMPLANT
   'implantSizeX' => 265.0e3,
   'implantSizeY' => 90e3,
-  'metalOH' => 1e3,
+  'metalOH' => 3e3,
   'shiftX' => 0.0e3,
 #   ROUTING
-  'routingwidth' => 6e3,
-  'routingdist' => 5e3, #dist from routing line to pad
+  'routingwidth' => 4e3,
+  'routingdist' => 7e3, #dist from routing line to pad
 #   VIA
   'viaX0' => 57.50e3, 
   'viaY0' => 25.0e3,
@@ -108,7 +108,7 @@ BumpPad = {
   
 PixelGrid = {
 
-    'sizeX' => 7795e3,
+    'sizeX' => 7800e3,
     'sizeY' => 8000e3
 }
 

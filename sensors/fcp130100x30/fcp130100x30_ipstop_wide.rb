@@ -10,7 +10,7 @@ InnerPixel = {
 #   IMPLANT
   'implantSizeX' => 80.0e3,
   'implantSizeY' => 10e3,
-  'metalOH' => 1e3,
+  'metalOH' => 3e3,
   'shiftX' => 0.0e3,
 #   PUNCH THROUGH STRUCTURE
   'PTX0' => 0.0e3, 

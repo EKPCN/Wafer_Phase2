@@ -91,7 +91,8 @@ module PSI46DIG100x25x2noedge
     Periphery.init(periCell)
     Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
     
-    textCell = Text.create(layout, $layerAlu, sensor , -4000e3, 4500e3, 200)
+    textCell = Text.create(layout, $layerAlu, sensor , -4000e3, 4500e3, 250)
+
     Merge.cells(periCell, textCell)
     
     Merge.cells($sensor, periCell)

@@ -9,12 +9,12 @@ InnerImplant = {
     'sizeX' => 85e3,
     'sizeY' => 10e3,
     'radius' => 4e3,
-    'metalOH' => 1e3  
+    'metalOH' => 3e3  
 }
 
 PixelGrid = {
 
-    'sizeX' => 8000e3,
+    'sizeX' => 7800e3,
     'sizeY' => 8000e3
 }
 
@@ -22,7 +22,7 @@ InnerPixelGrid = {
   
     'sizeX' => 100e3,
     'sizeY' => 25e3,
-    'nX' => 78,
+    'nX' => 77,
     'nY' => 160,
     'dX' => 100e3,
     'dY' => 50e3 
@@ -42,9 +42,9 @@ GridPStop = {
 
     'distX' => 5e3,
     'distY' => 5e3,
-    'width' => 5e3,
-    'rIn' => 4e3,
-    'rOut' => 9e3,
+    'width' => 0e3,
+    'rIn' => 2e3,
+    'rOut' => 2e3,
     'openX0' => 0,
     'openY0' => 0,
     'openWidth' => 0,
@@ -52,11 +52,11 @@ GridPStop = {
 
 InnerPStop = {
 
-    'distX' => 5e3,
-    'distY' => 5e3,
-    'width' => 5e3,
-    'rIn' => 4e3,
-    'rOut' => 0e3,
+    'distX' => 5.5e3,
+    'distY' => 5.5e3,
+    'width' => 4e3,
+    'rIn' => 2e3,
+    'rOut' => 2e3,
     'openX0' => 0,
     'openY0' => 0,
     'openWidth' => 0,
@@ -64,11 +64,11 @@ InnerPStop = {
 
 OuterPStop = {
 
-    'distX' => 5e3,
-    'distY' => 5e3,
-    'width' => 5e3,
-    'rIn' => 4e3,
-    'rOut' => 9e3,
+    'distX' => 5.5e3,
+    'distY' => 5.5e3,
+    'width' => 4e3,
+    'rIn' => 2e3,
+    'rOut' => 2e3,
     'openX0' => 0,
     'openY0' => 0,
     'openWidth' => 0,
@@ -141,4 +141,22 @@ PixelEdge = {
 
     'outerX0'    => 0,
     'outerY0'    => -150e3
+}
+
+RightImplant = {
+
+    'sizeX' => 85e3,
+    'sizeY' => 35e3,
+    'radius' => 4e3,
+    'metalOH' => 2.5e3  
+}
+
+RightPixelGrid = {
+  
+    'sizeX' => 100e3,
+    'sizeY' => 50e3,
+    'nX' => 1,
+    'nY' => 160,
+    'dX' => 7700e3,
+    'dY' => 50e3 
 }

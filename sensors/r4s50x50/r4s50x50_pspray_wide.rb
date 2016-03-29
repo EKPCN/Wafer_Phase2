@@ -9,7 +9,7 @@ InnerImplant = {
     'sizeX' => 40e3,
     'sizeY' => 40e3,
     'radius' => 4e3,
-    'metalOH' => 1e3  
+    'metalOH' => 3e3  
 }
 
 PixelGrid = {
