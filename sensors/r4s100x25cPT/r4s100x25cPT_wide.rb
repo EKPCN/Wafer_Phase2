@@ -16,6 +16,8 @@ InnerPixel = {
   'viaX0' => 25.0e3, 
   'viaY0' => 0.0e3,
   'viaDia' => 5e3,
+  'viaSizeX' => 5e3,
+  'viaSizeY' => 5e3,
 #   BUMP PAD
   'bPX0' => -25.0e3,
   'bPY0' => 0.0e3,

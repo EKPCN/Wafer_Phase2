@@ -33,11 +33,11 @@ InnerPixel = {
   'PTpStopWidth' => 0e3,
   'innerPTmetalOH' => 0.0e3,
 #   PSTOP
-  'PSdistX' => 5e3,
-  'PSdistY' => 5e3,
-  'PSwidth' => 2.5e3,
-  'PSrIn' => 2e3,
-  'PSrOut' => 0e3,
+  'PSdistX' => 5.5e3,
+  'PSdistY' => 5.5e3,
+  'PSwidth' => 4.0e3,
+  'PSrIn' => 2.0e3,
+  'PSrOut' => 2.0e3,
   'PSopenX0' => 0,
   'PSopenY0' => 0,
   'PSopenWidth' => 0,
@@ -97,11 +97,11 @@ OuterPixel = {
   'PTpStopWidth' => 0e3,
   'innerPTmetalOH' => 0.0e3,
 #   PSTOP
-  'PSdistX' => 5e3,
-  'PSdistY' => 5e3,
-  'PSwidth' => 2.5e3,
+  'PSdistX' => 5.5e3,
+  'PSdistY' => 5.5e3,
+  'PSwidth' => 4e3,
   'PSrIn' => 2e3,
-  'PSrOut' => 0e3,
+  'PSrOut' => 2e3,
   'PSopenX0' => 0,
   'PSopenY0' => 0,
   'PSopenWidth' => 0,
@@ -125,6 +125,8 @@ PixelGrid = {
 
     'sizeX' => 4850e3,
     'sizeY' => 4680e3,
+#    'sizeX' => 4680e3,
+ #  'sizeY' => 4850e3
 }
 
 #   PERIPHERY
@@ -164,14 +166,14 @@ PixelEdge = {
     
     'distX' => 426e3,
     'distY' => 426e3,
-    'sizeX' => 10000e3,
-    'sizeY' => 10000e3,
+    'sizeX' => 7200e3,
+    'sizeY' => 7200e3,
 
     'aluDistX' => 376e3,
     'aluDistY' => 376e3,
-    'aluSizeX' => 9920e3,
-    'aluSizeY' => 9920e3,
+    'aluSizeX' => 7120e3,
+    'aluSizeY' => 7120e3,
 
     'outerX0'    => 0,
-    'outerY0'    => -150e3
+    'outerY0'    => 0e3
 }
