@@ -13,21 +13,41 @@ module Pixel
     $Cell.shapes(layer).insert(implant)    
   end 
 
-  def Pixel.implantRouting(layer,x,y,x0BB=0,y0BB=0,r=5000)
+  def Pixel.implantRouting(layer,x,y,x0BB=0.0,y0BB=0.0,shiftX=-18.5e3,bPw=20.0e3,x0=0.0,y0=0.0,rl=5.0e3,rr=5.0e3)
+	
+	if rr>rl
+		r = rr
+	else
+		r = rl
+	end
+	
+    metal = Basic.roundBox(x,y,shiftX,0,r)
+    routing = Basic.roundBox(bPw,y0BB.abs+2*r,x0BB,(y0BB)/2,r)
+	
+	# right corner
+    if rr>0
+		cornerBox = Basic.roundBox(rr,rr,x0BB+bPw/2.0+rr/2,-y/2-rr/2,0)
+		circ = Basic.circle(2*rr,x0BB+bPw/2.0+rr,-y/2-rr,32)
+		corner1 = Cut.polyVector([cornerBox,circ])
+	end
+	# left corner
+    if rl>0
+		cornerBox2 = Basic.roundBox(rl,rl,x0BB-bPw/2.0-rl/2,-y/2-rl/2,0)
+		circ2 = Basic.circle(2*rl,x0BB-bPw/2.0-rl,-y/2-rl,32)
+		corner2 = Cut.polyVector([cornerBox2,circ2,circ2])
+	end
 
-    metal = Basic.roundBox(x,y,-18.5e3,0,r)
-    routing = Basic.roundBox(20e3,y0BB.abs+2*r,x0BB,(y0BB)/2,r)
-
-    # 10e3 = width/2 of the routing
-    cornerBox = Basic.roundBox(r,r,x0BB+10e3+r/2,-y/2-r/2,0)
-    circ = Basic.circle(2*r,x0BB+10e3+r,-y/2-r,p=32) 
-    cornerBox2 = Basic.roundBox(r,r,x0BB-10e3-r/2,-y/2-r/2,0)
-    circ2 = Basic.circle(2*r,x0BB-10e3-r,-y/2-r,p=32)
-
-    corner1 = Cut.polyVector([cornerBox,circ])
-    corner2 = Cut.polyVector([cornerBox2,circ2,circ2])
-    edge = Merge.polyVector([metal,routing,corner1,corner2])    
-
+    if rr>0 && rl>0
+		edge = Merge.polyVector([metal,routing,corner1,corner2])
+	elsif rr>0
+		edge = Merge.polyVector([metal,routing,corner1])
+	elsif rl>0
+		edge = Merge.polyVector([metal,routing,corner2])
+	else
+		edge = Merge.polyVector([metal,routing])
+	end
+	edge.move(x0,y0)
+	
     $Cell.shapes(layer).insert(edge)  
       
   end
