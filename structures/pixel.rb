@@ -21,19 +21,19 @@ module Pixel
 		r = rl
 	end
 	
-    metal = Basic.roundBox(x,y,shiftX,0,r)
+    metal = Basic.roundBox(x,y.abs,shiftX,0,r)
     routing = Basic.roundBox(bPw,y0BB.abs+2*r,x0BB,(y0BB)/2,r)
 	
 	# right corner
     if rr>0
-		cornerBox = Basic.roundBox(rr,rr,x0BB+bPw/2.0+rr/2,-y/2-rr/2,0)
-		circ = Basic.circle(2*rr,x0BB+bPw/2.0+rr,-y/2-rr,32)
+		cornerBox = Basic.roundBox(rr,rr,x0BB+bPw/2.0+rr/2,-(y/2+y.abs/y*rr/2),0)
+		circ = Basic.circle(2*rr,x0BB+bPw/2.0+rr,-(y/2+y.abs/y*rr),32)
 		corner1 = Cut.polyVector([cornerBox,circ])
 	end
 	# left corner
     if rl>0
-		cornerBox2 = Basic.roundBox(rl,rl,x0BB-bPw/2.0-rl/2,-y/2-rl/2,0)
-		circ2 = Basic.circle(2*rl,x0BB-bPw/2.0-rl,-y/2-rl,32)
+		cornerBox2 = Basic.roundBox(rl,rl,x0BB-bPw/2.0-rl/2,-(y/2+y.abs/y*rl/2),0)
+		circ2 = Basic.circle(2*rl,x0BB-bPw/2.0-rl,-(y/2+y.abs/y*rl),32)
 		corner2 = Cut.polyVector([cornerBox2,circ2,circ2])
 	end
 
