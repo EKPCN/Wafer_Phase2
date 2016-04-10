@@ -91,7 +91,7 @@ PixelEdge = {
     'distX' => 426e3,
     'distY' => 426e3,
     'sizeY' => 11800e3,
-    'sizeX' => 22200e3,
+    'sizeX' => 22210e3,
 
     'aluDistX' => 376e3,
     'aluDistY' => 376e3,

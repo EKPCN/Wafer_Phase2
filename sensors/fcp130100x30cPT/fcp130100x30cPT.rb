@@ -48,8 +48,9 @@ module FCP130100x30cPT
     Pixel.grid(innerPixelCell2,InnerPixel['nX'], InnerPixel['nY'], InnerPixel['dX'], 2*InnerPixel['dY'], -PixelGrid['sizeX']/2+(3*InnerPixel['cellSizeX']/2), -PixelGrid['sizeY']/2+3*(InnerPixel['cellSizeY']/2),180)
     
     
-    Merge.cells($sensor, pixelGridCell)
-
+#    Merge.cells($sensor, pixelGridCell)
+    Merge.cells($sensor, pixelGridCell,0,0,0,true)
+    
     periCell = layout.create_cell(name+"Periphery")
     Periphery.init(periCell)
     Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge,rocType)

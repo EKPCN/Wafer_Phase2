@@ -139,7 +139,7 @@ PixelI = {
 PixelIIBPPar = [
 #   BUMP PAD COORDINATES X,Y and PIXEL CENTER X,Y
 #   BP2
-  25.0e3, 25.0e3,25e3,25e3,
+  25.0e3, 25.0e3,25.0e3,25.0e3,
 ]
 
 
