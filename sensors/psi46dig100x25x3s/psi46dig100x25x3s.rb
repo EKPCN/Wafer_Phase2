@@ -129,19 +129,14 @@ module PSI46DIG100x25x3noedge
     #lowerTextCell = Text.create(layout,$layerAlu,"Place chip periphery over here",-3500e3, PixelEdge['outerY0'] + -(PixelGrid['sizeY']+2*PixelEdge['aluDistY'])/2-(PixelEdge['aluSizeY']-(PixelGrid['sizeY']+2*PixelEdge['aluDistY']))/4, 400)    
     #Merge.cells(periCell, lowerTextCell)
     
-<<<<<<< HEAD
-    textCell = Text.create(layout, $layerAlu, sensor,-3600e3, PixelEdge['outerY0'] + (PixelGrid['sizeY']+2*PixelEdge['aluDistY'])/2+(PixelEdge['aluSizeY']-(PixelGrid['sizeY']+2*PixelEdge['aluDistY']))/4 - 125e3, 250)    
-
-=======
  #   textCell = Text.create(layout, $layerAlu, sensor,-3600e3, PixelEdge['outerY0'] + (PixelGrid['sizeY']+2*PixelEdge['aluDistY'])/2+(PixelEdge['aluSizeY']-(PixelGrid['sizeY']+2*PixelEdge['aluDistY']))/4 - 125e3, 250)
     
 #    Merge.cells(periCell, textCell)
     textCell = Text.create(layout, $layerAlu, sensor ,-1000e3, 4590e3, 240) 
     lowerTextCell = Text.create(layout,$layerAlu,"Place chip periphery over here",-3138e3, -4830e3, 240,sensor)        
     Merge.cells(periCell, lowerTextCell)  
->>>>>>> christian/master
     Merge.cells(periCell, textCell)
-
+    
     Merge.cells($sensor, periCell)
 	
     return $sensor

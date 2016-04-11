@@ -1,4 +1,3 @@
-# coding: utf-8
 module Roc4Sens100x25b
   
   include RBA

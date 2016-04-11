@@ -3,8 +3,8 @@ InnerPixel = {
 #   PIXEL GRID
   'cellSizeX' => 50e3,
   'cellSizeY' => 50e3,
-  'nX' => 77,
-  'nY' => 80,
+  'nX' => 200,
+  'nY' => 96,
   'dX' => 100e3,
   'dY' => 50e3,
 #   IMPLANT
@@ -13,12 +13,12 @@ InnerPixel = {
   'metalOH' => 3e3,
   'shiftX' => 2e3,
 #   VIA
-  'viaX0' => -12.5e3, 
-  'viaY0' => 12.5e3,
+  'viaX0' => -9.5e3, 
+  'viaY0' => 9.5e3,
   'viaDia' => 5e3,
 #   BUMP PAD
   'bPX0' => 0.0e3,
-  'bPY0' => -12.5e3,
+  'bPY0' => 0.0e3,
   'bPDia' => 20e3,
   'bPDiaPassivation' => 12e3,
 #   PUNCH THROUGH STRUCTURE
@@ -45,12 +45,11 @@ InnerPixel = {
 
 PixelGrid = {
 
-    'sizeX' => 7764e3,
-    'sizeY' => 8000e3
+    'sizeX' => 20000e3,
+    'sizeY' => 9600e3
 }
 
 #   PERIPHERY
-
 
 BiasRing = {
 
@@ -86,14 +85,14 @@ PixelEdge = {
     
     'distX' => 426e3,
     'distY' => 426e3,
-    'sizeX' => 10000e3,
-    'sizeY' => 10000e3,
+    'sizeY' => 11800e3,
+    'sizeX' => 22210e3,
 
     'aluDistX' => 376e3,
     'aluDistY' => 376e3,
-    'aluSizeX' => 9920e3,
-    'aluSizeY' => 9920e3,
+    'aluSizeY' => 11720e3,
+    'aluSizeX' => 22130e3,
 
     'outerX0'    => 0,
-    'outerY0'    => -150e3
+    'outerY0'    => 0
 }

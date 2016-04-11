@@ -1,41 +1,45 @@
 InnerPixel = {
   
 #   PIXEL GRID
-  'cellSizeX' => 50e3,
-  'cellSizeY' => 50e3,
-  'nX' => 77,
-  'nY' => 80,
-  'dX' => 100e3,
-  'dY' => 50e3,
+  'cellSizeX' => 100e3,
+  'cellSizeY' => 25e3,
+  'nX' => 100,
+  'nY' => 192,
+  'dX' => 200e3,
+  'dY' => 25e3,
 #   IMPLANT
-  'implantSizeX' => 32e3,
-  'implantSizeY' => 36e3,
+  'implantSizeX' => 87.5e3,
+  'implantSizeY' => 12.5e3,
   'metalOH' => 3e3,
-  'shiftX' => 2e3,
+  'metalSizeX' => 53e3,
+  'shiftX' => 0.0e3,
 #   VIA
-  'viaX0' => -12.5e3, 
-  'viaY0' => 12.5e3,
+  'viaX0' => 25.0e3, 
+  'viaY0' => 0.0e3,
   'viaDia' => 5e3,
+  'viaSizeX' => 5e3,
+  'viaSizeY' => 4e3,
 #   BUMP PAD
-  'bPX0' => 0.0e3,
-  'bPY0' => -12.5e3,
+  'bPX0' => -25.0e3,
+  'bPY0' => 12.5e3,
   'bPDia' => 20e3,
   'bPDiaPassivation' => 12e3,
 #   PUNCH THROUGH STRUCTURE
-  'PTX0' => 27.0e3, 
-  'PTY0' => 25e3,
-  'PTholeDia' => 38e3,	#minimum biasDotDia+2*metalOH (+2*PTpStopWidth)
+  'PTX0' => 50.0e3, 
+  'PTY0' => 12.5e3,
+#  'PTholeDia' => 38.0e3,	#minimum biasDotDia+2*metalOH (+2*PTpStopWidth)
+  'PTholeDia' => 25e3,	#minimum biasDotDia+2*metalOH (+2*PTpStopWidth)
   'PTimplantDia' => 10e3,
   'bLWidth' => 3e3,	#bias line
   'bLHoleWidth' => 10e3,
   'bDotDia' => 16e3,	#bias dot
   'PTviaDia' => 5e3,
-  'PTpStopWidth' => 4e3,
+  'PTpStopWidth' => 0e3,
   'innerPTmetalOH' => 3.0e3,
 #   PSTOP
   'PSdistX' => 7.0e3,
-  'PSdistY' => 5.0e3,
-  'PSwidth' => 4.0e3,
+  'PSdistY' => 6.0e3,
+  'PSwidth' => 0.0e3,
   'PSrIn' => 2e3,
   'PSrOut' => 2e3,
   'PSopenX0' => 0,
@@ -43,14 +47,23 @@ InnerPixel = {
   'PSopenWidth' => 0,
 }
 
-PixelGrid = {
-
-    'sizeX' => 7764e3,
-    'sizeY' => 8000e3
+ImplantRouting = {
+    'sizeX' => 56.5e3,
+    'sizeY' => 15e3
 }
 
-#   PERIPHERY
+WiggleBiasLine = {
+	'cutfrommetal' => 11e3,
+	'outerxbl' => 10e3
+}
 
+PixelGrid = {
+
+    'sizeY' => 9600e3,
+    'sizeX' => 20000e3
+}
+
+# Periphery
 
 BiasRing = {
 
@@ -86,14 +99,14 @@ PixelEdge = {
     
     'distX' => 426e3,
     'distY' => 426e3,
-    'sizeX' => 10000e3,
-    'sizeY' => 10000e3,
+    'sizeY' => 11800e3,
+    'sizeX' => 22200e3,
 
     'aluDistX' => 376e3,
     'aluDistY' => 376e3,
-    'aluSizeX' => 9920e3,
-    'aluSizeY' => 9920e3,
+    'aluSizeY' => 11720e3,
+    'aluSizeX' => 22130e3,
 
     'outerX0'    => 0,
-    'outerY0'    => -150e3
+    'outerY0'    => 0
 }

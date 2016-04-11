@@ -13,7 +13,7 @@ InnerPixel = {
   'metalOH' => 3e3,
   'shiftX' => 2e3,
 #   VIA
-  'viaX0' => 0e3, 
+  'viaX0' =>  0e3, 
   'viaY0' => 5e3,
   'viaDia' => 7e3,
 #   BUMP PAD

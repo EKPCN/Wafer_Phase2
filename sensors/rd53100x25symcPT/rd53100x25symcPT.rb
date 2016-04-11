@@ -1,8 +1,8 @@
-module RD53100x25
+module RD53100x25symcPT
   
   include RBA
 
-  def RD53100x25.create(layout,sensor)
+  def RD53100x25symcPT.create(layout,sensor)
 
     rocType = "RD53A"
             
