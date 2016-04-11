@@ -128,7 +128,7 @@ Via = {
 
 BumpPad = {
 
-    'dia' => 30e3   
+    'dia' => 18e3   
 }
 
 BiasRing = {

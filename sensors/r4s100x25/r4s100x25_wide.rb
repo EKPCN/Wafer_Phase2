@@ -112,7 +112,7 @@ PixelEdge = {
     'aluSizeY' => 9920e3,
 
     'outerX0'    => 0,
-    'outerY0'    => -150e3
+    'outerY0'    => 0
 }
 
 RightImplant = {

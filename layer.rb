@@ -9,7 +9,7 @@ module Layer
     $layerAluVia = layout.insert_layer(LayerInfo.new(4,0,"Contact"))
     $layerAlu = layout.insert_layer(LayerInfo.new(5,0,"Metal"))
     $layerPassOpen = layout.insert_layer(LayerInfo.new(6,0,"PassWin"))
-    $layerUBM = layout.insert_layer(LayerInfo.new(7,0,"UBMxs"))    
+    $layerUBM = layout.insert_layer(LayerInfo.new(7,0,"UBM"))    
   end
   
 end
