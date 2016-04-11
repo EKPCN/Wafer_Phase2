@@ -6,8 +6,8 @@ PixelUnitCell = {
 
 InnerImplant = {
 
-    'sizeX' => 87.5e3,
-    'sizeY' => 12.5e3,
+    'sizeX' => 92.5e3,
+    'sizeY' => 17.5e3,
     'radius' => 4e3,
     'metalOH' => -1.5e3  
 }
@@ -115,8 +115,8 @@ PixelEdge = {
 
 RightImplant = {
 
-    'sizeX' => 87.5e3,
-    'sizeY' => 37.5e3,
+    'sizeX' => 92.5e3,
+    'sizeY' => 42.5e3,
     'radius' => 4e3,
     'metalOH' => -1.5e3  
 }
