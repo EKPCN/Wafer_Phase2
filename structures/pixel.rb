@@ -13,21 +13,41 @@ module Pixel
     $Cell.shapes(layer).insert(implant)    
   end 
 
-  def Pixel.implantRouting(layer,x,y,x0BB=0,y0BB=0,r=5000)
+  def Pixel.implantRouting(layer,x,y,x0BB=0.0,y0BB=0.0,shiftX=-18.5e3,bPw=20.0e3,x0=0.0,y0=0.0,rl=5.0e3,rr=5.0e3)
+	
+	if rr>rl
+		r = rr
+	else
+		r = rl
+	end
+	
+    metal = Basic.roundBox(x,y,shiftX,0,r)
+    routing = Basic.roundBox(bPw,y0BB.abs+2*r,x0BB,(y0BB)/2.0,r)
+	
+	# right corner
+    if rr>0
+		cornerBox = Basic.roundBox(rr,rr,x0BB+bPw/2.0+rr/2.0,-y/2.0-rr/2.0,0)
+		circ = Basic.circle(2*rr,x0BB+bPw/2.0+rr,-y/2.0-rr,32)
+		corner1 = Cut.polyVector([cornerBox,circ])
+	end
+	# left corner
+    if rl>0
+		cornerBox2 = Basic.roundBox(rl,rl,x0BB-bPw/2.0-rl/2.0,-y/2.0-rl/2.0,0)
+		circ2 = Basic.circle(2*rl,x0BB-bPw/2.0-rl,-y/2.0-rl,32)
+		corner2 = Cut.polyVector([cornerBox2,circ2,circ2])
+	end
 
-    metal = Basic.roundBox(x,y,-18.5e3,0,r)
-    routing = Basic.roundBox(20e3,y0BB.abs+2*r,x0BB,(y0BB)/2,r)
-
-    # 10e3 = width/2 of the routing
-    cornerBox = Basic.roundBox(r,r,x0BB+10e3+r/2,-y/2-r/2,0)
-    circ = Basic.circle(2*r,x0BB+10e3+r,-y/2-r,p=32) 
-    cornerBox2 = Basic.roundBox(r,r,x0BB-10e3-r/2,-y/2-r/2,0)
-    circ2 = Basic.circle(2*r,x0BB-10e3-r,-y/2-r,p=32)
-
-    corner1 = Cut.polyVector([cornerBox,circ])
-    corner2 = Cut.polyVector([cornerBox2,circ2,circ2])
-    edge = Merge.polyVector([metal,routing,corner1,corner2])    
-
+    if rr>0 && rl>0
+		edge = Merge.polyVector([metal,routing,corner1,corner2])
+	elsif rr>0
+		edge = Merge.polyVector([metal,routing,corner1])
+	elsif rl>0
+		edge = Merge.polyVector([metal,routing,corner2])
+	else
+		edge = Merge.polyVector([metal,routing])
+	end
+	edge.move(x0,y0)
+	
     $Cell.shapes(layer).insert(edge)  
       
   end
@@ -78,7 +98,7 @@ module Pixel
         
         tmp1 = Merge.polyVector([bumppadcut,routingcut])
         tmp1 = tmp1.round_corners(5e3,5e3,32)
-        
+         
         tmp = Merge.polyVector([tmp1,implant])#routingcut,bumppadcut,implant])
         implant = Cut.polyVector([tmp,tmp1])
         
@@ -97,8 +117,8 @@ module Pixel
         bumppadcut = Basic.circle(bpdia+dist*2,bppar[i],bppar[i+1],128)
         tmp = Merge.polyVector([bumppadcut,implant])
         implant = Cut.polyVector([tmp,bumppadcut])
-        
-        implant = implant.round_corners(0,5e3,32)
+                
+        implant = implant.round_corners(0,5e3,32) 
       end
       i+=4
     end
@@ -118,8 +138,9 @@ module Pixel
   # @param minDistToEdge [int] minimum distance to edge of implant
   # @param x0 [int] center of the implant
   # @param y0 [int] center of the implant
+  # @param cp center of the implant
   
-  def Pixel.ptImplant(layer,x,y,x0PT,y0PT,dHole,dImplant=0,minDistToEdge=0,x0=0,y0=0)
+  def Pixel.ptImplant(layer,x,y,x0PT,y0PT,dHole,dImplant=0,minDistToEdge=0,x0=0,y0=0,cp=0.250e3)
 	outercornerdia = 1.5e3
     if (x0PT).abs+dHole/2<x/2+2*minDistToEdge && (y0PT).abs+dHole/2<y/2+2*minDistToEdge
       #standard PT
@@ -142,7 +163,8 @@ module Pixel
       
       #round corners
       #corner parameter
-      cp = 0.250e3
+#      cp = 0.250e3
+#      cp = 2.50e3#  
       #extra parameter to account for deviation from perfect circle
       ep = 0.1e3
       
@@ -321,10 +343,11 @@ module Pixel
   # @param x0 [int] center of the implant
   # @param y0 [int] center of the implant
   # @param cutfrommetal [int] cut some area from the metal for a wiggle bias line
+  # @param  cp corner paramter
   
-  def Pixel.cptMetal(layer,x,y,x0PT,y0PT,d,x0=0,y0=0,cutfrommetal=0)
+  def Pixel.cptMetal(layer,x,y,x0PT,y0PT,d,x0=0,y0=0,cutfrommetal=0, cp = 0.5e3)
     
-    implantPoly = Polygon.new(Box.new(-x/2,-y/2,x/2,y/2))
+    implantPoly = Polygon.new(Box.new(-x/2.0,-y/2.0,x/2.0,y/2.0))
     outercornerdia = 2.5e3
     implantPoly = implantPoly.round_corners(0,outercornerdia,32)
     
@@ -336,24 +359,25 @@ module Pixel
     
     #round corners
     #corner parameter
-    cp = 0.50e3
+#    cp = 0.50e3
+#     cp = 2.5e3
     #extra parameter to account for deviation from perfect circle
     ep = 0.01e3
 
     #calculate position for left and right box
     #NOW ONLY FOR UPPER RIGHT CORNER COMMOM PUNCH-THRU
-    alphal = Math.acos((cp+y0PT-y/2)*2/d)
+    alphal = Math.acos((cp+y0PT-y/2.0)*2/d)
     rc = cp/(1-Math.cos(alphal))
-    xl = x0PT-Math.sin(alphal)*(d/2+rc)
-    lbox = Polygon.new(Box.new(xl,y/2-cp-ep,xl+rc*Math.sin(alphal),y/2))
-    lcirc = Basic.circle(2*rc,xl,y/2-rc,30)
+    xl = x0PT-Math.sin(alphal)*(d/2.0+rc)
+    lbox = Polygon.new(Box.new(xl,y/2.0-cp-ep,xl+rc*Math.sin(alphal),y/2.0))
+    lcirc = Basic.circle(2*rc,xl,y/2.0-rc,30)
     
         
-    alphar = Math.asin((cp+x0PT-x/2)*2/d)
+    alphar = Math.asin((cp+x0PT-x/2.0)*2/d)
     rc = cp/(1-Math.sin(alphar))
-    yr = y0PT-Math.cos(alphar)*(d/2+rc)
-    rbox = Polygon.new(Box.new(x/2-cp-ep,yr,x/2,yr+rc*Math.cos(alphar)))
-    rcirc = Basic.circle(2*rc,x/2-rc,yr,30)
+    yr = y0PT-Math.cos(alphar)*(d/2.0+rc)
+    rbox = Polygon.new(Box.new(x/2.0-cp-ep,yr,x/2.0,yr+rc*Math.cos(alphar)))
+    rcirc = Basic.circle(2*rc,x/2.0-rc,yr,30)
     
     tmpl = Merge.polyVector([lbox,lcirc])
     ptml = Cut.polyVector([tmpl,lcirc])
@@ -361,13 +385,14 @@ module Pixel
     tmpr = Merge.polyVector([rbox,rcirc])
     ptmr = Cut.polyVector([tmpr,rcirc])
     tmpr = Cut.polyVector([ptmr,rbox])
-      
+
     tmp = Merge.polyVector([implantPoly,lbox,rbox])
     ptm = Cut.polyVector([tmp,lbox,rbox])
     implant = Merge.polyVector([ptm,tmpl,tmpr])
+
     
-	if cutfrommetal!=0
-		box = Polygon.new(Box.new(x/2-cutfrommetal,-y/2,x/2,y/2)) 
+	if cutfrommetal != 0
+                               box = Polygon.new(Box.new(x/2.0-cutfrommetal,-y/2.0,x/2.0,y/2.0)) 
 		tmp = Merge.polyVector([implant,box])
 		implant = Cut.polyVector([box,tmp])
 		implant = implant.round_corners(0,outercornerdia,32)

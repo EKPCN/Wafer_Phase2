@@ -8,8 +8,8 @@ InnerPixel = {
   'dX' => 300e3,
   'dY' => 100e3,
 #   IMPLANT
-  'implantSizeX' => 121e3,
-  'implantSizeY' => 78e3,
+  'implantSizeX' => 114e3,
+  'implantSizeY' => 64e3,
   'metalOH' => 6.5e3,
 #   VIA
   'viaX0' => 12.0e3, 
@@ -56,8 +56,8 @@ OuterPixel = {
   'dX' => 0,
   'dY' => 100e3,
 #   IMPLANT
-  'implantSizeX' => 271e3,
-  'implantSizeY' => 78e3,
+  'implantSizeX' => 264e3,
+  'implantSizeY' => 64e3,
   'metalOH' => 6.5e3,
 #   VIA
   'viaX0' => 12.0e3, 
@@ -104,8 +104,8 @@ UpperPixel = {
   'dX' => 300e3,
   'dY' => 0,
 #   IMPLANT
-  'implantSizeX' => 121e3,
-  'implantSizeY' => 178e3,
+  'implantSizeX' => 114e3,
+  'implantSizeY' => 165.5e3,
   'metalOH' => 6.5e3,
 #   VIA
   'viaX0' => 12.0e3, 
@@ -152,8 +152,8 @@ CornerPixel = {
   'dX' => 0,
   'dY' => 0,
 #   IMPLANT
-  'implantSizeX' => 271e3,
-  'implantSizeY' => 178e3,
+  'implantSizeX' => 264e3,
+  'implantSizeY' => 164e3,
   'metalOH' => 6.5e3,
 #   VIA
   'viaX0' => 12.0e3, 

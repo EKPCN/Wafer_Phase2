@@ -1,3 +1,4 @@
+# $show-in-menu
 module CISWafer
   include RBA
 
@@ -14,7 +15,6 @@ module CISWafer
   load "Wafer_Phase2/utils/gds.rb"
   load "Wafer_Phase2/utils/text.rb"
 
-  
   # create mainWindow and layout
   
   mw = Application.instance.main_window
@@ -39,8 +39,9 @@ module CISWafer
   # Get SensorList from file
 
   sensors = []
-  
-  f = File.open($GLOBAL_PATH + "/sensors/sensorList.txt")
+
+# f = File.open($GLOBAL_PATH + "/sensors/sensorList.txt")
+  f = File.open($GLOBAL_PATH + "/sensors/sensorList_js.txt")
   f.each_line{ 
     |line| sensors << line.delete("\n") 
   }   
@@ -99,8 +100,4 @@ module CISWafer
   layoutView.add_missing_layers
   layoutView.zoom_fit  
 
-  
-  
-  
-  
 end

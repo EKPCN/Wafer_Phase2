@@ -82,8 +82,8 @@ module Basic
   # @return [Polygon] The polygon object
 
   def Basic.circle(d,x0=0,y0=0,p=32)
-    box = Polygon.new(Box.new(-d/2,-d/2,d/2,d/2))
-    circ = box.round_corners(0,d/2,p)
+    box = Polygon.new(Box.new(-d/2.0,-d/2.0,d/2.0,d/2.0))
+    circ = box.round_corners(0,d/2.0,p)
     circ.move(x0,y0)
     
     return circ

@@ -25,6 +25,7 @@ fcp130100x30_ipstop_wide
 fcp130100x30_pspray_normal
 fcp130100x30_pspray_wide
 fcp130100x30_cpstop_normal
+fcp130100x30b_cpstop_normal
 fcp130100x30cPT_normal
 fpixf_pstop
 bpixpt_cpstop
