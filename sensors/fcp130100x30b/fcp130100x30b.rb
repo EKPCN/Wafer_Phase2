@@ -81,12 +81,6 @@ module FCP130100x30b
     
     Pixel.grid(outerPixelCell2,OuterPixel['nX'], OuterPixel['nY'], OuterPixel['dX'], OuterPixel['dY'], -PixelGrid['sizeX']/2+(2*InnerPixel['nX']-1)*InnerPixel['cellSizeX']+OuterPixel['cellSizeX']/2, -PixelGrid['sizeY']/2+3*OuterPixel['cellSizeY']/2)
     
-  
-<<<<<<< HEAD
-    Merge.cells($sensor, pixelGridCell,0,0,0,true)
-        
-    periCell = layout.create_cell(name+"Periphery")
-=======
     Merge.cells($sensor, pixelGridCell,0,0,90,true)
     
 	pixelGridFlipped = { 
@@ -94,7 +88,7 @@ module FCP130100x30b
 		'sizeY' => PixelGrid['sizeX'] 
 	}
 	periCell = layout.create_cell(name+"Periphery")
->>>>>>> christian/master
+
     Periphery.init(periCell)
     Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,pixelGridFlipped,BiasRing,GuardRing,PixelEdge,rocType)
 
