@@ -136,7 +136,7 @@ module PSI46DIG100x25x3noedge
     lowerTextCell = Text.create(layout,$layerAlu,"Place chip periphery over here",-3138e3, -4830e3, 240,sensor)        
     Merge.cells(periCell, lowerTextCell)  
     Merge.cells(periCell, textCell)
-
+    
     Merge.cells($sensor, periCell)
 	
     return $sensor

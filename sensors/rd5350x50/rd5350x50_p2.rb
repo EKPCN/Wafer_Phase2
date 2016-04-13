@@ -6,8 +6,8 @@ PixelUnitCell = {
 
 InnerImplant = {
 
-    'sizeX' => 27e3,
-    'sizeY' => 27e3,
+    'sizeX' => 26e3,
+    'sizeY' => 26e3,
     'radius' => 4e3,
     'metalOH' => 3e3  
 }
@@ -35,7 +35,7 @@ InnerPStop = {
     'rIn' => 4e3,
     'rOut' => 8e3,
     'openX0' => -6e3,
-    'openY0' => -22.5e3,
+    'openY0' => -22.0e3,
     'openWidth' => 12e3,   
 }
 
@@ -89,8 +89,7 @@ PixelEdge = {
     'distX' => 426e3,
     'distY' => 426e3,
     'sizeY' => 11800e3,
-    'sizeX' => 22200e3,
-
+    'sizeX' => 22210e3,
     'aluDistX' => 376e3,
     'aluDistY' => 376e3,
     'aluSizeY' => 11720e3,
