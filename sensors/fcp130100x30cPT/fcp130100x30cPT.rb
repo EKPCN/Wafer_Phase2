@@ -47,7 +47,7 @@ module FCP130100x30cPT
     
     Pixel.grid(innerPixelCell2,InnerPixel['nX'], InnerPixel['nY'], InnerPixel['dX'], 2*InnerPixel['dY'], -PixelGrid['sizeX']/2+(3*InnerPixel['cellSizeX']/2), -PixelGrid['sizeY']/2+3*(InnerPixel['cellSizeY']/2),180)
     
-    Merge.cells($sensor, pixelGridCell,0,0,90,false)
+    Merge.cells($sensor, pixelGridCell,0,0,90,true)
 	
 	
 	pixelGridFlipped = { 
