@@ -14,7 +14,6 @@ module Periphery
       if biasRing['distX']!=0
         
         if rocType == "PSI46"    
-          #Periphery.asymRing(layerImp,pixelGrid['sizeX']+2*biasRing['distX'],pixelGrid['sizeY']+2*biasRing['distY'],pixelGrid['sizeX']+2*biasRing['distX']+2*biasRing['width'],8350.64e3,biasRing['rIn'],biasRing['rOut'],0,-69.32e3)
           Periphery.asymRing(layerImp,pixelGrid['sizeX']+2*biasRing['distX'],pixelGrid['sizeY']+2*biasRing['distY'],pixelGrid['sizeX']+2*biasRing['distX']+2*biasRing['width'],8375e3,biasRing['rIn'],biasRing['rOut'],0,-69.32e3)
           Periphery.asymRing(layerMet,pixelGrid['sizeX']+2*biasRing['aluDistX'],pixelGrid['sizeY']+2*biasRing['aluDistY'],pixelGrid['sizeX']+2*biasRing['aluDistX']+2*biasRing['aluWidth'],8375e3+45e3,biasRing['rIn'],biasRing['aluROut'],0,-69.32e3) 
         else

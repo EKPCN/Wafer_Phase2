@@ -7,6 +7,8 @@ module PSI46DIG100x25x3noedge
 
   def PSI46DIG100x25x3noedge.create(layout,sensor)
     
+    rocType = "PSI46"
+    
     $sensor = layout.create_cell(sensor)
     name = sensor + "."
     
@@ -114,26 +116,10 @@ module PSI46DIG100x25x3noedge
 	
     periCell = layout.create_cell(name+"Periphery")
     Periphery.init(periCell)
-    Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
+    Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge,rocType)
     
-    #bump pads for guard ring connection
-#    Pixel.bumpPad($layerPassOpen,BumpPad['bPDiaPassivation'],LeftPixel['bPX0']-PixelGrid['sizeX']/2+LeftPixel['cellSizeX']/2,LeftPixel['bPY0']-PixelGrid['sizeY']/2+InnerPixel['cellSizeY']/2-300e3)
-#   Pixel.bumpPad($layerAlu,BumpPad['bPDia'],LeftPixel['bPX0']-PixelGrid['sizeX']/2+LeftPixel['cellSizeX']/2,LeftPixel['bPY0']-PixelGrid['sizeY']/2+InnerPixel['cellSizeY']/2-300e3)
-#    Pixel.roundBox($layerAlu,BumpPad['bPDia'],40e3,LeftPixel['bPX0']-PixelGrid['sizeX']/2+LeftPixel['cellSizeX']/2,LeftPixel['bPY0']-PixelGrid['sizeY']/2+InnerPixel['cellSizeY']/2-300e3+20e3,0e3)
-#    Pixel.bumpPad($layerPassOpen,BumpPad['bPDiaPassivation'],RightPixel['bPX0']-PixelGrid['sizeX']/2+LeftPixel['cellSizeX']+RightPixel['cellSizeX']/2+(InnerPixel['nX1']-1)*InnerPixel['dX']+2*InnerPixel['cellSizeX'],RightPixel['bPY0']-PixelGrid['sizeY']/2+InnerPixel['cellSizeY']/2-300e3)
-#    Pixel.bumpPad($layerAlu,BumpPad['bPDia'],RightPixel['bPX0']-PixelGrid['sizeX']/2+LeftPixel['cellSizeX']+RightPixel['cellSizeX']/2+(InnerPixel['nX1']-1)*InnerPixel['dX']+2*InnerPixel['cellSizeX'],RightPixel['bPY0']-PixelGrid['sizeY']/2+InnerPixel['cellSizeY']/2-300e3)
- #   Pixel.roundBox($layerAlu,BumpPad['bPDia'],40e3,RightPixel['bPX0']-PixelGrid['sizeX']/2+LeftPixel['cellSizeX']+RightPixel['cellSizeX']/2+(InnerPixel['nX1']-1)*InnerPixel['dX']+2*InnerPixel['cellSizeX'],RightPixel['bPY0']-PixelGrid['sizeY']/2+InnerPixel['cellSizeY']/2-300e3+20e3,0e3)
-	    
-    # Removed lower text box
-    
-    #lowerTextCell = Text.create(layout,$layerAlu,"Place chip periphery over here",-3500e3, PixelEdge['outerY0'] + -(PixelGrid['sizeY']+2*PixelEdge['aluDistY'])/2-(PixelEdge['aluSizeY']-(PixelGrid['sizeY']+2*PixelEdge['aluDistY']))/4, 400)    
-    #Merge.cells(periCell, lowerTextCell)
-    
- #   textCell = Text.create(layout, $layerAlu, sensor,-3600e3, PixelEdge['outerY0'] + (PixelGrid['sizeY']+2*PixelEdge['aluDistY'])/2+(PixelEdge['aluSizeY']-(PixelGrid['sizeY']+2*PixelEdge['aluDistY']))/4 - 125e3, 250)
-    
-#    Merge.cells(periCell, textCell)
-    textCell = Text.create(layout, $layerAlu, sensor ,-1000e3, 4590e3, 240) 
-    lowerTextCell = Text.create(layout,$layerAlu,"Place chip periphery over here",-3138e3, -4830e3, 240,sensor)        
+    textCell = Text.create(layout, $layerAlu, sensor ,-2000e3, 4590e3, 240) 
+    lowerTextCell = Text.create(layout,$layerAlu,"Place chip periphery over here",-3138e3, -4850e3, 240,sensor)        
     Merge.cells(periCell, lowerTextCell)  
     Merge.cells(periCell, textCell)
     

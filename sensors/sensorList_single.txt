@@ -1,1 +1,4 @@
 psi46dig100x25x2s_y1
+fpixf_pstop
+psi46dig100x25x3s_p1
+psi46dig100x25x3s_y2

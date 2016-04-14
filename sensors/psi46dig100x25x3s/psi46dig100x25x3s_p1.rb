@@ -151,36 +151,47 @@ BiasRing = {
     'aluDistY' => 5.5e3,
     'aluWidth' => 123e3,
     'aluROut' => 101.5e3,
-    'aluRIn' => 0
+    'aluRIn' => 0,
+    
+    'bumpDia' => 12e3,
+    'bumpX0' => 13e3,
+    'bumpY0' => -250.64e3,
 } 
 
 GuardRing = {
 
     'distX' => 158e3,
-    'distY' => 158e3,
+    'distY' => 158e3+81.5e3,
     'width' => 28e3,
     'rIn' => 131e3,
     'rOut' => 159e3,
     
     'aluDistX' => 145.5e3,
-    'aluDistY' => 145.5e3,
+    'aluDistY' => 145.5e3+81.5e3,
     'aluWidth' => 73e3,
     'aluROut' => 191.5e3,
-    'aluRIn' => 118.5e3
+    'aluRIn' => 118.5e3,
+    
+    'x0' => 0e3,
+    'y0' => -69.32e3,
+    
+    'bumpDia' => 12e3,
+    'bumpX0' => 13e3,
+    'bumpY0' => -350.64e3,
 }
 
 PixelEdge = {
     
     'distX' => 426e3,
-    'distY' => 426e3,
+    'distY' => 426e3+81.5e3,
     'sizeX' => 10000e3,
     'sizeY' => 10000e3,
 
     'aluDistX' => 376e3,
-    'aluDistY' => 376e3,
+    'aluDistY' => 376e3+81.5e3,
     'aluSizeX' => 9920e3,
     'aluSizeY' => 9920e3,
 
     'outerX0'    => 0,
-    'outerY0' => 0
+    'outerY0'    => -69.32e3
 }

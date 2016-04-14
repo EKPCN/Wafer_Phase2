@@ -6,7 +6,9 @@ module FPixF
   # @return [cell] Returns the cell with all structures
 
   def FPixF.create(layout,sensor)
-        
+    
+    rocType = "PSI46"    
+    
     $sensor = layout.create_cell(sensor)    
     name = sensor + "."
     
@@ -61,7 +63,7 @@ module FPixF
     periCell = layout.create_cell(name+"Periphery")
   
     Periphery.init(periCell)
-    Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
+    Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge,rocType)
     
 #    textCell = Text.create(layout, $layerAlu, sensor ,-1000e3, 4525e3, 250)#
     textCell = Text.create(layout, $layerAlu, sensor ,-1000e3, 4590e3, 240)
