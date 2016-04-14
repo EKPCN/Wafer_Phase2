@@ -29,7 +29,7 @@ module Periphery
         if rocType == "FEI4" 
           Periphery.passOpening(layerPassOpen,pixelGrid['sizeX']-2000e3,biasRing['width']-23e3,0,-pixelGrid['sizeY']/2-biasRing['distY']-biasRing['width']/2-7.5e3)          
         elsif rocType == "PSI46"
-          Periphery.passOpening(layerPassOpen,pixelGrid['sizeX']-100e3,biasRing['width']-23e3,0,-pixelGrid['sizeY']/2-biasRing['distY']-biasRing['width']/2-55e3)
+          Periphery.passOpening(layerPassOpen,pixelGrid['sizeX']-300e3,biasRing['width']-23e3,0,-pixelGrid['sizeY']/2-biasRing['distY']-biasRing['width']/2-55e3)
           Periphery.bumpPad(layerPassOpen,biasRing['bumpDia'],-pixelGrid['sizeX']/2+biasRing['bumpX0'],-pixelGrid['sizeY']/2+biasRing['bumpY0'])
           Periphery.bumpPad(layerMet,20e3,-pixelGrid['sizeX']/2+biasRing['bumpX0'],-pixelGrid['sizeY']/2+biasRing['bumpY0'])
         else
@@ -48,7 +48,7 @@ module Periphery
           Periphery.ring(layerMet,pixelGrid['sizeX']+2*guardRing['aluDistX'],pixelGrid['sizeY']+2*guardRing['aluDistY'],guardRing['aluWidth'],guardRing['aluRIn'],guardRing['aluROut'],guardRing['x0'],guardRing['y0'])   
           Pixel.viaGrid(layerVia,6e3,6e3,(pixelGrid['sizeX']/74.5e3).round,1,74.5e3,0,-pixelGrid['sizeX']/2,-pixelGrid['sizeY']/2-guardRing['distY']-guardRing['width']/2+guardRing['y0'])
           Pixel.viaGrid(layerVia,6e3,6e3,(pixelGrid['sizeX']/74.5e3).round,1,74.5e3,0,-pixelGrid['sizeX']/2,pixelGrid['sizeY']/2+guardRing['distY']+guardRing['width']/2+guardRing['y0'])
-          Periphery.passOpening(layerPassOpen,pixelGrid['sizeX']-100e3,guardRing['aluWidth']-10e3,0,-pixelGrid['sizeY']/2-guardRing['aluDistY']-guardRing['aluWidth']/2+guardRing['y0'])
+          Periphery.passOpening(layerPassOpen,pixelGrid['sizeX']-300e3,guardRing['aluWidth']-10e3,0,-pixelGrid['sizeY']/2-guardRing['aluDistY']-guardRing['aluWidth']/2+guardRing['y0'])
           Periphery.bumpPad(layerPassOpen,guardRing['bumpDia'],-pixelGrid['sizeX']/2+guardRing['bumpX0'],-pixelGrid['sizeY']/2+guardRing['bumpY0'])
           Periphery.bumpPad(layerMet,20e3,-pixelGrid['sizeX']/2+guardRing['bumpX0'],-pixelGrid['sizeY']/2+guardRing['bumpY0'])
         else
@@ -140,18 +140,6 @@ module Periphery
      edge = Cut.polyVector([edge,labelBox])    
     end
 
-# Textbox (Christian)
-#
-#  edg = Cut.polyVector([outerBox,innerBox])
-#
-#	if cutfortext
-#		txtBox = Polygon.new(Box.new(-5e6/2,-110e3/2,5e6/2,110e3/2))
-#		txtBox.move(x0,y0+yi/2+(yo-yi)/4)
-#		edge = Cut.polyVector([edg,txtBox])
-#	else
-#		edge = edg
-#	end
-	
     if alignmentmark
       cutbox = Polygon.new(Box.new(-100e3,-100e3,100e3,100e3))
       f1 = Polygon.new(Box.new(-15e3,-70e3,15e3,70e3))
