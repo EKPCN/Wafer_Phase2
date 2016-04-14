@@ -1,5 +1,0 @@
-GridX: 7836
-GridY: 8036
-BiasWidth: 88
-PitchBiasBump: 300.64
-LowerBiasWidth: 226.64
