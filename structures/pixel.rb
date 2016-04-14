@@ -615,10 +615,8 @@ module Pixel
   # @return [Nill]
 
   def Pixel.bumpPad(layer,dia,x0=0,y0=0)
-
-   # bump = Basic.octagon(dia,x0,y0)    
+ 
     bumpCircle = Basic.circle(dia,x0,y0)
-   # $Cell.shapes(layer).insert(bump)
     $Cell.shapes(layer).insert(bumpCircle)
 
   end
