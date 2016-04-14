@@ -41,7 +41,7 @@ module CISWafer
   sensors = []
 
 # f = File.open($GLOBAL_PATH + "/sensors/sensorList.txt")
-  f = File.open($GLOBAL_PATH + "/sensors/sensorList_js.txt")
+  f = File.open($GLOBAL_PATH + "/sensors/sensorList_single.txt")
   f.each_line{ 
     |line| sensors << line.delete("\n") 
   }   
