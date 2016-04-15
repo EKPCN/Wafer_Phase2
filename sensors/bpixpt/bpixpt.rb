@@ -7,6 +7,7 @@ module BPixPT
 
   def BPixPT.create(layout,sensor)
     
+    rocType = "PSI46"
         
     $sensor = layout.create_cell(sensor)
     name = sensor + "."
@@ -86,10 +87,10 @@ module BPixPT
     
     periCell = layout.create_cell(name+"Periphery")
     Periphery.init(periCell)
-    Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
+    Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge,rocType)
 
-    textCell = Text.create(layout, $layerAlu, sensor ,-1000e3, 4590e3, 240) 
-    lowerTextCell = Text.create(layout,$layerAlu,"Place chip periphery over here",-3138e3, -4830e3, 240,sensor)        
+    textCell = Text.create(layout, $layerAlu, sensor ,-1000e3, 4540e3, 240) 
+    lowerTextCell = Text.create(layout,$layerAlu,"Place chip periphery over here",-3138e3, -4900e3, 240,sensor)        
     Merge.cells(periCell, lowerTextCell)  
     Merge.cells(periCell, textCell)
     
