@@ -14,8 +14,8 @@ module Periphery
       if biasRing['distX']!=0
         
         if rocType == "PSI46"    
-          Periphery.asymRing(layerImp,pixelGrid['sizeX']+2*biasRing['distX'],pixelGrid['sizeY']+2*biasRing['distY'],pixelGrid['sizeX']+2*biasRing['distX']+2*biasRing['width'],8375e3,biasRing['rIn'],biasRing['rOut'],0,-69.32e3)
-          Periphery.asymRing(layerMet,pixelGrid['sizeX']+2*biasRing['aluDistX'],pixelGrid['sizeY']+2*biasRing['aluDistY'],pixelGrid['sizeX']+2*biasRing['aluDistX']+2*biasRing['aluWidth'],8375e3+45e3,biasRing['rIn'],biasRing['aluROut'],0,-69.32e3) 
+          Periphery.asymRing(layerImp,pixelGrid['sizeX']+2*biasRing['distX'],pixelGrid['sizeY']+2*biasRing['distY'],pixelGrid['sizeX']+2*biasRing['distX']+2*biasRing['width'],biasRing['outerY'],biasRing['rIn'],biasRing['rOut'],0,-69.32e3)
+          Periphery.asymRing(layerMet,pixelGrid['sizeX']+2*biasRing['aluDistX'],pixelGrid['sizeY']+2*biasRing['aluDistY'],pixelGrid['sizeX']+2*biasRing['aluDistX']+2*biasRing['aluWidth'],biasRing['aluOuterY'],biasRing['rIn'],biasRing['aluROut'],0,-69.32e3) 
         else
           Periphery.ring(layerImp,pixelGrid['sizeX']+2*biasRing['distX'],pixelGrid['sizeY']+2*biasRing['distY'],biasRing['width'],biasRing['rIn'],biasRing['rOut'])
           Periphery.ring(layerMet,pixelGrid['sizeX']+2*biasRing['aluDistX'],pixelGrid['sizeY']+2*biasRing['aluDistY'],biasRing['aluWidth'],biasRing['aluRIn'],biasRing['aluROut'])
@@ -29,7 +29,7 @@ module Periphery
         if rocType == "FEI4" 
           Periphery.passOpening(layerPassOpen,pixelGrid['sizeX']-2000e3,biasRing['width']-23e3,0,-pixelGrid['sizeY']/2-biasRing['distY']-biasRing['width']/2-7.5e3)          
         elsif rocType == "PSI46"
-          Periphery.passOpening(layerPassOpen,pixelGrid['sizeX']-300e3,biasRing['width']-23e3,0,-pixelGrid['sizeY']/2-biasRing['distY']-biasRing['width']/2-55e3)
+          Periphery.passOpening(layerPassOpen,pixelGrid['sizeX']-600e3,biasRing['width']-23e3,0,-pixelGrid['sizeY']/2-biasRing['distY']-biasRing['width']/2-55e3)
           Periphery.bumpPad(layerPassOpen,biasRing['bumpDia'],-pixelGrid['sizeX']/2+biasRing['bumpX0'],-pixelGrid['sizeY']/2+biasRing['bumpY0'])
           Periphery.bumpPad(layerMet,20e3,-pixelGrid['sizeX']/2+biasRing['bumpX0'],-pixelGrid['sizeY']/2+biasRing['bumpY0'])
         else
@@ -48,7 +48,7 @@ module Periphery
           Periphery.ring(layerMet,pixelGrid['sizeX']+2*guardRing['aluDistX'],pixelGrid['sizeY']+2*guardRing['aluDistY'],guardRing['aluWidth'],guardRing['aluRIn'],guardRing['aluROut'],guardRing['x0'],guardRing['y0'])   
           Pixel.viaGrid(layerVia,6e3,6e3,(pixelGrid['sizeX']/74.5e3).round,1,74.5e3,0,-pixelGrid['sizeX']/2,-pixelGrid['sizeY']/2-guardRing['distY']-guardRing['width']/2+guardRing['y0'])
           Pixel.viaGrid(layerVia,6e3,6e3,(pixelGrid['sizeX']/74.5e3).round,1,74.5e3,0,-pixelGrid['sizeX']/2,pixelGrid['sizeY']/2+guardRing['distY']+guardRing['width']/2+guardRing['y0'])
-          Periphery.passOpening(layerPassOpen,pixelGrid['sizeX']-300e3,guardRing['aluWidth']-10e3,0,-pixelGrid['sizeY']/2-guardRing['aluDistY']-guardRing['aluWidth']/2+guardRing['y0'])
+          Periphery.passOpening(layerPassOpen,pixelGrid['sizeX']-600e3,guardRing['aluWidth']-10e3,0,-pixelGrid['sizeY']/2-guardRing['aluDistY']-guardRing['aluWidth']/2+guardRing['y0'])
           Periphery.bumpPad(layerPassOpen,guardRing['bumpDia'],-pixelGrid['sizeX']/2+guardRing['bumpX0'],-pixelGrid['sizeY']/2+guardRing['bumpY0'])
           Periphery.bumpPad(layerMet,20e3,-pixelGrid['sizeX']/2+guardRing['bumpX0'],-pixelGrid['sizeY']/2+guardRing['bumpY0'])
         else
@@ -63,6 +63,7 @@ module Periphery
         Pixel.viaGrid(layerVia,6e3,6e3,1,(pixelGrid['sizeY']/74.5e3).round,0,74.5e3,pixelGrid['sizeX']/2+guardRing['distX']+guardRing['width']/2,-pixelGrid['sizeY']/2)		
 	end
 	
+	#edge
       if rocType == "PSI46"
         Periphery.edge(layerEdge,pixelGrid['sizeX']+2*pixelEdge['distX'],pixelGrid['sizeY']+2*pixelEdge['distY'],pixelEdge['sizeX'],pixelEdge['sizeY'],pixelEdge['outerX0'],pixelEdge['outerY0'],0,0,false,false,false,rocType)  
       else
@@ -115,6 +116,8 @@ module Periphery
           labelBox = Polygon.new(Box.new(-xo/2+8000e3,yo/2-400e3,xo/2-8000e3,yo/2-100e3))
        elsif  rocType == "FCP130"
           labelBox = Polygon.new(Box.new(-xo/2+1000e3,yo/2-400e3,xo/2-1000e3,yo/2-100e3))
+       elsif rocType == "PSI46"
+          labelBox = Polygon.new(Box.new(-xo/2+2000e3,yo/2-450e3,xo/2-2000e3,yo/2-150e3))
        else  
           labelBox = Polygon.new(Box.new(-xo/2+2000e3,yo/2-400e3,xo/2-2000e3,yo/2-100e3))
       end      
@@ -133,7 +136,7 @@ module Periphery
        elsif rocType == "FCP130"
          labelBox = Polygon.new(Box.new(-xo/2+500e3, -yo/2+100e3, xo/2-500e3, -yo/2+400e3))     
        elsif rocType == "PSI46"
-         labelBox = Polygon.new(Box.new(-xo/2+1500e3, -yo/2+75e3, xo/2-1500e3, -yo/2+375e3))     
+         labelBox = Polygon.new(Box.new(-xo/2+1500e3, -yo/2+25e3, xo/2-1500e3, -yo/2+325e3))     
        else  
          labelBox = Polygon.new(Box.new(-xo/2+1500e3, -yo/2+100e3, xo/2-1500e3, -yo/2+400e3))
       end      

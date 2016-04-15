@@ -65,10 +65,8 @@ module FPixF
     Periphery.init(periCell)
     Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge,rocType)
     
-#    textCell = Text.create(layout, $layerAlu, sensor ,-1000e3, 4525e3, 250)#
-    textCell = Text.create(layout, $layerAlu, sensor ,-1000e3, 4590e3, 240)
-#    lowerTextCell = Text.create(layout,$layerAlu,"Place chip periphery over here",-3138e3, PixelEdge['outerY0'] + -(PixelGrid['sizeY']+3*PixelEdge['aluDistY'])/2-(PixelEdge['aluSizeY']-(PixelGrid['sizeY']+3*PixelEdge['aluDistY']))/4, 240,sensor) 
-    lowerTextCell = Text.create(layout,$layerAlu,"Place chip periphery over here",-3138e3, -4830e3, 240,sensor)        
+    textCell = Text.create(layout, $layerAlu, sensor ,-1000e3, 4540e3, 240)
+    lowerTextCell = Text.create(layout,$layerAlu,"Place chip periphery over here",-3138e3, -4900e3, 240,sensor)        
     Merge.cells(periCell, lowerTextCell)    
     
     Merge.cells(periCell, textCell)

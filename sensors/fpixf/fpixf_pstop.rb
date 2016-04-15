@@ -139,14 +139,19 @@ BiasRing = {
     'rOut' => 79e3,
     'rIn' => 0,
     
+    'outerX' => 7952e3,
+    'outerY' => 8475e3,
+    'aluOuterX' => 7952e3,
+    'aluOuterY' => 8520e3,  
+  
     'aluDistX' => 5.5e3,
     'aluDistY' => 5.5e3,
     'aluWidth' => 123e3,
     'aluROut' => 101.5e3,
     'aluRIn' => 0,
 
-    'bumpDia' => 12e3,
-    'bumpX0' => 13e3,
+    'bumpDia' => 18e3,
+    'bumpX0' => 200e3,
     'bumpY0' => -250.64e3,
 } 
 
@@ -167,8 +172,8 @@ GuardRing = {
     'x0' => 0e3,
     'y0' => -69.32e3,
     
-    'bumpDia' => 12e3,
-    'bumpX0' => 13e3,
+    'bumpDia' => 18e3,
+    'bumpX0' => 200e3,
     'bumpY0' => -350.64e3,
 }
 
