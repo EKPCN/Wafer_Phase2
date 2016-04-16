@@ -88,7 +88,7 @@ BiasRing = {
     
     'bumpDia' => 12e3,
     'bumpX0' => 25e3,
-    'bumpY0' => -225e3,
+    'bumpY0' => -212.5e3,
     
 } 
 
@@ -123,7 +123,7 @@ PixelEdge = {
     'aluSizeY' => 9920e3,
 
     'outerX0'    => 0,
-    'outerY0'    => 0e3
+    'outerY0'    => 0
 }
 
 RightImplant = {
