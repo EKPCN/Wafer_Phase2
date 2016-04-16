@@ -16,6 +16,9 @@ module Periphery
         if rocType == "PSI46"    
           Periphery.asymRing(layerImp,pixelGrid['sizeX']+2*biasRing['distX'],pixelGrid['sizeY']+2*biasRing['distY'],pixelGrid['sizeX']+2*biasRing['distX']+2*biasRing['width'],biasRing['outerY'],biasRing['rIn'],biasRing['rOut'],0,-69.32e3)
           Periphery.asymRing(layerMet,pixelGrid['sizeX']+2*biasRing['aluDistX'],pixelGrid['sizeY']+2*biasRing['aluDistY'],pixelGrid['sizeX']+2*biasRing['aluDistX']+2*biasRing['aluWidth'],biasRing['aluOuterY'],biasRing['rIn'],biasRing['aluROut'],0,-69.32e3) 
+        elsif rocType == "R4S"
+          Periphery.asymRing(layerImp,pixelGrid['sizeX']+2*biasRing['distX'],pixelGrid['sizeY']+2*biasRing['distY'],pixelGrid['sizeX']+2*biasRing['distX']+2*biasRing['width'],biasRing['outerY'],biasRing['rIn'],biasRing['rOut'],0,-65e3)
+          Periphery.asymRing(layerMet,pixelGrid['sizeX']+2*biasRing['aluDistX'],pixelGrid['sizeY']+2*biasRing['aluDistY'],pixelGrid['sizeX']+2*biasRing['aluDistX']+2*biasRing['aluWidth'],biasRing['aluOuterY'],biasRing['rIn'],biasRing['aluROut'],0,-65e3)
         else
           Periphery.ring(layerImp,pixelGrid['sizeX']+2*biasRing['distX'],pixelGrid['sizeY']+2*biasRing['distY'],biasRing['width'],biasRing['rIn'],biasRing['rOut'])
           Periphery.ring(layerMet,pixelGrid['sizeX']+2*biasRing['aluDistX'],pixelGrid['sizeY']+2*biasRing['aluDistY'],biasRing['aluWidth'],biasRing['aluRIn'],biasRing['aluROut'])
@@ -29,6 +32,10 @@ module Periphery
         if rocType == "FEI4" 
           Periphery.passOpening(layerPassOpen,pixelGrid['sizeX']-2000e3,biasRing['width']-23e3,0,-pixelGrid['sizeY']/2-biasRing['distY']-biasRing['width']/2-7.5e3)          
         elsif rocType == "PSI46"
+          Periphery.passOpening(layerPassOpen,pixelGrid['sizeX']-600e3,biasRing['width']-23e3,0,-pixelGrid['sizeY']/2-biasRing['distY']-biasRing['width']/2-55e3)
+          Periphery.bumpPad(layerPassOpen,biasRing['bumpDia'],-pixelGrid['sizeX']/2+biasRing['bumpX0'],-pixelGrid['sizeY']/2+biasRing['bumpY0'])
+          Periphery.bumpPad(layerMet,20e3,-pixelGrid['sizeX']/2+biasRing['bumpX0'],-pixelGrid['sizeY']/2+biasRing['bumpY0'])
+        elsif rocType == "R4S"
           Periphery.passOpening(layerPassOpen,pixelGrid['sizeX']-600e3,biasRing['width']-23e3,0,-pixelGrid['sizeY']/2-biasRing['distY']-biasRing['width']/2-55e3)
           Periphery.bumpPad(layerPassOpen,biasRing['bumpDia'],-pixelGrid['sizeX']/2+biasRing['bumpX0'],-pixelGrid['sizeY']/2+biasRing['bumpY0'])
           Periphery.bumpPad(layerMet,20e3,-pixelGrid['sizeX']/2+biasRing['bumpX0'],-pixelGrid['sizeY']/2+biasRing['bumpY0'])
@@ -51,6 +58,12 @@ module Periphery
           Periphery.passOpening(layerPassOpen,pixelGrid['sizeX']-600e3,guardRing['aluWidth']-10e3,0,-pixelGrid['sizeY']/2-guardRing['aluDistY']-guardRing['aluWidth']/2+guardRing['y0'])
           Periphery.bumpPad(layerPassOpen,guardRing['bumpDia'],-pixelGrid['sizeX']/2+guardRing['bumpX0'],-pixelGrid['sizeY']/2+guardRing['bumpY0'])
           Periphery.bumpPad(layerMet,20e3,-pixelGrid['sizeX']/2+guardRing['bumpX0'],-pixelGrid['sizeY']/2+guardRing['bumpY0'])
+        elsif rocType == "R4S"
+          Periphery.ring(layerImp,pixelGrid['sizeX']+2*guardRing['distX'],pixelGrid['sizeY']+2*guardRing['distY'],guardRing['width'],guardRing['rIn'],guardRing['rOut'],guardRing['x0'],guardRing['y0'])
+          Periphery.ring(layerMet,pixelGrid['sizeX']+2*guardRing['aluDistX'],pixelGrid['sizeY']+2*guardRing['aluDistY'],guardRing['aluWidth'],guardRing['aluRIn'],guardRing['aluROut'],guardRing['x0'],guardRing['y0'])   
+          Pixel.viaGrid(layerVia,6e3,6e3,(pixelGrid['sizeX']/74.5e3).round,1,74.5e3,0,-pixelGrid['sizeX']/2,-pixelGrid['sizeY']/2-guardRing['distY']-guardRing['width']/2+guardRing['y0'])
+          Pixel.viaGrid(layerVia,6e3,6e3,(pixelGrid['sizeX']/74.5e3).round,1,74.5e3,0,-pixelGrid['sizeX']/2,pixelGrid['sizeY']/2+guardRing['distY']+guardRing['width']/2+guardRing['y0'])
+          Periphery.passOpening(layerPassOpen,pixelGrid['sizeX']-600e3,guardRing['aluWidth']-10e3,0,-pixelGrid['sizeY']/2-guardRing['aluDistY']-guardRing['aluWidth']/2+guardRing['y0'])
         else
           Periphery.ring(layerImp,pixelGrid['sizeX']+2*guardRing['distX'],pixelGrid['sizeY']+2*guardRing['distY'],guardRing['width'],guardRing['rIn'],guardRing['rOut'])
           Periphery.ring(layerMet,pixelGrid['sizeX']+2*guardRing['aluDistX'],pixelGrid['sizeY']+2*guardRing['aluDistY'],guardRing['aluWidth'],guardRing['aluRIn'],guardRing['aluROut'])
@@ -66,6 +79,8 @@ module Periphery
 	#edge
       if rocType == "PSI46"
         Periphery.edge(layerEdge,pixelGrid['sizeX']+2*pixelEdge['distX'],pixelGrid['sizeY']+2*pixelEdge['distY'],pixelEdge['sizeX'],pixelEdge['sizeY'],pixelEdge['outerX0'],pixelEdge['outerY0'],0,0,false,false,false,rocType)  
+      elsif rocType == "R4S"
+        Periphery.edge(layerEdge,pixelGrid['sizeX']+2*pixelEdge['distX'],pixelGrid['sizeY']+2*pixelEdge['distY'],pixelEdge['sizeX'],pixelEdge['sizeY'],pixelEdge['outerX0'],pixelEdge['outerY0'],0,0,false,false,false,rocType)
       else
         Periphery.edge(layerEdge,pixelGrid['sizeX']+2*pixelEdge['distX'],pixelGrid['sizeY']+2*pixelEdge['distY'],pixelEdge['sizeX'],pixelEdge['sizeY'],pixelEdge['outerX0'],pixelEdge['outerY0'])   
       end
@@ -107,6 +122,8 @@ module Periphery
     
     if rocType == "PSI46"
       innerBox.move(0,-69.32e3)
+    elsif rocType == "R4S"
+      innerBox.move(0,-65e3)
     end
     
     if cutfortext
