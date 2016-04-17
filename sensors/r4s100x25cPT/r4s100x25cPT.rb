@@ -68,7 +68,7 @@ module R4S100x25cPT
 #    Pixel.bumpPad($layerPassOpen,InnerPixel['bPDiaPassivation'],-InnerPixel['bPX0']-PixelGrid['sizeX']/2+(4*InnerPixel['nX']-2)*(InnerPixel['cellSizeX']/2),InnerPixel['bPY0']-PixelGrid['sizeY']/2+(InnerPixel['cellSizeY']/2)-225e3)
 #    Pixel.bumpPad($layerAlu,InnerPixel['bPDia'],-InnerPixel['bPX0']-PixelGrid['sizeX']/2+(4*InnerPixel['nX']-2)*(InnerPixel['cellSizeX']/2),InnerPixel['bPY0']-PixelGrid['sizeY']/2+(InnerPixel['cellSizeY']/2)-225e3)
 	
-    textCell = Text.create(layout, $layerAlu, sensor ,-1000e3, 4590e3, 240) 
+    textCell = Text.create(layout, $layerAlu, sensor ,-1500e3, 4590e3, 240) 
     lowerTextCell = Text.create(layout,$layerAlu,"Place chip periphery over here",-3138e3, -4830e3, 240,sensor)        
     Merge.cells(periCell, lowerTextCell)  
     Merge.cells(periCell, textCell)
