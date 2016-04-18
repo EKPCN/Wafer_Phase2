@@ -9,6 +9,8 @@ module Roc4Sens100x25b
   # @return [cell] Returns the cell with all structures
 
   def Roc4Sens100x25b.create(layout,sensor)
+      
+    rocType = "R4S"
           
     topCell = layout.create_cell(sensor)
     name = sensor + "."
@@ -46,9 +48,9 @@ module Roc4Sens100x25b
 
     periCell = layout.create_cell(name+"Periphery")
     Periphery.init(periCell)
-    Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
+    Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge,rocType)
 
-    textCell = Text.create(layout, $layerAlu, sensor ,-1000e3, 4590e3, 240) 
+    textCell = Text.create(layout, $layerAlu, sensor ,-1500e3, 4590e3, 240) 
     lowerTextCell = Text.create(layout,$layerAlu,"Place chip periphery over here",-3138e3, -4830e3, 240,sensor)      
     Merge.cells(periCell, lowerTextCell)  
     Merge.cells(periCell, textCell)

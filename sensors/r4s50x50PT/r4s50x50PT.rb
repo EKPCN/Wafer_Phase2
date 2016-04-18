@@ -7,6 +7,8 @@ module R4S50x50PT
 
   def R4S50x50PT.create(layout,sensor)
           
+    rocType = "R4S"
+          
     $sensor = layout.create_cell(sensor)
     name = sensor + "."
     
@@ -39,7 +41,7 @@ module R4S50x50PT
 
  
     Periphery.init(periCell)
-    Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
+    Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge,rocType)
     
     textCell = Text.create(layout, $layerAlu, sensor ,-1000e3, 4590e3, 240) 
     lowerTextCell = Text.create(layout,$layerAlu,"Place chip periphery over here",-3138e3, -4830e3, 240,sensor)        
