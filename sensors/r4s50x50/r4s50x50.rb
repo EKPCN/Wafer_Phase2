@@ -7,6 +7,8 @@ module Roc4Sens50x50
 
   def Roc4Sens50x50.create(layout,sensor)
         
+    rocType = "R4S"
+    
     $sensor = layout.create_cell(sensor)
     name = sensor + "."
     
@@ -35,7 +37,7 @@ module Roc4Sens50x50
 
     periCell = layout.create_cell(name+"Periphery")
     Periphery.init(periCell)
-    Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge)
+    Periphery.create($layerNp,$layerAlu,$layerPassOpen,$layerPpe19,$layerAluVia,PixelGrid,BiasRing,GuardRing,PixelEdge,rocType)
     #bump pads for guard ring connection
 #    Pixel.bumpPad($layerPassOpen,BumpPad['dia'],-PixelGrid['sizeX']/2+PixelUnitCell['sizeX']/4,-PixelGrid['sizeY']/2-212.5e3)
 #    Pixel.bumpPad($layerAlu,20e3,-PixelGrid['sizeX']/2+PixelUnitCell['sizeX']/4,-PixelGrid['sizeY']/2-212.5e3)
