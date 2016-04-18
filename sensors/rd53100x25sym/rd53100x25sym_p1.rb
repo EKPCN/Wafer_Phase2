@@ -13,12 +13,6 @@ Implant = {
 }
 
 ImplantAlu1 = {
-
-#    'sizeX' => 65e3,
-#    'sizeY' => 16e3,
-#    'x0' => 13e3,
-#    'y0' => 0,
-#    'radius' => 4e3
  
     'sizeX' => 65e3,
     'sizeY' => 16e3,
