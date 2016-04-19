@@ -123,19 +123,24 @@ BiasRing = {
     
     'bumpDia' => 12e3,
     'bumpX0' => 25e3,
-    'bumpY0' => -212.5e3,
+    'bumpY0' => -200e3,
     
 } 
 
+DummyBiasRing = {
+
+    'distX' => 0,
+}
+
 GuardRing = {
 
-    'distX' => 158e3,
+    'distX' => 158e3+10e3,
     'distY' => 158e3+65e3,
     'width' => 28e3,
     'rIn' => 131e3,
     'rOut' => 159e3,
     
-    'aluDistX' => 145.5e3,
+    'aluDistX' => 145.5e3+10e3,
     'aluDistY' => 145.5e3+65e3,
     'aluWidth' => 73e3,
     'aluROut' => 191.5e3,
@@ -147,12 +152,12 @@ GuardRing = {
 
 PixelEdge = {
     
-    'distX' => 426e3,
+    'distX' => 426e3+10e3,
     'distY' => 426e3+65e3,
     'sizeX' => 10000e3,
     'sizeY' => 10000e3,
 
-    'aluDistX' => 376e3,
+    'aluDistX' => 376e3+10e3,
     'aluDistY' => 376e3+65e3,
     'aluSizeX' => 9920e3,
     'aluSizeY' => 9920e3,
